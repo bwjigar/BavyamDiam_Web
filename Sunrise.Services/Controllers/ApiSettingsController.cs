@@ -26,7 +26,6 @@ using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.Script.Serialization;
 
-
 namespace Sunrise.Services.Controllers
 {
     public class ApiSettingsController : ApiController
