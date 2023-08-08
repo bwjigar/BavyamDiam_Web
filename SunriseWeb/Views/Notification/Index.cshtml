@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Notification Master";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+}
+
+<style type="text/css">
+    .ag-paging-page-summary-panel {
+        left: 10px;
+        position: relative;
+    }
+</style>
+
+<div class="container-fluid order-history-section manage-user">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>Notification Master</h2>
+                <div class="main-header-page add-new-btn" style="float: right;">
+                    <a href="@Url.Action("Add","Notification")">
+                        <h1 style="color: green;">+ Add New</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="order-history-data admin muser">
+        <div class="col-xl-3 col-lg-4 col-md-7 col-sm-6 col-12 float-left">
+            <div class="common-order">
+                <div class="offer-label">From Date:</div>
+                <input type="text" name="From" id="txtFromDate" autocomplete="off" value="" class="offer-input offer-input1" />
+                <input type="text" name="To" id="txtToDate" autocomplete="off" value="" class="offer-input offer-input1" />
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-3 col-md-7 col-sm-6 col-12 float-left pl-2 pr-2">
+            <div class="common-order">
+                <div class="offer-label">Trans ID:</div>
+                <input type="text" id="txtTransId" class="form-control common-control" onkeypress="return isNumberKey(event)">
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-5 col-md-7 col-sm-6 col-12 float-left pl-2 pr-2">
+            <div class="common-order">
+                <div class="offer-label">Notification Name:</div>
+                <input type="text" id="txtNotification" class="form-control common-control">
+            </div>
+        </div>
+        <div class="mt-1 mob-view">&nbsp;</div>
+        <div class="col-xl-3 col-lg-7 col-md-7 col-sm-6 col-12 float-left pl-2 pr-2">
+            <ul class="offer-inbtn p-0 mb-2">
+                <li>
+                    <button type="button" id="btnSearch" class="offer-btn"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+                </li>
+                <li>
+                    <button type="button" id="btnReset" class="offer-btn"><i class="fa fa-refresh" aria-hidden="true"></i>Reset</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="aggrid-section">
+        <!---- =============== start ag-grid =============== ---->
+        <div id="myGrid" style="width: 100%;height:600px;" class="ag-theme-balham">
+        </div>
+        <!---- =============== end ag-grid ================= ----->
+    </div>
+</div>
+<!--- end of order-history part---->
+@section scripts{
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/Notification.js"></script>
+}
+
+

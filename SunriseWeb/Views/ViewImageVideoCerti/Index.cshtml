@@ -1,0 +1,1100 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/bd-removebg-preview.png">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <style>
+        #pdf_container { background: #ccc; text-align: center; display: none; padding: 5px; height: 820px; overflow: auto; }
+        .glass {
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            border-radius: 50%;
+            cursor: crosshair;
+            /* Multiple box shadows to achieve the glass effect */
+            box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25);
+            /* hide the glass by default */
+            display: none;
+        }
+
+        .border-b {
+            border-bottom: 1px solid #ccc;
+        }
+
+        ul {
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+            ul.social li {
+                list-style: none;
+                font-size: 22px;
+                padding-top: 5px;
+                float: right;
+                text-align: center;
+                margin-top: 10px;
+                margin-left: 5px;
+                margin-right: 5px;
+                width: 60px;
+            }
+
+                ul.social li a {
+                    cursor: pointer;
+                    color: #3339;
+                }
+
+        [class^="icon-"], [class*=" icon-"] {
+            font-family: 'Solitaire';
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ul.social li p {
+            list-style: none;
+            font-size: 13px;
+        }
+
+        .icon-active {
+            color: #3a9adb !important;
+        }
+
+        .img-widths {
+            width: 75% !important;
+        }
+
+        .img-next-prev-btn {
+            margin-top: -50px;
+        }
+
+        .Descriptionlable {
+            margin-top: 30px;
+            margin-right: 8px;
+            color: #00000061;
+            font-size: 17px;
+            text-shadow: 1.3px 1.3px #3a9adb;
+        }
+
+        .loading-overlay {
+            display: none;
+            background: rgba( 26, 26, 26, 0.7 );
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            top: 0;
+        }
+
+        .loading-overlay-image-container {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 50%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+        }
+
+        .loading-overlay-img3 {
+            width: 80px;
+            height: auto;
+            border-radius: 5px;
+            /*background-color:#fff;*/
+        }
+    </style>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" href="~/Content/ViewImgVdoCert/css/bootstrap.min.css">
+
+    <script src="~/Content/ViewImgVdoCert/js/jquery.min.js"></script>
+    <script src="~/Content/ViewImgVdoCert/js/bootstrap.min.js"></script>
+    <script src="~/Content/ViewImgVdoCert/js/slick.min.js"></script>
+    <script src="~/Content/ViewImgVdoCert/js/enlarge.init.js"></script>
+    <script src="~/Content/ViewImgVdoCert/js/enlarge.js"></script>
+    <script src="~/Content/ViewImgVdoCert/js/init.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf_viewer.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/Content/ViewImgVdoCert/js/lightzoom.js"></script>
+
+    <link rel="stylesheet" href="~/Content/ViewImgVdoCert/css/flaticon.css">
+    <link rel="stylesheet" href="~/Content/ViewImgVdoCert/css/font-awesome.min.css">
+    <link href="~/Content/ViewImgVdoCert/css/slick-theme.css?version=1.1" rel="stylesheet" />
+    <link href="~/Content/ViewImgVdoCert/css/slick.css" rel="stylesheet" />
+    <link href="~/Content/ViewImgVdoCert/css/enlarge.css" rel="stylesheet" />
+    <link href="~/Content/ViewImgVdoCert/css/glassstyle.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div class="loading-overlay"></div>
+    <div class="loading-overlay-image-container">
+        <img src="~/Content/images/Loader2.gif" class="loading-overlay-img3" />
+    </div>
+    <div class="container">
+        <div class="row border-b" id="divHead" style="display:none;">
+            <div id="divdtl" class="col-md-3 col-xs-12">
+                <div class="col-md-12 col-xs-12">
+                    <p class="stoneid-label" style="margin-top: 10px;">
+                        <b style="color:#3a9adb;">Stock Id : </b><label class="stoneid" id="LblRef" style="color: #3339;"></label>
+                    </p>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <p class="stoneid-label">
+                        <b style="color:#3a9adb;">Certi. No :</b>  <label class="stoneid" id="LblCert" style="color: #3339;"></label>
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-md-6 col-xs-12" style="text-align: center;">
+                <label id="PCol" class="Descriptionlable"></label>
+                <label id="PCla" class="Descriptionlable"></label>
+                <label id="PCts" class="Descriptionlable"></label>
+                <label id="PCut" class="Descriptionlable"></label>
+                <label id="PPls" class="Descriptionlable"></label>
+                <label id="PSymm" class="Descriptionlable"></label>
+                <label id="PFls" class="Descriptionlable"></label>
+                @*<p id="PCol" style="margin-top: 30px;color:red;"></p>
+                    <p id="PCla" style="margin-top: 30px;color:red;"> </p>
+                    <p id="PCts" style="margin-top: 30px;color:red;"></p>
+                    <p id="PCut" style="margin-top: 30px;color:red;"> </p>
+                    <p id="PCut" style="margin-top: 30px;color:red;"> </p>*@
+            </div>
+            <div class="col-md-3 col-xs-12">
+                <ul class="social">
+                    <li class="show-icon" name="pdfBtn" onclick="_showMedia('PDF')">
+                        <a href="javascript:void(0);" id="pdfLink" class="">
+                            <i class="fa fa-certificate"></i>
+                            <p>
+                                Certificate
+                            </p>
+                        </a>
+                    </li>
+                    <li class="show-icon" name="videoBtn" onclick="_showMedia('Video')">
+                        <a href="javascript:void(0);" id="videoLink" class="">
+                            <i class="fa fa-video-camera"></i>
+                            <p>
+                                Video
+                            </p>
+                        </a>
+                    </li>
+                    <li class="show-icon" name="imageBtn" onclick="_showMedia('Image')">
+                        <a href="javascript:void(0);" id="imageLink" class="icon-active">
+                            <i class="fa fa-picture-o"></i>
+                            <p>
+                                Image
+                            </p>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div id="divImage" class="row">
+            <div class="col-lg-12">
+                <button style="display:none;" id="downloadImage" class="btn btn-primary pull-right" type="button" value="Download" onclick="downloadImage();"><i class="fa fa-download"></i></button>
+            </div>
+            <div class="col-lg-12">
+                <div id="imageList" class="slick-slider">
+                </div>
+                <center>
+                    <iframe frameborder="0" id="imageFrameList" src="" style="text-align: center; width: 65%;height: 526px;"></iframe>
+                </center>
+                <center>
+                    <img src="~/Content/images/Img Not Avail.png" id="imgNoAvail" style="display:none;margin-top: 42px;width:31%;border: double #003d66;">
+                </center>
+            </div>
+        </div>
+        <div id="divCerti" class="row" style="display:none">
+            <div class="col-lg-12">
+                @*<iframe id="CertiFrame" width="100%" height="600" frameborder="0" src="" style="text-align: center;height: 950px;width: 100%;"></iframe>*@
+                <div id="Certipdf_container" width="100%" height="600" style="overflow-x: scroll;text-align: center;height: 950px;width: 100%;"></div>
+                <center>
+                    <img src="" id="CertiImg" style="display:none;width: 100%;">
+                </center>
+                <center>
+                    <img src="~/Content/images/Certi Not Avail.png" id="CertiNoAvail" style="display:none;margin-top: 42px;width:31%;border: double #003d66;">
+                </center>
+                
+            </div>
+        </div>
+        <div id="divIframe" class="row">
+            <div class="col-lg-12">
+                <br /><br />
+            </div>
+        </div>
+        <div id="divVideo" class="row" style="display:none">
+            <div class="col-lg-12">
+                <button style="display:none;" id="downloadVdo" class="btn btn-primary pull-right" type="button" value="Download" onclick="downloadVdo();"><i class="fa fa-download"></i></button>
+            </div>
+            <div class="col-lg-12" style="text-align: center;display:none;">
+                <iframe style="border-width:0px;height: 1100px;width:100%;" id="ifVideo" scrolling="auto" src=""></iframe>
+            </div>
+            <div class="col-lg-12" style="text-align: center;display:none;">
+                <video id="video1" runat="server" style="height: 460px;width:100%;" controls autoplay loop muted>
+                    <source src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <center>
+                <img src="~/Content/images/Vdo Not Avail.png" id="vdoNoAvail" style="display:none;width:30%;border: double #003d66;">
+            </center>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var imageArr = [];
+        var DwnVideoUrl = '';
+        var VideoType = '';
+        String.prototype.fileExists = function () {
+            filename = this.trim();
+
+            var response = jQuery.ajax({
+                url: filename,
+                type: 'HEAD',
+                async: false
+            }).status;
+
+            return (response != "200") ? false : true;
+        }
+
+        function GetURLParameter(sParam) {
+            var sPageURL = window.location.search.substring(1);
+            var sURLVariables = sPageURL.split('&');
+            var i = 0, sParameterName = '';
+            for (; i < sURLVariables.length; i++) {
+                sParameterName = sURLVariables[i].split('=');
+                if (sParameterName[0] == sParam) {
+                    return sParameterName[1];
+                }
+            }
+        }
+
+        function imageExists(url, callback) {
+            var img = new Image();
+            img.onload = function () { callback(true); };
+            img.onerror = function () { callback(false); };
+            img.src = url;
+        }
+
+        function downloadImage() {
+
+            var a;
+            var Refno = GetURLParameter("StoneId").replace("%20", " ");
+            $.each(imageArr, function (index, value) {
+                //alert( index + ": " + value );
+                a = Refno + "-" + GetFilename(value.toString()) + ".jpg";
+                forceDownload(value.toString(), a);
+            });
+
+        }
+        function downloadVdo() {
+            //var a;
+            //if (DwnVideoUrl != '') {
+            //    var Refno = GetURLParameter("StoneId");
+            //    var incStrjson = DwnVideoUrl.includes(".json");
+            //    var incStrMp4 = DwnVideoUrl.includes(".mp4");
+            //    if (incStrMp4 == true) {
+            //        a = Refno + ".mp4";
+            //        forceDownload(DwnVideoUrl.toString(), a);
+            //    }
+            //    else {
+            //        if (incStrjson == true) { } {
+            //            alert('Mp4 Format Not Available.');
+            //        }
+            //    }
+            //}
+            if (videolink == "") {
+                alert('Mp4 Format Not Available.');
+            }
+            else {
+                var Refno = GetURLParameter("StoneId").replace("%20", " ");
+                a = Refno + ".mp4";
+                forceDownload(videolink.toString(), a);
+            }
+        }
+        //function downloadURI(uri, name)
+        //{
+        //    var link = document.createElement("a");
+        //    // If you don't know the name or want to use
+        //    // the webserver default set name = ''
+        //    link.setAttribute('download', name);
+        //    link.href = uri;
+        //    document.body.appendChild(link);
+        //    link.click();
+        //    link.remove();
+        // }
+
+        function forceDownload(url, fileName) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.responseType = "blob";
+            xhr.onload = function () {
+                var urlCreator = window.URL || window.webkitURL;
+                var imageUrl = urlCreator.createObjectURL(this.response);
+                var tag = document.createElement('a');
+                tag.href = imageUrl;
+                tag.download = fileName;
+                document.body.appendChild(tag);
+                tag.click();
+                document.body.removeChild(tag);
+            }
+            xhr.send();
+        }
+        function GetFilename(url) {
+            if (url) {
+                var m = url.toString().match(/.*\/(.+?)\./);
+                if (m && m.length > 1) {
+                    return m[1];
+                }
+            }
+            return "";
+        }
+        //var showEntryVar = null, showEntryVar1 = null, imageBinded = false;
+        function bindImages(Cert) {
+        //    $('.loading-overlay-image-container').show();
+        //$('.loading-overlay').show();
+            //MainImage
+            var imageUrl = 'https://4e0s0i2r4n0u1s0.com/img/' + Cert + '/pr.jpg';
+            var imageHtml = '';
+
+            imageExists(imageUrl, function (exists) {
+                if (exists) {
+                    imageArr.push(imageUrl);
+                    imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+                        '<div class="enlarge_contain"><img src="' + imageUrl + '" class="img-responsive light-zoom"></div>' +
+                        '<a href="' + imageUrl + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+                        '</div></div></div>';
+
+                    $(imageHtml).appendTo("#imageList");
+                }
+
+                //PRB_s
+                var imagePrbs = 'https://4e0s0i2r4n0u1s0.com/img/' + Cert + '/PRB.jpg';
+                imageExists(imagePrbs, function (exists) {
+                    if (exists) {
+                        imageArr.push(imagePrbs);
+                        imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+                            '<div class="enlarge_contain"><img src="' + imagePrbs + '" class="img-responsive light-zoom"></div>' +
+                            '<a href="' + imagePrbs + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+                            '</div></div></div>';
+
+                        $(imageHtml).appendTo("#imageList");
+                    }
+
+                    //AS_s
+                    var ImageASs = 'https://4e0s0i2r4n0u1s0.com/img/' + Cert + '/AS.jpg';
+                    imageExists(ImageASs, function (exists) {
+                        if (exists) {
+                            imageArr.push(ImageASs);
+                            imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+                                '<div class="enlarge_contain"><img src="' + ImageASs + '" class="img-responsive light-zoom"></div>' +
+                                '<a href="' + ImageASs + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+                                '</div></div></div>';
+                            $(imageHtml).appendTo("#imageList");
+                        }
+
+                        //HT_s
+                        var ImageHTs = 'https://4e0s0i2r4n0u1s0.com/img/' + Cert + '/HT.jpg';
+                        imageExists(ImageHTs, function (exists) {
+                            if (exists) {
+                                imageArr.push(ImageHTs);
+                                imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+                                    '<div class="enlarge_contain"><img src="' + ImageHTs + '" class="img-responsive light-zoom"></div>' +
+                                    '<a href="' + ImageHTs + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+                                    '</div></div></div>';
+                                $(imageHtml).appendTo("#imageList");
+                            }
+
+                            //HB_s
+                            var ImageHbs = 'https://4e0s0i2r4n0u1s0.com/img/' + Cert + '/HB.jpg';
+                            imageExists(ImageHbs, function (exists) {
+                                if (exists) {
+                                    imageArr.push(ImageHbs);
+                                    imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+                                        '<div class="enlarge_contain"><img src="' + ImageHbs + '" class="img-responsive light-zoom"></div>' +
+                                        '<a href="' + ImageHbs + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+                                        '</div></div></div>';
+                                    $(imageHtml).appendTo("#imageList");
+                                }
+                                //imageBinded = true;
+                                $('.slick-slider').slick({
+                                    dots: false,
+                                    infinite: true,
+                                    speed: 500,
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    autoplay: false,
+                                    autoplaySpeed: 500,
+                                    arrows: true,
+                                    responsive: [{
+                                        breakpoint: 980,
+                                        settings: {
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 400,
+                                        settings: {
+                                            arrows: false,
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1
+                                        }
+                                    }]
+                                });
+                                $("#imageList").show();
+                                ScreenSize();
+                                //setTimeout(function () {
+                                //    $('.loading-overlay-image-container').hide();
+                                //    $('.loading-overlay').hide();
+                                //}, 10);
+
+                                setTimeout(function () {
+                                    $('img.light-zoom').lightzoom({
+                                        zoomPower: 3,    //Default
+                                        glassSize: 150,  //Default
+                                    });
+                                    $('.slick-arrow').addClass('img-next-prev-btn');
+                                    //$('#ifVideo')[0].style.width = "365px";
+                                    //$('#video1')[0].style.width = "365px";
+                                }, 1200);
+                                $(document).keydown(function (e) {
+                                    if (event.keyCode == 37) {
+                                        $('.slick-prev').click(); //on left arrow, click next (since your next is on the left)
+                                    } else if (event.keyCode == 39) {
+                                        $('.slick-next').click(); //on right arrow, click prev
+                                    }
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+
+
+            //showEntryVar = setInterval(function () {
+            //    if (document.readyState == 'complete' && imageBinded) {
+            //        imageBinded = false;
+            //        clearInterval(showEntryVar);
+
+            //    }
+            //}, 1000);
+        }
+        function OverseasBindMultiImages(Image, Image1, Image2, Image3) {
+            var imageUrl = Image;
+            var imageHtml = '';
+
+            imageExists(imageUrl, function (exists) {
+                if (exists) {
+                    imageArr.push(imageUrl);
+                    imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+                        '<div class="enlarge_contain"><img src="' + imageUrl + '" class="img-responsive light-zoom"></div>' +
+                        '<a href="' + imageUrl + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+                        '</div></div></div>';
+
+                    $(imageHtml).appendTo("#imageList");
+                }
+
+                //PRB_s
+                var imagePrbs = Image1;
+                imageExists(imagePrbs, function (exists) {
+                    if (exists) {
+                        imageArr.push(imagePrbs);
+                        imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+                            '<div class="enlarge_contain"><img src="' + imagePrbs + '" class="img-responsive light-zoom"></div>' +
+                            '<a href="' + imagePrbs + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+                            '</div></div></div>';
+
+                        $(imageHtml).appendTo("#imageList");
+                    }
+
+                    //AS_s
+                    var ImageASs = Image2;
+                    imageExists(ImageASs, function (exists) {
+                        if (exists) {
+                            imageArr.push(ImageASs);
+                            imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+                                '<div class="enlarge_contain"><img src="' + ImageASs + '" class="img-responsive light-zoom"></div>' +
+                                '<a href="' + ImageASs + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+                                '</div></div></div>';
+                            $(imageHtml).appendTo("#imageList");
+                        }
+
+                        //HT_s
+                        var ImageHTs = Image3;
+                        imageExists(ImageHTs, function (exists) {
+                            if (exists) {
+                                imageArr.push(ImageHTs);
+                                imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+                                    '<div class="enlarge_contain"><img src="' + ImageHTs + '" class="img-responsive light-zoom"></div>' +
+                                    '<a href="' + ImageHTs + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+                                    '</div></div></div>';
+                                $(imageHtml).appendTo("#imageList");
+                            }
+
+                            //HB_s
+                            var ImageHbs = '';
+                            imageExists(ImageHbs, function (exists) {
+                                if (exists) {
+                                    imageArr.push(ImageHbs);
+                                    imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+                                        '<div class="enlarge_contain"><img src="' + ImageHbs + '" class="img-responsive light-zoom"></div>' +
+                                        '<a href="' + ImageHbs + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+                                        '</div></div></div>';
+                                    $(imageHtml).appendTo("#imageList");
+                                }
+                                //imageBinded = true;
+                                $('.slick-slider').slick({
+                                    dots: false,
+                                    infinite: true,
+                                    speed: 500,
+                                    slidesToShow: 1,
+                                    slidesToScroll: 1,
+                                    autoplay: false,
+                                    autoplaySpeed: 500,
+                                    arrows: true,
+                                    responsive: [{
+                                        breakpoint: 980,
+                                        settings: {
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1
+                                        }
+                                    },
+                                    {
+                                        breakpoint: 400,
+                                        settings: {
+                                            arrows: false,
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1
+                                        }
+                                    }]
+                                });
+                                $("#imageList").show();
+                                ScreenSize();
+
+                                setTimeout(function () {
+                                    $('img.light-zoom').lightzoom({
+                                        zoomPower: 3,    //Default
+                                        glassSize: 150,  //Default
+                                    });
+                                    $('.slick-arrow').addClass('img-next-prev-btn');
+                                }, 1200);
+                                $(document).keydown(function (e) {
+                                    if (event.keyCode == 37) {
+                                        $('.slick-prev').click(); //on left arrow, click next (since your next is on the left)
+                                    } else if (event.keyCode == 39) {
+                                        $('.slick-next').click(); //on right arrow, click prev
+                                    }
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+
+            //var imageHtml = '';
+
+            //var imageUrl = Image;
+            //if (imageUrl != null) {
+            //    imageArr.push(imageUrl);
+            //    imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+            //        '<div class="enlarge_contain"><img src="' + imageUrl + '" class="img-responsive light-zoom"></div>' +
+            //        '<a href="' + imageUrl + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+            //        '</div></div></div>';
+            //    $(imageHtml).appendTo("#imageList");
+            //}
+            //var imagePrbs = Image1;
+            //if (imagePrbs != null) {
+            //    imageArr.push(imagePrbs);
+            //    imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+            //        '<div class="enlarge_contain"><img src="' + imagePrbs + '" class="img-responsive light-zoom"></div>' +
+            //        '<a href="' + imagePrbs + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+            //        '</div></div></div>';
+            //    $(imageHtml).appendTo("#imageList");
+            //}
+            //var ImageASs = Image2;
+            //if (ImageASs != null) {
+            //    imageArr.push(ImageASs);
+            //    imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+            //        '<div class="enlarge_contain"><img src="' + ImageASs + '" class="img-responsive light-zoom"></div>' +
+            //        '<a href="' + ImageASs + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+            //        '</div></div></div>';
+            //    $(imageHtml).appendTo("#imageList");
+            //}
+            //var ImageHTs = Image3;
+            //if (ImageHTs != null) {
+            //    imageArr.push(ImageHTs);
+            //    imageHtml = '<div class="enlarge_pane_contain img-widths" style="width:75%;"><div class="enlarge_pane"><div class="enlarge">' +
+            //        '<div class="enlarge_contain"><img src="' + ImageHTs + '" class="img-responsive light-zoom"></div>' +
+            //        '<a href="' + ImageHTs + '" class="enlarge_btn" title="Toggle Zoom"></a>' +
+            //        '</div></div></div>';
+            //    $(imageHtml).appendTo("#imageList");
+            //}
+            //if ($("#imageList").html() != "") {
+            //    $('.slick-slider').slick({
+            //        dots: false,
+            //        infinite: true,
+            //        speed: 500,
+            //        slidesToShow: 1,
+            //        slidesToScroll: 1,
+            //        autoplay: false,
+            //        autoplaySpeed: 500,
+            //        arrows: true,
+            //        responsive: [{
+            //            breakpoint: 980,
+            //            settings: {
+            //                slidesToShow: 1,
+            //                slidesToScroll: 1
+            //            }
+            //        },
+            //        {
+            //            breakpoint: 400,
+            //            settings: {
+            //                arrows: false,
+            //                slidesToShow: 1,
+            //                slidesToScroll: 1
+            //            }
+            //        }]
+            //    });
+            //    $("#imageList").show();
+            //    ScreenSize();
+
+            //    setTimeout(function () {
+            //        $('img.light-zoom').lightzoom({
+            //            zoomPower: 3,    //Default
+            //            glassSize: 150,  //Default
+            //        });
+            //        $('.slick-arrow').addClass('img-next-prev-btn');
+            //    }, 1200);
+            //     $(document).keydown(function (e) {
+            //                        if (event.keyCode == 37) {
+            //                            $('.slick-prev').click(); //on left arrow, click next (since your next is on the left)
+            //                        } else if (event.keyCode == 39) {
+            //                            $('.slick-next').click(); //on right arrow, click prev
+            //                        }
+            //                    });
+            //}
+        }
+
+        function bindVideos(Cert, SeqNo) {
+            var videoUrl = 'https://4e0s0i2r4n0u1s0.com/vfiles/imaged/' + SeqNo + '/0.json';
+            if (videoUrl.fileExists()) {
+                $("#ifVideo").parent().show();
+                $("#divIframe").show();
+                $("#video1").parent().hide();
+                $("#ifVideo").attr('src', 'https://4e0s0i2r4n0u1s0.com/Vision360.html?d=' + SeqNo + '&s=0&surl=https://4e0s0i2r4n0u1s0.com/vfiles/&autoplay=1');
+                DwnVideoUrl = videoUrl;
+                VideoType = 'json';
+            }
+            else {
+                videoUrl = 'https://4e0s0i2r4n0u1s0.com/vfiles/imaged/' + SeqNo + '/video.mp4';
+                if (videoUrl.fileExists()) {
+                    $("#video1").attr('src', videoUrl);
+                    $("#video1").parent().show();
+                    $("#ifVideo").parent().hide();
+                    $("#divIframe").hide();
+                    DwnVideoUrl = videoUrl;
+                    VideoType = 'mp4';
+                }
+                else {
+                    $("#ifVideo").parent().hide();
+                    $("#video1").parent().hide();
+                    $("#divIframe").hide();
+                    DwnVideoUrl = '';
+                }
+            }
+        }
+        function _showMedia(mediaType) {
+            var url = window.location.href;
+            if (mediaType == 'Image') {
+                url = url.replace("T=I", "T=I");
+                url = url.replace("T=V", "T=I");
+                url = url.replace("T=C", "T=I");
+            }
+            else if (mediaType == 'Video') {
+                url = url.replace("T=I", "T=V");
+                url = url.replace("T=V", "T=V");
+                url = url.replace("T=C", "T=V");
+            }
+            else if (mediaType == 'PDF') {
+                url = url.replace("T=I", "T=C");
+                url = url.replace("T=V", "T=C");
+                url = url.replace("T=C", "T=C");
+            }
+            window.location.href = url;
+        }
+        function showMedia(mediaType) {
+            if (mediaType === 'Image') {
+                $("#imageLink").addClass('icon-active');
+                $("#videoLink").removeClass('icon-active');
+                $("#pdfLink").removeClass('icon-active');
+                $("#divImage").show();
+                $("#divCerti").hide();
+                $("#divVideo").hide();
+                document.title = GetURLParameter("StoneId").replace("%20", " ") + " :: IMAGE";
+            } else if (mediaType === 'Video') {
+                $("#videoLink").addClass('icon-active');
+                $("#imageLink").removeClass('icon-active');
+                $("#pdfLink").removeClass('icon-active');
+                $("#divImage").hide();
+                $("#divCerti").hide();
+                $("#divVideo").show();
+                $("#ifVideo").attr('src', $("#ifVideo").attr('src'));
+                document.title = GetURLParameter("StoneId").replace("%20", " ") + " :: VIDEO";
+            } else if (mediaType === 'PDF') {
+                $("#videoLink").removeClass('icon-active');
+                $("#imageLink").removeClass('icon-active');
+                $("#pdfLink").addClass('icon-active');
+                $("#divImage").hide();
+                $("#divCerti").show();
+                $("#divVideo").hide();
+                //$("#CertiFrame").attr('src', $("#CertiFrame").attr('src'));
+                
+                document.title = GetURLParameter("StoneId").replace("%20", " ") + " :: CERTIFICATE";
+            }
+        }
+        function fileExists(url) {
+            if (url) {
+                var req = new XMLHttpRequest();
+                req.open('GET', url, false);
+                req.send();
+                return req.status == 200;
+            } else {
+                return false;
+            }
+        }
+        function doesFileExist(urlToFile) {
+            var img = new PDF();
+            PDF.onload = function () { callback(true); };
+            PDF.onerror = function () { callback(false); };
+            PDF.src = urlToFile;
+
+
+            //var xhr = new XMLHttpRequest();
+            //  xhr.open('HEAD', urlToFile, false);
+            //   xhr.send();
+
+            //   if (xhr.status == "404") {
+            //     console.log("File doesn't exist");
+            //      return false;
+            // } else {
+            //      console.log("File exists");
+            //      return true;
+            //  }
+        }
+        function CheckUrlExist(FirstUrl) {
+            $.ajax({
+                type: 'HEAD',
+                url: FirstUrl,
+                crossDomain: true,
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
+                success: function () {
+                    $("#CertiFrame").attr('src', FirstUrl);
+                },
+                error: function () {
+                    //alert(2);
+                }
+            });
+        }
+        function setpdf() {
+
+
+            $.ajax({
+                url: 'https://sunrisediamonds.com.hk/certi/5211182441.pdf',
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/pdf', "accept": "application/json", "Access-Control-Allow-Credentials": "true",
+
+                },
+                method: 'GET',
+                'cache': false,
+                'dataType': "jsonp",
+                "async": true,
+                "crossDomain": true,
+                data: '',
+                error: function () {
+                    alert("File doesn't exists");
+                },
+                success: function () {
+                    alert('File exists');
+                }
+            });
+
+        }
+        function bindCerti(pdfUrl) {
+            if (pdfUrl != "") {
+                $("#CertiNoAvail").hide();
+                let str = pdfUrl.toUpperCase();
+                if (!str.includes(".JPG")) {
+                    $("#CertiImg").hide();
+                    //$("#CertiFrame").show();
+                    //$("#CertiFrame").attr('src', pdfUrl);
+                    $("#Certipdf_container").show();
+                    LoadPdfFromUrl(pdfUrl)
+                }
+                else {
+                    $("#Certipdf_container").hide();
+                    $("#CertiImg").show();
+                    document.getElementById('CertiImg').src = pdfUrl;
+                }
+            }
+            else {
+                $("#CertiNoAvail").show();
+                $("#Certipdf_container").hide();
+                $("#CertiImg").hide();
+            }
+        }
+        $(document).ready(function () {
+            GetDetails();
+        });
+        function ScreenSize() {
+            var w = window, d = document, e = d.documentElement, g = d.getElementsByTagName('body')[0],
+                x = w.innerWidth || e.clientWidth || g.clientWidth,
+                y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+            if (x <= 500) {
+                x = 900;
+                y = 500;
+            }
+
+            $('.slick-list')[0].style.height = parseInt(y) - 115 + "px";
+            var x1 = x / 2;
+            $('.slick-slider')[0].style.width = parseInt(x1) - 135 + "px";
+
+            //if (VideoType == 'mp4') {
+            //    $("#video1")[0].style.height = parseInt(y) - 125 + "px";
+            //    $('#video1')[0].style.width = parseInt(x1) - 150 + "px";
+            //}
+            //if (VideoType == 'json') {
+            //    $("#ifVideo")[0].style.height = parseInt(y) - 100 + "px";
+            //    $('#ifVideo')[0].style.width = parseInt(x1) - 125 + "px";
+            //}
+            //$("#CertiFrame")[0].style.height = parseInt(y) - 115 + "px";
+        };
+        function formatNumber(number) {
+            return (parseFloat(number).toFixed(2)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+        }
+        var videolink = "";
+        function GetDetails() {
+            if (GetURLParameter("StoneId") != "" && GetURLParameter("StoneId") != undefined) {
+                if (GetURLParameter("DT") == "M") {
+                    $("#divHead").hide();
+					$("#downloadVdo").hide();
+					$("#downloadImage").hide();
+                    $("#downloadVdo").hide();
+                }
+                else {
+				    $("#divHead").show();
+					$("#downloadVdo").show();
+					$("#downloadImage").show();
+                    $('.loading-overlay-image-container').show();
+                    $('.loading-overlay').show();
+                }
+                $.ajax({
+                    url: "@Url.Action("GetStoneDetail", "ViewImageVideoCerti")",
+                    type: "POST",
+                    data: { sRefNo: GetURLParameter("StoneId").replace("%20", " ") },
+                    success: function (data, textStatus, jqXHR) {
+                        if (data != null) {
+                            if (data.stone_ref_no != null) {
+                                $("#LblRef").html(data.stone_ref_no);
+                                if (data.certi_no != null) {
+                                    $("#LblCert").html(data.certi_no);
+                                }
+                            }
+                            else {
+                                $('#divdtl').hide();
+                            }
+                            if (data.color != null) {
+                                $('#PCol').text(data.color);
+                            }
+                            if (data.clarity != null) {
+                                $('#PCla').text(data.clarity);
+                            }
+                            if (data.cts != null) {
+                                $('#PCts').text(formatNumber(data.cts));
+                            }
+                            if (data.cut != null) {
+                                $('#PCut').text(data.cut);
+                                if (data.cut.toUpperCase() == "3EX") {
+                                    $('#PPls').hide();
+                                    $('#PSymm').hide();
+                                }
+                                else {
+                                    if (data.polish != null) {
+                                        $('#PPls').text(data.polish);
+                                    }
+                                    if (data.symm != null) {
+                                        $('#PSymm').text(data.symm);
+                                    }
+                                }
+                            }
+                            if (data.fls != null) {
+                                $('#PFls').text(data.fls);
+                            }
+                            $("#imageList").hide();
+                            $("#imageFrameList").hide();
+                            $("#downloadImage").hide();
+
+                            if (GetURLParameter("T") == "I") {
+                                showMedia("Image");
+                                var __img = "";
+                                if (data.Overseas_Image_Download_Link != null && data.Overseas_Image_Download_Link != "") {
+                                    __img = data.Overseas_Image_Download_Link;
+                                }
+                                else if (data.Overseas_Image_Download_Link1 != null && data.Overseas_Image_Download_Link1 != "") {
+                                    __img = data.Overseas_Image_Download_Link1;
+                                }
+                                else if (data.Overseas_Image_Download_Link2 != null && data.Overseas_Image_Download_Link2 != "") {
+                                    __img = data.Overseas_Image_Download_Link2;
+                                }
+                                else if (data.Overseas_Image_Download_Link3 != null && data.Overseas_Image_Download_Link3 != "") {
+                                    __img = data.Overseas_Image_Download_Link3;
+                                }
+
+                                if (__img != null && __img != "") {
+
+                                    $("#imageFrameList").hide();
+                                    $("#downloadImage").hide();
+                                    OverseasBindMultiImages(data.Overseas_Image_Download_Link, data.Overseas_Image_Download_Link1, data.Overseas_Image_Download_Link2, data.Overseas_Image_Download_Link3)
+
+                                    $("#imgNoAvail").hide();
+                                }
+                                else {
+                                    $("#imgNoAvail").show();
+                                }
+                            }
+                            else if (GetURLParameter("T") == "V") {
+                                showMedia("Video");
+                                $("#downloadVdo").hide();
+                                if (data.sVdoLink != null && data.sVdoLink != "") {
+                                    $("#ifVideo").parent().show();
+                                    $("#ifVideo").attr('src', data.sVdoLink);
+                                    $("#ifVideo")[0].style.height = "515px";
+                                    $("#vdoNoAvail").hide();
+                                }
+                                else {
+                                    $("#vdoNoAvail").show();
+                                }
+                            }
+                            else if (GetURLParameter("T") == "C") {debugger
+                                showMedia("PDF");
+                                bindCerti(data.Overseas_Certi_Download_Link != null && data.Overseas_Certi_Download_Link != "" ? data.Overseas_Certi_Download_Link : data.view_certi_url);
+                                //LoadPdfFromUrl(data.view_certi_url)
+                            }
+                            //if (GetURLParameter("T") == "I") {
+                            //    showMedia("Image");
+                            //}
+                            //else if (GetURLParameter("T") == "V") {
+                            //    showMedia("Video");
+                            //}
+                            //else if (GetURLParameter("T") == "C") {
+                            //    showMedia("PDF");
+                            //}
+                            //else {
+                            //    showMedia("Image");
+                            //}
+                            $('.loading-overlay-image-container').hide();
+                            $('.loading-overlay').hide();
+                        }
+                        if (GetURLParameter("DT") == "M") {
+                            $("#divHead").hide();
+                            $("#downloadVdo").hide();
+							$("#downloadImage").hide();
+                            $("#downloadVdo").hide();
+                        }
+						else {
+							$("#divHead").show();
+						}
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                        NotAvail(GetURLParameter("StoneId").replace("%20", " "));
+                    }
+                });
+            }
+            else {
+                NotAvail("");
+            }
+        }
+        function NotAvail(sRefNo) {
+            if (sRefNo != "") {
+                var msg = "Data not available for this Stone Id " + sRefNo;
+                $(".container").html('<div style="margin-top: 50px;"><center><span style="font-size: 25px;font-weight: 600;">' + msg + '</span></center></div>');
+            }
+            else {
+                $(".container").hide();
+            }
+
+        }
+
+
+        var pdfjsLib = window['pdfjs-dist/build/pdf'];
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.worker.min.js';
+    var pdfDoc = null;
+    var scale = 1; //Set Scale for zooming PDF.
+    var resolution = 1; //Set Resolution to Adjust PDF clarity.
+
+    function LoadPdfFromUrl (url) {
+        //Read PDF from URL.
+        pdfjsLib.getDocument(url).promise.then(function (pdfDoc_) {
+            pdfDoc = pdfDoc_;
+
+            //Reference the Container DIV.
+            var Certipdf_container = document.getElementById("Certipdf_container");
+            Certipdf_container.style.display = "block";
+
+            //Loop and render all pages.
+            for (var i = 1; i <= pdfDoc.numPages; i++) {
+                RenderPage(Certipdf_container, i);
+            }
+        });
+    };
+    function RenderPage(Certipdf_container, num) {
+        pdfDoc.getPage(num).then(function (page) {
+            //Create Canvas element and append to the Container DIV.
+            var canvas = document.createElement('canvas');
+            canvas.id = 'pdf-' + num;
+            ctx = canvas.getContext('2d');
+            Certipdf_container.appendChild(canvas);
+
+            //Create and add empty DIV to add SPACE between pages.
+            var spacer = document.createElement("div");
+            spacer.style.height = "20px";
+            Certipdf_container.appendChild(spacer);
+
+            //Set the Canvas dimensions using ViewPort and Scale.
+            var viewport = page.getViewport({ scale: scale });
+            canvas.height = resolution * viewport.height;
+            canvas.width = resolution * viewport.width;
+
+            //Render the PDF page.
+            var renderContext = {
+                canvasContext: ctx,
+                viewport: viewport,
+                transform: [resolution, 0, 0, resolution, 0, 0]
+            };
+
+            page.render(renderContext);
+        });
+    };
+    </script>
+</body>
+
+</html>

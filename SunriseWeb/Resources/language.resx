@@ -1,0 +1,1689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="2hrsago" xml:space="preserve">
+    <value>2 hrs ago</value>
+  </data>
+  <data name="3hrsago" xml:space="preserve">
+    <value>3 hrs ago</value>
+  </data>
+  <data name="5hrsago" xml:space="preserve">
+    <value>5 hrs ago</value>
+  </data>
+  <data name="aboutus" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="active" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="Address1" xml:space="preserve">
+    <value>Address 1</value>
+  </data>
+  <data name="Address2" xml:space="preserve">
+    <value>Address 2</value>
+  </data>
+  <data name="addtocart" xml:space="preserve">
+    <value>Add to Cart</value>
+  </data>
+  <data name="Add_in_to_wishList_failed" xml:space="preserve">
+    <value>Add in to wishList failed</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="advancesearch" xml:space="preserve">
+    <value>ADVANCE SEARCH</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="allstone" xml:space="preserve">
+    <value>All Stone</value>
+  </data>
+  <data name="allstone1" xml:space="preserve">
+    <value>All Stone</value>
+  </data>
+  <data name="All_selected" xml:space="preserve">
+    <value>All selected</value>
+  </data>
+  <data name="All_Stone" xml:space="preserve">
+    <value>All Stone</value>
+  </data>
+  <data name="alsoavalblon" xml:space="preserve">
+    <value>Also Available On</value>
+  </data>
+  <data name="amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="amount1" xml:space="preserve">
+    <value>AMOUNT</value>
+  </data>
+  <data name="Amount_in" xml:space="preserve">
+    <value>AMT IN</value>
+  </data>
+  <data name="Amount_in_Currency" xml:space="preserve">
+    <value>Amount in Currency</value>
+  </data>
+  <data name="API_Filter" xml:space="preserve">
+    <value>API Filter</value>
+  </data>
+  <data name="appapproved" xml:space="preserve">
+    <value>Application has been approved</value>
+  </data>
+  <data name="appstore" xml:space="preserve">
+    <value>App Store</value>
+  </data>
+  <data name="areacode" xml:space="preserve">
+    <value>Area Code</value>
+  </data>
+  <data name="Are_you_sure_to_remove_this_record" xml:space="preserve">
+    <value>Are you sure to remove this record ?</value>
+  </data>
+  <data name="Arrival_in_HK" xml:space="preserve">
+    <value>Arrival in HK</value>
+  </data>
+  <data name="assist1" xml:space="preserve">
+    <value>Assist 1</value>
+  </data>
+  <data name="assist2" xml:space="preserve">
+    <value>Assist 2</value>
+  </data>
+  <data name="available" xml:space="preserve">
+    <value>Available</value>
+  </data>
+  <data name="avalblon" xml:space="preserve">
+    <value>Available On</value>
+  </data>
+  <data name="avgdisc" xml:space="preserve">
+    <value>AVG.DISC</value>
+  </data>
+  <data name="avgprice" xml:space="preserve">
+    <value>AVG.PRICE/CTS(USD)</value>
+  </data>
+  <data name="Avg_Dis" xml:space="preserve">
+    <value>Avg.Disc %</value>
+  </data>
+  <data name="Avg_Offer_Disc_Per" xml:space="preserve">
+    <value>Avg.Offer Disc.(%)</value>
+  </data>
+  <data name="Avg_Offer_Value_Dollar" xml:space="preserve">
+    <value>Avg.Offer Value($)</value>
+  </data>
+  <data name="Avg_Web_Disc_Dollar" xml:space="preserve">
+    <value>Avg.Web Disc.($)</value>
+  </data>
+  <data name="back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="backtologin" xml:space="preserve">
+    <value>Back To Login</value>
+  </data>
+  <data name="Bar" xml:space="preserve">
+    <value>Bar</value>
+  </data>
+  <data name="bgm" xml:space="preserve">
+    <value>BGM</value>
+  </data>
+  <data name="black" xml:space="preserve">
+    <value>BLACK</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="buildingname" xml:space="preserve">
+    <value>Building Name</value>
+  </data>
+  <data name="BussinessRegNo" xml:space="preserve">
+    <value>Bussiness Reg. No</value>
+  </data>
+  <data name="Busy" xml:space="preserve">
+    <value>Busy</value>
+  </data>
+  <data name="Calender_Events" xml:space="preserve">
+    <value>Calender Events</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="carat" xml:space="preserve">
+    <value>Carat</value>
+  </data>
+  <data name="Carat_is_already_exist" xml:space="preserve">
+    <value>Carat is already exist</value>
+  </data>
+  <data name="Carat_Weight" xml:space="preserve">
+    <value>Carat Weight</value>
+  </data>
+  <data name="Cerificate_No" xml:space="preserve">
+    <value>Certificate No</value>
+  </data>
+  <data name="certificate" xml:space="preserve">
+    <value>Certificate</value>
+  </data>
+  <data name="certificateno" xml:space="preserve">
+    <value>Certificate No</value>
+  </data>
+  <data name="certino" xml:space="preserve">
+    <value>Certi No.</value>
+  </data>
+  <data name="Change_Password" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="Checking_Avaibility" xml:space="preserve">
+    <value>Checking Avaibility</value>
+  </data>
+  <data name="Checking_Availability" xml:space="preserve">
+    <value>Checking Availability</value>
+  </data>
+  <data name="Choose_a_country" xml:space="preserve">
+    <value>Choose a country</value>
+  </data>
+  <data name="city" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="clarity" xml:space="preserve">
+    <value>Clarity</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="client" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Collected" xml:space="preserve">
+    <value>Collected</value>
+  </data>
+  <data name="Collected_Date" xml:space="preserve">
+    <value>Collected Date</value>
+  </data>
+  <data name="color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="ColumnSetting" xml:space="preserve">
+    <value>Column Setting</value>
+  </data>
+  <data name="Column_Setting" xml:space="preserve">
+    <value>Column Setting</value>
+  </data>
+  <data name="comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="company_detail" xml:space="preserve">
+    <value>Company Detail</value>
+  </data>
+  <data name="comparestone" xml:space="preserve">
+    <value>Compare Stones</value>
+  </data>
+  <data name="confirmbuy" xml:space="preserve">
+    <value>coNFIRM BUY</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>Confirmed</value>
+  </data>
+  <data name="confirmorder" xml:space="preserve">
+    <value>Confirm Order</value>
+  </data>
+  <data name="confirmpwd" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="Confirm_Order" xml:space="preserve">
+    <value>Confirm Order</value>
+  </data>
+  <data name="Confirm_Password" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="contactus" xml:space="preserve">
+    <value>Contact Us</value>
+  </data>
+  <data name="counteroffer" xml:space="preserve">
+    <value>COUNTER OFFER</value>
+  </data>
+  <data name="country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Craftmanship" xml:space="preserve">
+    <value>Craftmanship</value>
+  </data>
+  <data name="criteria" xml:space="preserve">
+    <value>Criteria</value>
+  </data>
+  <data name="crownangle" xml:space="preserve">
+    <value>CROWN ANGLE </value>
+  </data>
+  <data name="crownangle1" xml:space="preserve">
+    <value>CROWN ANGLE</value>
+  </data>
+  <data name="crownheight" xml:space="preserve">
+    <value>CROWN HEIGHT</value>
+  </data>
+  <data name="crownheight1" xml:space="preserve">
+    <value>CROWN HEIGHT</value>
+  </data>
+  <data name="crowninclusion" xml:space="preserve">
+    <value>CROWN INCLUSION</value>
+  </data>
+  <data name="crownnatts" xml:space="preserve">
+    <value>CROWN NATTS </value>
+  </data>
+  <data name="Crown_Black" xml:space="preserve">
+    <value>Crown Black</value>
+  </data>
+  <data name="Crown_Open" xml:space="preserve">
+    <value>Crown Open</value>
+  </data>
+  <data name="Crown_White" xml:space="preserve">
+    <value>Crown White</value>
+  </data>
+  <data name="Cr_Ang" xml:space="preserve">
+    <value>Cr Ang</value>
+  </data>
+  <data name="Cr_Ht" xml:space="preserve">
+    <value>Cr Ht</value>
+  </data>
+  <data name="cts" xml:space="preserve">
+    <value>CTS</value>
+  </data>
+  <data name="cts1" xml:space="preserve">
+    <value>Cts</value>
+  </data>
+  <data name="Culet" xml:space="preserve">
+    <value>Culet</value>
+  </data>
+  <data name="Currently_we_do_not_have_stock_as_per_your_search_criteria" xml:space="preserve">
+    <value>Currently we do not have stock as per your search criteria</value>
+  </data>
+  <data name="Current_Password" xml:space="preserve">
+    <value>Current Password</value>
+  </data>
+  <data name="custname" xml:space="preserve">
+    <value>CustomerName</value>
+  </data>
+  <data name="customername" xml:space="preserve">
+    <value>Customer Name</value>
+  </data>
+  <data name="Customer_Disc_Report" xml:space="preserve">
+    <value>Overseas Discount Report</value>
+  </data>
+  <data name="cut" xml:space="preserve">
+    <value>Cut</value>
+  </data>
+  <data name="dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DBA" xml:space="preserve">
+    <value>DBA</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>DELETE</value>
+  </data>
+  <data name="Depth" xml:space="preserve">
+    <value>Depth</value>
+  </data>
+  <data name="depth_per" xml:space="preserve">
+    <value>Depth(%)</value>
+  </data>
+  <data name="detail" xml:space="preserve">
+    <value>DETAIL</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>Device</value>
+  </data>
+  <data name="Diamonds" xml:space="preserve">
+    <value>Diamonds</value>
+  </data>
+  <data name="discount" xml:space="preserve">
+    <value>Discount</value>
+  </data>
+  <data name="Discount_must_be_less_than" xml:space="preserve">
+    <value>Discount must be less than</value>
+  </data>
+  <data name="disc_per" xml:space="preserve">
+    <value>Disc(%)</value>
+  </data>
+  <data name="Doughnut" xml:space="preserve">
+    <value>Doughnut</value>
+  </data>
+  <data name="download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="download_17061" xml:space="preserve">
+    <value>DOWNLOAD 17061</value>
+  </data>
+  <data name="DOWNLOAD_OUR_STOCK_LIST" xml:space="preserve">
+    <value>DOWNLOAD OUR STOCK LIST</value>
+  </data>
+  <data name="Dubai" xml:space="preserve">
+    <value>Dubai</value>
+  </data>
+  <data name="Either_you_select_Busy_stone_or_Available_stone" xml:space="preserve">
+    <value>Either you select Busy stone or Available / New / Offer stone</value>
+  </data>
+  <data name="EmailAdd1" xml:space="preserve">
+    <value>Email Address 1</value>
+  </data>
+  <data name="EmailAdd2" xml:space="preserve">
+    <value>Email Address 2</value>
+  </data>
+  <data name="emailaddress" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="emailid1" xml:space="preserve">
+    <value>Email ID1</value>
+  </data>
+  <data name="emailnote_text1" xml:space="preserve">
+    <value>Note: you can send email to multiple email addresses which must be separated by comma(,)</value>
+  </data>
+  <data name="emailstone" xml:space="preserve">
+    <value>Email Stones</value>
+  </data>
+  <data name="Email_Me" xml:space="preserve">
+    <value>Email Me</value>
+  </data>
+  <data name="Email_Stone_Note" xml:space="preserve">
+    <value>Note: you can send email to multiple email addresses which must be separated by comma(,)</value>
+  </data>
+  <data name="enter" xml:space="preserve">
+    <value>ENTER</value>
+  </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>Enter Password</value>
+  </data>
+  <data name="EnterUsername" xml:space="preserve">
+    <value>Enter User Name</value>
+  </data>
+  <data name="enterusernm" xml:space="preserve">
+    <value>Enter UserName</value>
+  </data>
+  <data name="Enter_Comments" xml:space="preserve">
+    <value>Enter Comments</value>
+  </data>
+  <data name="Enter_Confirm_Password_Same_as_Password" xml:space="preserve">
+    <value>Enter Confirm Password Same as Password</value>
+  </data>
+  <data name="Enter_First_Name" xml:space="preserve">
+    <value>Enter First Name</value>
+  </data>
+  <data name="Enter_Last_Name" xml:space="preserve">
+    <value>Enter Last Name</value>
+  </data>
+  <data name="Enter_Minimum_5_Character_Username" xml:space="preserve">
+    <value>Enter Minimum 5 Character Username</value>
+  </data>
+  <data name="Enter_Minimum_6_Character_Password" xml:space="preserve">
+    <value>Enter Minimum 6 Character Password</value>
+  </data>
+  <data name="Enter_only_positive_numbers" xml:space="preserve">
+    <value>Enter only positive numbers</value>
+  </data>
+  <data name="Error_Log" xml:space="preserve">
+    <value>Error Log</value>
+  </data>
+  <data name="Error_to_download_video_video_is_not_MP4" xml:space="preserve">
+    <value>Error to download video, video is not MP4..!</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="excel" xml:space="preserve">
+    <value>Excel</value>
+  </data>
+  <data name="Exchange_Rate" xml:space="preserve">
+    <value>Exchange Rate</value>
+  </data>
+  <data name="Failed_to_confirm_stone" xml:space="preserve">
+    <value>Failed to confirm stone</value>
+  </data>
+  <data name="Failed_to_place_order" xml:space="preserve">
+    <value>Failed to place order</value>
+  </data>
+  <data name="fancy" xml:space="preserve">
+    <value>FANCY</value>
+  </data>
+  <data name="Faxno" xml:space="preserve">
+    <value>Fax No</value>
+  </data>
+  <data name="FeedBack" xml:space="preserve">
+    <value>Feed Back</value>
+  </data>
+  <data name="feedbackform" xml:space="preserve">
+    <value>FEEDBACK FORM</value>
+  </data>
+  <data name="Final_Disc" xml:space="preserve">
+    <value>Final Disc. (%)</value>
+  </data>
+  <data name="Final_Disc_Per" xml:space="preserve">
+    <value>Final Disc.(%)</value>
+  </data>
+  <data name="Final_Value" xml:space="preserve">
+    <value>Final Value($)</value>
+  </data>
+  <data name="flatno" xml:space="preserve">
+    <value>Flat No</value>
+  </data>
+  <data name="flour" xml:space="preserve">
+    <value>FLOUR</value>
+  </data>
+  <data name="fls" xml:space="preserve">
+    <value>Fls</value>
+  </data>
+  <data name="flu" xml:space="preserve">
+    <value>FLU</value>
+  </data>
+  <data name="fluor" xml:space="preserve">
+    <value>Fluor</value>
+  </data>
+  <data name="fname" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="forgotpwd" xml:space="preserve">
+    <value>Forgot Password ?</value>
+  </data>
+  <data name="fortunepartycode" xml:space="preserve">
+    <value>Fortune Party Code</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="Gallery_View" xml:space="preserve">
+    <value>Gallery View</value>
+  </data>
+  <data name="general" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="generateexcel" xml:space="preserve">
+    <value>Generate Excel</value>
+  </data>
+  <data name="girdle" xml:space="preserve">
+    <value>Girdle</value>
+  </data>
+  <data name="Girdle_Open" xml:space="preserve">
+    <value>Girdle Open</value>
+  </data>
+  <data name="Girdle_Type" xml:space="preserve">
+    <value>Girdle Type</value>
+  </data>
+  <data name="googleplay" xml:space="preserve">
+    <value>Google Play</value>
+  </data>
+  <data name="Go_to_cart" xml:space="preserve">
+    <value>Go to cart</value>
+  </data>
+  <data name="Go_to_Wishlist" xml:space="preserve">
+    <value>Go to wishlist</value>
+  </data>
+  <data name="headersearchlabel" xml:space="preserve">
+    <value>Stone ID/Certificate No...</value>
+  </data>
+  <data name="helpnote_text1" xml:space="preserve">
+    <value>If you have a problem, we would like to help you.</value>
+  </data>
+  <data name="hkid" xml:space="preserve">
+    <value>HK ID</value>
+  </data>
+  <data name="hold" xml:space="preserve">
+    <value>Hold</value>
+  </data>
+  <data name="HoldBusy" xml:space="preserve">
+    <value>Hold Busy</value>
+  </data>
+  <data name="holdpartylist" xml:space="preserve">
+    <value>Hold Party List</value>
+  </data>
+  <data name="holdstone" xml:space="preserve">
+    <value>HOLD STONE</value>
+  </data>
+  <data name="holdstonelist" xml:space="preserve">
+    <value>HOLD STONE LIST</value>
+  </data>
+  <data name="Hold_Transaction" xml:space="preserve">
+    <value>Hold Transaction</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Hong_Kong" xml:space="preserve">
+    <value>Hong Kong</value>
+  </data>
+  <data name="image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="imagenotavailable" xml:space="preserve">
+    <value>IMAGE NOT AVAILABLE</value>
+  </data>
+  <data name="Image_is_not_available_in_this_stone" xml:space="preserve">
+    <value>Image is not available in this stone !</value>
+  </data>
+  <data name="India" xml:space="preserve">
+    <value>India</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Invalid_email_format" xml:space="preserve">
+    <value>Invalid email format</value>
+  </data>
+  <data name="IpAddress" xml:space="preserve">
+    <value>IpAddress</value>
+  </data>
+  <data name="iscompany" xml:space="preserve">
+    <value>Is Company</value>
+  </data>
+  <data name="ISD" xml:space="preserve">
+    <value>ISD</value>
+  </data>
+  <data name="keyaccmanager" xml:space="preserve">
+    <value>Key Account Manager</value>
+  </data>
+  <data name="Key_to_symbol" xml:space="preserve">
+    <value>Key To Symbol</value>
+  </data>
+  <data name="lab" xml:space="preserve">
+    <value>Lab</value>
+  </data>
+  <data name="LabStatus" xml:space="preserve">
+    <value>Lab Status</value>
+  </data>
+  <data name="Lab_Stock" xml:space="preserve">
+    <value>Lab Stock</value>
+  </data>
+  <data name="Laser_in_SC" xml:space="preserve">
+    <value>Laser in SC</value>
+  </data>
+  <data name="length" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="link" xml:space="preserve">
+    <value>LINK</value>
+  </data>
+  <data name="lname" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="loadsearch" xml:space="preserve">
+    <value>LOAD SEARCH</value>
+  </data>
+  <data name="Load_More" xml:space="preserve">
+    <value>Load More</value>
+  </data>
+  <data name="Load_Search" xml:space="preserve">
+    <value>Load Search</value>
+  </data>
+  <data name="location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>Login Info</value>
+  </data>
+  <data name="logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="luster" xml:space="preserve">
+    <value>LUSTER \ MILKY</value>
+  </data>
+  <data name="Mail_sent_successfully" xml:space="preserve">
+    <value>Mail sent successfully</value>
+  </data>
+  <data name="makeoffer" xml:space="preserve">
+    <value>MAKE OFFER</value>
+  </data>
+  <data name="Make_an_offer" xml:space="preserve">
+    <value>Make an offer</value>
+  </data>
+  <data name="Make_Offer" xml:space="preserve">
+    <value>Make Offer</value>
+  </data>
+  <data name="Manage_User" xml:space="preserve">
+    <value>Manage User</value>
+  </data>
+  <data name="measurement" xml:space="preserve">
+    <value>Measurement</value>
+  </data>
+  <data name="Media" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="milky" xml:space="preserve">
+    <value>Milky</value>
+  </data>
+  <data name="Mobile1" xml:space="preserve">
+    <value>Mobile 1</value>
+  </data>
+  <data name="Mobile2" xml:space="preserve">
+    <value>Mobile 2</value>
+  </data>
+  <data name="mobileno" xml:space="preserve">
+    <value>Mobile No</value>
+  </data>
+  <data name="modify" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+  <data name="more" xml:space="preserve">
+    <value>MORE</value>
+  </data>
+  <data name="myaccount" xml:space="preserve">
+    <value>MY ACCOUNT</value>
+  </data>
+  <data name="mycart" xml:space="preserve">
+    <value>My Cart</value>
+  </data>
+  <data name="myoffer" xml:space="preserve">
+    <value>MY OFFER</value>
+  </data>
+  <data name="myorder" xml:space="preserve">
+    <value>My Order</value>
+  </data>
+  <data name="myorder1" xml:space="preserve">
+    <value>MY ORDER</value>
+  </data>
+  <data name="mywishlist" xml:space="preserve">
+    <value>My Wishlist</value>
+  </data>
+  <data name="My_Account" xml:space="preserve">
+    <value>My Account</value>
+  </data>
+  <data name="My_Cart" xml:space="preserve">
+    <value>My Cart</value>
+  </data>
+  <data name="netamt" xml:space="preserve">
+    <value>NET AMT($)</value>
+  </data>
+  <data name="netamt1" xml:space="preserve">
+    <value>NET AMT</value>
+  </data>
+  <data name="Net_Value" xml:space="preserve">
+    <value>Net Value</value>
+  </data>
+  <data name="new" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="newarrival" xml:space="preserve">
+    <value>NEW ARRIVAL</value>
+  </data>
+  <data name="newlyarrived" xml:space="preserve">
+    <value>Newly Arrived</value>
+  </data>
+  <data name="newmessage" xml:space="preserve">
+    <value>New Message</value>
+  </data>
+  <data name="neworderreceive" xml:space="preserve">
+    <value>New order has been received</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="newsearch" xml:space="preserve">
+    <value>NEW SEARCH</value>
+  </data>
+  <data name="New_Arrival" xml:space="preserve">
+    <value>New Arrival</value>
+  </data>
+  <data name="New_Password" xml:space="preserve">
+    <value>New Password</value>
+  </data>
+  <data name="New_Search" xml:space="preserve">
+    <value>New Search</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="None_selected" xml:space="preserve">
+    <value>None selected</value>
+  </data>
+  <data name="Notification_Master" xml:space="preserve">
+    <value>Notification Master</value>
+  </data>
+  <data name="Notify_Me" xml:space="preserve">
+    <value>Notify Me</value>
+  </data>
+  <data name="Not_Arrive" xml:space="preserve">
+    <value>Not Arrive</value>
+  </data>
+  <data name="Not_Available" xml:space="preserve">
+    <value>Not Available</value>
+  </data>
+  <data name="Not_Collected" xml:space="preserve">
+    <value>Not Collected</value>
+  </data>
+  <data name="No_Any_Stones_are_Available_for_Make_an_Offer" xml:space="preserve">
+    <value>No Any Stones are Available for Make an Offer</value>
+  </data>
+  <data name="No_data_found" xml:space="preserve">
+    <value>No data found</value>
+  </data>
+  <data name="No_Stock_Found" xml:space="preserve">
+    <value>No Stock Found</value>
+  </data>
+  <data name="No_stones_selected_to_send_email" xml:space="preserve">
+    <value>No stones selected to send email</value>
+  </data>
+  <data name="No_stone_selected_for_add_to_cart" xml:space="preserve">
+    <value>No stone selected for add to cart</value>
+  </data>
+  <data name="No_stone_selected_for_add_to_wishlist" xml:space="preserve">
+    <value>No stone selected for add to wishlist</value>
+  </data>
+  <data name="No_stone_selected_for_download_as_a" xml:space="preserve">
+    <value>No stone selected for download as a</value>
+  </data>
+  <data name="No_stone_selected_for_download_as_a_excel" xml:space="preserve">
+    <value>No stone selected for download as a excel</value>
+  </data>
+  <data name="No_stone_selected_for_place_order" xml:space="preserve">
+    <value>No stone selected for place order</value>
+  </data>
+  <data name="No_stone_selected_for_remove_from_wishlist" xml:space="preserve">
+    <value>No stone selected for remove from wishlist</value>
+  </data>
+  <data name="No_stone_selected_for_Save_Offer" xml:space="preserve">
+    <value>No stone selected for Save Offer</value>
+  </data>
+  <data name="Offer" xml:space="preserve">
+    <value>Offer</value>
+  </data>
+  <data name="offerdate" xml:space="preserve">
+    <value>Offer Date</value>
+  </data>
+  <data name="offerdate1" xml:space="preserve">
+    <value>OFFER DATE</value>
+  </data>
+  <data name="offerno" xml:space="preserve">
+    <value>Offer No</value>
+  </data>
+  <data name="Offer_already_received_for_the_stones" xml:space="preserve">
+    <value>Offer already received for the stones</value>
+  </data>
+  <data name="Offer_Amt" xml:space="preserve">
+    <value>Offer Amt</value>
+  </data>
+  <data name="Offer_Criteria" xml:space="preserve">
+    <value>Offer Criteria</value>
+  </data>
+  <data name="Offer_Disc" xml:space="preserve">
+    <value>Offer Disc</value>
+  </data>
+  <data name="Offer_Disc_Per" xml:space="preserve">
+    <value>Offer Disc.(%)</value>
+  </data>
+  <data name="Offer_History" xml:space="preserve">
+    <value>Offer History</value>
+  </data>
+  <data name="Offer_Id" xml:space="preserve">
+    <value>Offer Id</value>
+  </data>
+  <data name="Offer_Result" xml:space="preserve">
+    <value>Offer Result</value>
+  </data>
+  <data name="Offer_Stone" xml:space="preserve">
+    <value>Offer Stone</value>
+  </data>
+  <data name="Offer_uploaded_Successfully" xml:space="preserve">
+    <value>Offer uploaded Successfully</value>
+  </data>
+  <data name="Offer_Uploaded_Sucessfully_Please_Contact_Sales_Person_for_Further_Details" xml:space="preserve">
+    <value>Offer Uploaded Sucessfully , Please Contact Sales Person for Further Details</value>
+  </data>
+  <data name="Offer_Valid_Days" xml:space="preserve">
+    <value>Offer Valid Days</value>
+  </data>
+  <data name="Offer_Value_Dollar" xml:space="preserve">
+    <value>Offer Value($)</value>
+  </data>
+  <data name="OfficePh1" xml:space="preserve">
+    <value>Office Phone 1</value>
+  </data>
+  <data name="OfficePh2" xml:space="preserve">
+    <value>Office Phone 2</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="openinclusion" xml:space="preserve">
+    <value>Open Inclusion</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>Order By</value>
+  </data>
+  <data name="orderdate" xml:space="preserve">
+    <value>ORDERDATE</value>
+  </data>
+  <data name="orderhistory" xml:space="preserve">
+    <value>Order History</value>
+  </data>
+  <data name="orderno" xml:space="preserve">
+    <value>ORDERNO</value>
+  </data>
+  <data name="OrderTime" xml:space="preserve">
+    <value>OrderTime</value>
+  </data>
+  <data name="order_date" xml:space="preserve">
+    <value>Order Date</value>
+  </data>
+  <data name="order_history" xml:space="preserve">
+    <value>Order History</value>
+  </data>
+  <data name="Order_No" xml:space="preserve">
+    <value>Order No</value>
+  </data>
+  <data name="Order_Summary" xml:space="preserve">
+    <value>Order Summary</value>
+  </data>
+  <data name="othername" xml:space="preserve">
+    <value>Other Name</value>
+  </data>
+  <data name="Other_Stones_are_added_into_cart_successfully" xml:space="preserve">
+    <value>Other Stones are added into cart successfully</value>
+  </data>
+  <data name="Overseas_Discount" xml:space="preserve">
+    <value>Overseas Discount</value>
+  </data>
+  <data name="Overseas_Search_Stock" xml:space="preserve">
+    <value>Overseas Search Stock</value>
+  </data>
+  <data name="overseas_stock" xml:space="preserve">
+    <value>Overseas Stock</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="page" xml:space="preserve">
+    <value>page</value>
+  </data>
+  <data name="PairSearch" xml:space="preserve">
+    <value>Pair Search</value>
+  </data>
+  <data name="Pair_Search" xml:space="preserve">
+    <value>Pair Search</value>
+  </data>
+  <data name="Parameter_Discount" xml:space="preserve">
+    <value>Parameter Discount</value>
+  </data>
+  <data name="party" xml:space="preserve">
+    <value>Party</value>
+  </data>
+  <data name="PartyCode" xml:space="preserve">
+    <value>Party Code</value>
+  </data>
+  <data name="Party_Info" xml:space="preserve">
+    <value>Party Info</value>
+  </data>
+  <data name="passportno" xml:space="preserve">
+    <value>Passport No</value>
+  </data>
+  <data name="pavang" xml:space="preserve">
+    <value>PAV ANG</value>
+  </data>
+  <data name="pavht" xml:space="preserve">
+    <value>PAV HT</value>
+  </data>
+  <data name="Pav_Ang" xml:space="preserve">
+    <value>Pav Ang</value>
+  </data>
+  <data name="Pav_Ht" xml:space="preserve">
+    <value>Pav Ht</value>
+  </data>
+  <data name="Pav_Open" xml:space="preserve">
+    <value>Pav Open</value>
+  </data>
+  <data name="pcs" xml:space="preserve">
+    <value>Pcs</value>
+  </data>
+  <data name="pcs1" xml:space="preserve">
+    <value>Pcs</value>
+  </data>
+  <data name="pdf" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="personal_detail" xml:space="preserve">
+    <value>Personal Detail</value>
+  </data>
+  <data name="phno" xml:space="preserve">
+    <value>Phone No</value>
+  </data>
+  <data name="phoneno" xml:space="preserve">
+    <value>Phone No</value>
+  </data>
+  <data name="Photo_Real" xml:space="preserve">
+    <value>Photo Real</value>
+  </data>
+  <data name="Pie" xml:space="preserve">
+    <value>Pie</value>
+  </data>
+  <data name="pincode" xml:space="preserve">
+    <value>Pincode</value>
+  </data>
+  <data name="placeorder" xml:space="preserve">
+    <value>Place Order</value>
+  </data>
+  <data name="Place_Order" xml:space="preserve">
+    <value>Place Order</value>
+  </data>
+  <data name="pleasecontact" xml:space="preserve">
+    <value>Please contact your sales person:</value>
+  </data>
+  <data name="Please_change_discount_and_reupload" xml:space="preserve">
+    <value>Please change discount and reupload</value>
+  </data>
+  <data name="Please_change_discount_and_reupload_it" xml:space="preserve">
+    <value>Please change discount and reupload it</value>
+  </data>
+  <data name="Please_contact_your_sales_person" xml:space="preserve">
+    <value>Please contact your sales person</value>
+  </data>
+  <data name="Please_enter_a_valid_email_address" xml:space="preserve">
+    <value>Please enter a valid email address.</value>
+  </data>
+  <data name="Please_Enter_Carat" xml:space="preserve">
+    <value>Please Enter Carat.</value>
+  </data>
+  <data name="Please_Enter_Only_Number_only" xml:space="preserve">
+    <value>Please Enter Only Number only</value>
+  </data>
+  <data name="Please_Fill_SearchName" xml:space="preserve">
+    <value>Please Fill SearchName</value>
+  </data>
+  <data name="Please_Select_Atleast_One_Criteria_For_Search" xml:space="preserve">
+    <value>Please Select Atleast One Criteria For Search</value>
+  </data>
+  <data name="Please_select_atleast_one_stone" xml:space="preserve">
+    <value>Please select atleast one stone.</value>
+  </data>
+  <data name="Please_select_atlist_one_criteria" xml:space="preserve">
+    <value>Please select atlist one criteria</value>
+  </data>
+  <data name="Please_select_at_least_2_item_for_compare" xml:space="preserve">
+    <value>Please select at least 2 item for compare</value>
+  </data>
+  <data name="Please_Select_Available_stone_for_add_to_cart" xml:space="preserve">
+    <value>Please Select Available stone for add to cart</value>
+  </data>
+  <data name="Please_Select_Available_stone_for_place_order" xml:space="preserve">
+    <value>Please Select Available stone for place order</value>
+  </data>
+  <data name="Please_select_a_company_for_Hold_Stone_Id" xml:space="preserve">
+    <value>Please select a company for Hold, Stone Id</value>
+  </data>
+  <data name="Please_Select_Excel_File_For_Upload" xml:space="preserve">
+    <value>Please Select Excel File For Upload</value>
+  </data>
+  <data name="Pointer" xml:space="preserve">
+    <value>Pointer</value>
+  </data>
+  <data name="polish" xml:space="preserve">
+    <value>Polish</value>
+  </data>
+  <data name="price" xml:space="preserve">
+    <value>PRICE</value>
+  </data>
+  <data name="price1" xml:space="preserve">
+    <value>PRICE</value>
+  </data>
+  <data name="pricects" xml:space="preserve">
+    <value>Price Cts USD</value>
+  </data>
+  <data name="pricerevised" xml:space="preserve">
+    <value>PRICE REVISED LIST</value>
+  </data>
+  <data name="Price_Cts" xml:space="preserve">
+    <value>Price/Cts</value>
+  </data>
+  <data name="Price_cts_USD" xml:space="preserve">
+    <value>Price/Cts USD</value>
+  </data>
+  <data name="Price_Per_Cts" xml:space="preserve">
+    <value>Price Per Cts</value>
+  </data>
+  <data name="Principles" xml:space="preserve">
+    <value>Principles</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="ProfitPer" xml:space="preserve">
+    <value>Profit(%)</value>
+  </data>
+  <data name="promotion" xml:space="preserve">
+    <value>Promotion</value>
+  </data>
+  <data name="PurchaseDate" xml:space="preserve">
+    <value>Purchase Date</value>
+  </data>
+  <data name="PurchaseTime" xml:space="preserve">
+    <value>Purchase Time</value>
+  </data>
+  <data name="pwd" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="QuickSearch" xml:space="preserve">
+    <value>Quick Serach</value>
+  </data>
+  <data name="Quick_Search" xml:space="preserve">
+    <value>Quick Search</value>
+  </data>
+  <data name="Range_of_dicount_is_not_valid_for_the_stones" xml:space="preserve">
+    <value>Range of dicount is not valid for the stones</value>
+  </data>
+  <data name="rap" xml:space="preserve">
+    <value>RAP</value>
+  </data>
+  <data name="rapamt" xml:space="preserve">
+    <value>RAPAMT</value>
+  </data>
+  <data name="RapId" xml:space="preserve">
+    <value>Rap Id</value>
+  </data>
+  <data name="rap_amt" xml:space="preserve">
+    <value>RAP AMT :</value>
+  </data>
+  <data name="Rap_Amt_Doller" xml:space="preserve">
+    <value>Rap Amt($)</value>
+  </data>
+  <data name="Rap_Price_Doller" xml:space="preserve">
+    <value>Rap Price($)</value>
+  </data>
+  <data name="readyforpickup" xml:space="preserve">
+    <value>Ready For Pickup</value>
+  </data>
+  <data name="Ready_For_Pick_up" xml:space="preserve">
+    <value>Ready For Pick up</value>
+  </data>
+  <data name="Ready_to_Pick_up" xml:space="preserve">
+    <value>Ready to Pick up</value>
+  </data>
+  <data name="recentsearch" xml:space="preserve">
+    <value>RECENT SEARCH</value>
+  </data>
+  <data name="recentsearch1" xml:space="preserve">
+    <value>RECENT SEARCH</value>
+  </data>
+  <data name="Recent_Search" xml:space="preserve">
+    <value>Recent Search</value>
+  </data>
+  <data name="Record_Save_Successfully" xml:space="preserve">
+    <value>Record Save Successfully</value>
+  </data>
+  <data name="recover" xml:space="preserve">
+    <value>Recover</value>
+  </data>
+  <data name="recoverpwd" xml:space="preserve">
+    <value>Recover Your Password</value>
+  </data>
+  <data name="recoverpwdtext" xml:space="preserve">
+    <value>Fill your username below and we will send you an email with further instructions.</value>
+  </data>
+  <data name="Ref" xml:space="preserve">
+    <value>Ref</value>
+  </data>
+  <data name="refno" xml:space="preserve">
+    <value>REF. NO</value>
+  </data>
+  <data name="refsearch" xml:space="preserve">
+    <value>REFERESH SEARCH</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="RegNo" xml:space="preserve">
+    <value>Bussiness Reg. No</value>
+  </data>
+  <data name="release" xml:space="preserve">
+    <value>RELEASE</value>
+  </data>
+  <data name="releasenote" xml:space="preserve">
+    <value>RELEASE STONE</value>
+  </data>
+  <data name="remark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="rememberme" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="removestone" xml:space="preserve">
+    <value>REMOVE STONE</value>
+  </data>
+  <data name="Remove_Cart_Data" xml:space="preserve">
+    <value>Remove Cart Data</value>
+  </data>
+  <data name="Remove_from_cart_failed" xml:space="preserve">
+    <value>Remove from cart failed</value>
+  </data>
+  <data name="Remove_Save_Search_Data" xml:space="preserve">
+    <value>Remove Save Search Data</value>
+  </data>
+  <data name="Remove_Stones" xml:space="preserve">
+    <value>Remove Stones</value>
+  </data>
+  <data name="Remove_Wishlist_Data" xml:space="preserve">
+    <value>Remove Wishlist Data</value>
+  </data>
+  <data name="reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Reset_Offer" xml:space="preserve">
+    <value>Reset Offer</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="Revised_Price" xml:space="preserve">
+    <value>Revised Price</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="savename" xml:space="preserve">
+    <value>SAVE NAME</value>
+  </data>
+  <data name="savesearch" xml:space="preserve">
+    <value>SAVE &amp; SEARCH</value>
+  </data>
+  <data name="Save_Name" xml:space="preserve">
+    <value>Save Name</value>
+  </data>
+  <data name="save_search" xml:space="preserve">
+    <value>Save Search</value>
+  </data>
+  <data name="search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Search_Name" xml:space="preserve">
+    <value>Search Name</value>
+  </data>
+  <data name="search_stock" xml:space="preserve">
+    <value>Search Stock</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>selected</value>
+  </data>
+  <data name="selectedstone" xml:space="preserve">
+    <value>Selected Stone</value>
+  </data>
+  <data name="selectedstone1" xml:space="preserve">
+    <value>Selected Stone</value>
+  </data>
+  <data name="Selected_Stone" xml:space="preserve">
+    <value>Selected Stone</value>
+  </data>
+  <data name="selectparty" xml:space="preserve">
+    <value>SELECT PARTY</value>
+  </data>
+  <data name="Select_all" xml:space="preserve">
+    <value>Select all</value>
+  </data>
+  <data name="send" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="sendmail" xml:space="preserve">
+    <value>Send Mail</value>
+  </data>
+  <data name="Send_Mail" xml:space="preserve">
+    <value>Send Mail</value>
+  </data>
+  <data name="serialno" xml:space="preserve">
+    <value>Serial No</value>
+  </data>
+  <data name="service" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="shape" xml:space="preserve">
+    <value>Shape</value>
+  </data>
+  <data name="showresult" xml:space="preserve">
+    <value>SHOW RESULT</value>
+  </data>
+  <data name="showselected" xml:space="preserve">
+    <value>SHOW SELECTED</value>
+  </data>
+  <data name="Show_result" xml:space="preserve">
+    <value>Show Result</value>
+  </data>
+  <data name="sideinc" xml:space="preserve">
+    <value>Side Inc</value>
+  </data>
+  <data name="Signup" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Skype" xml:space="preserve">
+    <value>Skype Id</value>
+  </data>
+  <data name="skypeid" xml:space="preserve">
+    <value>Skype ID / Number</value>
+  </data>
+  <data name="specific" xml:space="preserve">
+    <value>Specific</value>
+  </data>
+  <data name="state" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Stay_On_Same_Page" xml:space="preserve">
+    <value>Stay On Same Page</value>
+  </data>
+  <data name="Still_you_want_to_continue" xml:space="preserve">
+    <value>Still you want to continue</value>
+  </data>
+  <data name="Stock" xml:space="preserve">
+    <value>Stock</value>
+  </data>
+  <data name="stockdownload" xml:space="preserve">
+    <value> Stock Download</value>
+  </data>
+  <data name="Stock_Id" xml:space="preserve">
+    <value>Stock ID</value>
+  </data>
+  <data name="Stock_Id_Certi" xml:space="preserve">
+    <value>Stock ID / Certi No</value>
+  </data>
+  <data name="Stock_Id_DNA" xml:space="preserve">
+    <value>Stock ID / DNA</value>
+  </data>
+  <data name="stoneno" xml:space="preserve">
+    <value>STONE NO.</value>
+  </data>
+  <data name="stonesearch" xml:space="preserve">
+    <value>STONE SEARCH</value>
+  </data>
+  <data name="Stones_added_in_cart_successfully" xml:space="preserve">
+    <value>Stone(s) added in cart successfully</value>
+  </data>
+  <data name="Stones_added_in_wishlist_successfully" xml:space="preserve">
+    <value>Stone(s) added in wishList successfully</value>
+  </data>
+  <data name="Stones_are_out_of_Discount_Range_Other_Stones_are_Available_to_Make_an_Offer_Are_you_Agree" xml:space="preserve">
+    <value>Stone(s) are out of Discount Range, Other Stone(s) are Available to Make an Offer, Are you Agree</value>
+  </data>
+  <data name="Stones_removed_from_cart_successfully" xml:space="preserve">
+    <value>Stone(s) removed from cart successfully</value>
+  </data>
+  <data name="Stones_removed_from_wishList_successfully" xml:space="preserve">
+    <value>Stone(s) removed from wishList successfully</value>
+  </data>
+  <data name="stone_no" xml:space="preserve">
+    <value>stone.no</value>
+  </data>
+  <data name="streetno" xml:space="preserve">
+    <value>Street No. and Name</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="SUNRISE_DIAMOND_LIMITED" xml:space="preserve">
+    <value>SUNRISE DIAMOND LIMITED</value>
+  </data>
+  <data name="SuppplierOrder" xml:space="preserve">
+    <value>Purchase Order</value>
+  </data>
+  <data name="SuppplierOrderLog" xml:space="preserve">
+    <value>Purchase Order Log</value>
+  </data>
+  <data name="SuppStatus" xml:space="preserve">
+    <value>Supp. Status</value>
+  </data>
+  <data name="symm" xml:space="preserve">
+    <value>Symm</value>
+  </data>
+  <data name="symmetry" xml:space="preserve">
+    <value>Symmetry</value>
+  </data>
+  <data name="tableinclusion" xml:space="preserve">
+    <value>TABEL INCLUSION</value>
+  </data>
+  <data name="tablenatts" xml:space="preserve">
+    <value>TABEL NATTS</value>
+  </data>
+  <data name="tableper" xml:space="preserve">
+    <value>Table(%)</value>
+  </data>
+  <data name="Table_Black" xml:space="preserve">
+    <value>Table Black</value>
+  </data>
+  <data name="table_inc" xml:space="preserve">
+    <value>Table Inc</value>
+  </data>
+  <data name="Table_Open" xml:space="preserve">
+    <value>Table Open</value>
+  </data>
+  <data name="table_per" xml:space="preserve">
+    <value>Table %</value>
+  </data>
+  <data name="Table_White" xml:space="preserve">
+    <value>Table White</value>
+  </data>
+  <data name="testimonial" xml:space="preserve">
+    <value>Testimonial</value>
+  </data>
+  <data name="This_Stones_are_already_added_to_cart" xml:space="preserve">
+    <value>This Stones(s) are already added to cart</value>
+  </data>
+  <data name="This_Stones_are_subject_to_availbility" xml:space="preserve">
+    <value>This Stone(s) are subject to availbility</value>
+  </data>
+  <data name="This_stone_is_not_available" xml:space="preserve">
+    <value>This stone is not available</value>
+  </data>
+  <data name="This_Stone_is_not_Available_Stone_You_can_add_only_available_Stone_into_Cart" xml:space="preserve">
+    <value>This  Stone is not Available Stone, You can add only available Stone into Cart</value>
+  </data>
+  <data name="This_Stone_is_not_Available_Stone_You_can_Buy_only_available_Stone" xml:space="preserve">
+    <value>This Stone is not Available Stone, You can Buy only available Stone</value>
+  </data>
+  <data name="tinge" xml:space="preserve">
+    <value>Tinge</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Total_Amt" xml:space="preserve">
+    <value>Total Amount</value>
+  </data>
+  <data name="Total_found" xml:space="preserve">
+    <value>Total Found</value>
+  </data>
+  <data name="totamt" xml:space="preserve">
+    <value>Total amount</value>
+  </data>
+  <data name="totcarat" xml:space="preserve">
+    <value>TOTAL CARAT</value>
+  </data>
+  <data name="totdepthper" xml:space="preserve">
+    <value>Total Depth %</value>
+  </data>
+  <data name="totdollar" xml:space="preserve">
+    <value>TOTAL $</value>
+  </data>
+  <data name="totfound" xml:space="preserve">
+    <value>TOTAL FOUND</value>
+  </data>
+  <data name="totstone" xml:space="preserve">
+    <value>TOTAL STONE</value>
+  </data>
+  <data name="To_date_must_be_greater_than_From_date" xml:space="preserve">
+    <value>To date must be greater than From date</value>
+  </data>
+  <data name="Upcoming" xml:space="preserve">
+    <value>Upcoming</value>
+  </data>
+  <data name="update" xml:space="preserve">
+    <value>UPDATE</value>
+  </data>
+  <data name="update1" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Upload_Excel" xml:space="preserve">
+    <value>Upload Excel</value>
+  </data>
+  <data name="user" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="username" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="Username_is_invalid_or_in_active" xml:space="preserve">
+    <value>Username is invalid or in-active.</value>
+  </data>
+  <data name="usertype" xml:space="preserve">
+    <value>User Type</value>
+  </data>
+  <data name="User_Activity" xml:space="preserve">
+    <value>User Activity</value>
+  </data>
+  <data name="User_Discount_Report" xml:space="preserve">
+    <value>User Discount Report</value>
+  </data>
+  <data name="User_Is_Not_Active_Please_Contact" xml:space="preserve">
+    <value>User Is Not Active, Please Contact</value>
+  </data>
+  <data name="User_List" xml:space="preserve">
+    <value>User List</value>
+  </data>
+  <data name="User_name_is_already_exists" xml:space="preserve">
+    <value>User name is already exists.</value>
+  </data>
+  <data name="User_registration_failed" xml:space="preserve">
+    <value>User registration failed.</value>
+  </data>
+  <data name="User_Wise_Discount" xml:space="preserve">
+    <value>User Discount</value>
+  </data>
+  <data name="validation" xml:space="preserve">
+    <value>Validation</value>
+  </data>
+  <data name="Validity_date_must_be_greater_than_Today_date" xml:space="preserve">
+    <value>Validity date must be greater than Today date</value>
+  </data>
+  <data name="video" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="view" xml:space="preserve">
+    <value>VIEW</value>
+  </data>
+  <data name="View_Details" xml:space="preserve">
+    <value>VIEW DETAIL</value>
+  </data>
+  <data name="View_Image" xml:space="preserve">
+    <value>View Image</value>
+  </data>
+  <data name="website" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="Web_Benefit" xml:space="preserve">
+    <value>Web Benefit</value>
+  </data>
+  <data name="Web_Disc_Dollar" xml:space="preserve">
+    <value>Web Disc.($)</value>
+  </data>
+  <data name="wechatid" xml:space="preserve">
+    <value>WeChat Id</value>
+  </data>
+  <data name="weight" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="We_will_update_soon_in_Email" xml:space="preserve">
+    <value>We will update soon in Email</value>
+  </data>
+  <data name="We_will_update_soon_in_Search_Stock_Notification" xml:space="preserve">
+    <value>We will update soon in Search Stock Notification</value>
+  </data>
+  <data name="white" xml:space="preserve">
+    <value>WHITE</value>
+  </data>
+  <data name="width" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="wishlist" xml:space="preserve">
+    <value>Wishlist</value>
+  </data>
+  <data name="wishlist1" xml:space="preserve">
+    <value>WISHLIST</value>
+  </data>
+  <data name="Wrong_User_Name_or_Password_Kindly_Contact" xml:space="preserve">
+    <value>Wrong User Name or Password Kindly Contact :</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="Your_account_information_have_been_sent_to_you_on" xml:space="preserve">
+    <value>Your account information have been sent to you on</value>
+  </data>
+  <data name="Your_email_address_is_invalid_please_contact_our_Administrator" xml:space="preserve">
+    <value>Your email address is invalid, please contact our Administrator.</value>
+  </data>
+  <data name="Your_offer_was_not_uploaded_due_to_out_of_discount_Range_Kindly_try_again" xml:space="preserve">
+    <value>Your offer was not uploaded due to out of discount Range. Kindly try again.</value>
+  </data>
+  <data name="Your_offer_was_partially_uploaded_Below_are_the_stones_which_are_not_uploaded" xml:space="preserve">
+    <value>Your offer was partially uploaded. Below are the stones which are not uploaded.</value>
+  </data>
+  <data name="Your_order_placed_successfully" xml:space="preserve">
+    <value>Your order placed successfully</value>
+  </data>
+  <data name="Your_Transaction_Done_Successfully" xml:space="preserve">
+    <value>Your Transaction Done Successfully</value>
+  </data>
+  <data name="You_are_not_Authorize_to_Place_Order_of_this_Stone_Id" xml:space="preserve">
+    <value>You are not Authorize to Place Order of this Stone Id</value>
+  </data>
+  <data name="You_can_compare_maximum_4_item" xml:space="preserve">
+    <value>You can compare maximum 4 item</value>
+  </data>
+  <data name="You_Can_Search_Maximum_5_Result" xml:space="preserve">
+    <value>You Can Search Maximum 5 Result</value>
+  </data>
+  <data name="You_have_already_upload_discount_for_the_stones" xml:space="preserve">
+    <value>You have already upload discount for the stones</value>
+  </data>
+  <data name="zipcode" xml:space="preserve">
+    <value>Zipcode</value>
+  </data>
+</root>

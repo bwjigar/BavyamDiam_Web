@@ -1,0 +1,135 @@
+﻿@model SunriseWeb.Models.UserLogin
+@using SunriseWeb.Resources
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <title>Contact Us</title>
+    <meta name="keyword" content="" />
+    <meta name="description" content="" />
+    <meta name="title" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="50x50" href="~/Content/images/bd-removebg-preview.png">
+    <!-- attach stylesheet -->
+    <link rel="stylesheet" href="~/Content/static_pages/css/bootstrap.min.css">
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- main stylesheet -->
+    <link href="~/Content/static_pages/css/login.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ======================== Start Navbar ============================ -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar login-myScrollspy ragistration-page" id="navigation">
+        <div class="container">
+            <div class="ragister-logo">
+                <button type="button" id="sidebarCollapse" class="custom-toggle">
+                    <i class="fa fa-align-left" aria-hidden="true"></i>
+                </button>
+                <img src="~/Content/Login/images/bd-removebg-preview.png" class="img-responsive" alt="logo">
+                <div class="home-icon">
+                    <a href="@Url.Action("Index","Login")"><i class="fa fa-home" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div id="myScrollspy">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="@Url.Action("Index","Login")">Home</a></li>
+                    <li><a href="@Url.Action("Aboutus","Login")">About Us</a></li>
+                    <li><a href="@Url.Action("ExtensiveInventory","Login")">Extensive Inventory</a></li>
+                    @*<li><a href="@Url.Action("Service","Login")">Service</a></li>*@
+                    @*<li><a href="@Url.Action("Policy","Login")">Privacy Policy</a></li>
+                    <li><a href="@Url.Action("Terms","Login")">Terms & Condition</a></li>*@
+                    <li><a href="@Url.Action("ContactUs","Login")">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ======================== End Navbar ============================ -->
+    <!-- ======================== Start Home ============================ -->
+    <section class="section ragistration" id="ragistration">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="ragistration-form one">
+                        <div class="personal-info common-eee" style="text-align: justify;background-image: url('/Content/images/dashboard-pattern.png');">
+                            <div class="r-label">
+                                <p>Contact Us</p>
+                            </div>
+                            <div class="login-pages-dta aboutus-page">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 float-left pl-1 pr-1">
+                                    <div class="contc-box-wrapper">
+                                        <div class="contc-box-heading">
+                                            SURAT
+                                        </div>
+                                        <div class="contc-box-content">
+                                            <h5>Registration office</h5>
+                                            <p>
+                                                406, Khushi Building,<br /> Jada Khadi,<br /> Mahidharpura,<br /> Surat
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 float-left pl-1 pr-1">
+                                    <div class="contc-box-wrapper">
+                                        <div class="contc-box-content" style="margin-top: 16px;padding-top: 27px;">
+                                            <h6 style="margin-bottom: 10px;"><b>Office Time :</b> <br />Monday to Saturday, 10am - 7pm (IST)</h6>
+                                            <h6 style="margin-bottom: 10px;"><b>Email :</b> <br /><u style="color: blue;">bhavyamdiam@yahoo.com</u></h6>
+                                            <h6 style="margin-bottom: 10px;">
+                                                <b>
+                                                    Contact No / WhatsApp No :
+                                                </b> <br />
+                                                +91 98331 15607<br />
+                                                +91 88662 50872<br />
+                                                +91 70469 81100
+
+                                            </h6>
+                                            <h6 style="margin-bottom: 10px;"><b>Rapnet Id :</b> <br />94871</h6>
+                                            <h6 style="margin-bottom: 10px;"><b>Skype :</b> <br />BHAVYAM DIAM</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 float-left pl-1 pr-1">
+                                    <div class="contc-box-wrapper">
+                                        <div class="contc-box-heading">
+                                            MUMBAI
+                                        </div>
+                                        <div class="contc-box-content">
+                                            <h5>Sale office</h5>
+                                            <p>
+                                                E(W) 53, Ground Floor,<br /> Bharat Diamond Bourse,<br /> Bandra Kurla Complex,<br /> Mumbai
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function open_side() {
+            document.getElementById("myScrollspy").style.width = "250px";
+        }
+        function close_side() {
+            document.getElementById("myScrollspy").style.width = "0";
+        }
+    </script>
+    <!-- ======================== End Home ============================ -->
+    <!-- end of login -->
+    <script src="~/Content/static_pages/js/jquery.min.js"></script>
+    <script src="~/Content/static_pages/js/bootstrap.min.js"></script>
+    <script src="~/Content/static_pages/js/propper.min.js"></script>
+    <script src="~/Content/static_pages/js/login.js"></script>
+
+</body>
+</html>

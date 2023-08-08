@@ -1,0 +1,451 @@
+
+.contnt {
+    width: 100%;
+    float: right;
+    position: relative;
+    transition: 1s;
+    padding-bottom: 50px;
+}
+.contnt.order-history, .contnt.search-contnt {
+    padding-bottom: 0;
+}
+.dna-images {
+	width: 100%;
+}
+.dna-images img {
+	width: 100%;
+	margin-bottom: 0px;
+	cursor: pointer;
+}
+.dna-images ul li a {
+    padding: 6px;
+}
+.stone-det-big-img {
+	position: relative;
+}
+.search-page-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    background: #eee;
+    padding-top: 30px;
+}
+.search-page-content.offersearch {
+    padding-top: 15px;
+}
+.viewcartdata-header h1 {
+    color: #262d47;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: capitalize;
+    display: inline-block;
+}
+.search-page-content ul.social {
+    margin-bottom: 15px;
+    padding: 0;
+    background: none;
+    float: right;
+    width: auto;
+}
+.search-page-content ul.social li a {
+    background: #d8d8d8;
+    color: #003d66;
+}
+.search-page-content ul.social li a:hover {
+    color: #fff;
+	transform: unset;
+}
+ul.social li {
+    list-style: none;
+}
+
+ul.social li a {
+    height: 40px;
+    width: 40px;
+    display: block;
+    background: #f1f1f1;
+    border-radius: 50%;
+    margin-right: 5px;
+    color: #000;
+    padding: 0 11px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+}
+.search-page-content ul.social li a {
+    background: #d8d8d8;
+    color: #003d66;
+}
+ul.social li a i {
+    font-size: 20px;
+    line-height: 40px;
+}
+.stone-det-img-vid {
+    background: #ffffff;
+    width: 100%;
+    display: inline-block;
+    border-radius: 5px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.15);
+	margin-bottom: 10px;
+	position: relative;
+}
+.stone-details-img-caption .nav-tabs {
+    border-bottom: none;
+}
+.stone-details-img-caption.two ul li {
+    width: 48%;
+    margin-right: 7px;
+}
+.nav-tabs .nav-item {
+    margin-bottom: -1px;
+}
+.stone-details-img-caption ul li {
+    text-align: center;
+    width: 100%;
+}
+
+.nav-item .nav-link.active {
+    background-color: transparent!important;
+    border-bottom: none;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+}
+
+.stone-details-img-caption ul li a {
+    background: #f7f7f7;
+    padding: 10px 0 10px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.15);
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    color: #b4b4b4;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 100%;
+}
+.stone-details-img-caption .nav-item a.nav-link.active, .stone-details-img-caption .nav-item a.nav-link:hover {
+    background: #003d66 !important;
+    color: #fff;
+}
+.stone-details-img-caption ul li a:hover img, .stone-details-img-caption ul li a.active img {
+    filter: grayscale(100) brightness(10);
+}
+.stone-details-img-caption ul li a img {
+    width: 38px;
+}
+.stone-details-img-caption ul li a p {
+    font-weight: 500;
+    font-size: 13px;
+    white-space: normal;
+    margin-bottom: 0;
+    margin-top: 2px;
+    color: #b4b4b4;
+}
+.stone-details-img-caption ul li a:hover p, .stone-details-img-caption ul li a.active p {
+    color: #fff !important;
+}
+.stone-det-big-img {
+    position: relative;
+}
+.stone-det-big-img {
+    padding: 15px 0 0 0;
+}
+.stone-det-img-vid h2 {
+    font-size: 18px;
+    color: #182724;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+
+.stone-detail-bx-main {
+    border-radius: 5px;
+    overflow: hidden;
+    background: #fff;
+    margin-bottom: 15px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.15);
+}
+.download-box-main {
+    overflow: visible;
+    background: #f7f7f7;
+	width: 100%;
+}
+.stone-detail-head {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    background: #003d66;
+    padding: 5px 15px;
+}
+.download-main {
+    text-align: center;
+}
+.download-main ul {
+    background: #f7f7f7;
+    padding: 0;
+    margin: 0 0 15px 0;
+    border-radius: 0 !important;
+}
+.download-main ul li {
+    display: inline-block;
+    border-radius: 5px;
+    margin: 10px 0px;
+    position: relative;
+    background: #003d66;
+    padding: 7px 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+a.card-link {
+    display: block;
+	color: #fff;
+}
+a.card-link:focus, a.card-link:hover {
+	color: #fff;
+}
+a.card-link i {
+    float: right;
+    margin-top: 3px;
+}
+.card-body{
+	padding: 0;
+}
+.stn-dtl-row ul {
+    float: left;
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding: 0;
+    border-radius: 0;
+    margin: 0;
+}
+.stn-dtl-row li.one {
+    border-right: 1px solid #ddd;
+	color: #5a5a5a;#0b3859
+}
+.stn-dtl-row li.two {
+	color: #0b3859;
+	font-weight: 600;
+}
+.stn-dtl-row ul li.one {
+    float: left;
+    width: 50%;
+    /*white-space: nowrap;*/
+    padding: 5px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #023059;
+    font-size: 14px;
+    text-align: left !important;
+    /*text-transform: uppercase;*/
+}
+.stn-dtl-row ul li.two{
+    float: left;
+    width: 50%;
+    /*white-space: nowrap;*/
+    padding: 5px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #023059;
+    font-size: 14px;
+    text-align: left !important;
+}
+.search-page-content ul li, .result-page-content ul li {
+    list-style: none; 
+    text-align: center; 
+    flex: 0 0 15%;
+}
+.download-main ul li{
+	cursor: pointer;
+}
+.video {
+    margin-top: 15px;
+}
+video {
+    max-width: 100%;
+}
+.video .title {
+    border-bottom: 1px solid #000;
+    margin-bottom: 6px;
+    position: relative;
+	text-align: center;
+	height: 35px;
+}
+.title span {
+    display: inline-block;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    border-left: 1px solid #000;
+    padding: 8px 10px;
+}
+.wrapper {
+    position: relative;
+}
+.f-video{
+    position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	background: rgba(0,0,0,0.5);
+	z-index: 999;
+	text-align: center;
+	opacity: 0;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.f-video.active{
+	opacity: 1;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+}
+.f-video video{
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+}
+.f-video i.fa.fa-times {
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    background: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+.video .title a {
+    position: absolute;
+	top: 0;
+	right: 0;
+    background: #003d66;
+    color: #fff;
+    padding: 5px 12px;
+    display: block;
+	cursor: pointer;
+}
+.video .title a:hover {
+	color: #fff;
+}
+.enlarge_pane i.fa.fa-expand {
+    position: absolute;
+    background: #003d66;
+    top: 0;
+    right: 0;
+    color: #fff;
+    padding: 13px;
+}
+.search-page-content ul.social li a:hover {
+    color: #fff;
+    transform: unset;
+}
+ul.social li a.whatsapp:hover {
+    background: #28a745;
+}
+ul.social li a.skype:hover {
+    background: #3de5ff;
+}
+/*clear images popup*/
+.popup-images{
+	width: 320px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.25);
+    background: #fff;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    height: max-content;
+    z-index: 9999;
+    opacity: 0;
+    -webkit-transform: scale(0);
+    -moz-transform: scale(0);
+    -ms-transform: scale(0);
+    -o-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+.popup-images.active{
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+    transform: scale(1);
+	opacity: 1;
+}
+.popup-images img {
+    max-width: 100%;
+	cursor: pointer;
+}
+button#cancle-button {
+    background: #003d66;
+    color: #fff;
+    border: none;
+    margin-top: 5px;
+	cursor: pointer;
+}
+.ci-button {
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

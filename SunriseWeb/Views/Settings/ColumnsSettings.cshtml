@@ -1,0 +1,209 @@
+﻿@model SunriseWeb.Models.ColumnsUserModel
+@{
+    ViewBag.Title = "ColumnsSettings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+}
+
+<div class="container-fluid order-history-section">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>Columns Setting</h2>
+            </div>
+        </div>
+    </div>
+    <div class="order-history-data admin">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                @if (SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 1)
+                {
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left mb-2">
+                        <div class="order-date common-order">
+                            <div class="offer-label">User:</div>
+                            @*<select name="ddlUser" id="ddlUser" class="form-control common-control">
+                                </select>*@
+                            @Html.DropDownList("ddlUser", Model.UserModel, "Select", new { @class = "form-control", onchange = "UserDDL();" })
+                        </div>
+                    </div>
+                }
+                <div class="col-xl-1 col-lg-6 col-md-6 col-sm-6 col-12 float-left mb-2">
+                    <ul class="offer-inbtn pull-right mrtop src-rest-topbtnmb-2">
+                        <li>
+                            <button id="Save" title="Save" class="offer-btn">Save </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="myoffer-form column-setting-table column-setting-form">
+                <div class="tab-content w-100">
+                    <div id="TB_ColSetting" class="tab-pane active">
+                        <div class="row mg0 pd5" style="text-align: center;">
+                            <div class="col-md-12 table-responsive">
+                                <table id="mytable" class="table table-hover table-bordered" style="height: calc(100vh - 295px);display: inline-block;">
+                                    <colgroup>
+                                        <col style="width: 5%;">
+                                        <col style="width: 65%;">
+                                        <col style="width: 10%;">
+                                        <col style="width: 10%;">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th style="display: none;"></th>
+                                            <th></th>
+                                            <th>Field Name</th>
+                                            <th>Order</th>
+                                            <th style="display: none;"></th>
+                                            <th>
+                                                Visibility
+                                                <input type="checkbox" id="AllChck" name="AllChck" class="onpristine onuntouched onvalid onempty">
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbodycolumn" class="ui-sortable">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/Plugins/jqueryUI/jquery-ui.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("input[name$='AllChck']").click(function () {
+                if ($("#AllChck").prop("checked") == true) {
+                    $("#tbodycolumn .onuntouched").attr("checked", true);
+                }
+                else {
+                    $("#tbodycolumn .onuntouched").attr("checked", false);
+                }
+            });
+            ColumnsettingList();
+        });
+        $("table tbody").sortable({
+
+            update: function () {
+                SetTableOrder();
+            }
+        });
+        function UserDDL() {
+            document.getElementById("AllChck").checked = false;
+            ColumnsettingList();
+        }
+        function SetTableOrder() {
+
+            var OrderNo = 1;
+            $("table tbody tr").each(function () {
+                ($(this).find(".ColumnOrder").text(OrderNo));
+                OrderNo = OrderNo + 1;
+            });
+        };
+
+        $("#Save").click(function () {
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+
+            var Arr1 = [];
+            var Arr2 = [];
+
+            $("#mytable tbody tr").each(function () {
+                var ColumnName = $(this).find("td:eq(0)").html().trim();
+                var Name = $(this).find("td:eq(2)").text().trim();
+                var Order = $(this).find("td:eq(3)").text();
+                var ColumnId = $(this).find("td:eq(4)").text();
+                var Visibility = $(this).find("#checkbox1").prop("checked");
+                Arr2.push({ iColumnId: ColumnId, iPriority: Order, sColumnName: ColumnName, sCaption: Name, IsActive: Visibility });
+                Arr1 = _.filter(Arr2, function (e) { return e.IsActive == true });
+            });
+
+            if (Arr1.length != 0) {
+                $.ajax({
+                    url: "@Url.Action("SaveColumnsSettings","Settings")",
+                    type: "POST",
+                    data: { obj : Arr1, UserId : $("#ddlUser").val() },
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.Message.indexOf('Something Went wrong') > -1) {
+                            MoveToErrorPage(0);
+                        }
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                        if (data.Status == "1") {
+                            toastr.success("Save Successfully...!");
+                        }
+                        else {
+                            toastr.error(data.Message);
+                        }
+                        ColumnsettingList();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                    }
+                });
+            }
+            else {
+                $('.loading-overlay-image-container').hide();
+                $('.loading-overlay').hide();
+                return toastr.warning("Please Select Caption Name..");
+            }
+        });
+
+        function ColumnsettingList() {
+
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+            $('#tbodycolumn').html("");
+            $.ajax({
+                url: "@Url.Action("GetColumnSettingData","Settings")",
+                type: "POST",
+                data: { UserId : $("#ddlUser").val() },
+                success: function (data, textStatus, jqXHR) {
+                    if (data.Message.indexOf('Something Went wrong') > -1) {
+                        MoveToErrorPage(0);
+                    }
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                    if (data.Message == "SUCCESS") {
+                        $.each(data.Data, function( index, value ) {
+                            $('#tbodycolumn').append('<tr>'+
+                                '<td style="display: none;">'+ value.sColumnName +'</td>'+
+                                '<td><i style="cursor: move;" class="fa fa-bars" aria-hidden="true"></i></td>'+
+                                '<td>'+value.sCaption+'</td>'+
+                                '<td class="ColumnOrder">'+value.tempPriority+'</td>'+
+                                '<td id="lblColId" style="display: none;">'+value.iColumnId+'</td>'+
+                                '<td>'+
+                                    '<label class="cust-chk-bx text-left">'+
+                                        '<input class="onuntouched" type="checkbox" id="checkbox1" name="checkbox1" '+(value.IsActive ? "checked" : "")+' >'+
+                                        '<span class="cust-chkmark"></span>'+
+                                    '</label>'+
+                                '</td>'+
+                            '</tr>');
+                        });
+                        //}
+                        //else {
+                        //    toastr.error("Data Not Available...!", 5000);
+                        //}
+                    }
+                    else {
+                        toastr.error("Data Service Not Working...!", 5000);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            });
+        }
+    </script>
+}

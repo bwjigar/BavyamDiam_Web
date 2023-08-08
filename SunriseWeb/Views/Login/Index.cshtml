@@ -1,0 +1,524 @@
+﻿@model SunriseWeb.Models.UserLogin
+@using SunriseWeb.Resources
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BHAVYAM DIAM</title>
+    <meta name="keyword" content="" />
+    <meta name="description" content="" />
+    <meta name="title" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="50x50" href="~/Content/images/bd-removebg-preview.png">
+    <!-- attach stylesheet -->
+    <link rel="stylesheet" href="~/Content/Login/css/bootstrap.min.css">
+    <link href="~/Content/Login/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link href="~/Content/Login/css/animate.css" rel="stylesheet">
+    <!-- main stylesheet -->
+    <link href="~/Content/Login/css/main.css" rel="stylesheet">
+    <link href="~/Content/Plugins/toastr/toastr.css" rel="stylesheet" />
+
+    <style>
+        .adrress-span {
+            margin-bottom: 1px;
+            color: white;
+            background-color: #003d66;
+            padding: 3px 25px;
+            border-radius: 16px;
+            font-weight: bold;
+        }
+
+        @@media (max-width: 767px) {
+            .modalPopupnew {
+                height: 250px;
+            }
+
+            .promoimg {
+                height: 89%;
+            }
+        }
+
+        @@media (min-width: 768px) {
+            .modalPopupnew {
+                height: 570px;
+            }
+
+            .promoimg {
+                height: 95%;
+            }
+        }
+        /*.language-section {
+             color: white;
+             text-align: end;
+             font-family: emoji;
+             background: transparent;
+             border: none;
+             border-radius: 5px;
+             cursor: pointer;
+             width: 52px;
+             text-shadow: 1.5px 1.5px #af9949;
+             font-size: 21px;
+         -webkit-transition: color 15s, font-size 1s;
+        -moz-transition: color 15s, font-size 1s;
+          -o-transition: color 15s, font-size 1s;
+             transition: color 15s, font-size 1s;
+         }
+         .language-section:hover {
+             font-size: 23px;
+         }*/
+        .language-section {
+            text-align: end;
+            font-family: fantasy;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            width: 58px;
+            text-shadow: 0.6px 0.6px #8ebfed;
+            font-size: 21px;
+        }
+
+        .language-section-inn:hover {
+            background-color: #dfe7ef !important;
+        }
+
+        .display_none {
+            display: none;
+        }
+
+        .display_block {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="hidden" id="hdn_Wrong_User_Name_or_Password_Kindly_Contact" value="@LanguageProvider.get("Wrong_User_Name_or_Password_Kindly_Contact")" />
+    <input type="hidden" id="hdn_User_Is_Not_Active_Please_Contact" value="@LanguageProvider.get("User_Is_Not_Active_Please_Contact")" />
+    <input type="hidden" id="hdn_Username_is_invalid_or_in_active" value="@LanguageProvider.get("Username_is_invalid_or_in_active")" />
+    <input type="hidden" id="hdn_Your_account_information_have_been_sent_to_you_on" value="@LanguageProvider.get("Your_account_information_have_been_sent_to_you_on")" />
+    <input type="hidden" id="hdn_Your_email_address_is_invalid_please_contact_our_Administrator" value="@LanguageProvider.get("Your_email_address_is_invalid_please_contact_our_Administrator")" />
+    <input type="hidden" id="hdn_User_registration_failed" value="@LanguageProvider.get("User_registration_failed")" />
+    <input type="hidden" id="hdn_User_name_is_already_exists" value="@LanguageProvider.get("User_name_is_already_exists")" />
+    <input type="hidden" id="hdn_User_Is_Not_Active_Please_Contact" value="@LanguageProvider.get("User_Is_Not_Active_Please_Contact")" />
+
+    <!-- particles.js container -->
+
+    <ul class="bg-star">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <nav class="">
+        <div id="myScrollspy">
+            <ul class="nav nav-pills nav-stacked">
+
+                <li class="close_sidebar"><i class="fa fa-times" onclick="close_side()" aria-hidden="true"></i></li>
+                <li><a href="@Url.Action("Index","Login")">Home</a></li>
+                <li><a href="@Url.Action("Aboutus","Login")">About Us</a></li>
+                <li><a href="@Url.Action("ExtensiveInventory","Login")">Extensive Inventory</a></li>
+                @*<li><a href="@Url.Action("Service","Login")">Service</a></li>*@
+                @*<li><a href="@Url.Action("Policy","Login")">Privacy Policy</a></li>
+                <li><a href="@Url.Action("Terms","Login")">Terms & Condition</a></li>*@
+                <li><a href="@Url.Action("ContactUs","Login")">Contact</a></li>
+
+            </ul>
+        </div>
+    </nav>
+    <div class="open_btn">
+        <button class="open-btn" onclick="open_side()" style="color: #011423;">☰</button>
+    </div>
+    <div class="language-section" onclick="Login_Click();">
+        <span class="language-section-inn" style="background-color: white;padding: 6px 10px 8px 12px;color: #021323;border-radius: 4px;letter-spacing: 3px;">Login</span>
+    </div>
+    <div style="position: absolute;z-index: 10;margin-top: 21%;margin-left: 6%; display:none;">
+        <span style="padding: 10px;font-size: 43px;color: #003d66;font-family: 'FontAwesome';font-weight: 700;">Specialist in I1, I2</span>
+    </div>
+
+    @*<div class="language-section" style="display:none;">
+            <ul class="d-inline-flex pull-right">
+                @if (Request.Cookies["language"] != null)
+                {
+                    if (Request.Cookies["language"].Value == "en")
+                    {
+                        <li class="nav-item"><a id="en" class="active" href="javascript:void(0);" onclick="LanguageChange('en')">EN</a></li>
+                        <li class="nav-item"><a id="cn" class="" href="javascript:void(0);" onclick="LanguageChange('cn')">中文</a></li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a id="en" class="" href="javascript:void(0);" onclick="LanguageChange('en')">EN</a></li>
+                        <li class="nav-item"><a id="cn" class="active" href="javascript:void(0);" onclick="LanguageChange('cn')">中文</a></li>
+                    }
+                }
+                else
+                {
+                    <li class="nav-item"><a id="en" class="active" href="javascript:void(0);" onclick="LanguageChange('en')">EN</a></li>
+                    <li class="nav-item"><a id="cn" class="" href="javascript:void(0);" onclick="LanguageChange('cn')">中文</a></li>
+                }
+
+            </ul>
+        </div>*@
+
+
+
+    <!-- start login -->
+    <div class="login-form">
+        <img src="~/Content/images/oie_D9YPbW779YUw.jpg" style="height: 100%;
+        width: 100%;
+        position: absolute;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="login-form-center">
+                        <div class="login-data display_none" style="margin-bottom: 20px;">
+                            @*<div class="login-logo text-center">
+                                    <img src="~/Content/Login/images/bd-removebg-preview.png" alt="logo" class="img-responsive">
+                                </div>*@
+                            <div class="login-field">
+                                @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { id = "login-form" }))
+                                {
+                                    @Html.AntiForgeryToken();
+                                    @Html.ValidationSummary(true);
+                                    <div class="form-group wow fadeInLeft animated" data-wow-delay="1s">
+                                        <label class="fa-icon"><i class="fa fa-user" aria-hidden="true"></i></label>
+                                        @Html.TextBoxFor(a => a.Username, new { @class = "input-field", placeholder = @LanguageProvider.get("EnterUsername") })
+                                        @Html.ValidationMessageFor(m => m.Username)
+                                        @*<input type="text" class="input-field" name="username" placeholder="Enter User Name" required>*@
+
+                                    </div>
+                                    <div class="form-group wow fadeInRight animated" data-wow-delay="1s">
+                                        <label class="fa-icon"><i class="fa fa-unlock-alt" aria-hidden="true"></i></label>
+                                        @Html.PasswordFor(a => a.Password, new { @value = Model.Password, @class = "input-field", placeholder = @LanguageProvider.get("EnterPassword") })
+                                        @Html.ValidationMessageFor(m => m.Password)
+                                        @*<input type="password" class="input-field name="password" placeholder="Enter Password" required>*@
+
+                                    </div>
+                                    <div class="row mb-3">
+                                        <div class="col-xs-6 col-sm-6">
+                                            <label class="checkbox-label text-left">
+                                                <b>@LanguageProvider.get("rememberme")</b>
+                                                @Html.CheckBoxFor(x => x.isRemember)
+                                                @* <input type="checkbox">*@
+                                                <span class="checkbox-mark"></span>
+                                            </label>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6">
+                                            <div class="text-right forgot-pass">
+                                                <a href="javascript:void(0);" class="forgotPwd" id="forgot-form-link"><b>@LanguageProvider.get("forgotpwd") ?</b></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3" style="display:none;">
+                                        <div class="col-xs-8 col-sm-8">
+                                            <label class="checkbox-label text-left">
+                                                <b>Switch to classic</b>
+                                                @Html.CheckBoxFor(x => x.isSwitchClassic)
+                                                <span class="checkbox-mark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <label class="login-error"><b></b></label>
+                                    <div class="form-group login-button">
+                                        <button type="submit" id="btnLogin" class="swing wow animated" data-wow-delay="1s">@LanguageProvider.get("Login")</button>
+                                        <a href="@Url.Action("Registration","Login")" class="swing wow animated signup text-center" data-wow-delay="1s">@LanguageProvider.get("Signup")</a>
+                                    </div>
+                                }
+                                @using (Html.BeginForm("ForgotPassword", "Login", FormMethod.Post, new { id = "forgot-form", style = "display: none;" }))
+                                {
+                                    <div class="form-group wow fadeInLeft animated forgot-h2" data-wow-delay="0.5s">
+                                        <h2>@LanguageProvider.get("recoverpwd")</h2>
+                                    </div>
+                                    <div class="form-group wow fadeInRight animated forgot-p" data-wow-delay="0.5s">
+                                        <p>@LanguageProvider.get("recoverpwdtext")</p>
+                                    </div>
+                                    <div class="form-group wow fadeInLeft animated" data-wow-delay="0.5s">
+                                        <label class="fa-icon"><i class="fa fa-user" aria-hidden="true"></i></label>
+                                        <input type="text" class="input-field" name="ForgotUsername" id="txtForgotUsername" placeholder="@LanguageProvider.get("enterusernm")" required>
+                                        @*@Html.TextBoxFor(a => a.Username, new { @class = "input-field", placeholder = "Enter User Name" })
+                                            @Html.ValidationMessageFor(m => m.Username)*@
+                                    </div>
+                                    <div class="form-group login-button">
+                                        <button type="submit" class="swing wow animated" data-wow-delay="0.5s">@LanguageProvider.get("recover")</button>
+                                        <a href="javascript:void(0);" id="login-form-link" class="swing wow animated signup text-center" data-wow-delay="0.5s">@LanguageProvider.get("backtologin")</a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divModels"></div>
+
+    <div class="modal fade" tabindex="-1" id="loginModal" data-keyboard="false" data-backdrop="static">
+        @*<div class="modal-dialog modal-lg modalPopupnew" style="max-width: 100%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            ×
+                        </button>
+                    </div>
+                    <center>
+                        <div class="modal-body">
+                            <img style="max-width: 100%;" id="imgEvent0" src="http://localhost:44364/InfoImages/17.jpg">
+                        </div>
+                    </center>
+                </div>
+            </div>*@
+    </div>
+
+    <!-- end of login -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
+    <script src="~/Content/Login/js/jquery.min.js"></script>
+    <script src="~/Content/Login/js/bootstrap.min.js"></script>
+    <script src="~/Content/Login/js/popper.min.js"></script>
+    <script src="~/Content/Login/js/wow.min.js"></script>
+    <script src="~/Content/Login/js/LoginCustom.js"></script>
+    <!-- ============ Animation Wow ============= -->
+    <script src="~/Content/Login/js/particles.js"></script>
+    <script src="~/Content/Login/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <script src="~/Content/Plugins/toastr/toastr.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var str = '';
+            if ('@TempData["Message"]' != '') {
+                str = replaceSpecialHtml('@TempData["Message"]');
+                str = str.replace('Wrong User Name or Password Kindly Contact :', $("#hdn_Wrong_User_Name_or_Password_Kindly_Contact").val());
+                str = str.replace('User Is Not Active, Please Contact', $("#hdn_User_Is_Not_Active_Please_Contact").val());
+                str = str.replace('Username is invalid or in-active.', $("#hdn_Username_is_invalid_or_in_active").val());
+                str = str.replace('Your account information have been sent to you on', $("#hdn_Your_account_information_have_been_sent_to_you_on").val());
+                str = str.replace('Your email address is invalid, please contact our Administrator.', $("#hdn_Your_email_address_is_invalid_please_contact_our_Administrator").val());
+                str = str.replace('User registration failed.', $("#hdn_User_registration_failed").val());
+                str = str.replace('User name is already exists.', $("#hdn_User_name_is_already_exists").val());
+                //toastr.error(str);
+                $.alert({
+                    title: '',
+                    content:str,
+                });
+            }
+            else if (location.href.indexOf("Msg=") > -1) {
+                str = location.href.substring(location.href.indexOf("Msg=") + 4);
+                str = str.replace(/%20/g, ' ');
+
+                $.alert({
+                    title: '',
+                    content: str,
+                });
+            }
+            //OpenEventModel();
+        });
+        function replaceSpecialHtml(str) {
+            str = str.replace(/&lt;/g, '<');
+            str = str.replace(/&quot;/g, '"');
+            str = str.replace(/&amp;/g, '&');
+            str = str.replace(/&gt;/g, '>')
+            return str;
+        }
+        function LanguageChange(langCode) {
+            $('.nav-item').find('a').removeClass('active');
+            $('.nav-item').find('a[id="' + langCode + '"]').addClass('active');
+            $.ajax({
+                url: "/Login/ChangeLanguage",
+                async: false,
+                type: "POST",
+                data: { LangCode: langCode },
+                success: function (data, textStatus, jqXHR) {
+                    window.location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    window.location.reload();
+                }
+            });
+        }
+        function OpenEventModel() {
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+            $.ajax({
+                url: "@Url.Action("OpenEventModel","Login")",
+                type: "POST",
+                data: null,
+                success: function (data, textStatus, jqXHR) {
+                    //MoveToErrorPage(data.Status);
+                    if (data.Status != undefined) {
+                        if (data.Status == "1") {
+                            if (data.Data != null && data.Data.length > 0) {
+                                var tot = data.Data.length, i = 0, html = '';
+                                var apiUrl = '@System.Configuration.ConfigurationManager.AppSettings["APIURL"]';
+                                apiUrl = apiUrl.replace(/api/g, 'InfoImages/');
+                                for (; i < tot; i++) {
+                                    html = '<div id="imagemodel" class="modal-dialog modal-lg modalPopupnew" style="max-width:' + data.Data[i].NaturalWidth+'px">'+
+                                                '<div class="modal-content">'+
+                                                    '<div class="modal-header">'+
+                                                        '<button type="button" class="close" data-dismiss="modal" style="margin-bottom: -42px;margin-top: -26px;">×</button>'+
+                                                    '</div>'+
+                                                    '<center>'+
+                                                        '<div class="modal-body" id="img_div">'+
+                                                            '<img style="max-width: 100%;" id="imgEvent" src="">'+
+                                                        '</div>'+
+                                                    '</center>'+
+                                                '</div>'+
+                                    '</div>';
+
+                                    $('#loginModal').append(html);
+                                    $('#imgEvent').attr('src', (apiUrl + data.Data[i].FileName));
+                                    $("#loginModal").modal('show');
+                                }
+                            }
+                        }
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    //MoveToErrorPage(0);
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            });
+        }
+        function Login_Click() {
+            if ($(".login-data").hasClass("display_none")) {
+                $(".login-data").removeClass("display_none");
+                $(".login-data").addClass("display_block");
+            }
+            else {
+                $(".login-data").removeClass("display_block");
+                $(".login-data").addClass("display_none");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="MakeOfferTrans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeviseType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StoneList" type="tns:ArrayOfHoldStone" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfHoldStone">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="HoldStone" nillable="true" type="tns:HoldStone" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HoldStone">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ref_no" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="cur_cts" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="rap_price" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="rap_value" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="sales_disc_per" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="disc_per" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MakeOfferTransResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MakeOfferTransResult" type="tns:CommonResultResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CommonResultResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Error" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MakeHoldTrans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeviseType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StoneList" type="tns:ArrayOfHoldStone" />
+            <s:element minOccurs="0" maxOccurs="1" name="PartyCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeHoldTransResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MakeHoldTransResult" type="tns:CommonResultResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeWebHoldTrans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeviseType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="OrderType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StoneList" type="tns:ArrayOfHoldStone" />
+            <s:element minOccurs="0" maxOccurs="1" name="PartyCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeWebHoldTransResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MakeWebHoldTransResult" type="tns:CommonResultResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeReleaseTrans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeviseType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StoneList" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeReleaseTransResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MakeReleaseTransResult" type="tns:CommonResultResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeWebReleaseTrans">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeviseType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StoneList" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeWebReleaseTransResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MakeWebReleaseTransResult" type="tns:CommonResultResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckStoneForHold">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeviseType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StoneId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckStoneForHoldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckStoneForHoldResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckStoneForRelease">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeviseType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StoneId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckStoneForReleaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckStoneForReleaseResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OrderDetailNotification">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UserID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="OrderDetailNotificationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="OrderDetailNotificationResult" type="tns:CommonResultResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CommonResultResponse" type="tns:CommonResultResponse" />
+      <s:element name="DataSet" nillable="true">
+        <s:complexType>
+          <s:sequence>
+            <s:element ref="s:schema" />
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="MakeOfferTransSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeOfferTrans" />
+  </wsdl:message>
+  <wsdl:message name="MakeOfferTransSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeOfferTransResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeHoldTransSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeHoldTrans" />
+  </wsdl:message>
+  <wsdl:message name="MakeHoldTransSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeHoldTransResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeWebHoldTransSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeWebHoldTrans" />
+  </wsdl:message>
+  <wsdl:message name="MakeWebHoldTransSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeWebHoldTransResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeReleaseTransSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeReleaseTrans" />
+  </wsdl:message>
+  <wsdl:message name="MakeReleaseTransSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeReleaseTransResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeWebReleaseTransSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeWebReleaseTrans" />
+  </wsdl:message>
+  <wsdl:message name="MakeWebReleaseTransSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeWebReleaseTransResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckStoneForHoldSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckStoneForHold" />
+  </wsdl:message>
+  <wsdl:message name="CheckStoneForHoldSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckStoneForHoldResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckStoneForReleaseSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckStoneForRelease" />
+  </wsdl:message>
+  <wsdl:message name="CheckStoneForReleaseSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckStoneForReleaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="OrderDetailNotificationSoapIn">
+    <wsdl:part name="parameters" element="tns:OrderDetailNotification" />
+  </wsdl:message>
+  <wsdl:message name="OrderDetailNotificationSoapOut">
+    <wsdl:part name="parameters" element="tns:OrderDetailNotificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeReleaseTransHttpGetIn">
+    <wsdl:part name="DeviseType" type="s:string" />
+    <wsdl:part name="UserCode" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+    <wsdl:part name="StoneList" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MakeReleaseTransHttpGetOut">
+    <wsdl:part name="Body" element="tns:CommonResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeWebReleaseTransHttpGetIn">
+    <wsdl:part name="DeviseType" type="s:string" />
+    <wsdl:part name="UserCode" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+    <wsdl:part name="StoneList" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MakeWebReleaseTransHttpGetOut">
+    <wsdl:part name="Body" element="tns:CommonResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckStoneForHoldHttpGetIn">
+    <wsdl:part name="DeviseType" type="s:string" />
+    <wsdl:part name="StoneId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckStoneForHoldHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="CheckStoneForReleaseHttpGetIn">
+    <wsdl:part name="DeviseType" type="s:string" />
+    <wsdl:part name="UserCode" type="s:string" />
+    <wsdl:part name="StoneId" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckStoneForReleaseHttpGetOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="OrderDetailNotificationHttpGetIn">
+    <wsdl:part name="OrderID" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="OrderDetailNotificationHttpGetOut">
+    <wsdl:part name="Body" element="tns:CommonResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeReleaseTransHttpPostIn">
+    <wsdl:part name="DeviseType" type="s:string" />
+    <wsdl:part name="UserCode" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+    <wsdl:part name="StoneList" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MakeReleaseTransHttpPostOut">
+    <wsdl:part name="Body" element="tns:CommonResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeWebReleaseTransHttpPostIn">
+    <wsdl:part name="DeviseType" type="s:string" />
+    <wsdl:part name="UserCode" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+    <wsdl:part name="StoneList" type="s:string" />
+    <wsdl:part name="Status" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="MakeWebReleaseTransHttpPostOut">
+    <wsdl:part name="Body" element="tns:CommonResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckStoneForHoldHttpPostIn">
+    <wsdl:part name="DeviseType" type="s:string" />
+    <wsdl:part name="StoneId" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckStoneForHoldHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="CheckStoneForReleaseHttpPostIn">
+    <wsdl:part name="DeviseType" type="s:string" />
+    <wsdl:part name="UserCode" type="s:string" />
+    <wsdl:part name="StoneId" type="s:string" />
+    <wsdl:part name="CustomerName" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CheckStoneForReleaseHttpPostOut">
+    <wsdl:part name="Body" element="tns:DataSet" />
+  </wsdl:message>
+  <wsdl:message name="OrderDetailNotificationHttpPostIn">
+    <wsdl:part name="OrderID" type="s:string" />
+    <wsdl:part name="UserID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="OrderDetailNotificationHttpPostOut">
+    <wsdl:part name="Body" element="tns:CommonResultResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="MakeOfferTrans">
+      <wsdl:input message="tns:MakeOfferTransSoapIn" />
+      <wsdl:output message="tns:MakeOfferTransSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeHoldTrans">
+      <wsdl:input message="tns:MakeHoldTransSoapIn" />
+      <wsdl:output message="tns:MakeHoldTransSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeWebHoldTrans">
+      <wsdl:input message="tns:MakeWebHoldTransSoapIn" />
+      <wsdl:output message="tns:MakeWebHoldTransSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeReleaseTrans">
+      <wsdl:input message="tns:MakeReleaseTransSoapIn" />
+      <wsdl:output message="tns:MakeReleaseTransSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeWebReleaseTrans">
+      <wsdl:input message="tns:MakeWebReleaseTransSoapIn" />
+      <wsdl:output message="tns:MakeWebReleaseTransSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForHold">
+      <wsdl:input message="tns:CheckStoneForHoldSoapIn" />
+      <wsdl:output message="tns:CheckStoneForHoldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForRelease">
+      <wsdl:input message="tns:CheckStoneForReleaseSoapIn" />
+      <wsdl:output message="tns:CheckStoneForReleaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderDetailNotification">
+      <wsdl:input message="tns:OrderDetailNotificationSoapIn" />
+      <wsdl:output message="tns:OrderDetailNotificationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpGet">
+    <wsdl:operation name="MakeReleaseTrans">
+      <wsdl:input message="tns:MakeReleaseTransHttpGetIn" />
+      <wsdl:output message="tns:MakeReleaseTransHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeWebReleaseTrans">
+      <wsdl:input message="tns:MakeWebReleaseTransHttpGetIn" />
+      <wsdl:output message="tns:MakeWebReleaseTransHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForHold">
+      <wsdl:input message="tns:CheckStoneForHoldHttpGetIn" />
+      <wsdl:output message="tns:CheckStoneForHoldHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForRelease">
+      <wsdl:input message="tns:CheckStoneForReleaseHttpGetIn" />
+      <wsdl:output message="tns:CheckStoneForReleaseHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderDetailNotification">
+      <wsdl:input message="tns:OrderDetailNotificationHttpGetIn" />
+      <wsdl:output message="tns:OrderDetailNotificationHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ServiceHttpPost">
+    <wsdl:operation name="MakeReleaseTrans">
+      <wsdl:input message="tns:MakeReleaseTransHttpPostIn" />
+      <wsdl:output message="tns:MakeReleaseTransHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeWebReleaseTrans">
+      <wsdl:input message="tns:MakeWebReleaseTransHttpPostIn" />
+      <wsdl:output message="tns:MakeWebReleaseTransHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForHold">
+      <wsdl:input message="tns:CheckStoneForHoldHttpPostIn" />
+      <wsdl:output message="tns:CheckStoneForHoldHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForRelease">
+      <wsdl:input message="tns:CheckStoneForReleaseHttpPostIn" />
+      <wsdl:output message="tns:CheckStoneForReleaseHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderDetailNotification">
+      <wsdl:input message="tns:OrderDetailNotificationHttpPostIn" />
+      <wsdl:output message="tns:OrderDetailNotificationHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MakeOfferTrans">
+      <soap:operation soapAction="http://tempuri.org/MakeOfferTrans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeHoldTrans">
+      <soap:operation soapAction="http://tempuri.org/MakeHoldTrans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeWebHoldTrans">
+      <soap:operation soapAction="http://tempuri.org/MakeWebHoldTrans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeReleaseTrans">
+      <soap:operation soapAction="http://tempuri.org/MakeReleaseTrans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeWebReleaseTrans">
+      <soap:operation soapAction="http://tempuri.org/MakeWebReleaseTrans" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForHold">
+      <soap:operation soapAction="http://tempuri.org/CheckStoneForHold" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForRelease">
+      <soap:operation soapAction="http://tempuri.org/CheckStoneForRelease" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderDetailNotification">
+      <soap:operation soapAction="http://tempuri.org/OrderDetailNotification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MakeOfferTrans">
+      <soap12:operation soapAction="http://tempuri.org/MakeOfferTrans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeHoldTrans">
+      <soap12:operation soapAction="http://tempuri.org/MakeHoldTrans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeWebHoldTrans">
+      <soap12:operation soapAction="http://tempuri.org/MakeWebHoldTrans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeReleaseTrans">
+      <soap12:operation soapAction="http://tempuri.org/MakeReleaseTrans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeWebReleaseTrans">
+      <soap12:operation soapAction="http://tempuri.org/MakeWebReleaseTrans" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForHold">
+      <soap12:operation soapAction="http://tempuri.org/CheckStoneForHold" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForRelease">
+      <soap12:operation soapAction="http://tempuri.org/CheckStoneForRelease" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderDetailNotification">
+      <soap12:operation soapAction="http://tempuri.org/OrderDetailNotification" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpGet" type="tns:ServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="MakeReleaseTrans">
+      <http:operation location="/MakeReleaseTrans" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeWebReleaseTrans">
+      <http:operation location="/MakeWebReleaseTrans" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForHold">
+      <http:operation location="/CheckStoneForHold" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForRelease">
+      <http:operation location="/CheckStoneForRelease" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderDetailNotification">
+      <http:operation location="/OrderDetailNotification" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHttpPost" type="tns:ServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="MakeReleaseTrans">
+      <http:operation location="/MakeReleaseTrans" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeWebReleaseTrans">
+      <http:operation location="/MakeWebReleaseTrans" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForHold">
+      <http:operation location="/CheckStoneForHold" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckStoneForRelease">
+      <http:operation location="/CheckStoneForRelease" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderDetailNotification">
+      <http:operation location="/OrderDetailNotification" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://42.200.137.31:808/SunriseWebService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://42.200.137.31:808/SunriseWebService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpGet" binding="tns:ServiceHttpGet">
+      <http:address location="http://42.200.137.31:808/SunriseWebService/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHttpPost" binding="tns:ServiceHttpPost">
+      <http:address location="http://42.200.137.31:808/SunriseWebService/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

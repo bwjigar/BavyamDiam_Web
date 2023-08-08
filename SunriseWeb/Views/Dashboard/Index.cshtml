@@ -1,0 +1,582 @@
+﻿@using SunriseWeb.Helper;
+@using SunriseWeb.Resources
+@{
+    ViewBag.Title = LanguageProvider.get("dashboard");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "home-page";
+    <input type="hidden" id="hdn_MessageId" value='@SessionFacade.UserSession.MessageId' />
+    <input type="hidden" id="hdn_IsLogout" value='@SessionFacade.UserSession.IsLogout.ToString()' />
+    <input type="hidden" id="hdn_MessageShow" value='@SessionFacade.UserSession.MessageShow.ToString()' />
+    <input type="hidden" id="hdn_LogoutURL" value='@System.Configuration.ConfigurationManager.AppSettings["WebsiteLogoutURL"]' />
+    <input type="hidden" id="apiurl" value='@System.Configuration.ConfigurationManager.AppSettings["APIURL"]' />
+
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    @*<link href="~/Content/css/mdb.min.css" rel="stylesheet">*@
+    @*<link href="~/Content/css/owl.carousel.css" rel="stylesheet">*@
+    @*<link href="~/Content/css/owl.theme.default.css" rel="stylesheet">*@
+    <style>
+
+        input.select2-search__field {
+            display: none;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__arrow {
+            top: 1px;
+        }
+
+        .select2-container--open .select2-dropdown {
+            top: -8px;
+        }
+
+        .index-graph-select .select2-container,
+        .select-custom.year .select2-container {
+            width: 105px !important;
+        }
+
+        .index-graph-select span.selection, .select-custom.year span.selection {
+            width: 100%;
+        }
+
+        @@media (max-width: 767px) {
+            .modalPopupnew {
+                height: 250px;
+            }
+
+            .promoimg {
+                height: 89%;
+            }
+        }
+
+        @@media (min-width: 768px) {
+            .modalPopupnew {
+                height: 570px;
+            }
+
+            .promoimg {
+                height: 95%;
+            }
+        }
+
+        .collapsible {
+            background-color: #777;
+            color: white;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+        }
+
+            .active, .collapsible:hover {
+                background-color: #555;
+            }
+
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+            background-color: #f1f1f1;
+        }
+
+        @@media (max-width: 425px) {
+            .RS {
+                padding: 3px 3px 1px 27px !important;
+            }
+        }
+        /*.CB-hide{
+            display:none;
+        }
+         .CB-show{
+            display:block;
+        }*/
+        table {
+            display: block;
+            max-width: -moz-fit-content;
+            overflow-x: auto !important;
+            white-space: nowrap !important;
+        }
+
+        .dark {
+            color: #003d66;
+            font-weight: bold;
+        }
+
+        .triangle-topright {
+            width: 0;
+            height: 0;
+            border-top: 80px solid red;
+            border-left: 80px solid transparent;
+            margin-left: 491px;
+            margin-top: -12px;
+        }
+
+        .bx-cnt {
+            top: 55px;
+        }
+
+        .bx-icn {
+            top: 48px;
+        }
+
+        .bc-smry {
+            margin-top: 38px;
+            line-height: 1;
+            margin-left: -10px;
+            margin-right: -10px;
+        }
+
+        .bc-smry-txt-s {
+            margin-right: 5px;
+            cursor: pointer;
+            font-size: 9px;
+            font-weight: 600;
+            color: #26af5b;
+            margin-left: -2px;
+            text-transform: uppercase;
+        }
+
+        .bc-smry-txt-e {
+            margin-right: 5px;
+            cursor: pointer;
+            font-size: 9px;
+            font-weight: 600;
+            color: #d40e0e;
+            margin-left: -2px;
+            text-transform: uppercase;
+        }
+
+        .bc-smry-txt-cnt {
+            font-size: 11.5px;
+            font-family: monospace;
+        }
+
+        .bx-hgt {
+            margin-top: 15px;
+        }
+    </style>
+}
+
+<div class="container-fluid">
+    <div style="margin-top: 6px;float: right;margin-bottom: 3px;display:none;" id="divLastLogged">
+        <span style="font-size: 12px;color: #7c8286;">
+            Last Logged in :
+            <span style="font-weight: 700;color: #003d66;" id="sLastLogged"></span>
+        </span>
+    </div>
+
+    <!-- Content Row -->
+    <div id="divTotalBx" class="service-panel bx-hgt">
+        <div class="row">
+
+            @if (@SunriseWeb.Helper.SessionFacade.UserSession.IsSubuser == false ||
+            (SunriseWeb.Helper.SessionFacade.UserSession.IsSubuser == true && SunriseWeb.Helper.SessionFacade.UserSession.SearchStock == true))
+            {
+                <!-- Search stock -->
+                <div class="col-xl col-md-4 col-6 mb-4 comm-width" onclick="redirectPage('SearchStock')">
+                    <div class="card top border-left-primary shadow h-100">
+                        <div class="card-body top one bg-cl-1">
+                            <div class="row no-gutters align-items-center">
+                                <div class="">
+                                    <div class="text-xs text-uppercase mb-1">@LanguageProvider.get("search_stock")</div>
+                                    <div id="cntSearchStock" class="cart-value h5 mb-0 font-weight-bold text-gray-800 bx-cnt"></div>
+                                </div>
+                                <div class="cart-icon bx-icn">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-xl col-md-4 col-6 mb-4 comm-width" onclick="redirectPage('NewArrival')">
+                <div class="card top border-left-info shadow h-100">
+                    <div class="card-body top third bg-cl-3">
+                        <div class="row no-gutters align-items-center">
+                            <div class="">
+                                <div class="text-xs text-uppercase mb-1">New Arrival</div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="">
+                                        <div id="cntNewArrival" class="cart-value h5 mb-0 mr-3 font-weight-bold text-gray-800 bx-cnt"></div>
+                                    </div>
+                                    <div class="cart-icon bx-icn">
+                                        <i class="fa fa-database" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- MyCart -->
+            <div class="col-xl col-md-4 col-6 mb-4 comm-width" onclick="redirectPage('MyCart')">
+                <div class="card top border-left-info shadow h-100">
+                    <div class="card-body top third bg-cl-3">
+                        <div class="row no-gutters align-items-center">
+                            <div class="">
+                                <div class="text-xs text-uppercase mb-1">My Cart</div>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="">
+                                        <div id="cntMyCart" class="cart-value h5 mb-0 mr-3 font-weight-bold text-gray-800 bx-cnt"></div>
+                                    </div>
+                                    <div class="cart-icon bx-icn">
+                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            @if (@SunriseWeb.Helper.SessionFacade.UserSession.IsSubuser == false ||
+            (SunriseWeb.Helper.SessionFacade.UserSession.IsSubuser == true && SunriseWeb.Helper.SessionFacade.UserSession.OrderHisrory == true))
+            {
+                <!-- Order History -->
+                <div class="col-xl col-md-4 col-6 mb-4 comm-width" onclick="redirectPage('Order')">
+                    <div class="card top border-left-warning shadow h-100">
+                        <div class="card-body top forth bg-cl-4">
+                            <div class="row no-gutters align-items-center">
+                                <div class="">
+                                    <div class="text-xs text-uppercase mb-1">@LanguageProvider.get("order_history")</div>
+                                    <div id="cntOrderHistory" class="cart-value h5 mb-0 font-weight-bold text-gray-800 bx-cnt"></div>
+                                </div>
+                                <div class="cart-icon bx-icn">
+                                    <i class="fa fa-file-text" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            @*<div class="bc-smry row" id="divOdr-Smry" style="display:none;">
+                                    <span><span class="bc-smry-txt-cnt bc-fc-c" id="CPickUp"></span>&nbsp;<span class="bc-smry-txt-s bc-fc-t">@LanguageProvider.get("Ready_to_Pick_up")</span></span>
+                                    <span><span class="bc-smry-txt-cnt bc-fc-c" id="CNotPickUp"></span>&nbsp;<span class="bc-smry-txt-e bc-fc-t">@LanguageProvider.get("Not_Arrive")</span></span>
+                                    <span><span class="bc-smry-txt-cnt bc-fc-c" id="CCollected"></span>&nbsp;<span class="bc-smry-txt-s bc-fc-t">@LanguageProvider.get("Collected")</span></span>
+                                </div>*@
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- Wishlist -->
+            @*<div class="col-xl col-md-4 col-6 mb-4 comm-width" onclick="redirectPage('NewArrival')">
+                    <div class="card top border-left-info shadow h-100">
+                        <div class="card-body top third bg-cl-3">
+                            <div class="row no-gutters align-items-center">
+                                <div class="">
+                                    <div class="text-xs text-uppercase mb-1">@LanguageProvider.get("newarrival")</div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="">
+                                            <div id="cntNewArrival" class="cart-value h5 mb-0 mr-3 font-weight-bold text-gray-800 bx-cnt"></div>
+                                        </div>
+                                        <div class="cart-icon bx-icn">
+                                            <i class="fa fa-diamond" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>*@
+
+            <!-- Shoppingcart -->
+            @*<div class="col-xl col-md-4 col-6 mb-4 comm-width" onclick="redirectPage('Offer')">
+                    <div class="card top border-left-success shadow h-100">
+                        <div class="card-body top second bg-cl-2">
+                            <div class="row no-gutters align-items-center">
+                                <div class="">
+                                    <div class="text-xs text-uppercase mb-1">@LanguageProvider.get("Offer_Stone")</div>
+                                    <div id="cntMyOffer" class="cart-value h5 mb-0 font-weight-bold text-gray-800 bx-cnt"></div>
+                                </div>
+                                <div class="cart-icon bx-icn">
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>*@
+            @if (@SunriseWeb.Helper.SessionFacade.UserSession.IsSubuser == false ||
+            (SunriseWeb.Helper.SessionFacade.UserSession.IsSubuser == true && SunriseWeb.Helper.SessionFacade.UserSession.MyWishlist == true))
+            {
+                <!-- Pickup -->
+                @*<div class="col-xl col-md-4 col-6 mb-4 comm-width" onclick="redirectPage('Wishlist')">
+                        <div class="card top border-left-warning shadow h-100">
+                            <div class="card-body top fifth bg-cl-5">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="">
+                                        @if (SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 0 && SunriseWeb.Helper.SessionFacade.UserSession.isemp == 0)
+                                        {
+                                            <div class="text-xs text-uppercase mb-1">@LanguageProvider.get("mywishlist")</div>
+                                        }
+                                        else
+                                        {
+                                            <div class="text-xs text-uppercase mb-1">@LanguageProvider.get("wishlist1")</div>
+                                        }
+                                        <div id="cntWishlist" class="cart-value h5 mb-0 font-weight-bold text-gray-800 bx-cnt"></div>
+                                    </div>
+                                    <div class="cart-icon bx-icn">
+                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>*@
+            }
+        </div>
+    </div>
+
+    <div class="chart-section">
+        <div class="row">
+            @*<div class="col-xl-6 col-lg-6">
+                    <div class="card shadow mb-4">
+                        <div class="card-header" style=" border: 1px solid #003d662e; cursor: pointer; " onmouseover="GetSaveSearch();" onclick="Colla();">
+                            <h6 class="m-0 title font-weight-bold">Saved Search</h6>
+                            <div class="p-0">
+                                <div class="select-custom year" style="margin-top: -5px;margin-bottom: -6px;">
+                                    <i class="fa fa-caret-down crt" style="font-size: 25px;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body chart-custom cartbody" style="height: 217px;display:none;">
+                            <span id="spn_SS_NF" style="display:none;font-size: 13px;color: #6f6f6f;">No Data Found</span>
+                            <table id="tbl_SS" border="0" cellspacing="0" cellpadding="0" class="table table-hover" style="font-size: 12px;margin-bottom: -8px;margin-top: -11px;">
+                                <thead style="line-height: 0.8;">
+                                    <tr style="background-color: gainsboro;font-size: 13px;">
+                                        <th style="width: 1%;"></th>
+                                        <th style="width: 1%;">Date</th>
+                                        <th style="width: 13%;">Save Name</th>
+                                        <th style="width: 15%;">Criteria</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="line-height: 0.4;" id="Body_SavedSearch">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>*@
+            @*<div class="col-xl-12 col-lg-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-header" style="border: 1px solid #003d662e;cursor:pointer;" onmouseover="GetRecentSearch();" onclick="Colla();">
+                            <h6 class="m-0 title font-weight-bold">Recent Search</h6>
+                            <div class="p-0">
+                                <div class="select-custom year" style="margin-top: -5px;margin-bottom: -6px;">
+                                    <i class="fa fa-caret-down crt" style="font-size:25px;"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body chart-custom cartbody" style="height: 217px;display:none;">
+                            <span id="spn_RS_NF" style="display:none;font-size: 13px;color: #6f6f6f;">No Data Found</span>
+                            <table id="tbl_RS" border="0" cellspacing="0" cellpadding="0" class="table table-hover" style="font-size: 12px;margin-bottom: -8px;margin-top: -11px;">
+                                <thead style="line-height: 0.8;">
+                                    <tr style="background-color: gainsboro; font-size: 13px;">
+                                        <th style="width: 1%;">Date</th>
+                                        <th style="width: 59%;">Criteria</th>
+                                    </tr>
+                                </thead>
+                                <tbody style="line-height: 0.4;" id="Body_RecentSearch">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>*@
+        </div>
+    </div>
+
+
+    <!-- start chart -->
+    <div class="chart-section">
+        <div class="row">
+            <!-- Area Chart -->
+            <div class="col-xl-6 col-lg-6">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header">
+                        <h6 class="title font-weight-bold">@LanguageProvider.get("Stock")</h6>
+                        <div class="p-0">
+
+                            <div class="text-left select-custom index-graph-select">
+                                <select id="ddlChartFilterType" onchange="GetStockSummaryData();" class="select2">
+                                    <option value="PO" selected="selected"> Size</option>
+                                    <option value="SH">Shape </option>
+                                    <option value="CO">Color </option>
+                                    <option value="CL">Clarity </option>
+                                    <option value="CU">Cut </option>
+                                </select>
+                                <select id="ddlChartType" onchange="BindDynamicChart();" class="select2">
+                                    <option value="doughnut" selected="selected"> Doughnut</option>
+                                    <option value="pie"> Pie</option>
+                                    <option value="line">Line </option>
+                                    <option value="bar">Bar </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card Body -->
+                    <div class="card-body chart-custom" style="max-height:564px;">
+                        <div class="chart-area">
+                            <canvas class="custom-width-cart dash-stock-prc-chart chartjs-render-monitor" id="pieChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="card shadow mb-4">
+                    <!-- Card Header - Dropdown -->
+                    <div class="card-header">
+                        <h6 class="m-0 title font-weight-bold">@LanguageProvider.get("Order_Summary")</h6>
+                        <div class="p-0">
+
+                            <div class="select-custom year">
+                                <select id="ddlYear" onchange="GetOrderSummaryData();" class="select2">
+                                </select>
+                                <select id="ddlOrderChartType" onchange="BindOrderSummaryChart();" class="select2">
+                                    <option value="pie"> Pie</option>
+                                    <option value="doughnut"> Doughnut</option>
+                                    <option value="line">Line </option>
+                                    <option value="bar" selected="selected">Bar </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        @*<div class="col-md-12 col-lg-6 p-0">
+                                <div class="text-right select-custom">
+                                    <select id="ddlYear" onchange="GetOrderSummaryData();">
+                                    </select>
+                                    <select id="ddlOrderChartType" onchange="BindOrderSummaryChart();">
+                                        <option value="pie"> Pie</option>
+                                        <option value="doughnut"> Doughnut</option>
+                                        <option value="line">Line </option>
+                                        <option value="bar" selected="selected">Bar </option>
+                                    </select>
+                                </div>
+                            </div>*@
+                    </div>
+                    <!-- Card Body -->
+                    <div class="card-body chart-custom" style="max-height:564px;">
+                        <div class="chart-area">
+                            <canvas class="custom-width-cart dash-stock-prc-chart chartjs-render-monitor" id="lineChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="chart-section">
+            <div class="row">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="card shadow mb-4">
+                        <div class="card-body chart-custom cartbody" style="height: 277px;">
+                            <div style="height: 257px;border:1px solid #dcdcdc;margin: -10px -10px -10px -10px;">
+                                <div style="height: 237px;border: 2px solid #0000ff5e;margin: 10px 10px 10px 10px;border-radius: 5px;">
+                                    <div class="row">
+                                        <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+                                        </div>
+                                    </div>
+                                    <div class="triangle-topright"><span>50%</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6" style="display:none;">
+                    <div class="aw-inner-testimonial owl-carousel">
+                        <div class="item">
+                            <div class="aw-main-testimonial">
+                                <div class="row">
+                                    <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+                                        <div class="aw-testimonial-pic">
+                                            <img src="~/Content/images/owl.png" alt="" title="" class="img-responsive" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="aw-main-testimonial">
+                                <div class="row">
+                                    <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+                                        <div class="aw-testimonial-pic">
+                                            <img src="~/Content/images/owl.png" alt="" title="" class="img-responsive" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+</div>
+<div id="divModels">
+    @*<div class="modal fade social-model" id="EventModel" tabindex="-1" role="dialog" aria-modal="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <img id="imgEvent" class="img-fluid">
+                            <input id="hdnInformationID" type="hidden" />
+                        </div>
+                        <div style="float:right;">
+                            <a href="javascript:void(0);" data-dismiss="modal">Skip</a>&nbsp;&nbsp;&nbsp;
+                            <a href="javascript:void(0);" data-dismiss="modal">Dismiss</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+</div>
+@*<div class="modal fade" tabindex="-1" id="loginModal" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog modal-lg modalPopupnew" style="max-width: 100%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            ×
+                        </button>
+                    </div>
+                    <center>
+                        <div class="modal-body">
+                            <img style="max-width: 100%;" id="imgEvent0" src="http://localhost:44364/InfoImages/17.jpg">
+                        </div>
+                    </center>
+                </div>
+            </div>
+    </div>*@
+
+<div class="modal social-model fade" id="myModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="background-color: rgb(128 128 128 / 82%);">
+    <div class="modal-dialog search-width api-filter-popup modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ng-binding">@LanguageProvider.get("SUNRISE_DIAMOND_LIMITED")</h4>
+                @*<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>*@
+            </div>
+            <div class="modal-body">
+                <div class="col-12">
+                    <div class="popup-field">
+                        <div id="divModal" class="ng-hide" style="white-space: pre;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="modal-footer" class="modal-footer search-model-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" @*onclick="CustModal();"*@>@LanguageProvider.get("ok")</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/select2.min.js"></script>
+    <script src="~/Content/js/Chart.min.js"></script>
+    @*<script src="~/Content/js/owl.carousel.min.js"></script>*@
+    @*<script src="~/Content/js/mdb.min.js"></script>*@
+    <script src="~/Content/js/Pages/Dashboard.js?version=8.6"></script>
+}

@@ -1,0 +1,419 @@
+﻿@model SunriseWeb.Models.UserLogin
+@using SunriseWeb.Resources
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <title>Service</title>
+    <meta name="keyword" content="" />
+    <meta name="description" content="" />
+    <meta name="title" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- attach stylesheet -->
+    <link rel="stylesheet" href="~/Content/static_pages/css/bootstrap.min.css">
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- main stylesheet -->
+    <link href="~/Content/static_pages/css/login.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ======================== Start Navbar ============================ -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar login-myScrollspy ragistration-page" id="navigation">
+        <div class="container">
+            <div class="ragister-logo">
+                <button type="button" id="sidebarCollapse" class="custom-toggle">
+                    <i class="fa fa-align-left" aria-hidden="true"></i>
+                </button>
+                <img src="~/Content/Login/images/logo.png" class="img-responsive" alt="logo">
+                <div class="home-icon">
+                    <a href="@Url.Action("Index","Login")"><i class="fa fa-home" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div id="myScrollspy">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="@Url.Action("Index","Login")">@LanguageProvider.get("home")</a></li>
+                    <li><a href="@Url.Action("Aboutus","Login")">@LanguageProvider.get("aboutus")</a></li>
+                    <li><a href="@Url.Action("Service","Login")">@LanguageProvider.get("service")</a></li>
+                    <li><a href="@Url.Action("ContactUs","Login")">@LanguageProvider.get("contact")</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ======================== End Navbar ============================ -->
+    <!-- ======================== Start Home ============================ -->
+    <section class="section ragistration" id="ragistration">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="ragistration-form one">
+                        <div class="personal-info common-eee service-page">
+                            <div class="r-label">
+                                <p>Service</p>
+                            </div>
+                            <div class="login-pages-dta aboutus-page left-sml-part">
+                                <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 float-left pl-0 pr-0 service-left">
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 float-left pl-2 pr-2">
+                                        <ul class="service-box">
+                                            <li>
+                                                <h5>PRODUCT</h5>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="High();">
+                                                    High light return round brilliants
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Wide();">
+                                                    Wide choice of
+                                                    <br>
+                                                    fancy cuts
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Special();">
+                                                    Special cut development &amp; manufacturing
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="On();">
+                                                    On-demand
+                                                    <br>
+                                                    manufacturing
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Mine();">
+                                                    Mine-to-market
+                                                    <br>
+                                                    traceability
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Large();">
+                                                    Large inventory of pre-certified goods
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Polished();">
+                                                    Polished girdle on every stone
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 float-left pl-2 pr-2">
+                                        <ul class="service-box">
+                                            <li>
+                                                <h5>PREPARATION</h5>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Third();">
+                                                    Third party
+                                                    <br>
+                                                    procurement
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Sorting();">
+                                                    Sorting
+                                                    <br>
+                                                    capability
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Customised();">
+                                                    Customised
+                                                    <br>
+                                                    assortments
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Matching();">
+                                                    Matching,
+                                                    <br>
+                                                    bagging &amp; fluting
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="In();">
+                                                    In-house microscope
+                                                    <br>
+                                                    grading
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Single();">
+                                                    Single stone
+                                                    <br>
+                                                    certification
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Girdle();">
+                                                    Girdle
+                                                    <br>
+                                                    engraving
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 float-left pl-2 pr-2">
+                                        <ul class="service-box">
+                                            <li>
+                                                <h5>FACILITATION</h5>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Inventory();">
+                                                    Inventory management
+                                                    <br>
+                                                    &amp; just-in-time delivery
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Door();">
+                                                    Door-to-door
+                                                    <br>
+                                                    delivery
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Orders();">
+                                                    24/7 online inventory
+                                                    <br>
+                                                    orders &amp; tracking
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Key();">
+                                                    Dedicated key
+                                                    <br>
+                                                    account manager
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Trade();">
+                                                    Trade fairs
+                                                    <br>
+                                                    representation
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Personal();">
+                                                    Dedicated personal
+                                                    <br>
+                                                    assistant
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Grading();">
+                                                    Polished grading
+                                                    <br>
+                                                    training
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 float-left pl-2 pr-2">
+                                        <ul class="service-box">
+                                            <li>
+                                                <h5>FINANCE</h5>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Price();">
+                                                    Price
+                                                    <br>
+                                                    planning
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Credit();">
+                                                    Credit
+                                                    <br>
+                                                    terms
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Staggering();">
+                                                    Staggering
+                                                    <br>
+                                                    payments
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Memos();">
+                                                    Memos &amp; consignments
+                                                    <br>
+                                                    of goods
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Co();">
+                                                    Co-operative
+                                                    <br>
+                                                    marketing
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Promotional();">
+                                                    Promotional
+                                                    <br>
+                                                    materials
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="servic-inner-list" ng-click="Market();">
+                                                    Market insights
+                                                    <br>
+                                                    &amp; sales analysis
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12 float-left pl-0 pr-0">
+                                    <div class="right-txt-changes-bx">
+                                        <div ng-hide="DivHigh" class="ng-hide"><h4>HIGH LIGHT RETURN ROUND BRILLIANTS</h4></div>
+                                        <div ng-hide="DivWide" class="ng-hide"><h4>WIDE CHOICE OF <br> FANCY CUTS</h4></div>
+                                        <div ng-hide="DivSpecial" class="ng-hide"><h4>SPECIAL CUT DEVELOPMENT &amp; MANUFACTURING</h4></div>
+                                        <div ng-hide="DivOn" class="ng-hide"><h4>ON-DEMAND <br> MANUFACTURING</h4></div>
+                                        <div ng-hide="DivMine" class="ng-hide"><h4>MINE-TO-MARKET <br> TRACEABILITY</h4></div>
+                                        <div ng-hide="DivLarge" class="ng-hide"><h4>LARGE INVENTORY OF PRE-CERTIFIED GOODS</h4></div>
+                                        <div ng-hide="DivPolished" class="ng-hide"><h4>POLISHED GIRDLE ON EVERY STONE</h4></div>
+
+                                        <div ng-hide="DivThird" class="ng-hide"><h4>THIRD PARTY PROCUREMENT</h4></div>
+                                        <div ng-hide="DivSorting" class="ng-hide"><h4>SORTING CAPABILITY</h4></div>
+                                        <div ng-hide="DivCustomised" class="ng-hide"><h4>CUSTOMISED ASSORTMENTS</h4></div>
+                                        <div ng-hide="DivMatching" class="ng-hide"><h4>MATCHING, BAGGING &amp; FLUTING</h4></div>
+                                        <div ng-hide="DivIn" class="ng-hide"><h4>IN-HOUSE MICROSCOPE GRADING</h4></div>
+                                        <div ng-hide="DivSingle" class="ng-hide"><h4>SINGLE STONE CERTIFICATION</h4></div>
+                                        <div ng-hide="DivGirdle" class="ng-hide"><h4>GIRDLE ENGRAVING</h4></div>
+
+                                        <div ng-hide="DivInventory" class="ng-hide"><h4>INVENTORY MANAGEMENT &amp; JUST-IN-TIME DELIVERY</h4></div>
+                                        <div ng-hide="DivDoor" class="ng-hide"><h4>DOOR-TO-DOOR DELIVERY</h4></div>
+                                        <div ng-hide="Divonline" class="ng-hide"><h4>24/7 ONLINE INVENTORY ORDERS &amp; TRACKING</h4></div>
+                                        <div ng-hide="DivDedicated" class="ng-hide"><h4>DEDICATED KEY ACCOUNT MANAGER</h4></div>
+                                        <div ng-hide="DivTrade" class="ng-hide"><h4>TRADE FAIRS REPRESENTATION</h4></div>
+                                        <div ng-hide="DivAssistant" class="ng-hide"><h4>DEDICATED PERSONAL ASSISTANT</h4></div>
+                                        <div ng-hide="DivGrading" class="ng-hide"><h4>POLISHED GRADING TRAINING</h4></div>
+
+                                        <div ng-hide="DivPrice" class="ng-hide"><h4>PRICE PLANNING</h4></div>
+                                        <div ng-hide="DivCredit" class="ng-hide"><h4>CREDIT TERMS</h4></div>
+                                        <div ng-hide="DivStaggering" class="ng-hide"><h4>STAGGERING PAYMENTS</h4></div>
+                                        <div ng-hide="DivMemos" class="ng-hide"><h4>MEMOS &amp; CONSIGNMENTS OF GOODS</h4></div>
+                                        <div ng-hide="DivCo" class="ng-hide"><h4>CO-OPERATIVE MARKETING</h4></div>
+                                        <div ng-hide="DivPromotional" class="ng-hide"><h4>PROMOTIONAL MATERIALS</h4></div>
+                                        <div ng-hide="DivMarket" class="ng-hide"><h4>MARKET INSIGHTS &amp; SALES ANALYSIS</h4></div>
+
+                                        <div class="service-disc-main mb-1" ng-hide="ManiDiv">
+                                            <h3 class="mb-1"></h3>
+                                        </div>
+
+                                        <div class="service-disc-main">
+                                            <h3 class="mb-0">SERVICE DESCRIPTION</h3>
+                                            <div class="disc-txt">
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivHigh">Constant superior light performance (minimum 97%) of standard brilliant cuts through optimisation of the 'Make' parameters.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivWide">Access to a wide choice of standard fancy cuts: Princess, Marquise, Oval, Emerald, Square Emerald, Cushion, etc.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivSpecial">Dedicated research &amp; development department &amp; production units for special &amp; proprietary cuts.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivOn">Availability of semi-polished inventory to reduce rough-to-polished conversion time.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivMine">Pipeline integrity &amp; complete traceability from mine to market thanks to IT integration.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivLarge">Large number of laboratory-certified dossiers constantly available.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivPolished">Every stone is girdle-polished.</div>
+
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivThird">Third party polished sourcing on behalf of customers.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivSorting">Option of selecting a certain percentage of goods at a defined price.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivCustomised">Detailed and consistent product categories split according to sizes, colours, clarities, and makes.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivMatching">Preparation of matching pieces for designed jewellery units.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivIn">In-house grading for above 0.18 cts stones to ease mounting of loose on already-set jewellery.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivSingle">Full administrative and logistical handling of certification steps.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivGirdle">Girdle engraving upon request with any possible text.</div>
+
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivInventory">Just-in-time polished delivery, eliminating the needs to carry inventory.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivDoor">Direct delivery of loose stones at customers' premises.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="Divonline">Real-time order placement and tracking facility through a web interface.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivDedicated">Dedicated relationship manager available on a 24/7 basis.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivTrade">Participation to all major trade shows across the globe.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivAssistant">Dedicated assistant responsible for all logistical aspects of customers' travels (hotel, taxi, airplane, medical needs, etc).</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivGrading">Possibility for our customers' employees to receive a polished grading training in our manufacturing operations.</div>
+
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivPrice">Guaranteed volumes of specific assortments with a structured price plan for up to six months.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivCredit">Flexible/preferential credit terms coupled with banking references.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivStaggering">Part-payments over a defined timeframe.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivMemos">Memo programmes and consignment of goods during testing periods.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivCo">Co-operative marketing expenditures to support sales efforts.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivPromotional">Supply of educational and point-of-sales merchandising.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivMarket">Advanced notice on industry campaigns, coupled with updates on regional trends and performance.</div>
+
+                                            </div>
+                                        </div>
+                                        <div class="service-disc-main mt-3">
+                                            <h3 class="mb-0">CUSTOMER BENEFITS</h3>
+                                            <div class="disc-txt">
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivHigh"> Fine-tuning &amp; additional flexibility in polished supply requirements.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivWide"> Multiplication of design opportunities through extensive use of non-round brilliant cuts.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivSpecial"> Unique models, branded cuts, differentiation towards competitors, geographic exclusivity.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivOn"> Fulfilment of unplanned orders in very short production cycles.;</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivMine"> Customer reassurance, possibility to participate to chain of warranty programmes.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivLarge"> Great availability, reduced sourcing time.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivPolished"> Better finishing, higher brilliancy.</div>
+
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivThird">Reduced purchasing efforts, stronger bargaining power, business focus &amp; assortment consistency.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivSorting">Fine-tuning &amp; additional flexibility in polished supply requirements.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivCustomised">Availability &amp; consistency of assortments across volumes, achieving a rejection rate below 10%.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivMatching">Reduced inventory, production times and investments in skilled labour &amp; equipments.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivIn">Grading services at a fraction of laboratories’ cost, easier mounting process.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivSingle">Global access to independent laboratory certification (GIA, HRD, IGI, AGS, EGL, etc.).</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivGirdle">Customisation, brand promise, possibility to participate to programmes.</div>
+
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivInventory">Optimisation of polished inventory without shortage that would jeopardise a programme.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivDoor">Reduced logistical burden, quicker delivery times.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="Divonline">24/7 availability, improved communication flow, inventory transparency, ability to retrieve past figures.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivDedicated">Personalised and accessible contacts that already know customers’ organisation and needs.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivTrade">Face-to-face contacts, closer geographic proximity.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivAssistant">Attention to details, complimentary supporting staff.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivGrading">More informed and skilled workforce, long-term relationship building.</div>
+
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivPrice">Fulfilment of downstream price point commitments to distributors and end-consumers.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivCredit">Increased cash flow availability reinforced by a strong financial standing.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivStaggering">Increased cash flow availability, better financial planning.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivMemos">Wider product offering during product launches or seasonal peaks without increasing inventory costs.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivCo">Financial contribution to promotional programmes and initiatives.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivPromotional">Diversified selling tools, more informed customers and sales forces without major spending.</div>
+                                                <div class="disc-txt-inner ng-hide" ng-hide="DivMarket">Improved financial planning, ability to anticipate industry &amp; market trends.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <script>
+        function open_side() {
+            document.getElementById("myScrollspy").style.width = "250px";
+        }
+        function close_side() {
+            document.getElementById("myScrollspy").style.width = "0";
+        }
+    </script>
+    <!-- ======================== End Home ============================ -->
+    <!-- end of login -->
+    <script src="~/Content/static_pages/js/jquery.min.js"></script>
+    <script src="~/Content/static_pages/js/bootstrap.min.js"></script>
+    <script src="~/Content/static_pages/js/propper.min.js"></script>
+    <script src="~/Content/static_pages/js/login.js"></script>
+
+</body>
+</html>

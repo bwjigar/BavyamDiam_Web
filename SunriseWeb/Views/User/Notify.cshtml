@@ -1,0 +1,155 @@
+﻿@{
+    ViewBag.Title = "Notification Master";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+
+}
+<style type="text/css">
+    .ag-paging-page-summary-panel {
+        left: 10px;
+        position: relative;
+    }
+
+    .ag-theme-balham .ag-cell {
+        white-space: normal !important;
+        line-height: inherit;
+        overflow-y: auto;
+    }
+
+    .Yes {
+        margin-bottom: 1px;
+        color: white;
+        background-color: #008000ab;
+        padding: 2px 5px;
+        border-radius: 16px;
+        font-weight: bold;
+    }
+
+    .No {
+        margin-bottom: 1px;
+        color: white;
+        background-color: #ff0000cf;
+        padding: 2px 5px;
+        border-radius: 16px;
+        font-weight: bold;
+    }
+
+    .daterangepicker.opensright .calendar,
+    .daterangepicker.openscenter .calendar {
+        float: none;
+    }
+
+        .daterangepicker.opensright .calendar.first,
+        .daterangepicker.openscenter .calendar.first {
+            top: 292px;
+            position: relative;
+        }
+
+        .daterangepicker.opensright .calendar.second,
+        .daterangepicker.openscenter .calendar.second {
+            top: -292px;
+            position: relative;
+        }
+
+    @@media (min-width: 768px) {
+        .daterangepicker.opensright .calendar,
+        .daterangepicker.openscenter .calendar {
+            float: right;
+        }
+
+            .daterangepicker.opensright .calendar.first,
+            .daterangepicker.openscenter .calendar.first {
+                position: static;
+            }
+
+            .daterangepicker.opensright .calendar.second,
+            .daterangepicker.openscenter .calendar.second {
+                position: static;
+            }
+    }
+</style>
+
+<div class="container-fluid order-history-section">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>Notification Master</h2>
+            </div>
+        </div>
+    </div>
+    <div class="order-history-data admin">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left mb-2">
+                    <div class="order-date common-order">
+                        <div class="offer-label">Search:</div>
+                        <input id="txtMSearch" placeholder="Company Name / User Name / Country Name" type="text" class="form-control common-control" autocomplete="off" onkeyup="Search();">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="aggrid-section">
+        <div class="row">
+            <div class="col-xl-12">
+                <!---- =============== start ag-grid =============== ---->
+                <div id="myGrid" style="width: 100%;height:290px;" class="ag-theme-balham">
+                </div>
+                <!---- =============== end ag-grid ================= ----->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid search_result viewcart-fluid">
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane active result-page-content viewcart-page-content" id="profile-tab2" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="result-nav">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                        <div class="myoffer-form column-setting-form one">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                                            <div class="common-order">
+                                                <div class="offer-label">Validity Date:</div>
+                                                <input type="text" id="txtFromDate" name="txtFromDate" value="" class="commonFromRange offer-input" autocomplete="off" />
+                                                <input type="text" id="txtToDate" name="txtToDate" value="" class="commonToRange offer-input" autocomplete="off" />
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                                            <div class="order-stone-id common-order">
+                                                <div class="offer-label">Message:</div>
+                                                <textarea id="txtMessage" name="txtMessage" placeholder="Message" type="text" maxlength="500" class="form-control common-control" autocomplete="off" style="height: 60px;"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                                            <div class="offer-label">&nbsp;</div>
+                                            <ul class="offer-inbtn p-0 mb-2">
+                                                <li style="padding-right: 5px;">
+                                                    <button id="btnPublish" class="offer-btn" onclick="Publish();"><i class="fa fa-upload" aria-hidden="true"></i> Publish </button>
+                                                </li>
+                                                <li>
+                                                    <button id="btnBack" class="offer-btn" onclick="Back();"><i class="fa fa-undo" aria-hidden="true"></i> Back </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--- end of order-history part---->
+@section scripts{
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/common.js"></script>
+    <script src="~/Content/js/Pages/Notify.js"></script>
+}

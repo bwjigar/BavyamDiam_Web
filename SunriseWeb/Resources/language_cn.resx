@@ -1,0 +1,1689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="2hrsago" xml:space="preserve">
+    <value>2小时前</value>
+  </data>
+  <data name="3hrsago" xml:space="preserve">
+    <value>3小时前</value>
+  </data>
+  <data name="5hrsago" xml:space="preserve">
+    <value>5小时前</value>
+  </data>
+  <data name="aboutus" xml:space="preserve">
+    <value>关于我们</value>
+  </data>
+  <data name="action" xml:space="preserve">
+    <value>行动</value>
+  </data>
+  <data name="active" xml:space="preserve">
+    <value>活性</value>
+  </data>
+  <data name="Address1" xml:space="preserve">
+    <value>地址1</value>
+  </data>
+  <data name="Address2" xml:space="preserve">
+    <value>地址2</value>
+  </data>
+  <data name="addtocart" xml:space="preserve">
+    <value>加到购物车</value>
+  </data>
+  <data name="Add_in_to_wishList_failed" xml:space="preserve">
+    <value>加入愿望清单失败</value>
+  </data>
+  <data name="Admin" xml:space="preserve">
+    <value>管理员</value>
+  </data>
+  <data name="advancesearch" xml:space="preserve">
+    <value>高级搜索</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>所有</value>
+  </data>
+  <data name="allstone" xml:space="preserve">
+    <value>全部钻石</value>
+  </data>
+  <data name="allstone1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="All_selected" xml:space="preserve">
+    <value>全部选中</value>
+  </data>
+  <data name="All_Stone" xml:space="preserve">
+    <value>所有库存</value>
+  </data>
+  <data name="alsoavalblon" xml:space="preserve">
+    <value>也可用在</value>
+  </data>
+  <data name="amount" xml:space="preserve">
+    <value>金额</value>
+  </data>
+  <data name="amount1" xml:space="preserve">
+    <value>金额</value>
+  </data>
+  <data name="Amount_in" xml:space="preserve">
+    <value>金额中</value>
+  </data>
+  <data name="Amount_in_Currency" xml:space="preserve">
+    <value>货币金额</value>
+  </data>
+  <data name="API_Filter" xml:space="preserve">
+    <value>API过滤器</value>
+  </data>
+  <data name="appapproved" xml:space="preserve">
+    <value>申请已通过</value>
+  </data>
+  <data name="appstore" xml:space="preserve">
+    <value>应用商店</value>
+  </data>
+  <data name="areacode" xml:space="preserve">
+    <value>区号</value>
+  </data>
+  <data name="Are_you_sure_to_remove_this_record" xml:space="preserve">
+    <value>确定移除?</value>
+  </data>
+  <data name="Arrival_in_HK" xml:space="preserve">
+    <value>到达香港</value>
+  </data>
+  <data name="assist1" xml:space="preserve">
+    <value>辅助1</value>
+  </data>
+  <data name="assist2" xml:space="preserve">
+    <value>辅助2</value>
+  </data>
+  <data name="available" xml:space="preserve">
+    <value>可用</value>
+  </data>
+  <data name="avalblon" xml:space="preserve">
+    <value>可用</value>
+  </data>
+  <data name="avgdisc" xml:space="preserve">
+    <value>平均折扣</value>
+  </data>
+  <data name="avgprice" xml:space="preserve">
+    <value>平均价格/克拉(美金)</value>
+  </data>
+  <data name="Avg_Dis" xml:space="preserve">
+    <value>平均折扣 %</value>
+  </data>
+  <data name="Avg_Offer_Disc_Per" xml:space="preserve">
+    <value>平均报价盘(%)</value>
+  </data>
+  <data name="Avg_Offer_Value_Dollar" xml:space="preserve">
+    <value>平均报价($)</value>
+  </data>
+  <data name="Avg_Web_Disc_Dollar" xml:space="preserve">
+    <value>平均Web光盘数($)</value>
+  </data>
+  <data name="back" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="backtologin" xml:space="preserve">
+    <value>回到登入</value>
+  </data>
+  <data name="Bar" xml:space="preserve">
+    <value>酒吧</value>
+  </data>
+  <data name="bgm" xml:space="preserve">
+    <value>奶咖绿</value>
+  </data>
+  <data name="black" xml:space="preserve">
+    <value>黑</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>浏览</value>
+  </data>
+  <data name="buildingname" xml:space="preserve">
+    <value>大厦</value>
+  </data>
+  <data name="BussinessRegNo" xml:space="preserve">
+    <value>商业注册号</value>
+  </data>
+  <data name="Busy" xml:space="preserve">
+    <value>繁忙</value>
+  </data>
+  <data name="Calender_Events" xml:space="preserve">
+    <value>日历活动</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="carat" xml:space="preserve">
+    <value>克拉</value>
+  </data>
+  <data name="Carat_is_already_exist" xml:space="preserve">
+    <value>克拉已经存在</value>
+  </data>
+  <data name="Carat_Weight" xml:space="preserve">
+    <value>克拉重</value>
+  </data>
+  <data name="Cerificate_No" xml:space="preserve">
+    <value>证书号码</value>
+  </data>
+  <data name="certificate" xml:space="preserve">
+    <value>证书号</value>
+  </data>
+  <data name="certificateno" xml:space="preserve">
+    <value>证书</value>
+  </data>
+  <data name="certino" xml:space="preserve">
+    <value>证书号</value>
+  </data>
+  <data name="Change_Password" xml:space="preserve">
+    <value>更改密码</value>
+  </data>
+  <data name="Checking_Avaibility" xml:space="preserve">
+    <value>请联系销售</value>
+  </data>
+  <data name="Checking_Availability" xml:space="preserve">
+    <value>请联系销售</value>
+  </data>
+  <data name="Choose_a_country" xml:space="preserve">
+    <value>选择一个国家</value>
+  </data>
+  <data name="city" xml:space="preserve">
+    <value>城市</value>
+  </data>
+  <data name="clarity" xml:space="preserve">
+    <value>净度</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="client" xml:space="preserve">
+    <value>客户</value>
+  </data>
+  <data name="close" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>码</value>
+  </data>
+  <data name="Collected" xml:space="preserve">
+    <value>已取</value>
+  </data>
+  <data name="Collected_Date" xml:space="preserve">
+    <value>收集日期</value>
+  </data>
+  <data name="color" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="ColumnSetting" xml:space="preserve">
+    <value>列设定</value>
+  </data>
+  <data name="Column_Setting" xml:space="preserve">
+    <value>列表设置</value>
+  </data>
+  <data name="comments" xml:space="preserve">
+    <value>批注</value>
+  </data>
+  <data name="Company" xml:space="preserve">
+    <value>公司</value>
+  </data>
+  <data name="CompanyName" xml:space="preserve">
+    <value>公司名</value>
+  </data>
+  <data name="company_detail" xml:space="preserve">
+    <value>公司详细资料</value>
+  </data>
+  <data name="comparestone" xml:space="preserve">
+    <value>比较钻石</value>
+  </data>
+  <data name="confirmbuy" xml:space="preserve">
+    <value>确定购买</value>
+  </data>
+  <data name="Confirmed" xml:space="preserve">
+    <value>已确定</value>
+  </data>
+  <data name="confirmorder" xml:space="preserve">
+    <value>确定订单</value>
+  </data>
+  <data name="confirmpwd" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="Confirm_Order" xml:space="preserve">
+    <value>确认订单</value>
+  </data>
+  <data name="Confirm_Password" xml:space="preserve">
+    <value>确认密码</value>
+  </data>
+  <data name="contact" xml:space="preserve">
+    <value>联系</value>
+  </data>
+  <data name="contactus" xml:space="preserve">
+    <value>联系我们</value>
+  </data>
+  <data name="counteroffer" xml:space="preserve">
+    <value>还价</value>
+  </data>
+  <data name="country" xml:space="preserve">
+    <value>国家</value>
+  </data>
+  <data name="Craftmanship" xml:space="preserve">
+    <value>工艺</value>
+  </data>
+  <data name="criteria" xml:space="preserve">
+    <value>范围</value>
+  </data>
+  <data name="crownangle" xml:space="preserve">
+    <value>亭部角度</value>
+  </data>
+  <data name="crownangle1" xml:space="preserve">
+    <value>冠角</value>
+  </data>
+  <data name="crownheight" xml:space="preserve">
+    <value>亭部高度</value>
+  </data>
+  <data name="crownheight1" xml:space="preserve">
+    <value>冠高</value>
+  </data>
+  <data name="crowninclusion" xml:space="preserve">
+    <value>亭部内含物</value>
+  </data>
+  <data name="crownnatts" xml:space="preserve">
+    <value>亭部黑点</value>
+  </data>
+  <data name="Crown_Black" xml:space="preserve">
+    <value>冠部黑</value>
+  </data>
+  <data name="Crown_Open" xml:space="preserve">
+    <value>皇冠公开赛</value>
+  </data>
+  <data name="Crown_White" xml:space="preserve">
+    <value>冠部白</value>
+  </data>
+  <data name="Cr_Ang" xml:space="preserve">
+    <value>冠部角度</value>
+  </data>
+  <data name="Cr_Ht" xml:space="preserve">
+    <value>冠部高度</value>
+  </data>
+  <data name="cts" xml:space="preserve">
+    <value>克拉</value>
+  </data>
+  <data name="cts1" xml:space="preserve">
+    <value>克拉</value>
+  </data>
+  <data name="Culet" xml:space="preserve">
+    <value>底尖</value>
+  </data>
+  <data name="Currently_we_do_not_have_stock_as_per_your_search_criteria" xml:space="preserve">
+    <value>根据您的搜索条件，目前我们没有库存。</value>
+  </data>
+  <data name="Current_Password" xml:space="preserve">
+    <value>现有密码</value>
+  </data>
+  <data name="custname" xml:space="preserve">
+    <value>客户名称</value>
+  </data>
+  <data name="customername" xml:space="preserve">
+    <value>顾客姓名</value>
+  </data>
+  <data name="Customer_Disc_Report" xml:space="preserve">
+    <value>海外折扣报告</value>
+  </data>
+  <data name="cut" xml:space="preserve">
+    <value>切工</value>
+  </data>
+  <data name="dashboard" xml:space="preserve">
+    <value>仪表板</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="DBA" xml:space="preserve">
+    <value>数据库管理员</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="Depth" xml:space="preserve">
+    <value>全深比</value>
+  </data>
+  <data name="depth_per" xml:space="preserve">
+    <value>全深比(%)</value>
+  </data>
+  <data name="detail" xml:space="preserve">
+    <value>详细</value>
+  </data>
+  <data name="Device" xml:space="preserve">
+    <value>设备</value>
+  </data>
+  <data name="Diamonds" xml:space="preserve">
+    <value>钻石</value>
+  </data>
+  <data name="discount" xml:space="preserve">
+    <value>折扣</value>
+  </data>
+  <data name="Discount_must_be_less_than" xml:space="preserve">
+    <value>折扣必须小于</value>
+  </data>
+  <data name="disc_per" xml:space="preserve">
+    <value>折扣(%)</value>
+  </data>
+  <data name="Doughnut" xml:space="preserve">
+    <value>甜甜圈</value>
+  </data>
+  <data name="download" xml:space="preserve">
+    <value>下载</value>
+  </data>
+  <data name="download_17061" xml:space="preserve">
+    <value>下载</value>
+  </data>
+  <data name="DOWNLOAD_OUR_STOCK_LIST" xml:space="preserve">
+    <value>下载我们的库存清单</value>
+  </data>
+  <data name="Dubai" xml:space="preserve">
+    <value>杜拜</value>
+  </data>
+  <data name="Either_you_select_Busy_stone_or_Available_stone" xml:space="preserve">
+    <value>Either you select Busy stone or Available / New / Offer stone</value>
+  </data>
+  <data name="EmailAdd1" xml:space="preserve">
+    <value>电邮地址1</value>
+  </data>
+  <data name="EmailAdd2" xml:space="preserve">
+    <value>电邮地址2</value>
+  </data>
+  <data name="emailaddress" xml:space="preserve">
+    <value>邮箱</value>
+  </data>
+  <data name="emailid1" xml:space="preserve">
+    <value>电子邮件地址</value>
+  </data>
+  <data name="emailnote_text1" xml:space="preserve">
+    <value>电邮钻石资料</value>
+  </data>
+  <data name="emailstone" xml:space="preserve">
+    <value>发到电子邮箱</value>
+  </data>
+  <data name="Email_Me" xml:space="preserve">
+    <value>给我发邮件</value>
+  </data>
+  <data name="Email_Stone_Note" xml:space="preserve">
+    <value>注意：您可以以逗号（，）分隔, 同时将资料发送到多个电子邮件地址</value>
+  </data>
+  <data name="enter" xml:space="preserve">
+    <value>表格</value>
+  </data>
+  <data name="EnterPassword" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="EnterUsername" xml:space="preserve">
+    <value>用戶名</value>
+  </data>
+  <data name="enterusernm" xml:space="preserve">
+    <value>输入用户名</value>
+  </data>
+  <data name="Enter_Comments" xml:space="preserve">
+    <value>请输入备注</value>
+  </data>
+  <data name="Enter_Confirm_Password_Same_as_Password" xml:space="preserve">
+    <value>请确定密码是否相同</value>
+  </data>
+  <data name="Enter_First_Name" xml:space="preserve">
+    <value>输入姓</value>
+  </data>
+  <data name="Enter_Last_Name" xml:space="preserve">
+    <value>输入名字</value>
+  </data>
+  <data name="Enter_Minimum_5_Character_Username" xml:space="preserve">
+    <value>须包含至少5位字母或数字</value>
+  </data>
+  <data name="Enter_Minimum_6_Character_Password" xml:space="preserve">
+    <value>输入至少6个字符的密码</value>
+  </data>
+  <data name="Enter_only_positive_numbers" xml:space="preserve">
+    <value>仅输入正数</value>
+  </data>
+  <data name="Error_Log" xml:space="preserve">
+    <value>错误记录</value>
+  </data>
+  <data name="Error_to_download_video_video_is_not_MP4" xml:space="preserve">
+    <value>下载视频时出错，视频不是MP4。</value>
+  </data>
+  <data name="Events" xml:space="preserve">
+    <value>大事记</value>
+  </data>
+  <data name="excel" xml:space="preserve">
+    <value>表格</value>
+  </data>
+  <data name="Exchange_Rate" xml:space="preserve">
+    <value>汇率</value>
+  </data>
+  <data name="Failed_to_confirm_stone" xml:space="preserve">
+    <value>无法确认石头</value>
+  </data>
+  <data name="Failed_to_place_order" xml:space="preserve">
+    <value>下订单失败</value>
+  </data>
+  <data name="fancy" xml:space="preserve">
+    <value>回馈</value>
+  </data>
+  <data name="Faxno" xml:space="preserve">
+    <value>传真号码</value>
+  </data>
+  <data name="FeedBack" xml:space="preserve">
+    <value>反馈</value>
+  </data>
+  <data name="feedbackform" xml:space="preserve">
+    <value>名</value>
+  </data>
+  <data name="Final_Disc" xml:space="preserve">
+    <value>最终碟片。(%)</value>
+  </data>
+  <data name="Final_Disc_Per" xml:space="preserve">
+    <value>最终价格(%)</value>
+  </data>
+  <data name="Final_Value" xml:space="preserve">
+    <value>最终价值($)</value>
+  </data>
+  <data name="flatno" xml:space="preserve">
+    <value>室</value>
+  </data>
+  <data name="flour" xml:space="preserve">
+    <value>荧光</value>
+  </data>
+  <data name="fls" xml:space="preserve">
+    <value>荧光</value>
+  </data>
+  <data name="flu" xml:space="preserve">
+    <value>荧光</value>
+  </data>
+  <data name="fluor" xml:space="preserve">
+    <value>荧光</value>
+  </data>
+  <data name="fname" xml:space="preserve">
+    <value>姓</value>
+  </data>
+  <data name="forgotpwd" xml:space="preserve">
+    <value>忘记密码 ?</value>
+  </data>
+  <data name="fortunepartycode" xml:space="preserve">
+    <value>幸运党代码</value>
+  </data>
+  <data name="From" xml:space="preserve">
+    <value>从</value>
+  </data>
+  <data name="Gallery_View" xml:space="preserve">
+    <value>图片显示</value>
+  </data>
+  <data name="general" xml:space="preserve">
+    <value>一般</value>
+  </data>
+  <data name="generateexcel" xml:space="preserve">
+    <value>腰部</value>
+  </data>
+  <data name="girdle" xml:space="preserve">
+    <value>腰</value>
+  </data>
+  <data name="Girdle_Open" xml:space="preserve">
+    <value>腰围打开</value>
+  </data>
+  <data name="Girdle_Type" xml:space="preserve">
+    <value>腰部总类</value>
+  </data>
+  <data name="googleplay" xml:space="preserve">
+    <value>Google Play</value>
+  </data>
+  <data name="Go_to_cart" xml:space="preserve">
+    <value>购物车</value>
+  </data>
+  <data name="Go_to_Wishlist" xml:space="preserve">
+    <value>心愿清单</value>
+  </data>
+  <data name="headersearchlabel" xml:space="preserve">
+    <value>石材ID /证书编号...</value>
+  </data>
+  <data name="helpnote_text1" xml:space="preserve">
+    <value>保留公司列表</value>
+  </data>
+  <data name="hkid" xml:space="preserve">
+    <value>香港身份证</value>
+  </data>
+  <data name="hold" xml:space="preserve">
+    <value>保留钻石</value>
+  </data>
+  <data name="HoldBusy" xml:space="preserve">
+    <value>保持忙碌</value>
+  </data>
+  <data name="holdpartylist" xml:space="preserve">
+    <value>钻石保留清单</value>
+  </data>
+  <data name="holdstone" xml:space="preserve">
+    <value>如有任何问题, 我们非常乐意为你提供协助</value>
+  </data>
+  <data name="holdstonelist" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="Hold_Transaction" xml:space="preserve">
+    <value>暂挂交易</value>
+  </data>
+  <data name="home" xml:space="preserve">
+    <value>家</value>
+  </data>
+  <data name="Hong_Kong" xml:space="preserve">
+    <value>香港</value>
+  </data>
+  <data name="image" xml:space="preserve">
+    <value>图片</value>
+  </data>
+  <data name="imagenotavailable" xml:space="preserve">
+    <value>客户经理</value>
+  </data>
+  <data name="Image_is_not_available_in_this_stone" xml:space="preserve">
+    <value>图片在此石头上不可用！</value>
+  </data>
+  <data name="India" xml:space="preserve">
+    <value>印度</value>
+  </data>
+  <data name="Information" xml:space="preserve">
+    <value>资讯栏</value>
+  </data>
+  <data name="Invalid_email_format" xml:space="preserve">
+    <value>无效的电子邮件</value>
+  </data>
+  <data name="IpAddress" xml:space="preserve">
+    <value>IP地址</value>
+  </data>
+  <data name="iscompany" xml:space="preserve">
+    <value>是公司吗</value>
+  </data>
+  <data name="ISD" xml:space="preserve">
+    <value>ISD</value>
+  </data>
+  <data name="keyaccmanager" xml:space="preserve">
+    <value>证书</value>
+  </data>
+  <data name="Key_to_symbol" xml:space="preserve">
+    <value>主要评语</value>
+  </data>
+  <data name="lab" xml:space="preserve">
+    <value>实验室</value>
+  </data>
+  <data name="LabStatus" xml:space="preserve">
+    <value>实验室状态</value>
+  </data>
+  <data name="Lab_Stock" xml:space="preserve">
+    <value>实验室库存</value>
+  </data>
+  <data name="Laser_in_SC" xml:space="preserve">
+    <value>腰码证书号</value>
+  </data>
+  <data name="length" xml:space="preserve">
+    <value>长</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>线</value>
+  </data>
+  <data name="link" xml:space="preserve">
+    <value>连接</value>
+  </data>
+  <data name="lname" xml:space="preserve">
+    <value>名</value>
+  </data>
+  <data name="loadsearch" xml:space="preserve">
+    <value>地点</value>
+  </data>
+  <data name="Load_More" xml:space="preserve">
+    <value>装载更多</value>
+  </data>
+  <data name="Load_Search" xml:space="preserve">
+    <value>修改</value>
+  </data>
+  <data name="location" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="Login_Info" xml:space="preserve">
+    <value>登录信息</value>
+  </data>
+  <data name="logout" xml:space="preserve">
+    <value>登出</value>
+  </data>
+  <data name="luster" xml:space="preserve">
+    <value>报价</value>
+  </data>
+  <data name="Mail_sent_successfully" xml:space="preserve">
+    <value>邮件发送成功</value>
+  </data>
+  <data name="makeoffer" xml:space="preserve">
+    <value>尺寸</value>
+  </data>
+  <data name="Make_an_offer" xml:space="preserve">
+    <value>开个价</value>
+  </data>
+  <data name="Make_Offer" xml:space="preserve">
+    <value>报价</value>
+  </data>
+  <data name="Manage_User" xml:space="preserve">
+    <value>管理用户</value>
+  </data>
+  <data name="measurement" xml:space="preserve">
+    <value>奶</value>
+  </data>
+  <data name="Media" xml:space="preserve">
+    <value>媒体</value>
+  </data>
+  <data name="milky" xml:space="preserve">
+    <value>手机号码</value>
+  </data>
+  <data name="Mobile1" xml:space="preserve">
+    <value>手机1</value>
+  </data>
+  <data name="Mobile2" xml:space="preserve">
+    <value>手机2</value>
+  </data>
+  <data name="mobileno" xml:space="preserve">
+    <value>变更</value>
+  </data>
+  <data name="modify" xml:space="preserve">
+    <value>修改</value>
+  </data>
+  <data name="more" xml:space="preserve">
+    <value>我的帐户</value>
+  </data>
+  <data name="myaccount" xml:space="preserve">
+    <value>我的购物车</value>
+  </data>
+  <data name="mycart" xml:space="preserve">
+    <value>我的报价</value>
+  </data>
+  <data name="myoffer" xml:space="preserve">
+    <value>我的订单</value>
+  </data>
+  <data name="myorder" xml:space="preserve">
+    <value>我的订单</value>
+  </data>
+  <data name="myorder1" xml:space="preserve">
+    <value>愿望清单</value>
+  </data>
+  <data name="mywishlist" xml:space="preserve">
+    <value>愿望清单</value>
+  </data>
+  <data name="My_Account" xml:space="preserve">
+    <value>我的帐户</value>
+  </data>
+  <data name="My_Cart" xml:space="preserve">
+    <value>购物车</value>
+  </data>
+  <data name="netamt" xml:space="preserve">
+    <value>净价($)</value>
+  </data>
+  <data name="netamt1" xml:space="preserve">
+    <value>新</value>
+  </data>
+  <data name="Net_Value" xml:space="preserve">
+    <value>净值</value>
+  </data>
+  <data name="new" xml:space="preserve">
+    <value>新货</value>
+  </data>
+  <data name="newarrival" xml:space="preserve">
+    <value>新到库存</value>
+  </data>
+  <data name="newlyarrived" xml:space="preserve">
+    <value>新的订单已收到</value>
+  </data>
+  <data name="newmessage" xml:space="preserve">
+    <value>新搜索</value>
+  </data>
+  <data name="neworderreceive" xml:space="preserve">
+    <value>刚到达</value>
+  </data>
+  <data name="News" xml:space="preserve">
+    <value>新闻</value>
+  </data>
+  <data name="newsearch" xml:space="preserve">
+    <value>注: 如若发送多个电邮地址, 请用(,)分隔</value>
+  </data>
+  <data name="New_Arrival" xml:space="preserve">
+    <value>新到库存</value>
+  </data>
+  <data name="New_Password" xml:space="preserve">
+    <value>新密码</value>
+  </data>
+  <data name="New_Search" xml:space="preserve">
+    <value>新搜索</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>没有</value>
+  </data>
+  <data name="None_selected" xml:space="preserve">
+    <value>未选择</value>
+  </data>
+  <data name="Notification_Master" xml:space="preserve">
+    <value>通知主</value>
+  </data>
+  <data name="Notify_Me" xml:space="preserve">
+    <value>提醒我</value>
+  </data>
+  <data name="Not_Arrive" xml:space="preserve">
+    <value>未到达</value>
+  </data>
+  <data name="Not_Available" xml:space="preserve">
+    <value>缺货</value>
+  </data>
+  <data name="Not_Collected" xml:space="preserve">
+    <value>未取</value>
+  </data>
+  <data name="No_Any_Stones_are_Available_for_Make_an_Offer" xml:space="preserve">
+    <value>没有任何可用的石头报价</value>
+  </data>
+  <data name="No_data_found" xml:space="preserve">
+    <value>没有找到数据</value>
+  </data>
+  <data name="No_Stock_Found" xml:space="preserve">
+    <value>找不到库存</value>
+  </data>
+  <data name="No_stones_selected_to_send_email" xml:space="preserve">
+    <value>没有选择发送电子邮件的石头</value>
+  </data>
+  <data name="No_stone_selected_for_add_to_cart" xml:space="preserve">
+    <value>没有选择要添加到购物车的石头</value>
+  </data>
+  <data name="No_stone_selected_for_add_to_wishlist" xml:space="preserve">
+    <value>没有选择要添加到愿望清单的宝石</value>
+  </data>
+  <data name="No_stone_selected_for_download_as_a" xml:space="preserve">
+    <value>没有选择要下载的石头</value>
+  </data>
+  <data name="No_stone_selected_for_download_as_a_excel" xml:space="preserve">
+    <value>没有选择要作为excel下载的石头</value>
+  </data>
+  <data name="No_stone_selected_for_place_order" xml:space="preserve">
+    <value>未选择下订单的石头</value>
+  </data>
+  <data name="No_stone_selected_for_remove_from_wishlist" xml:space="preserve">
+    <value>未选择要从愿望清单中删除的宝石</value>
+  </data>
+  <data name="No_stone_selected_for_Save_Offer" xml:space="preserve">
+    <value>未选择保存报价的石头</value>
+  </data>
+  <data name="Offer" xml:space="preserve">
+    <value>可供报价</value>
+  </data>
+  <data name="offerdate" xml:space="preserve">
+    <value>报价日期</value>
+  </data>
+  <data name="offerdate1" xml:space="preserve">
+    <value>议价日期</value>
+  </data>
+  <data name="offerno" xml:space="preserve">
+    <value>报价编号</value>
+  </data>
+  <data name="Offer_already_received_for_the_stones" xml:space="preserve">
+    <value>报价已经收到</value>
+  </data>
+  <data name="Offer_Amt" xml:space="preserve">
+    <value>报价金额</value>
+  </data>
+  <data name="Offer_Criteria" xml:space="preserve">
+    <value>报价标准</value>
+  </data>
+  <data name="Offer_Disc" xml:space="preserve">
+    <value>提供折扣</value>
+  </data>
+  <data name="Offer_Disc_Per" xml:space="preserve">
+    <value>折扣(%)</value>
+  </data>
+  <data name="Offer_History" xml:space="preserve">
+    <value>报价历史</value>
+  </data>
+  <data name="Offer_Id" xml:space="preserve">
+    <value>优惠编号</value>
+  </data>
+  <data name="Offer_Result" xml:space="preserve">
+    <value>报价结果</value>
+  </data>
+  <data name="Offer_Stone" xml:space="preserve">
+    <value>可报价库存</value>
+  </data>
+  <data name="Offer_uploaded_Successfully" xml:space="preserve">
+    <value>优惠已成功上传</value>
+  </data>
+  <data name="Offer_Uploaded_Sucessfully_Please_Contact_Sales_Person_for_Further_Details" xml:space="preserve">
+    <value>报价已成功上传，请联系销售人员以获取更多详细信息</value>
+  </data>
+  <data name="Offer_Valid_Days" xml:space="preserve">
+    <value>提供有效天数</value>
+  </data>
+  <data name="Offer_Value_Dollar" xml:space="preserve">
+    <value>折扣价格($)</value>
+  </data>
+  <data name="OfficePh1" xml:space="preserve">
+    <value>办公电话1</value>
+  </data>
+  <data name="OfficePh2" xml:space="preserve">
+    <value>办公电话2</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>好</value>
+  </data>
+  <data name="openinclusion" xml:space="preserve">
+    <value>破口内含物</value>
+  </data>
+  <data name="OrderBy" xml:space="preserve">
+    <value>订购方式</value>
+  </data>
+  <data name="orderdate" xml:space="preserve">
+    <value>订单日期</value>
+  </data>
+  <data name="orderhistory" xml:space="preserve">
+    <value>订单历史</value>
+  </data>
+  <data name="orderno" xml:space="preserve">
+    <value>订单编号</value>
+  </data>
+  <data name="OrderTime" xml:space="preserve">
+    <value>订购时间</value>
+  </data>
+  <data name="order_date" xml:space="preserve">
+    <value>订单日期</value>
+  </data>
+  <data name="order_history" xml:space="preserve">
+    <value>订单历史</value>
+  </data>
+  <data name="Order_No" xml:space="preserve">
+    <value>订单编号</value>
+  </data>
+  <data name="Order_Summary" xml:space="preserve">
+    <value>订单摘要</value>
+  </data>
+  <data name="othername" xml:space="preserve">
+    <value>其他名字</value>
+  </data>
+  <data name="Other_Stones_are_added_into_cart_successfully" xml:space="preserve">
+    <value>其他宝石已成功添加到购物车</value>
+  </data>
+  <data name="Overseas_Discount" xml:space="preserve">
+    <value>海外折扣</value>
+  </data>
+  <data name="Overseas_Search_Stock" xml:space="preserve">
+    <value>海外搜索库存</value>
+  </data>
+  <data name="overseas_stock" xml:space="preserve">
+    <value>海外股票</value>
+  </data>
+  <data name="Overview" xml:space="preserve">
+    <value>总览</value>
+  </data>
+  <data name="page" xml:space="preserve">
+    <value>页</value>
+  </data>
+  <data name="PairSearch" xml:space="preserve">
+    <value>配对搜索</value>
+  </data>
+  <data name="Pair_Search" xml:space="preserve">
+    <value>配对搜索</value>
+  </data>
+  <data name="Parameter_Discount" xml:space="preserve">
+    <value>参数折扣</value>
+  </data>
+  <data name="party" xml:space="preserve">
+    <value>公司名字</value>
+  </data>
+  <data name="PartyCode" xml:space="preserve">
+    <value>幸运党代码</value>
+  </data>
+  <data name="Party_Info" xml:space="preserve">
+    <value>派对信息</value>
+  </data>
+  <data name="passportno" xml:space="preserve">
+    <value>护照号</value>
+  </data>
+  <data name="pavang" xml:space="preserve">
+    <value>亭角</value>
+  </data>
+  <data name="pavht" xml:space="preserve">
+    <value>亭高</value>
+  </data>
+  <data name="Pav_Ang" xml:space="preserve">
+    <value>亭部角度</value>
+  </data>
+  <data name="Pav_Ht" xml:space="preserve">
+    <value>亭部高度</value>
+  </data>
+  <data name="Pav_Open" xml:space="preserve">
+    <value>公开赛</value>
+  </data>
+  <data name="pcs" xml:space="preserve">
+    <value>粒</value>
+  </data>
+  <data name="pcs1" xml:space="preserve">
+    <value>颗</value>
+  </data>
+  <data name="pdf" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="personal_detail" xml:space="preserve">
+    <value>个人信息</value>
+  </data>
+  <data name="phno" xml:space="preserve">
+    <value>电话号码</value>
+  </data>
+  <data name="phoneno" xml:space="preserve">
+    <value>电话号码</value>
+  </data>
+  <data name="Photo_Real" xml:space="preserve">
+    <value>真实照片</value>
+  </data>
+  <data name="Pie" xml:space="preserve">
+    <value>馅饼</value>
+  </data>
+  <data name="pincode" xml:space="preserve">
+    <value>邮政编码</value>
+  </data>
+  <data name="placeorder" xml:space="preserve">
+    <value>下订单</value>
+  </data>
+  <data name="Place_Order" xml:space="preserve">
+    <value>下单</value>
+  </data>
+  <data name="pleasecontact" xml:space="preserve">
+    <value>请与您的销售人员联系：</value>
+  </data>
+  <data name="Please_change_discount_and_reupload" xml:space="preserve">
+    <value>请更改折扣并重新上传</value>
+  </data>
+  <data name="Please_change_discount_and_reupload_it" xml:space="preserve">
+    <value>请更改折扣并重新上传</value>
+  </data>
+  <data name="Please_contact_your_sales_person" xml:space="preserve">
+    <value>请联络您的销售经理了解详情</value>
+  </data>
+  <data name="Please_enter_a_valid_email_address" xml:space="preserve">
+    <value>请输入正确邮箱地址</value>
+  </data>
+  <data name="Please_Enter_Carat" xml:space="preserve">
+    <value>请输入克拉</value>
+  </data>
+  <data name="Please_Enter_Only_Number_only" xml:space="preserve">
+    <value>请仅输入数字</value>
+  </data>
+  <data name="Please_Fill_SearchName" xml:space="preserve">
+    <value>请填写搜索名称</value>
+  </data>
+  <data name="Please_Select_Atleast_One_Criteria_For_Search" xml:space="preserve">
+    <value>请选择至少一种搜索条件</value>
+  </data>
+  <data name="Please_select_atleast_one_stone" xml:space="preserve">
+    <value>请选择至少一块石头</value>
+  </data>
+  <data name="Please_select_atlist_one_criteria" xml:space="preserve">
+    <value>请选择一个标准。</value>
+  </data>
+  <data name="Please_select_at_least_2_item_for_compare" xml:space="preserve">
+    <value>请至少选择2个项目进行比较</value>
+  </data>
+  <data name="Please_Select_Available_stone_for_add_to_cart" xml:space="preserve">
+    <value>请选择可用的石头添加到购物车</value>
+  </data>
+  <data name="Please_Select_Available_stone_for_place_order" xml:space="preserve">
+    <value>请选择可用的石头来下订单</value>
+  </data>
+  <data name="Please_select_a_company_for_Hold_Stone_Id" xml:space="preserve">
+    <value>Please select a company for Hold, Stone Id</value>
+  </data>
+  <data name="Please_Select_Excel_File_For_Upload" xml:space="preserve">
+    <value>请选择要上传的电子表格文件</value>
+  </data>
+  <data name="Pointer" xml:space="preserve">
+    <value>分数</value>
+  </data>
+  <data name="polish" xml:space="preserve">
+    <value>打磨</value>
+  </data>
+  <data name="price" xml:space="preserve">
+    <value>价格</value>
+  </data>
+  <data name="price1" xml:space="preserve">
+    <value>克拉价格(美金)</value>
+  </data>
+  <data name="pricects" xml:space="preserve">
+    <value>价格变更清单</value>
+  </data>
+  <data name="pricerevised" xml:space="preserve">
+    <value>价格</value>
+  </data>
+  <data name="Price_Cts" xml:space="preserve">
+    <value>价格/克拉</value>
+  </data>
+  <data name="Price_cts_USD" xml:space="preserve">
+    <value>克拉价格</value>
+  </data>
+  <data name="Price_Per_Cts" xml:space="preserve">
+    <value>价格/箱</value>
+  </data>
+  <data name="Principles" xml:space="preserve">
+    <value>原则</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>个人资料</value>
+  </data>
+  <data name="ProfitPer" xml:space="preserve">
+    <value>利润(%)</value>
+  </data>
+  <data name="promotion" xml:space="preserve">
+    <value>推广</value>
+  </data>
+  <data name="PurchaseDate" xml:space="preserve">
+    <value>购买日期</value>
+  </data>
+  <data name="PurchaseTime" xml:space="preserve">
+    <value>购买时间</value>
+  </data>
+  <data name="pwd" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="QuickSearch" xml:space="preserve">
+    <value>快速搜索</value>
+  </data>
+  <data name="Quick_Search" xml:space="preserve">
+    <value>快速搜索</value>
+  </data>
+  <data name="Range_of_dicount_is_not_valid_for_the_stones" xml:space="preserve">
+    <value>差价范围不适用于宝石</value>
+  </data>
+  <data name="rap" xml:space="preserve">
+    <value>国际报价</value>
+  </data>
+  <data name="rapamt" xml:space="preserve">
+    <value>国际报价</value>
+  </data>
+  <data name="RapId" xml:space="preserve">
+    <value>Rapnet 帐户</value>
+  </data>
+  <data name="rap_amt" xml:space="preserve">
+    <value>国际报价</value>
+  </data>
+  <data name="Rap_Amt_Doller" xml:space="preserve">
+    <value>RAP总价($)</value>
+  </data>
+  <data name="Rap_Price_Doller" xml:space="preserve">
+    <value>RAP价($)</value>
+  </data>
+  <data name="readyforpickup" xml:space="preserve">
+    <value>待取货</value>
+  </data>
+  <data name="Ready_For_Pick_up" xml:space="preserve">
+    <value>准备拿起</value>
+  </data>
+  <data name="Ready_to_Pick_up" xml:space="preserve">
+    <value>可以取货</value>
+  </data>
+  <data name="recentsearch" xml:space="preserve">
+    <value>搜索历史</value>
+  </data>
+  <data name="recentsearch1" xml:space="preserve">
+    <value>最近搜索</value>
+  </data>
+  <data name="Recent_Search" xml:space="preserve">
+    <value>最近搜索</value>
+  </data>
+  <data name="Record_Save_Successfully" xml:space="preserve">
+    <value>记录成功保存</value>
+  </data>
+  <data name="recover" xml:space="preserve">
+    <value>恢复</value>
+  </data>
+  <data name="recoverpwd" xml:space="preserve">
+    <value>恢复你的密码</value>
+  </data>
+  <data name="recoverpwdtext" xml:space="preserve">
+    <value>在下面填写您的用户名，我们将通过电子邮件向您发送进一步的说明。</value>
+  </data>
+  <data name="Ref" xml:space="preserve">
+    <value>参考</value>
+  </data>
+  <data name="refno" xml:space="preserve">
+    <value>石头编号</value>
+  </data>
+  <data name="refsearch" xml:space="preserve">
+    <value>重新整理</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="RegNo" xml:space="preserve">
+    <value>商业注册号</value>
+  </data>
+  <data name="release" xml:space="preserve">
+    <value>放出</value>
+  </data>
+  <data name="releasenote" xml:space="preserve">
+    <value>放出钻石</value>
+  </data>
+  <data name="remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="rememberme" xml:space="preserve">
+    <value>记得我</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>移除</value>
+  </data>
+  <data name="removestone" xml:space="preserve">
+    <value>移除石头</value>
+  </data>
+  <data name="Remove_Cart_Data" xml:space="preserve">
+    <value>删除购物车数据</value>
+  </data>
+  <data name="Remove_from_cart_failed" xml:space="preserve">
+    <value>从购物车中删除失败</value>
+  </data>
+  <data name="Remove_Save_Search_Data" xml:space="preserve">
+    <value>删除保存搜索数据</value>
+  </data>
+  <data name="Remove_Stones" xml:space="preserve">
+    <value>拿走石头</value>
+  </data>
+  <data name="Remove_Wishlist_Data" xml:space="preserve">
+    <value>删除心愿单数据</value>
+  </data>
+  <data name="reset" xml:space="preserve">
+    <value>重设</value>
+  </data>
+  <data name="Reset_Offer" xml:space="preserve">
+    <value>重设优惠</value>
+  </data>
+  <data name="Result" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="Revised_Price" xml:space="preserve">
+    <value>价格修改</value>
+  </data>
+  <data name="save" xml:space="preserve">
+    <value>储存</value>
+  </data>
+  <data name="savename" xml:space="preserve">
+    <value>储存名字</value>
+  </data>
+  <data name="savesearch" xml:space="preserve">
+    <value>储存搜索</value>
+  </data>
+  <data name="Save_Name" xml:space="preserve">
+    <value>储存名字</value>
+  </data>
+  <data name="save_search" xml:space="preserve">
+    <value>储存搜索</value>
+  </data>
+  <data name="search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="Search_Name" xml:space="preserve">
+    <value>搜索名称</value>
+  </data>
+  <data name="search_stock" xml:space="preserve">
+    <value>搜索库存</value>
+  </data>
+  <data name="Selected" xml:space="preserve">
+    <value>已选</value>
+  </data>
+  <data name="selectedstone" xml:space="preserve">
+    <value>挑选公司</value>
+  </data>
+  <data name="selectedstone1" xml:space="preserve">
+    <value>已挑选的钻石</value>
+  </data>
+  <data name="Selected_Stone" xml:space="preserve">
+    <value>已被挑选的库存</value>
+  </data>
+  <data name="selectparty" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Select_all" xml:space="preserve">
+    <value>全选</value>
+  </data>
+  <data name="send" xml:space="preserve">
+    <value>发送</value>
+  </data>
+  <data name="sendmail" xml:space="preserve">
+    <value>发送电邮</value>
+  </data>
+  <data name="Send_Mail" xml:space="preserve">
+    <value>发送</value>
+  </data>
+  <data name="serialno" xml:space="preserve">
+    <value>序号</value>
+  </data>
+  <data name="service" xml:space="preserve">
+    <value>服务</value>
+  </data>
+  <data name="shape" xml:space="preserve">
+    <value>形状</value>
+  </data>
+  <data name="showresult" xml:space="preserve">
+    <value>显示结果</value>
+  </data>
+  <data name="showselected" xml:space="preserve">
+    <value>显示已选</value>
+  </data>
+  <data name="Show_result" xml:space="preserve">
+    <value>搜索结果</value>
+  </data>
+  <data name="sideinc" xml:space="preserve">
+    <value>台面内含物</value>
+  </data>
+  <data name="Signup" xml:space="preserve">
+    <value>注册</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>尺寸</value>
+  </data>
+  <data name="Skype" xml:space="preserve">
+    <value>Skype帐号</value>
+  </data>
+  <data name="skypeid" xml:space="preserve">
+    <value>Skype ID / Number</value>
+  </data>
+  <data name="specific" xml:space="preserve">
+    <value>具体</value>
+  </data>
+  <data name="state" xml:space="preserve">
+    <value>州</value>
+  </data>
+  <data name="status" xml:space="preserve">
+    <value>状态</value>
+  </data>
+  <data name="Stay_On_Same_Page" xml:space="preserve">
+    <value>留在这页</value>
+  </data>
+  <data name="Still_you_want_to_continue" xml:space="preserve">
+    <value>还是你要继续</value>
+  </data>
+  <data name="Stock" xml:space="preserve">
+    <value>货号</value>
+  </data>
+  <data name="stockdownload" xml:space="preserve">
+    <value>库存下载</value>
+  </data>
+  <data name="Stock_Id" xml:space="preserve">
+    <value>货号</value>
+  </data>
+  <data name="Stock_Id_Certi" xml:space="preserve">
+    <value>股票编号/证书编号</value>
+  </data>
+  <data name="Stock_Id_DNA" xml:space="preserve">
+    <value>货号 / DNA</value>
+  </data>
+  <data name="stoneno" xml:space="preserve">
+    <value>石头搜索</value>
+  </data>
+  <data name="stonesearch" xml:space="preserve">
+    <value>石头编号</value>
+  </data>
+  <data name="Stones_added_in_cart_successfully" xml:space="preserve">
+    <value>成功加到购物车</value>
+  </data>
+  <data name="Stones_added_in_wishlist_successfully" xml:space="preserve">
+    <value>成功加到心愿清单</value>
+  </data>
+  <data name="Stones_are_out_of_Discount_Range_Other_Stones_are_Available_to_Make_an_Offer_Are_you_Agree" xml:space="preserve">
+    <value>宝石不在折扣范围内，您可以同意其他宝石的报价</value>
+  </data>
+  <data name="Stones_removed_from_cart_successfully" xml:space="preserve">
+    <value>成功移除</value>
+  </data>
+  <data name="Stones_removed_from_wishList_successfully" xml:space="preserve">
+    <value>宝石已成功从愿望清单中移除</value>
+  </data>
+  <data name="stone_no" xml:space="preserve">
+    <value>石头编号</value>
+  </data>
+  <data name="streetno" xml:space="preserve">
+    <value>街号</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>提交</value>
+  </data>
+  <data name="SUNRISE_DIAMOND_LIMITED" xml:space="preserve">
+    <value>日升钻石有限公司</value>
+  </data>
+  <data name="SuppplierOrder" xml:space="preserve">
+    <value>采购订单</value>
+  </data>
+  <data name="SuppplierOrderLog" xml:space="preserve">
+    <value>采购订单日志</value>
+  </data>
+  <data name="SuppStatus" xml:space="preserve">
+    <value>供应商状态</value>
+  </data>
+  <data name="symm" xml:space="preserve">
+    <value>对称</value>
+  </data>
+  <data name="symmetry" xml:space="preserve">
+    <value>对称</value>
+  </data>
+  <data name="tableinclusion" xml:space="preserve">
+    <value>台宽比</value>
+  </data>
+  <data name="tablenatts" xml:space="preserve">
+    <value>台面内含物</value>
+  </data>
+  <data name="tableper" xml:space="preserve">
+    <value>台宽比(%)</value>
+  </data>
+  <data name="Table_Black" xml:space="preserve">
+    <value>台面黑</value>
+  </data>
+  <data name="table_inc" xml:space="preserve">
+    <value>台面内含物</value>
+  </data>
+  <data name="Table_Open" xml:space="preserve">
+    <value>开桌</value>
+  </data>
+  <data name="table_per" xml:space="preserve">
+    <value>台面比(%)</value>
+  </data>
+  <data name="Table_White" xml:space="preserve">
+    <value>台面白</value>
+  </data>
+  <data name="testimonial" xml:space="preserve">
+    <value>感言</value>
+  </data>
+  <data name="This_Stones_are_already_added_to_cart" xml:space="preserve">
+    <value>这块石头已经被添加到购物车</value>
+  </data>
+  <data name="This_Stones_are_subject_to_availbility" xml:space="preserve">
+    <value>以下石头下单不成功</value>
+  </data>
+  <data name="This_stone_is_not_available" xml:space="preserve">
+    <value>这块石头不可用</value>
+  </data>
+  <data name="This_Stone_is_not_Available_Stone_You_can_add_only_available_Stone_into_Cart" xml:space="preserve">
+    <value>此石头不是可用的石头，您只能将可用的石头添加到购物车中</value>
+  </data>
+  <data name="This_Stone_is_not_Available_Stone_You_can_Buy_only_available_Stone" xml:space="preserve">
+    <value>此石头不是可用的石头，您只能购买可用的石头</value>
+  </data>
+  <data name="tinge" xml:space="preserve">
+    <value>带色调</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>至</value>
+  </data>
+  <data name="Total_Amt" xml:space="preserve">
+    <value>总金额</value>
+  </data>
+  <data name="Total_found" xml:space="preserve">
+    <value>搜寻结果</value>
+  </data>
+  <data name="totamt" xml:space="preserve">
+    <value>总金额</value>
+  </data>
+  <data name="totcarat" xml:space="preserve">
+    <value>总克拉</value>
+  </data>
+  <data name="totdepthper" xml:space="preserve">
+    <value>全深比</value>
+  </data>
+  <data name="totdollar" xml:space="preserve">
+    <value>共</value>
+  </data>
+  <data name="totfound" xml:space="preserve">
+    <value>总颗数</value>
+  </data>
+  <data name="totstone" xml:space="preserve">
+    <value>总计</value>
+  </data>
+  <data name="To_date_must_be_greater_than_From_date" xml:space="preserve">
+    <value>截止日期必须大于截止日期</value>
+  </data>
+  <data name="Upcoming" xml:space="preserve">
+    <value>即将到来</value>
+  </data>
+  <data name="update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="update1" xml:space="preserve">
+    <value>更新资料</value>
+  </data>
+  <data name="Upload_Excel" xml:space="preserve">
+    <value>上载电子表格</value>
+  </data>
+  <data name="user" xml:space="preserve">
+    <value>用户</value>
+  </data>
+  <data name="username" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="Username_is_invalid_or_in_active" xml:space="preserve">
+    <value>用户名无效或无效。</value>
+  </data>
+  <data name="usertype" xml:space="preserve">
+    <value>用户类型</value>
+  </data>
+  <data name="User_Activity" xml:space="preserve">
+    <value>用户活动</value>
+  </data>
+  <data name="User_Discount_Report" xml:space="preserve">
+    <value>用户折扣报告</value>
+  </data>
+  <data name="User_Is_Not_Active_Please_Contact" xml:space="preserve">
+    <value>用户不活跃，请联系</value>
+  </data>
+  <data name="User_List" xml:space="preserve">
+    <value>用户清单</value>
+  </data>
+  <data name="User_name_is_already_exists" xml:space="preserve">
+    <value>用户名已被登记</value>
+  </data>
+  <data name="User_registration_failed" xml:space="preserve">
+    <value>用户注册失败</value>
+  </data>
+  <data name="User_Wise_Discount" xml:space="preserve">
+    <value>用户折扣</value>
+  </data>
+  <data name="validation" xml:space="preserve">
+    <value>验证方式</value>
+  </data>
+  <data name="Validity_date_must_be_greater_than_Today_date" xml:space="preserve">
+    <value>有效日期必须大于今天</value>
+  </data>
+  <data name="video" xml:space="preserve">
+    <value>影片</value>
+  </data>
+  <data name="view" xml:space="preserve">
+    <value>检视</value>
+  </data>
+  <data name="View_Details" xml:space="preserve">
+    <value>阅览详情</value>
+  </data>
+  <data name="View_Image" xml:space="preserve">
+    <value>图片/影片/证书</value>
+  </data>
+  <data name="website" xml:space="preserve">
+    <value>网站</value>
+  </data>
+  <data name="Web_Benefit" xml:space="preserve">
+    <value>网络效益</value>
+  </data>
+  <data name="Web_Disc_Dollar" xml:space="preserve">
+    <value>网上折扣($)</value>
+  </data>
+  <data name="wechatid" xml:space="preserve">
+    <value>微信号</value>
+  </data>
+  <data name="weight" xml:space="preserve">
+    <value>重量</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>欢迎</value>
+  </data>
+  <data name="We_will_update_soon_in_Email" xml:space="preserve">
+    <value>我们将尽快在电子邮件中更新</value>
+  </data>
+  <data name="We_will_update_soon_in_Search_Stock_Notification" xml:space="preserve">
+    <value>我们将尽快在“搜索库存通知”中进行更新</value>
+  </data>
+  <data name="white" xml:space="preserve">
+    <value>白色</value>
+  </data>
+  <data name="width" xml:space="preserve">
+    <value>宽</value>
+  </data>
+  <data name="wishlist" xml:space="preserve">
+    <value>心愿清单</value>
+  </data>
+  <data name="wishlist1" xml:space="preserve">
+    <value>愿望清单</value>
+  </data>
+  <data name="Wrong_User_Name_or_Password_Kindly_Contact" xml:space="preserve">
+    <value>错误用户名称 或 密码. 请联系 :</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="Your_account_information_have_been_sent_to_you_on" xml:space="preserve">
+    <value>您的用户资料已经发送</value>
+  </data>
+  <data name="Your_email_address_is_invalid_please_contact_our_Administrator" xml:space="preserve">
+    <value>您的电子邮件地址无效，请联系我们的管理员</value>
+  </data>
+  <data name="Your_offer_was_not_uploaded_due_to_out_of_discount_Range_Kindly_try_again" xml:space="preserve">
+    <value>由于超出折扣范围，您的报价未上传。请再试一次。</value>
+  </data>
+  <data name="Your_offer_was_partially_uploaded_Below_are_the_stones_which_are_not_uploaded" xml:space="preserve">
+    <value>您的报价已部分上传。以下是未上传的石头。</value>
+  </data>
+  <data name="Your_order_placed_successfully" xml:space="preserve">
+    <value>您的订单已成功下达</value>
+  </data>
+  <data name="Your_Transaction_Done_Successfully" xml:space="preserve">
+    <value>您的交易成功完成</value>
+  </data>
+  <data name="You_are_not_Authorize_to_Place_Order_of_this_Stone_Id" xml:space="preserve">
+    <value>You are not Authorize to Place Order of this Stone Id</value>
+  </data>
+  <data name="You_can_compare_maximum_4_item" xml:space="preserve">
+    <value>您最多可以比较4个项目</value>
+  </data>
+  <data name="You_Can_Search_Maximum_5_Result" xml:space="preserve">
+    <value>您最多可以搜索5个结果</value>
+  </data>
+  <data name="You_have_already_upload_discount_for_the_stones" xml:space="preserve">
+    <value>您已经上传了宝石折扣</value>
+  </data>
+  <data name="zipcode" xml:space="preserve">
+    <value>邮政编码</value>
+  </data>
+</root>

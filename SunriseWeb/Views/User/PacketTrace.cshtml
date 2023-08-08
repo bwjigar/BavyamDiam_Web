@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "Packet Trace";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section styles {
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+}
+<style>
+    .ag-paging-page-summary-panel {
+        left: 10px;
+        position: relative;
+    }
+
+    .ag-theme-balham .ag-cell {
+        white-space: normal !important;
+        line-height: inherit;
+        overflow-y: auto;
+    }
+
+    .Yes {
+        margin-bottom: 1px;
+        color: white;
+        background-color: #008000ab;
+        padding: 2px 5px;
+        border-radius: 16px;
+        font-weight: bold;
+    }
+
+    .No {
+        margin-bottom: 1px;
+        color: white;
+        background-color: #ff0000cf;
+        padding: 2px 5px;
+        border-radius: 16px;
+        font-weight: bold;
+    }
+</style>
+<div class="container-fluid search_result viewcart-fluid">
+
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane active result-page-content viewcart-page-content" id="profile-tab2" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="result-nav">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-12">
+                        <div class="viewcartdata-header">
+                            <h1>Packet Trace</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="apiViews-form full-acform">
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <div class="row ">
+                                        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-1 px-2">
+                                            <div class="offer-label"> Stock Id:</div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 px-2">
+                                            <div class="text-left w-100 ml-0">
+                                                <input autocomplete="off" id="txtStockId" class="form-control common-control" type="text" onblur="GetData('StockId');">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-1 px-2">
+                                            <div class="offer-label"> Certi. No:</div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 px-2">
+                                            <div class="text-left w-100 ml-0">
+                                                <input autocomplete="off" id="txtCertiNo" class="form-control common-control" type="text" onblur="GetData('CertiNo');">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <ul class="offer-inbtn pull-right mt-3">
+                                        <li class="mr-2">
+                                            <button type="button" id="btnGIA" onclick="GIA_Show();" class="offer-btn" style="display:none;">
+                                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;GIA
+                                            </button>
+                                        </li>
+                                        <li class="mr-2">
+                                            <button type="button" id="btnImage" onclick="IMAGE_Show();" class="offer-btn" style="display:none;">
+                                                <i class="fa fa-picture-o" aria-hidden="true"></i>&nbsp;Image
+                                            </button>
+                                        </li>
+                                        <li class="mr-2">
+                                            <button type="button" id="btnVideo" onclick="VIDEO_Show();" class="offer-btn" style="display:none;">
+                                                <i class="fa fa-video-camera" aria-hidden="true"></i>&nbsp;Video
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="aggrid-section viewcart">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <!---- =============== start ag-grid =============== ---->
+
+                        <div id="myGrid" style="display:none;width: 100%;" class="ag-theme-balham">
+                            <table class="footable" cellspacing="0" rules="all" border="1" id="gvTrace" style="width:100%;border-collapse:collapse;">
+                                <thead>
+                                    <tr align="center" style="background-color:#E1ECFA;">
+                                        <th scope="col">Trans Date</th>
+                                        <th scope="col">Process</th>
+                                        <th scope="col">Party</th>
+                                        <th scope="col">Source Party</th>
+                                        <th scope="col">Stock Id</th>
+                                        <th scope="col">Certi. No</th>
+                                        <th scope="col">Cts</th>
+                                        <th scope="col">Color</th>
+                                        <th scope="col">Clarity</th>
+                                        <th scope="col">Cut</th>
+                                        <th scope="col">Polish</th>
+                                        <th scope="col">Symm</th>
+                                        <th scope="col">Fls</th>
+                                        <th scope="col">Disc(%)</th>
+                                        <th scope="col">Rap Price</th>
+                                        <th scope="col">Rap Amt</th>
+                                        <th scope="col">BGM</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="Body_PackageTrace">
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!---- =============== end ag-grid ================= ----->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/wow.min.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/common.js"></script>
+    <script src="~/Content/js/Pages/PacketTrace.js"></script>
+}
+
+

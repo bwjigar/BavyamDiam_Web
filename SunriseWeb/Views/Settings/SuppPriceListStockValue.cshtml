@@ -1,0 +1,769 @@
+﻿<div id="divAddFilters">
+    <div class="row m-0">
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+            <div class="tabboxdiv">
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Location</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedLocationValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                        <div class="list-icn">
+                            <i id="aLocationrefresh" style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedLocationValue',LocationList)"></i>
+                            <a id="aLocationselection" href="javascript:void(0);" onclick="ModalShow('Location',LocationList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Goods Type</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedGoodsTypeValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                        <div class="list-icn">
+                            <i id="aGoodsTyperefresh" style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedGoodsTypeValue',GoodsTypeList)"></i>
+                            <a id="aGoodsTypeselection" href="javascript:void(0);" onclick="ModalShow('GoodsType',GoodsTypeList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Shape</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedShapeValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedShapeValue',ShapeList)"></i>
+                            <a href="javascript:void(0);" onclick="ModalShow('Shape',ShapeList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Carat</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedCaratValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                        <div class="reicon list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetCheckCarat()"></i>
+                            <a href="" data-toggle="modal" data-target="#CaratModal"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Color</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedColorValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetCheckColors();"></i>
+                            @*<a href="javascript:void(0);" onclick="ModalShow('Color',ColorList)"><i class="fa fa-plus"></i></a>*@
+                            <a href="" data-toggle="modal" data-target="#ColorModal"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Clarity</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedClarityValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedClarityValue',ClarityList)"></i>
+                            <a href="javascript:void(0);" onclick="ModalShow('Clarity',ClarityList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Cut</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedCutValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedCutValue',CutList)"></i>
+                            <a href="javascript:void(0);" onclick="ModalShow('Cut',CutList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Polish</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedPolValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedPolValue',PolishList)"></i>
+                            <a href="javascript:void(0);" onclick="ModalShow('Polish',PolishList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Sym</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedSymValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedSymValue',SymList)"></i>
+                            <a href="javascript:void(0);" onclick="ModalShow('Sym',SymList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Fls</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedFLsValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedFLsValue',FlsList)"></i>
+                            <a href="javascript:void(0);" onclick="ModalShow('Fls',FlsList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+            <div class="tabboxdiv">
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Lab</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedLabValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedLabValue',LabList)"></i>
+                            <a href="javascript:void(0);" onclick="ModalShow('Lab',LabList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0" style="margin-top: 6px !important;">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Length</strong>
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="FromLength" maxlength="6" name="FromLength" onblur="LeaveTextBox('FROM','FromLength', 'ToLength');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="ToLength" maxlength="6" name="ToLength" onblur="LeaveTextBox('TO','FromLength', 'ToLength');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Width</strong>
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="FromWidth" maxlength="6" name="FromWidth" onblur="LeaveTextBox('FROM','FromWidth', 'ToWidth');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="ToWidth" maxlength="6" name="ToWidth" onblur="LeaveTextBox('TO','FromWidth', 'ToWidth');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Depth</strong>
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="FromDepth" maxlength="6" name="FromDepth" onblur="LeaveTextBox('FROM','FromDepth','ToDepth');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="ToDepth" maxlength="6" name="ToDepth" onblur="LeaveTextBox('TO','FromDepth','ToDepth');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Depth(%)</strong>
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="FromDepthPer" maxlength="6" name="FromDepthPer" onblur="LeaveTextBox('FROM','FromDepthPer','ToDepthPer');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="ToDepthPer" maxlength="6" name="ToDepthPer" onblur="LeaveTextBox('TO','FromDepthPer','ToDepthPer');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Table(%)</strong>
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="FromTablePer" maxlength="6" name="FromTablePer" onblur="LeaveTextBox('FROM','FromTablePer','ToTablePer');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="ToTablePer" maxlength="6" name="ToTablePer" onblur="LeaveTextBox('TO','FromTablePer','ToTablePer');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Cr Ang</strong>
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="FromCrAng" maxlength="6" name="FromCrAng" onblur="LeaveTextBox('FROM','FromCrAng','ToCrAng');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="ToCrAng" maxlength="6" name="ToCrAng" onblur="LeaveTextBox('TO','FromCrAng','ToCrAng');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Cr Ht</strong>
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="FromCrHt" maxlength="6" name="FromCrHt" onblur="LeaveTextBox('FROM','FromCrHt','ToCrHt');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="ToCrHt" maxlength="6" name="ToCrHt" onblur="LeaveTextBox('TO','FromCrHt','ToCrHt');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Pav Ang</strong>
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="FromPavAng" maxlength="6" name="FromPavAng" onblur="LeaveTextBox('FROM','FromPavAng','ToPavAng');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="ToPavAng" maxlength="6" name="ToPavAng" onblur="LeaveTextBox('TO','FromPavAng','ToPavAng');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Pav Ht</strong>
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="FromPavHt" maxlength="6" name="FromPavHt" onblur="LeaveTextBox('FROM','FromPavHt','ToPavHt');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                    <div class="col-sm-4 col-xs-5 api-plr">
+                        <input class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" id="ToPavHt" maxlength="6" name="ToPavHt" onblur="LeaveTextBox('TO','FromPavHt','ToPavHt');" onkeypress="return numvalid(event)" type="text">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+            <div class="tabboxdiv">
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Key to symbol</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <div class="sym-sec" id="sym-sec0">
+                            <div class="sym-main-wrap" onclick="Key_to_symbolShow();">
+                                <div class="sym-iner">
+                                    <span id="spanselected">0-Selected </span> / <span id="spanunselected">0 - Deselected</span>
+                                </div>
+                                <div class="sym-btn">
+                                    <i class="fa fa-caret-down"></i>
+                                </div>
+                            </div>
+                            <div class="carat-dropdown-main">
+                                <div class="carat-dropdown-half-col src-shape-main-pcscroll ps-container ps-theme-default row m-0" id="searchkeytosymbol">
+                                    <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                        <div class="list-icn">
+                            <span class="res-btn" style="left: 6px;">
+                                <a href="javascript:void(0);" onclick="resetKeytoSymbol()" data-toggle="tooltip" data-placement="bottom" title="Reset">
+                                    <i class="fa fa-refresh" aria-hidden="true"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0" style="margin-top: 8px !important;">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>BGM</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedBGMValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedBGMValue',BGMList)"></i>
+                            <a href="javascript:void(0);" onclick="ModalShow('BGM',BGMList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Crown Black</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedCrnBlackValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedCrnBlackValue',CrownBlackList)"></i>
+                            <a href="javascript:void(0);" onclick="ModalShow('CrownBlack',CrownBlackList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Table Black</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedTblBlackValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedTblBlackValue',TableBlackList)"></i>
+                            <a href="javascript:void(0);" onclick="ModalShow('TableBlack',TableBlackList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Crown White</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedCrnWhiteValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedCrnWhiteValue',CrownWhiteList)"></i>
+                            <a href="javascript:void(0);" onclick="ModalShow('CrownWhite',CrownWhiteList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Table White</strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <p class="divCheckedTblWhiteValue"></p>
+                    </div>
+                    <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                        <div class="list-icn">
+                            <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedTblWhiteValue',TableWhiteList)"></i>
+                            <a href="javascript:void(0);" onclick="ModalShow('TableWhite',TableWhiteList)"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row m-0" style="margin-top: 8px !important;">
+                    <div class="col-sm-4 col-xs-12 api-plr">
+                        <strong>Image</strong>
+                    </div>
+                    <div class="col-sm-2 col-xs-5 api-plr">
+                        <label class="cust-chk-bx text-left api-check">
+                            <input class="onpristine onuntouched onvalid onempty IgYes" id="Img" name="Img" type="radio" value="Yes">
+                            <strong style="margin-left:-8px;font-weight:600;">YES</strong>
+                            <span class="cust-chkmark"></span>
+                        </label>
+                    </div>
+                    <div class="col-sm-2 col-xs-5 api-plr">
+                        <label class="cust-chk-bx text-left api-check">
+                            <input class="onpristine onuntouched onvalid onempty IgNo" id="Img" name="Img" type="radio" value="No">
+                            <strong style="margin-left:-8px;font-weight:600;">NO</strong>
+                            <span class="cust-chkmark"></span>
+                        </label>
+                    </div>
+                    <div class="col-sm-2 col-xs-5 api-plr">
+                        <label class="cust-chk-bx text-left api-check">
+                            <input checked class="onpristine onuntouched onvalid onempty IgAll" id="Img" name="Img" type="radio" value="All">
+                            <strong style="margin-left:-8px;font-weight:600;">ALL</strong>
+                            <span class="cust-chkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row m-0" style="margin-top: 8px !important;">
+                    <div class="col-sm-4 col-xs-12 api-plr">
+                        <strong>Video</strong>
+                    </div>
+                    <div class="col-sm-2 col-xs-5 api-plr">
+                        <label class="cust-chk-bx text-left api-check">
+                            <input class="onpristine onuntouched onvalid onempty VdYes" id="Vdo" name="Vdo" type="radio" value="Yes">
+                            <strong style="margin-left:-8px;font-weight:600;">YES</strong>
+                            <span class="cust-chkmark"></span>
+                        </label>
+                    </div>
+                    <div class="col-sm-2 col-xs-5 api-plr">
+                        <label class="cust-chk-bx text-left api-check">
+                            <input class="onpristine onuntouched onvalid onempty VdNo" id="Vdo" name="Vdo" type="radio" value="No">
+                            <strong style="margin-left:-8px;font-weight:600;">NO</strong>
+                            <span class="cust-chkmark"></span>
+                        </label>
+                    </div>
+                    <div class="col-sm-2 col-xs-5 api-plr">
+                        <label class="cust-chk-bx text-left api-check">
+                            <input checked class="onpristine onuntouched onvalid onempty VdAll" id="Vdo" name="Vdo" type="radio" value="All">
+                            <strong style="margin-left:-8px;font-weight:600;">ALL</strong>
+                            <span class="cust-chkmark"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="row m-0" style="margin-top: 6px !important;">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Price Method <span style="color:red;">*</span></strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <select class="form-control select2" id="PricingMethod" name="PricingMethod" onchange="PricingMethodDDL();">
+                            <option value="">Select Method</option>
+                            <option value="Disc">Discount</option>
+                            <option value="Value">Value</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row m-0">
+                    <div class="col-sm-3 col-xs-12 api-plr">
+                        <strong>Percentage <span style="color:red;">*</span></strong>
+                    </div>
+                    <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                        <input type="text" id="txtValue" name="txtValue" onkeypress="return DisValValid('Value', event)" onkeyup="LenCheckr('Value')" class="form-control" autocomplete="off">
+                        <input type="text" id="txtDisc" name="txtDisc" onkeypress="return DisValValid('Disc', event)" onkeyup="LenCheckr('Disc')" class="form-control" autocomplete="off" style="display:none;">
+                        <label style="font-size: 12px;color: red;font-weight: 600;display:none;" id="lblPMErr"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="order-stone-id common-order">
+    <ul class="offer-inbtn pull-right mt-3" style="margin-bottom: 15px;">
+        <li class="mr-2">
+            <button onclick="AddNewRow('Add_in_Customer');" type="button" id="btn_Add_in_Customer" name="btn_Add_in_Customer" class="offer-btn"><i class="fa fa-plus"></i>Add Row in Customer</button>
+        </li>
+        <li class="mr-2">
+            <button onclick="AddNewRow('Add_in_Cost');" type="button" id="btn_Add_in_Cost" name="btn_Add_in_Cost" class="offer-btn"><i class="fa fa-plus"></i>Add Row in Cost</button>
+        </li>
+        <li class="mr-2">
+            <button onclick="AddNewRow('Add_in_Customer_Cost');" type="button" id="btn_Add_in_Customer_Cost" name="btn_Add_in_Customer_Cost" class="offer-btn"><i class="fa fa-plus"></i>Add Row in Customer & Cost</button>
+        </li>
+    </ul>
+</div>
+
+<div style="margin-top: 40px;">
+    <div class="row">
+        <div class="order-title">
+            <h2 style="color: #003d66;">Customer Price List</h2>
+        </div>
+    </div>
+    <label style="color: red;margin-left: 35px;display:none;" id="lblCustNoFound">No Filter(s) Found</label>
+    <div style="width:100%;overflow-x:auto;display: none;" id="tblCustomerFilters">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="">Sr.</th>
+                    <th style="">Location</th>
+                    <th style="">Goods Type</th>
+                    <th style="">Shape</th>
+                    <th style="">Carat</th>
+                    <th style="">Color</th>
+                    <th style="">Clarity</th>
+                    <th style="">Cut</th>
+                    <th style="">Polish</th>
+                    <th style="">Sym</th>
+                    <th style="">Fls</th>
+                    <th style="">Lab</th>
+                    <th style="">From Length</th>
+                    <th style="">To Length</th>
+                    <th style="">From Width</th>
+                    <th style="">To Width</th>
+                    <th style="">From Depth</th>
+                    <th style="">To Depth</th>
+                    <th style="">From Depth(%)</th>
+                    <th style="">To Depth(%)</th>
+                    <th style="">From Table(%)</th>
+                    <th style="">To Table(%)</th>
+                    <th style="">From Cr Ang</th>
+                    <th style="">To Cr Ang</th>
+                    <th style="">From Cr Ht</th>
+                    <th style="">To Cr Ht</th>
+                    <th style="">From Pav Ang</th>
+                    <th style="">To Pav Ang</th>
+                    <th style="">From Pav Ht</th>
+                    <th style="">To Pav Ht</th>
+                    <th style="">Key to symbol</th>
+                    <th style="">BGM</th>
+                    <th style="">Crown Black</th>
+                    <th style="">Table Black</th>
+                    <th style="">Crown White</th>
+                    <th style="">Table White</th>
+                    <th style="">Image</th>
+                    <th style="">Video</th>
+                    <th style="">Price Method</th>
+                    <th style="">Percentage</th>
+                    <th style="">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="tblBodyCustomerFilters">
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2 style="color: #003d66;">Cost Price List</h2>
+            </div>
+        </div>
+    </div>
+    <label style="color: red;margin-left: 35px;display:none;" id="lblCostNoFound">No Filter(s) Found</label>
+    <div style="width:100%;overflow-x:auto;display: none;" id="tblCostFilters">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="">Sr.</th>
+                    <th style="">Location</th>
+                    <th style="">Goods Type</th>
+                    <th style="">Shape</th>
+                    <th style="">Carat</th>
+                    <th style="">Color</th>
+                    <th style="">Clarity</th>
+                    <th style="">Cut</th>
+                    <th style="">Polish</th>
+                    <th style="">Sym</th>
+                    <th style="">Fls</th>
+                    <th style="">Lab</th>
+                    <th style="">From Length</th>
+                    <th style="">To Length</th>
+                    <th style="">From Width</th>
+                    <th style="">To Width</th>
+                    <th style="">From Depth</th>
+                    <th style="">To Depth</th>
+                    <th style="">From Depth(%)</th>
+                    <th style="">To Depth(%)</th>
+                    <th style="">From Table(%)</th>
+                    <th style="">To Table(%)</th>
+                    <th style="">From Cr Ang</th>
+                    <th style="">To Cr Ang</th>
+                    <th style="">From Cr Ht</th>
+                    <th style="">To Cr Ht</th>
+                    <th style="">From Pav Ang</th>
+                    <th style="">To Pav Ang</th>
+                    <th style="">From Pav Ht</th>
+                    <th style="">To Pav Ht</th>
+                    <th style="">Key to symbol</th>
+                    <th style="">BGM</th>
+                    <th style="">Crown Black</th>
+                    <th style="">Table Black</th>
+                    <th style="">Crown White</th>
+                    <th style="">Table White</th>
+                    <th style="">Image</th>
+                    <th style="">Video</th>
+                    <th style="">Price Method</th>
+                    <th style="">Percentage</th>
+                    <th style="">Delete</th>
+                </tr>
+            </thead>
+            <tbody id="tblBodyCostFilters">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="divButton" class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="mb-3 mt-2 pull-right">
+        <button onclick="SaveData();" class="save offer-btn" title="Save"><i class="fa fa-save" aria-hidden="true"></i>&nbsp;Save</button>
+    </div>
+    <div style="width:100%;overflow-x:auto;"></div>
+</div>
+
+<div class="modal social-model fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog search-width api-filter-popup modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ng-binding" id="exampleModalLabel"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12" style="overflow-y: auto;max-height: 350px;">
+                    <div class="popup-field">
+                        <div id="divModal" class="ng-hide">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="modal-footer" class="modal-footer search-model-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal social-model fade" id="CaratModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg cst-inpt-mn" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Carat</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" style="margin-bottom: -18px;">
+                <div class="col-xl-12 col-lg-4 col-md-4 col-sm-6 mrg1">
+                    <div style="margin-left: 8px;">
+                        <div class="row form-group">
+                            <div class="col-md-3">
+                                <span>From</span>
+                                <input class="form-control" type="text" id="txtfromcarat" onblur="setFromCarat()" onkeypress="return isNumberKey_ISD(event)" autocomplete="off">
+                            </div>
+                            <div class="col-md-3">
+                                <span>To</span>
+                                <input class="form-control" type="text" id="txttocarat" onblur="setToCarat()" onkeypress="return isNumberKey_ISD(event)" autocomplete="off">
+                            </div>
+                            <div style="padding-top: 24px;font-size: 22px;">
+                                <a href="javascript:void(0);" onclick="NewSizeGroup()"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                            </div>
+                            <div style="padding-top: 24px;padding-left: 17px;font-size: 22px;">
+                                <ul id="popupul" class="color-whit-box">
+                                    <li id="li_Carat_0" onclick="ItemClicked('Carat','ALL','0', this);" class="">ALL</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="searchcaratspecific" class="li-content-width two fadeInLeft animated dv_Crt_Wgt1" data-wow-delay="0.1s" style="width: 104%;">
+                            <p class="divCheckedPointerValue"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer search-model-footer">
+                <button type="button" class="btn btn-primary" onclick="ResetCheckCarat()">Reset</button>
+                <button type="button" class="btn btn-secondary" onclick="SetFinalCarat()" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal social-model fade" id="ColorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog search-width api-filter-popup modal-lg" role="document">
+        <div class="modal-content" onclick="color_ddl_close();">
+            <div class="modal-header">
+                <h4 class="modal-title ng-binding">Color</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" style="margin-bottom: -18px;">
+                <div class="col-xl-12 col-lg-4 col-md-4 col-sm-6 mrg1">
+                    <div style="margin-left: 8px;">
+                        <div class="row form-group">
+                            <div style="font-size: 22px;" class="col-md-12">
+                                <div id="searchcaratspecific" class="li-content-width two" data-wow-delay="0.1s" style="width: 104%;">
+                                    <span class="btn-spn-opt btn-spn-opt-active" onclick="ActiveOrNot('Regular')" id="Regular">Regular</span>
+                                    <span class="btn-spn-opt" onclick="ActiveOrNot('Fancy');" id="Fancy">Fancy</span>
+                                </div>
+                            </div>
+                            <div id="div_Regular" style="margin-top: 15px;">
+                                <label class="row" style="margin-left: 19px;margin-top: -13px;margin-bottom: 12px;cursor: pointer;">
+                                    <input type="checkbox" id="chk_Regular_All" name="chk_Regular_All">
+                                    <span for="chk_Regular_All" style="font-size: 12px;margin-left: 3px;">Only All Regular Color</span>
+                                </label>
+                                <div class="col-12">
+                                    <div class="popup-field">
+                                        <div id="divModal" class="ng-show">
+                                            <ul id="divCheckedColorValue1" class="color-whit-box">
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="div_Fancy" class="row col-md-12" style="display:none;margin-top: 15px;">
+                                <label class="row" style="margin-left: 19px;margin-top: -13px;margin-bottom: 12px;cursor: pointer;">
+                                    <input type="checkbox" id="chk_Fancy_All" name="chk_Fancy_All">
+                                    <span for="chk_Fancy_All" style="font-size: 12px;margin-left: 3px;">Only All Fancy Color</span>
+                                </label>
+                                <div class="row col-md-12">
+                                    <div class="col-md-3">
+                                        <p class="p_f_clr" style="padding-left: 12px;font-size: 11px;color: #003d66;font-weight: bold;margin-bottom: -3px;margin-top: -8px;">INTENSITY</p>
+                                        <div class="sym" id="div_INTENSITY">
+                                            <div class="sym-sec" id="sym-sec1">
+                                                <div class="sym-main-wrap" onclick="INTENSITYShow();">
+                                                    <div class="sym-iner">
+                                                        <span id="c1_spanselected">0 - Selected</span>
+                                                    </div>
+                                                    <div class="sym-btn">
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="carat-dropdown-main" style="width: 105%;display:none;">
+                                                    <div class="carat-dropdown-half-col src-shape-main-pcscroll ps-container ps-theme-default row m-0" id="ddl_INTENSITY">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="fncy-rst"><a href="javascript:void(0);" onclick="resetINTENSITY()" data-toggle="tooltip" data-placement="bottom" title="Reset"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
+                                    </div>
+                                    <div class="col-md-3" style="margin-left: 20px;">
+                                        <p class="p_f_clr" style="padding-left: 12px;font-size: 11px;color: #003d66;font-weight: bold;margin-bottom: -3px;margin-top: -8px;">OVERTONE</p>
+                                        <div class="sym" id="div_OVERTONE">
+                                            <div class="sym-sec" id="sym-sec2">
+                                                <div class="sym-main-wrap" onclick="OVERTONEShow();">
+                                                    <div class="sym-iner">
+                                                        <span id="c2_spanselected">0 - Selected</span>
+                                                    </div>
+                                                    <div class="sym-btn">
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="carat-dropdown-main" style="width: 105%;display:none;">
+                                                    <div class="carat-dropdown-half-col src-shape-main-pcscroll ps-container ps-theme-default row m-0" id="ddl_OVERTONE">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="fncy-rst"><a href="javascript:void(0);" onclick="resetOVERTONE()" data-toggle="tooltip" data-placement="bottom" title="Reset"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
+                                    </div>
+                                    <div class="col-md-3" style="margin-left: 20px;">
+                                        <p class="p_f_clr" style="padding-left: 12px;font-size: 11px;color: #003d66;font-weight: bold;margin-bottom: -3px;margin-top: -8px;">FANCY COLOR</p>
+                                        <div class="sym" id="div_FANCY_COLOR">
+                                            <div class="sym-sec" id="sym-sec3">
+                                                <div class="sym-main-wrap" onclick="FANCY_COLORShow();">
+                                                    <div class="sym-iner">
+                                                        <span id="c3_spanselected">0 - Selected</span>
+                                                    </div>
+                                                    <div class="sym-btn">
+                                                        <i class="fa fa-caret-down"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="carat-dropdown-main" style="width: 105%;display:none;">
+                                                    <div class="carat-dropdown-half-col src-shape-main-pcscroll ps-container ps-theme-default row m-0" id="ddl_FANCY_COLOR">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="fncy-rst"><a href="javascript:void(0);" onclick="resetFANCY_COLOR()" data-toggle="tooltip" data-placement="bottom" title="Reset"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer search-model-footer">
+                <button type="button" class="btn btn-primary" onclick="ResetCheckColors()">Reset</button>
+                <button type="button" class="btn btn-secondary" onclick="SetFinalColors()" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>

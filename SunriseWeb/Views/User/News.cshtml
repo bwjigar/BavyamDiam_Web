@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+    <style>
+        table.News {
+            border-collapse: collapse;
+            width: 100%;
+            border-bottom: 1px solid gray;
+            border: 1px solid gray;
+        }
+
+        th.News {
+            padding: 5px 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            background-color: #003d66;
+            font-size: 14px;
+            color: white;
+        }
+
+        td.News {
+            padding: 5px 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 13px;
+        }
+
+        tr.News:hover {
+            background-color: #f5f5f5;
+        }
+
+        .roeflx {
+            display: block;
+        }
+    </style>
+
+}
+<input type="hidden" id="hdnNewsId" value="0" />
+<div class="container-fluid search_result viewcart-fluid">
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane active result-page-content viewcart-page-content" id="profile-tab2" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="result-nav">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                        <div class="viewcartdata-header columnsetting-header">
+                            <h1>News</h1>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                        <div class="myoffer-form column-setting-form one">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <form method="post" id="frmNews">
+                                        <div class="row">
+                                            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                                                <div class="common-order">
+                                                    <div class="offer-label">Date:</div>
+                                                    <input type="text" id="txtFromDate" name="txtFromDate" value="" class="commonFromRange offer-input" autocomplete="off" />
+                                                    <input type="text" id="txtToDate" name="txtToDate" value="" class="commonToRange offer-input" autocomplete="off" />
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                                                <div class="order-stone-id common-order">
+                                                    <div class="offer-label">Description:</div>
+                                                    <input id="txtDescription" name="txtDescription" placeholder="Description" type="text" maxlength="500" class="form-control common-control" autocomplete="off">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-1 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                                                <div class="order-stone-id common-order">
+                                                    <div class="offer-label">Font Color:</div>
+                                                    <input id="txtFontColor" name="txtFontColor" placeholder="Font Color" type="color" class="form-control common-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                                                <div class="offer-label">&nbsp;</div>
+                                                <ul class="offer-inbtn p-0 mb-2">
+                                                    <li style="padding-right: 5px;">
+                                                        <button class="offer-btn" onclick="BtnClick()"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save </button>
+                                                    </li>
+                                                    <li>
+                                                        <button class="offer-btn" onclick="ResetData()"><i class="fa fa-refresh" aria-hidden="true"></i> Reset </button>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                        <div class="myoffer-form column-setting-table column-setting-form">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="tab-content w-100">
+                                        <div id="TB_ColSetting" class="tab-pane active">
+                                            <div class="row mg0 pd5" style="text-align: center;">
+                                                <div class="col-md-12 table-responsive">
+                                                    <table class="responsive-table News">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="News" style="width: 10%;">From Date</th>
+                                                                <th class="News" style="width: 10%;">To Date</th>
+                                                                <th class="News" style="width: 63%;">Description</th>
+                                                                <th class="News" style="width: 10%;">Font Color</th>
+                                                                <th class="News" style="width: 7%;"><center>Action</center></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tblbody">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/common.js"></script>
+    <script src="~/Content/js/Pages/News.js"></script>
+}

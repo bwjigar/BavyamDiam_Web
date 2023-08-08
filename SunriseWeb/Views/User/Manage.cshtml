@@ -1,0 +1,158 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = "Manage User";
+    ViewBag.ClassName = "search-contnt";
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+}
+<style>
+    .spn-Yes1 {
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 0px 5px 0px 5px;
+        font-size: 10px;
+        font-weight: 600;
+        background: #28a745;
+        color: white;
+    }
+
+    .spn-No1 {
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 0px 5px 0px 5px;
+        font-size: 10px;
+        font-weight: 600;
+        background: #ef0808;
+        color: white;
+    }
+
+    .grid_prewrap {
+        white-space: pre-wrap !important;
+    }
+</style>
+<input type="hidden" id="hdn_IsEmployee" value="@SunriseWeb.Helper.SessionFacade.UserSession.isemp" />
+<div class="container-fluid order-history-section manage-user">
+    <input type="hidden" id="hdnDelUserId" />
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>Manage User</h2>
+                <div class="main-header-page add-new-btn" style="float: right;">
+                    <a href="@Url.Action("Add", "User")">
+                        <h1 style="color: green;">+ Add Admin </h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="order-history-data admin muser">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                    <div class="order-date common-order">
+                        <div class="offer-label">Type:</div>
+                        <select id="ddlFilterType" class="form-control" onchange="ddlFilterType();">
+                            <option value="">Select an Option</option>
+                            <option value="UN" selected="selected">User Name</option>
+                            <option value="CM">Company Name</option>
+                            <option value="CUN">Customer Name</option>
+                            <option value="CD">Created Date</option>
+                            <option value="LAD">Last Activation Date</option>
+                            <option value="LLD">Last Login Date</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-7 col-sm-6 col-12 float-left" id="divDatetime" style="display:none;">
+                    <div class="order-date common-order">
+                        <input type="text" name="From" id="txtFromDate" value="" class="offer-input offer-input1" />
+                        <input type="text" name="To" id="txtToDate" value="" class="offer-input offer-input1" />
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-7 col-sm-6 col-12 float-left" id="divWithoutDatetime">
+                    <div class="order-company-name common-order">
+                        <input type="text" id="txtCommonName" class="form-control common-control" autocomplete="off">
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                    <div class="order-stone-id common-order">
+                        <div class="offer-label">User Type:</div>
+
+                        <select class="form-control" id="ddlUserType">
+                            <option value="">Select an Option</option>
+                            <option value="1">Admin</option>
+                            <option value="3">Customer</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                    <div class="order-status common-order">
+                        <div class="offer-label"> Active:</div>
+                        <select class="form-control" id="ddlIsActive">
+                            <option value="">All</option>
+                            <option value="A">Active</option>
+                            <option value="I">In Active</option>
+                            <option value="S">Suspended</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                    <div class="offer-label">&nbsp;</div>
+                    <ul class="offer-inbtn">
+                        <li class="mr-2">
+                            <button type="button" id="btnSearch" onclick="GetSearch();" class="offer-btn">
+                                <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search
+                            </button>
+                        </li>
+                        <li class="mr-2">
+                            <button type="button" id="Export" onclick="DownloadUser();" class="offer-btn">
+                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;Excel
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" id="btnReset" onclick="Reset();" class="offer-btn">
+                                <i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Reset
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="aggrid-section">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="agGrid-box-main mt-2">
+                    <div id="Cart-Gride" class="ag-theme-balham ag-fresh" style="float: left; width: 100%; height: calc(100vh - 225px);"></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------Remove Country ------------->
+<div class="modal fade social-model" id="Remove">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Remove User</h4>
+                <button type="button" class="close" onclick="ClearRemoveModel()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <li>@LanguageProvider.get("Are_you_sure_to_remove_this_record") </li>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnSendMail" class="btn btn-primary" type="button" onclick="DeleteUser()">@LanguageProvider.get("Remove")</button>
+                <button id="btnremove" class="btn btn-primary" type="button" onclick="ClearRemoveModel()">@LanguageProvider.get("cancel")</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/js/wow.min.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/ManageUser.js?version=1"></script>
+    <script src="~/Content/js/Pages/detailCellRenderer.js"></script>
+}

@@ -1,0 +1,927 @@
+﻿@model Lib.Models.SearchStone
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stone Detail</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/StoneDetail/bootstrap.min.css">
+    <!-- font-awesome CSS -->
+    <link href="~/Content/css/StoneDetail/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/css/StoneDetail/enlarge.css" rel="stylesheet">
+    <link href="~/Content/css/StoneDetail/magnific-popup.css" rel="stylesheet">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="~/Content/css/StoneDetail/style.css">
+
+</head>
+
+<body>
+    @if (Model != null)
+    {
+        <input type="hidden" id="hdnStoneRefNo" value="@Model.stone_ref_no" />
+        if (Model.bPRimg != null && Model.bPRimg.Value == true)
+        {
+            <input type="hidden" id="hdnbPRimg" value="true" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnbPRimg" value="" />
+        }
+
+        if (Model.bHBimg != null && Model.bHBimg.Value == true)
+        {
+            <input type="hidden" id="hdnbHBimg" value="@Model.bHBimg.Value" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnbHBimg" value="" />
+        }
+
+        if (Model.bHTimg != null && Model.bHTimg.Value == true)
+        {
+            <input type="hidden" id="hdnbHTimg" value="@Model.bHTimg.Value" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnbHTimg" value="" />
+        }
+
+        if (Model.bASimg != null && Model.bASimg.Value == true)
+        {
+            <input type="hidden" id="hdnbASimg" value="@Model.bASimg.Value" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnbASimg" value="" />
+        }
+
+        <input type="hidden" id="hdnMovieUrl" value="@Model.movie_url" />
+        <input type="hidden" id="hdnViewCertiUrl" value="@Model.view_certi_url" />
+        <input type="hidden" id="hdnCertiNo" value="@Model.certi_no" />
+    }
+    else
+    {
+        <input type="hidden" id="hdnStoneRefNo" value="" />
+        <input type="hidden" id="hdnbPRimg" value="" />
+        <input type="hidden" id="hdnbHBimg" value="" />
+        <input type="hidden" id="hdnbHTimg" value="" />
+        <input type="hidden" id="hdnbASimg" value="" />
+        <input type="hidden" id="hdnMovieUrl" value="" />
+        <input type="hidden" id="hdnViewCertiUrl" value="" />
+        <input type="hidden" id="hdnCertiNo" value="" />
+    }
+    <div class="wrapper">
+
+        <!-- Page Content  -->
+        <div id="content" class="contnt search-contnt">
+
+
+            <!--- start of stone-detail part---->
+            <div class="container-fluid stone-detail p-0">
+                <div class="" id="">
+                    <div class="search-page-content offersearch">
+                        <div class="row">
+
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                                <div class="tab-content">
+                                    @if (Model != null &&
+                                            (Model.bPRimg == true || Model.bHBimg == true || Model.bHTimg == true || Model.bASimg == true))
+                                    {
+                                        if (Model.bPRimg == true)
+                                        {
+                                            <div class="stone-big-img tab-pane active" id="PR_@(Model.certi_no)_PR">
+                                                <div class="enlarge_pane_contain">
+                                                    <div class="enlarge_pane">
+                                                        <div class="enlarge">
+                                                            <div class="enlarge_contain">
+                                                                <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/PR.jpg">
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/PR.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                        </div>
+                                                        <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/PR.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        if (Model.bASimg == true)
+                                        {
+                                            if (Model.bPRimg == false)
+                                            {
+                                                <div class="stone-big-img tab-pane active" id="AS_@(Model.certi_no)_AS">
+                                                    <div class="enlarge_pane_contain">
+                                                        <div class="enlarge_pane">
+                                                            <div class="enlarge">
+                                                                <div class="enlarge_contain">
+                                                                    <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg">
+                                                                </div>
+                                                                <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="stone-big-img tab-pane fade" id="AS_@(Model.certi_no)_AS">
+                                                    <div class="enlarge_pane_contain">
+                                                        <div class="enlarge_pane">
+                                                            <div class="enlarge">
+                                                                <div class="enlarge_contain">
+                                                                    <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg">
+                                                                </div>
+                                                                <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        }
+                                        if (Model.bHBimg == true)
+                                        {
+                                            if (Model.bASimg == false && Model.bPRimg == false)
+                                            {
+                                                <div class="stone-big-img tab-pane active" id="HB_@(Model.certi_no)_HB">
+                                                    <div class="enlarge_pane_contain">
+                                                        <div class="enlarge_pane">
+                                                            <div class="enlarge">
+                                                                <div class="enlarge_contain">
+                                                                    <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg">
+                                                                </div>
+                                                                <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="stone-big-img tab-pane fade" id="HB_@(Model.certi_no)_HB">
+                                                    <div class="enlarge_pane_contain">
+                                                        <div class="enlarge_pane">
+                                                            <div class="enlarge">
+                                                                <div class="enlarge_contain">
+                                                                    <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg">
+                                                                </div>
+                                                                <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        }
+                                        if (Model.bHTimg == true)
+                                        {
+                                            if (Model.bASimg == false && Model.bPRimg == false && Model.bHBimg == false)
+                                            {
+                                                <div class="stone-big-img tab-pane active" id="HT_@(Model.certi_no)_HT">
+                                                    <div class="enlarge_pane_contain">
+                                                        <div class="enlarge_pane">
+                                                            <div class="enlarge">
+                                                                <div class="enlarge_contain">
+                                                                    <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg">
+                                                                </div>
+                                                                <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="stone-big-img tab-pane fade" id="HT_@(Model.certi_no)_HT">
+                                                    <div class="enlarge_pane_contain">
+                                                        <div class="enlarge_pane">
+                                                            <div class="enlarge">
+                                                                <div class="enlarge_contain">
+                                                                    <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg">
+                                                                </div>
+                                                                <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="stone-big-img tab-pane active">
+                                            <div class="enlarge_pane_contain">
+                                                <div class="enlarge_pane">
+                                                    <div class="enlarge">
+                                                        <div class="enlarge_contain">
+                                                            <img src="~/Content/images/no-img1.jpg">
+                                                        </div>
+                                                        <a href="~/Content/images/no-img1.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                    </div>
+                                                    <a href="~/Content/images/no-img1.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                @if (Model != null &&
+                                            (Model.bPRimg == true || Model.bHBimg == true || Model.bHTimg == true || Model.bASimg == true))
+                                {
+                                    <div class="stone-det-big-img">
+                                        <div class="dna-images">
+                                            <ul class="nav nav-tabs">
+                                                @if (Model.bPRimg == true)
+                                                {
+                                                    <li class="">
+                                                        <a id="one" data-toggle="tab" href="#PR_@(Model.certi_no)_PR" class="nav-link active"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/PR.jpg"></a>
+                                                    </li>
+                                                }
+                                                @if (Model.bASimg == true)
+                                                {
+                                                    <li class="">
+                                                        @if (Model.bPRimg == false)
+                                                        {
+                                                            <a id="two" data-toggle="tab" href="#AS_@(Model.certi_no)_AS" class="nav-link active"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg"></a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a id="two" data-toggle="tab" href="#AS_@(Model.certi_no)_AS" class="nav-link"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg"></a>
+                                                        }
+                                                    </li>
+                                                }
+                                                @if (Model.bHBimg == true)
+                                                {
+                                                    <li class="">
+                                                        @if (Model.bASimg == false && Model.bPRimg == false)
+                                                        {
+                                                            <a id="three" data-toggle="tab" href="#HB_@(Model.certi_no)_HB" class="nav-link active"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg"></a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a id="three" data-toggle="tab" href="#HB_@(Model.certi_no)_HB" class="nav-link"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg"></a>
+                                                        }
+                                                    </li>
+                                                }
+                                                @if (Model.bHTimg == true)
+                                                {
+                                                    <li class="">
+                                                        @if (Model.bASimg == false && Model.bPRimg == false && Model.bHBimg == false)
+                                                        {
+                                                            <a id="four" data-toggle="tab" href="#HT_@(Model.certi_no)_HT" class="nav-link active"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg"></a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a id="four" data-toggle="tab" href="#HT_@(Model.certi_no)_HT" class="nav-link"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg"></a>
+                                                        }
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                }
+
+                                <div class="video">
+                                    <div class="title">
+                                        <span style="display:none;">v360</span>
+                                        <a class="full-video">
+                                            <i class="fa fa-expand" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                    @if (Model != null && (Model.movie_url != null && Model.movie_url != ""))
+                                    {
+                                        <b style="color: #1c2f7a; ">Stone Video Link : </b><a href="@Model.movie_url" target="_blank" style="color: #1c2f7a;">Click Here...</a>
+                                        <iframe height="350" frameborder="0" id="video1" src="@Model.movie_url&amp;autoplay=1" style="text-align: center; width: 100%;"></iframe>
+                                    }
+                                    else
+                                    {
+                                        <img src="/Content/images/no-video-available.png" width="100%" height="400">
+                                    }
+                                </div>
+
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                @*<div class="stone-det-big-img p-0" ng-hide="CertDiv">
+                                    <a data-fancybox="gallery" id="aCertificateUrl" href="http://rushidiamhk.com/softimg/certimg/20804-GIA.jpg">
+                                        <img id="lblCertificateUrl2" style="width: 100%;" src="http://rushidiamhk.com/softimg/certimg/20804-GIA.jpg">
+                                    </a>
+                                </div>*@
+                                <div class="stone-det-big-img p-0" ng-hide="CertDiv">
+                                    @if (Model != null)
+                                    {
+                                        <iframe id="CertiFrame" width="100%" height="600" frameborder="0" src="@Model.view_certi_url" style="text-align: center; width: 100%;"></iframe>
+                                    }
+                                    else
+                                    {
+                                        <iframe id="CertiFrame" width="100%" height="600" frameborder="0" src="" style="text-align: center; width: 100%;"></iframe>
+                                    }
+                                </div>
+
+
+                                <div>
+                                    <div class="stone-detail-bx-main download-box-main">
+                                        <div class="stone-detail-head">
+                                            Download
+                                        </div>
+                                        <div class="download-main">
+                                            <ul>
+                                                <input type="hidden" id="sendtype" value="" />
+                                                @if (Model != null &&
+                                                    (Model.bPRimg == true || Model.bHBimg == true || Model.bHTimg == true || Model.bASimg == true))
+                                                {
+                                                    <li onclick="openpopup('image')"><i class="fa fa-whatsapp" aria-hidden="true"></i> IMAGE</li>
+                                                }
+                                                @if (Model != null &&
+                                                        (Model.movie_url != null && Model.movie_url != ""))
+                                                {
+                                                    <li onclick="openpopup('video')"><i class="fa fa-whatsapp" aria-hidden="true"></i> VIDEO</li>
+                                                }
+                                                @if (Model != null && Model.view_certi_url != null)
+                                                {
+                                                    <li onclick="openpopup('certi')"><i class="fa fa-whatsapp" aria-hidden="true"></i> CERTIFICATE</li>
+                                                }
+                                                <li onclick="Download('Excel')"><i class="fa fa-file-excel-o" aria-hidden="true"></i> EXCEL</li>
+                                                @if (Model != null &&
+                                                        (Model.bPRimg == true || Model.bHBimg == true || Model.bHTimg == true || Model.bASimg == true))
+                                                {
+                                                    <li onclick="Download('Image')"><i class="fa fa-download" aria-hidden="true"></i> IMAGE</li>
+                                                }
+                                                @if (Model != null &&
+                                                    (Model.movie_url != null && Model.movie_url != ""))
+                                                {
+                                                    <li onclick="Download('Video')"><i class="fa fa-download" aria-hidden="true"></i> VIDEO</li>
+                                                }
+                                                @if (Model != null && Model.view_certi_url != null)
+                                                {
+                                                    <li onclick="Download('Certificate')"><i class="fa fa-download" aria-hidden="true"></i> CERTIFICATE</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-3 col-sm-12">
+
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="stone-detail-bx-main">
+                                            <div id="accordion">
+                                                <div class="card">
+                                                    <div class="stone-detail-head">
+
+                                                        <a class="card-link" data-toggle="collapse" href="#collapseOne">
+                                                            <i class="fa fa-minus-circle" aria-hidden="true"></i> ADITIONAL INFO
+                                                        </a>
+                                                    </div>
+                                                    <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                                        <div class="stn-dtl-row card-body">
+
+                                                            <ul>
+                                                                <li class="one">Stock ID :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.stone_ref_no}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Certi No :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.certi_no}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Location :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.Location}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Shape :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.shape}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Carat :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.cts}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Color :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.color}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Clarity :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.clarity}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Rap Price :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.cur_rap_rate}
+                                                                <li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Rap Value :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.rap_amount}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Disc :</li>
+                                                                <li class="two" style="color: red;">
+                                                                    @if (Model != null)
+                                                                    {@Model.sales_disc_per}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Total$ :</li>
+                                                                <li class="two" style="color: red;">
+                                                                    @if (Model != null)
+                                                                    {@Model.net_amount}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Status :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.status}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Cut :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.cut}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Polish :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.polish}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Symmetry :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.symm}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Fls :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.fls}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Table Black :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.table_natts}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Crown Black :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.Crown_Natts}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Table White :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.table_per}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Crown White :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.Crown_Inclusion}
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                        <div class="stone-detail-bx-main">
+                                            <div id="accordion">
+                                                <div class="card">
+                                                    <div class="stone-detail-head">
+                                                        <a class="card-link" data-toggle="collapse" href="#collapseTwo">
+                                                            <i class="fa fa-plus-circle" aria-hidden="true"></i> INCLUSION DETAILS
+                                                        </a>
+                                                    </div>
+                                                    <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                                        <div class="stn-dtl-row card-body">
+                                                            <ul>
+                                                                <li class="one">Length :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.length}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Width :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.width}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Depth :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.depth}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Depth % :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.depth_per}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Table % :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.table_per}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Girdle % :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.girdle_per}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Girdle Type :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.girdle_type}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Crown Angle :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.crown_angle}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Crown Height :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.crown_height}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Pav Angle :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.pav_angle}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Pav Height :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.pav_height}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Culet :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.sCulet}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Lab :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.lab}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Inscription :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.sInscription}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">GIA Comments :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.sComments}
+                                                                </li>
+                                                            </ul>
+                                                            <ul>
+                                                                <li class="one">Key to Symbols :</li>
+                                                                <li class="two">
+                                                                    @if (Model != null)
+                                                                    {@Model.symbol}
+                                                                <li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="f-video">
+        <video controls poster="~/Content/images/PR.jpg" id="video">
+            <source src="video.mp4" type="video/mp4">
+            <source src="video.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+        </video>
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+
+    </div>
+
+
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+
+    <script src="~/Content/js/StoneDetail/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <!-- Popper.JS -->
+    <script src="~/Content/js/StoneDetail/popper.min.js"></script>
+
+    <script src="~/Content/js/StoneDetail/enlarge.js"></script>
+    <script src="~/Content/js/StoneDetail/enlarge.init.js"></script>
+    <script src="~/Content/js/StoneDetail/init.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/Content/js/StoneDetail/bootstrap.min.js"></script>
+    <script src="~/Content/js/StoneDetail/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/StoneDetail/custom.js"></script>
+
+</body>
+
+</html>
+<div class="modal fade social-model" id="MobileModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                @* <h4 class="modal-title">Place Order</h4>*@
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form class="form-horizontal" id="frmSaveOrder">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mobile No :</label>
+                        <input type="text" class="form-control required" onkeypress="return whatsAppKeypress(event);" name="MobileNo" id="txtMobileNo" placeholder="Enter MobileNo with country code">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-darkblue" type="button" onclick="sendWhatsapp()">OK</button>
+                    <button class="btn btn-darkblue" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*@section scripts{*@
+    <script>
+        function Download(type) {
+            if (type == "Excel") {
+                DownloadExcel();
+            }
+            else if (type == "Image") {
+                DownloadMedia(type);
+            }
+            else if (type == "Video") {
+                DownloadMedia(type);
+            }
+            else if (type == "Certificate") {
+                DownloadMedia(type);
+            }
+        }
+
+        function DownloadExcel() {
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+            var stoneId = $("#hdnStoneRefNo").val();
+            alert(stoneId);
+            $.ajax({
+                url: "/Common/StockExcelDownloadByStoneId",
+                type: "POST",
+                data: { StoneID: stoneId },
+                success: function (data, textStatus, jqXHR) {
+                    location.href = data;
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            });
+        }
+
+        function DownloadMedia(type) {
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+            var stoneId = $("#hdnStoneRefNo").val();
+            $.ajax({
+                url: "/Common/StockMediaDownloadByStoneId",
+                type: "POST",
+                data: { StoneID: stoneId, MediaType: type },
+                success: function (data, textStatus, jqXHR) {
+                    if (data.search('.zip') == -1 && data.search('.pdf') == -1) {
+                        alert(data);
+                    } else {
+                        location.href = data;
+                    }
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            });
+        }
+
+        function formatNumber(number) {
+            return (parseFloat(number).toFixed(2)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+        }
+        jQuery(document).ready(function ($) {
+            if ($("#liRapPrice").text() != "") {
+                $("#liRapPrice").text(formatNumber($("#liRapPrice").text()));
+            }
+
+            if ($("#liRapValue").text() != "") {
+                $("#liRapValue").text(formatNumber($("#liRapValue").text()));
+            }
+
+            if ($("#liTotal").text() != "") {
+                $("#liTotal").text(formatNumber($("#liTotal").text()));
+            }
+
+            $("#playvideo").click(function () {
+                var symbol = $("#video1")[0].src.indexOf("?") > -1 ? "&" : "?";
+                $("#video1")[0].src += symbol + "autoplay=1";
+            });
+            $('.slick-slider').slick({
+                dots: false,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: false,
+                autoplaySpeed: 500,
+                arrows: true,
+                responsive: [{
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                },
+                {
+                    breakpoint: 400,
+                    settings: {
+                        arrows: false,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }]
+            });
+
+        
+        });
+
+        function openpopup(type) {
+                debugger
+            if (type != "") {
+                $('#sendtype').val(type);
+                $('#MobileModal').modal('show');
+            }
+        }
+        function whatsAppKeypress(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode == 43 || (charCode >= 48 && charCode <= 57)) {
+                return true;
+            }
+            if (charCode == 13) {debugger
+                sendWhatsapp();
+                return true;
+            }
+
+            return false;
+        }
+        function sendWhatsapp() {
+            debugger
+            
+            var isvalid = $('#frmSaveOrder').valid();
+            if (!isvalid) {
+                return false;
+            }
+            else {debugger
+                var message = "";
+                var type = $('#sendtype').val();
+
+                var bPRimg = $("#hdnbPRimg").val();
+                var bHBimg = $("#hdnbHBimg").val();
+                var bHTimg = $("#hdnbHTimg").val();
+                var bASimg = $("#hdnbASimg").val();
+                var movie_url = $("#hdnMovieUrl").val();
+                var view_certi_url = $("#hdnViewCertiUrl").val();
+
+                if (type == 'image') {
+                    debugger
+                    if (bPRimg.toLowerCase() == 'true' || bPRimg.toLowerCase() == '1')
+                    {
+                        message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/PR.jpg \n ";
+                    }
+
+                    if (bHBimg.toLowerCase() == 'true' || bHBimg.toLowerCase() == '1')
+                    {
+                         message =message+ "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/HB.jpg \n ";
+                    }
+
+                    if (bHTimg.toLowerCase() == 'true' || bHTimg.toLowerCase() == '1')
+                    {
+                         message =message+ "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/HT.jpg \n ";
+                    }
+
+                    if (bASimg.toLowerCase() == 'true' || bASimg.toLowerCase() == '1')
+                    {
+                         message =message+ "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/AS.jpg \n ";
+                    }
+                }
+                
+                if (type == 'video') {debugger
+                    if (movie_url.toLowerCase() != "")
+                    {
+                         message =message+ movie_url;
+                    }
+                }
+                if (type == 'certi') {debugger
+                    if (view_certi_url.toLowerCase()  != "")
+                    {
+                         message =message+ view_certi_url;
+                    }
+                }
+                var mobileno = $('#txtMobileNo').val();
+                var URL = "https://api.whatsapp.com/send?phone=+"+mobileno+"&text=" + message;
+                window.open(URL);
+                $('#txtMobileNo').val("");
+                $('#MobileModal').modal('hide');
+            }
+        }
+    </script>
+
+@*}*@

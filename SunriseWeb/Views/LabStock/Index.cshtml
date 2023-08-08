@@ -1,0 +1,1035 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = "Lab Stock";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/Plugins/multiselect/bootstrap-multiselect.css" type="text/css">
+    <style type="text/css">
+        .btn-group > .btn:first-child {
+            width: 355px;
+        }
+
+        .dropdown-menu.show {
+            max-height: 450px;
+            overflow-y: auto;
+        }
+
+        .searchStock {
+            width: 50% !important;
+        }
+
+        .excelbtn {
+            width: 160px !important;
+        }
+
+        .search-page-content .bottom-button-bar {
+            width: 100%;
+            /*margin: 0 15px 0 15px;*/
+        }
+
+        @@media screen and (min-width: 321px) and (max-width: 411px) {
+            .search-page-content.tab-pane ul li input {
+                width: 133px;
+            }
+
+            .btn-group > .btn:first-child {
+                width: 265px;
+                margin-left: 10px;
+            }
+
+            .offer-input1 {
+                width: 83px;
+            }
+
+            .dropdown-menu.show {
+                max-height: 350px;
+                overflow-y: auto;
+            }
+
+            .searchStock {
+                width: 100% !important;
+            }
+
+            #divButtons, .search-page-content .bottom-button-bar ul {
+                background-color: #c8c8c8;
+                border-radius: 0px;
+            }
+
+            .excelbtn {
+                width: 95px !important;
+            }
+            /*.search-page-content .bottom-button-bar ul li a {
+                height: 85px;
+            }
+
+            .search-page-content .bottom-button-bar {
+                position: relative;
+        }*/
+        }
+
+        @@media(max-width: 320px) {
+            .search-page-content.tab-pane ul li input {
+                width: 112px;
+            }
+
+            .btn-group > .btn:first-child {
+                width: 235px;
+                margin-left: 5px;
+            }
+
+            .offer-input1 {
+                width: 62px;
+            }
+
+            .dropdown-menu.show {
+                max-height: 350px;
+                overflow-y: auto;
+            }
+
+            .searchStock {
+                width: 100% !important;
+            }
+
+            #divButtons, .search-page-content .bottom-button-bar ul {
+                background-color: #c8c8c8;
+                border-radius: 0px;
+            }
+
+            .excelbtn {
+                width: 95px !important;
+            }
+            /*.search-page-content .bottom-button-bar ul li a {
+                height: 85px;
+            }
+
+            .search-page-content .bottom-button-bar {
+                position: relative;
+            }*/
+        }
+
+        @@media screen and (min-width: 412px) and (max-width: 414px) {
+            .search-page-content.tab-pane ul li input {
+                width: 133px;
+            }
+
+            .btn-group > .btn:first-child {
+                width: 315px;
+                margin-left: 10px;
+            }
+
+            .offer-input1 {
+                width: 83px;
+            }
+
+            .dropdown-menu.show {
+                max-height: 350px;
+                overflow-y: auto;
+            }
+
+            .searchStock {
+                width: 100% !important;
+            }
+
+            #divButtons, .search-page-content .bottom-button-bar ul {
+                background-color: #c8c8c8;
+                border-radius: 0px;
+            }
+
+            .excelbtn {
+                width: 95px !important;
+            }
+            /*.search-page-content .bottom-button-bar ul li a {
+                height: 85px;
+            }
+
+            .search-page-content .bottom-button-bar {
+                position: relative;
+            }*/
+        }
+
+        @@media screen and (min-width: 415px) and (max-width: 450px) {
+            .search-page-content.tab-pane ul li input {
+                width: 133px;
+            }
+
+            #divButtons, .search-page-content .bottom-button-bar ul {
+                background-color: #c8c8c8;
+                border-radius: 0px;
+            }
+
+            .excelbtn {
+                width: 95px !important;
+            }
+            /*.search-page-content .bottom-button-bar ul li a {
+                height: 85px;
+            }
+
+            .search-page-content .bottom-button-bar {
+                position: relative;
+            }*/
+        }
+
+        @@media (width: 768px) {
+            .btn-group > .btn:first-child {
+                width: 240px;
+            }
+
+            .offer-input1 {
+                width: 110px;
+            }
+
+            .dropdown-menu.show {
+                max-height: 350px;
+                overflow-y: auto;
+            }
+
+            .searchStock {
+                width: 100% !important;
+            }
+        }
+
+        .search-page-content ul.search li a.active span.first-ico {
+            color: #fff;
+        }
+
+        .search-page-content ul.search li a:hover span.first-ico {
+            color: #fff;
+        }
+
+        .f_clr_clk {
+            margin-top: -11px;
+            z-index: 9999;
+        }
+
+        #sym-sec0.active .carat-dropdown-main {
+            display: block;
+            transition: all 0.3s;
+            -o-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+        }
+
+        #sym-sec1.active .carat-dropdown-main {
+            display: block;
+            transition: all 0.3s;
+            -o-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+        }
+
+        #sym-sec2.active .carat-dropdown-main {
+            display: block;
+            transition: all 0.3s;
+            -o-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+        }
+
+        #sym-sec3.active .carat-dropdown-main {
+            display: block;
+            transition: all 0.3s;
+            -o-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+        }
+
+        .active_btn {
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            padding: 5px 15px;
+            float: left;
+            margin-bottom: 5px;
+            margin-right: 5px;
+            transition-duration: 0.3s;
+            -webkit-transition: 0.3s;
+            -moz-transition: 0.3s;
+            cursor: pointer;
+            font-size: 10px;
+            white-space: nowrap;
+            font-weight: 600;
+            background: #fff;
+            position: relative;
+            z-index: 0;
+            overflow: hidden;
+            margin-top: 5px;
+            /*background: #003d66;
+            color: #fff;*/
+            box-shadow: none;
+            border-radius: 6px;
+        }
+
+        .active_btn_active {
+            background: #003d66;
+            color: #fff;
+        }
+
+        .active_btn_inactive {
+            background: #fff;
+            color: #003d66;
+        }
+
+        .part2 li.active ::after {
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+
+        .fncy-rst {
+            right: -6px;
+            top: 13px;
+            position: absolute;
+            /*font-size: 14px;*/
+            cursor: pointer;
+        }
+
+        .sym-sec .carat-dropdown-main ul li {
+            display: inline-block;
+            margin: -3px 0px 0px 0px;
+            width: 23%;
+        }
+
+        .g-head-t {
+            font-size: 12px;
+            padding: 0 12px;
+            color: grey;
+        }
+
+        .g-amt-t {
+            font-size: 12px;
+            padding: 0 12px;
+            color: #003d66;
+        }
+
+        .rw_mar_rmv {
+            margin-right: 0px !important;
+        }
+
+        .search-page-content ul li.label {
+            width: auto !important;
+            text-align: left;
+            border: 2px solid #727278;
+            font-weight: bold;
+            box-shadow: none;
+            transform: unset;
+            font-size: 13px;
+            padding: 2px 15px 2px 20px;
+            background: #79797e;
+            color: #fff;
+            border-radius: 0px 15px 15px 0;
+            margin-top: 0;
+        }
+
+        .search-page-content ul.search li a.active .icon-image, .search-page-content ul.search li a:hover .icon-image {
+            background: #79797e;
+        }
+
+        .search-page-content ul.search li a span {
+            color: #79797e;
+            transition: transform 0.3s ease-in-out;
+            font-size: 13px;
+            margin-top: 10px;
+            font-weight: 600;
+            text-shadow: 2px 4px 3px rgb(0 0 0 / 30%);
+        }
+
+        .search-page-content ul.ul-b:hover {
+            border-left: 2px solid #79797e;
+        }
+
+            .search-page-content ul.ul-b:hover::before {
+                border-left: 10px solid #79797e;
+            }
+
+        .search-page-content ul:hover li.label {
+            background: #fff;
+            color: #79797e;
+        }
+
+        .search-page-content.tab-pane ul li input:focus, .search-page-content ul li input.active {
+            border-radius: 25px;
+            outline: none;
+            border: 1px solid #79797e;
+            box-shadow: 0 0 0 0.2rem rgb(121 121 126 / 16%);
+        }
+
+        .search-page-content.tab-pane li i.fa.fa-plus-circle {
+            margin-top: 5px;
+            color: #79797e;
+        }
+
+        .search-page-content .common-li li::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            border-radius: 6px;
+            width: 0;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            background: #79797e;
+            transition: 0.3s;
+            z-index: -1;
+        }
+
+        .search-page-content .common-li li {
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            padding: 5px 15px;
+            float: left;
+            margin-bottom: 5px;
+            margin-right: 5px;
+            transition-duration: 0.3s;
+            -webkit-transition: 0.3s;
+            -moz-transition: 0.3s;
+            cursor: pointer;
+            font-size: 10px;
+            white-space: nowrap;
+            font-weight: 600;
+            background: #fff;
+            color: #79797e;
+            position: relative;
+            z-index: 0;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .active_btn_active {
+            background: #79797e;
+            color: #fff;
+        }
+
+        .regclr {
+            color: #79797e;
+        }
+
+        .carat-dropdown-half-col::before {
+            content: '';
+            position: absolute;
+            right: 10px;
+            top: -20px;
+            border-top: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #79797e;
+            border-left: 10px solid transparent;
+        }
+
+        .navbar-search .form-control:focus {
+            box-shadow: 0 0 0 0.2rem rgb(121 121 126 / 16%);
+        }
+
+        .search-page-content .bottom-button-bar ul.two li a.obtn:hover {
+            background: #79797e;
+            color: #fff;
+            border: 1px solid #727278;
+        }
+
+        .grid_prewrap {
+            white-space: pre-wrap !important;
+        }
+    </style>
+}
+
+
+<div class="container-fluid search_result" onclick="ddl_close();">
+    @*<label id="h2Title" style="font-weight: 700;font-size: 15px;">Lab Stock</label>*@
+    @*<ul class="nav nav-tabs tabs-marker" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="tabhome" data-toggle="tab" tabindex="0" href="#home-tab2" role="tab" aria-controls="home" aria-selected="true">Lab Stock<span class="marker"></span></a>
+            </li>
+        </ul>*@
+    <div class="order-title" style="padding-left: 25px;">
+        <h2>Lab Stock</h2>
+    </div>
+    <div id="divFilter">
+        <div class="row rw_mar_rmv">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="form-inline ml-md-3 mt-3 navbar-search">
+                    <input type="text" autocomplete="off" maxlength="2000" class="form-control border-0 small searchStock" id="txtRefNo" onkeyup="CommaSeperated_list(event)" placeholder="@LanguageProvider.get("Stock_Id") / @LanguageProvider.get("Cerificate_No") (Comma or Space)...">
+                </div>
+            </div>
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left mt-3">
+                    <div class="order-date common-order">
+                        <div class="offer-label float-left pr-3">Date:</div>
+                        <input type="text" name="From" id="txtFromDate" value="" class="offer-input offer-input1" />
+                        <input type="text" name="To" id="txtToDate" value="" class="offer-input offer-input1" />
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-2 col-12 float-left mt-3" style="width: 83px;">
+                    <div class="order-stone-id common-order">
+                        <div class="offer-label float-left">Trans ID:</div>
+                    </div>
+                </div>
+                <div class="float-left mt-3 mb-3">
+                    <select id="ddlTransId" class="form-control common-control" multiple="multiple" style="width: 100%">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show search-page-content active" id="home-tab2" role="tabpanel" aria-labelledby="home-tab">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <ul class="search shape ul-b">
+                            <li class="label">@LanguageProvider.get("shape"):</li>
+                            <div class="li-content-width" id="searchshape">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-12">
+                        @*<ul class="carat ul-b">
+                            <li class="label">Carat Weight:</li>*@
+                        @*<ul class="nav specific-ul" id="CaratTab" role="tablist">
+                                <li>
+                                    <a class="active" id="home" data-toggle="tab" href="#carat1" role="tab" aria-controls="home" aria-selected="true">Specific</a>
+                                </li>
+                                <li>
+                                    <a class="" id="profile" data-toggle="tab" href="#carat2" role="tab" aria-controls="profile" aria-selected="false">General</a>
+                                </li>
+                            </ul>*@
+
+                        @*<div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="carat1" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="li-content-width one wow fadeInLeft animated" data-wow-delay="0.1s">
+                                            <li class="carat-li-top"><input type="text" id="txtfromcarat" onblur="setFromCarat()" onkeypress="return isNumberKey_ISD(event)"><span class="from-to">From</span></li>
+                                            <li class="carat-li-top"><input type="text" id="txttocarat" onblur="setToCarat()" onkeypress="return isNumberKey_ISD(event)"><span class="from-to">To</span></li>
+                                            <li class="carat-li-top"><a href="javascript:void(0);" onclick="NewSizeGroup()"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></li>
+                                        </div>
+                                        <div id="searchcaratspecific" class="li-content-width two wow fadeInLeft animated" data-wow-delay="0.1s">
+                                        </div>
+                                    </div>
+                                </div>
+                            </ul>*@
+
+                        <ul class="carat ul-b">
+                            <li class="label">@LanguageProvider.get("Carat_Weight"):</li>
+                            <ul class="nav specific-ul" id="CaratTab" role="tablist" style=" width: 57%; ">
+                                <li>
+                                    <a class="active" id="home" data-toggle="tab" href="#carat1" role="tab" aria-controls="home" aria-selected="true">Specific</a>
+                                </li>
+                                <li>
+                                    <a class="" id="profile" data-toggle="tab" href="#carat2" role="tab" aria-controls="profile" aria-selected="false">General</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content row col-md-12" id="myTabContent">
+                                <div class="tab-pane fade show active row col-md-12" id="carat1" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="li-content-width one wow fadeInLeft animated dv_Crt_Wgt" data-wow-delay="0.1s" style=" width: 104%;">
+                                        <li class="carat-li-top"><input type="text" id="txtfromcarat" onblur="setFromCarat()" onkeypress="return isNumberKey_ISD(event)" autocomplete="off"><span class="from-to">From</span></li>
+                                        <li class="carat-li-top"><input type="text" id="txttocarat" onblur="setToCarat()" onkeypress="return isNumberKey_ISD(event)" autocomplete="off"><span class="from-to">To</span></li>
+                                        <li class="carat-li-top"><a href="javascript:void(0);" onclick="NewSizeGroup()"><i class="fa fa-plus-circle" aria-hidden="true"></i></a></li>
+                                    </div>
+                                    <div id="searchcaratspecific" class="li-content-width two wow fadeInLeft animated dv_Crt_Wgt1" data-wow-delay="0.1s" style="width: 104%;">
+
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade carat2 common-li" id="carat2" role="tabpanel" aria-labelledby="home-tab">
+                                    <div id="searchcaratgen" class="li-content-width  fadeInRight animated" data-wow-delay="0.8s">
+                                    </div>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    @*<div class="col-xl-6">
+                            <ul class="color common-li ul-b">
+                                <li class="label">Color:</li>
+                                <div id="searchcolor" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                                </div>
+                            </ul>
+                        </div>*@
+                    <div class="col-xl-6" id="div_Color">
+                        <ul class="color cl common-li ul-b">
+                            <li class="label">@LanguageProvider.get("color"):</li>
+                            <div>
+                                <li onclick="Color_Hide_Show('1')" id="Color_Hide_Show_1" class="active">Regular</li>
+                                <li onclick="Color_Hide_Show('2')" id="Color_Hide_Show_2">Fancy</li>
+                            </div>
+                            <div id="searchcolor" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-6" id="div_Fancy_Color" style="display:none;">
+                        @*<ul class="color cl common-li ul-b">*@
+                        <ul class="part2 ul-b">
+                            <li class="label">@LanguageProvider.get("color"):&nbsp;&nbsp;</li>
+                            <div>
+                                <li onclick="Color_Hide_Show('3')" class="active_btn regclr" id="Color_Hide_Show_3" style="margin-left: 5px;">Regular</li>
+                                <li onclick="Color_Hide_Show('4')" class="active_btn" id="Color_Hide_Show_4">Fancy</li>
+                            </div>
+                            <div id="searchcolor" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s" style="display:none;">
+                            </div>
+                            @*<div id="searchFANCYCOLOR">*@
+                            <div class="row col-md-12">
+                                <div class="col-md-4">
+                                    <p class="p_f_clr" style="padding-left: 12px;font-size: 11px;color: #79797e;font-weight: bold;margin-bottom: -3px;margin-top: -8px;">INTENSITY</p>
+                                    <li class="sym" id="div_INTENSITY">
+                                        <div class="sym-sec" id="sym-sec1">
+                                            <div class="sym-main-wrap" onclick="INTENSITYShow();">
+                                                <div class="sym-iner">
+                                                    <span id="c1_spanselected">0 - Selected</span>
+                                                </div>
+                                                <div class="sym-btn">
+                                                    <i class="fa fa-caret-down"></i>
+                                                </div>
+                                            </div>
+                                            <div class="carat-dropdown-main" style="width: 102%;display:none;">
+                                                <div class="carat-dropdown-half-col src-shape-main-pcscroll ps-container ps-theme-default row m-0" id="ddl_INTENSITY">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <span class="fncy-rst"><a href="javascript:void(0);" onclick="resetINTENSITY()" data-toggle="tooltip" data-placement="bottom" title="Reset"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <p class="p_f_clr" style="padding-left: 12px;font-size: 11px;color: #79797e;font-weight: bold;margin-bottom: -3px;margin-top: -8px;">OVERTONE</p>
+                                    <li class="sym" id="div_OVERTONE">
+                                        <div class="sym-sec" id="sym-sec2">
+                                            <div class="sym-main-wrap" onclick="OVERTONEShow();">
+                                                <div class="sym-iner">
+                                                    <span id="c2_spanselected">0 - Selected</span>
+                                                </div>
+                                                <div class="sym-btn">
+                                                    <i class="fa fa-caret-down"></i>
+                                                </div>
+                                            </div>
+                                            <div class="carat-dropdown-main" style="width: 102%;display:none;">
+                                                <div class="carat-dropdown-half-col src-shape-main-pcscroll ps-container ps-theme-default row m-0" id="ddl_OVERTONE">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <span class="fncy-rst"><a href="javascript:void(0);" onclick="resetOVERTONE()" data-toggle="tooltip" data-placement="bottom" title="Reset"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
+                                </div>
+                                <div class="col-md-4">
+                                    <p class="p_f_clr" style="padding-left: 12px;font-size: 11px;color: #79797e;font-weight: bold;margin-bottom: -3px;margin-top: -8px;">FANCY COLOR</p>
+                                    <li class="sym" id="div_FANCY_COLOR">
+                                        <div class="sym-sec" id="sym-sec3">
+                                            <div class="sym-main-wrap" onclick="FANCY_COLORShow();">
+                                                <div class="sym-iner">
+                                                    <span id="c3_spanselected">0 - Selected</span>
+                                                </div>
+                                                <div class="sym-btn">
+                                                    <i class="fa fa-caret-down"></i>
+                                                </div>
+                                            </div>
+                                            <div class="carat-dropdown-main" style="width: 102%;display:none;">
+                                                <div class="carat-dropdown-half-col src-shape-main-pcscroll ps-container ps-theme-default row m-0" id="ddl_FANCY_COLOR">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <span class="fncy-rst"><a href="javascript:void(0);" onclick="resetFANCY_COLOR()" data-toggle="tooltip" data-placement="bottom" title="Reset"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-6">
+                        <ul class="color common-li ul-b">
+                            <li class="label">@LanguageProvider.get("clarity"):</li>
+                            <div id="searchclarity" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+
+
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">@LanguageProvider.get("cut"):</li>
+                            <li id="li3ex" onclick="SetCutMaster('3EX')">3EX</li>
+                            <li id="li3vg" onclick="SetCutMaster('3VG')">3vg+</li>
+                            <div id="searchcut" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">@LanguageProvider.get("polish"):</li>
+                            <div id="searchpolish" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">@LanguageProvider.get("symm"):</li>
+                            <div id="searchsymm" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">@LanguageProvider.get("fls"):</li>
+                            <div id="searchfls" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">@LanguageProvider.get("bgm"):</li>
+                            <div id="searchbgm" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">@LanguageProvider.get("lab"):</li>
+                            <div id="searchlab" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">@LanguageProvider.get("Table_Black"):</li>
+                            <div id="searchtablenatts" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">@LanguageProvider.get("Crown_Black"):</li>
+                            <div id="searchcrownnatts" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">@LanguageProvider.get("Table_White"):</li>
+                            <div id="searchtableincl" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">@LanguageProvider.get("Crown_White"):</li>
+                            <div id="searchcrownincl" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">Table Open:</li>
+                            <div id="searchtableopen" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">Crown Open:</li>
+                            <div id="searchcrownopen" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">Pav Open:</li>
+                            <div id="searchpavopen" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4">
+                        <ul class="color common-li ul-b">
+                            <li class="label">Girdle Open:</li>
+                            <div id="searchgirdleopen" class="li-content-width wow fadeInLeft animated" data-wow-delay="0.8s">
+                            </div>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <ul class="part2 ul-b">
+                            <li class="label">@LanguageProvider.get("Key_to_symbol") :</li>
+                            <div id="divKTSBlank" class="li-content-width wow flipInY animated color common-li ul-b col-md-1" style="margin-left: 123px;margin-top: 1px;margin-bottom: -8px;">
+                                <li id="KTSBlank" onclick="SetActive('KTSBlank','BLANK')">BLANK</li>
+                            </div>
+                            <span class="res-btn"><a href="javascript:void(0);" onclick="resetKeytoSymbol()" data-toggle="tooltip" data-placement="bottom" title="Reset"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
+                            <li class="sym">
+                                <div class="sym-sec" id="sym-sec0">
+                                    <div class="sym-main-wrap" onclick="Key_to_symbolShow();">
+                                        <div class="sym-iner">
+                                            <span id="spanselected">0 - Selected</span> / <span id="spanunselected">0 - Deselected</span>
+                                        </div>
+                                        <div class="sym-btn">
+                                            <i class="fa fa-caret-down"></i>
+                                        </div>
+                                    </div>
+                                    <div class="carat-dropdown-main">
+                                        <div class="carat-dropdown-half-col src-shape-main-pcscroll ps-container ps-theme-default row m-0" id="searchkeytosymbol">
+                                            @*<div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>*@
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="part2 ul-b">
+                            <li class="label">@LanguageProvider.get("discount") :</li>
+                            <div class="li-content-width sec">
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('FROM','FromDiscount','ToDiscount');" onkeypress="return numvalid(event)" id="FromDiscount" class="numeric" maxlength="6" type="text"><span class="from-to">From</span></li>
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('TO','FromDiscount','ToDiscount');" onkeypress="return numvalid(event)" id="ToDiscount" class="numeric" maxlength="6" type="text"><span class="from-to">To</span></li>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="part2 ul-b">
+                            <li class="label">@LanguageProvider.get("totamt") :</li>
+                            <div class="li-content-width sec">
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('FROM','FromTotalAmt','ToTotalAmt');" onkeypress="return numvalid(event)" id="FromTotalAmt" class="numeric" maxlength="6" type="text"><span class="from-to">From</span></li>
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('TO','FromTotalAmt','ToTotalAmt');" onkeypress="return numvalid(event)" id="ToTotalAmt" class="numeric" maxlength="6" type="text"><span class="from-to">To</span></li>
+                            </div>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <ul class="part2 ul-b">
+                            <li class="label">@LanguageProvider.get("length") :</li>
+                            <div class="li-content-width sec">
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('FROM','FromLength','ToLength');" onkeypress="return numvalid(event)" id="FromLength" class="numeric" maxlength="6" type="text"><span class="from-to">From</span></li>
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('TO','FromLength','ToLength');" onkeypress="return numvalid(event)" id="ToLength" class="numeric" maxlength="6" type="text"><span class="from-to">To</span></li>
+                                <div id="divLengthBlank" class="li-content-width wow flipInY animated color common-li ul-b col-md-1" style="margin-left: -7px;margin-top: -4px;margin-bottom: -8px;">
+                                    <li id="LengthBlank" onclick="SetActive('LengthBlank','BLANK')">BLANK</li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="part2 ul-b">
+                            <li class="label">@LanguageProvider.get("width") :</li>
+                            <div class="li-content-width sec">
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('FROM','FromWidth','ToWidth');" onkeypress="return numvalid(event)" id="FromWidth" class="numeric" maxlength="6" type="text"><span class="from-to">From</span></li>
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('TO','FromWidth','ToWidth');" onkeypress="return numvalid(event)" id="ToWidth" class="numeric" maxlength="6" type="text"><span class="from-to">To</span></li>
+                                <div id="divWidthBlank" class="li-content-width wow flipInY animated color common-li ul-b col-md-1" style="margin-left: -7px;margin-top: -4px;margin-bottom: -8px;">
+                                    <li id="WidthBlank" onclick="SetActive('WidthBlank','BLANK')">BLANK</li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="part2 ul-b">
+                            <li class="label">@LanguageProvider.get("Depth") :</li>
+                            <div class="li-content-width sec">
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('FROM','FromDepth','ToDepth');" onkeypress="return numvalid(event)" id="FromDepth" class="numeric" maxlength="6" type="text"><span class="from-to">From</span></li>
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('TO','FromDepth','ToDepth');" onkeypress="return numvalid(event)" id="ToDepth" class="numeric" maxlength="6" type="text"><span class="from-to">To</span></li>
+                                <div id="divDepthBlank" class="li-content-width wow flipInY animated color common-li ul-b col-md-1" style="margin-left: -7px;margin-top: -4px;margin-bottom: -8px;">
+                                    <li id="DepthBlank" onclick="SetActive('DepthBlank','BLANK')">BLANK</li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="part2 ul-b">
+                            <li class="label">@LanguageProvider.get("depth_per") :</li>
+                            <div class="li-content-width sec">
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('FROM','FromDepthPer','ToDepthPer');" onkeypress="return numvalid(event)" id="FromDepthPer" class="numeric" maxlength="6" type="text"><span class="from-to">From</span></li>
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('TO','FromDepthPer','ToDepthPer');" onkeypress="return numvalid(event)" id="ToDepthPer" class="numeric" maxlength="6" type="text"><span class="from-to">To</span></li>
+                                <div id="divDepthPerBlank" class="li-content-width wow flipInY animated color common-li ul-b col-md-1" style="margin-left: -7px;margin-top: -4px;margin-bottom: -8px;">
+                                    <li id="DepthPerBlank" onclick="SetActive('DepthPerBlank','BLANK')">BLANK</li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="part2 ul-b">
+                            <li class="label">@LanguageProvider.get("table_per") :</li>
+                            <div class="li-content-width sec">
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('FROM','FromTablePer','ToTablePer');" onkeypress="return numvalid(event)" id="FromTablePer" class="numeric" maxlength="6" type="text"><span class="from-to">From</span></li>
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('TO','FromTablePer','ToTablePer');" onkeypress="return numvalid(event)" id="ToTablePer" class="numeric" maxlength="6" type="text"><span class="from-to">To</span></li>
+                                <div id="divTablePerBlank" class="li-content-width wow flipInY animated color common-li ul-b col-md-1" style="margin-left: -7px;margin-top: -4px;margin-bottom: -8px;">
+                                    <li id="TablePerBlank" onclick="SetActive('TablePerBlank','BLANK')">BLANK</li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3">
+                        <ul class="color common-li ul-b">
+                            <li class="label">@LanguageProvider.get("Media") :</li>
+                            <div class="li-content-width">
+                                <li id="SearchImage" class="wow flipInY animated" data-wow-delay="0.8s"><i class="fa fa-picture-o" aria-hidden="true"></i>Images</li>
+                                <li id="SearchVideo" class="wow flipInY animated" data-wow-delay="0.8s"><i class="fa fa-video-camera" aria-hidden="true"></i>Video</li>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="part2 ul-b">
+                            <li class="label">@LanguageProvider.get("Cr_Ang") :</li>
+                            <div class="li-content-width sec">
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('FROM','FromCrAng','ToCrAng');" onkeypress="return numvalid(event)" id="FromCrAng" class="numeric" maxlength="6" type="text"><span class="from-to">From</span></li>
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('TO','FromCrAng','ToCrAng');" onkeypress="return numvalid(event)" id="ToCrAng" class="numeric" maxlength="6" type="text"><span class="from-to">To</span></li>
+                                <div id="divCrAngBlank" class="li-content-width wow flipInY animated color common-li ul-b col-md-1" style="margin-left: -7px;margin-top: -4px;margin-bottom: -8px;">
+                                    <li id="CrAngBlank" onclick="SetActive('CrAngBlank','BLANK')">BLANK</li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="part2 ul-b">
+                            <li class="label">@LanguageProvider.get("Cr_Ht") :</li>
+                            <div class="li-content-width sec">
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('FROM','FromCrHt','ToCrHt');" onkeypress="return numvalid(event)" id="FromCrHt" class="numeric" maxlength="6" type="text"><span class="from-to">From</span></li>
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('TO','FromCrHt','ToCrHt');" onkeypress="return numvalid(event)" id="ToCrHt" class="numeric" maxlength="6" type="text"><span class="from-to">To</span></li>
+                                <div id="divCrHtBlank" class="li-content-width wow flipInY animated color common-li ul-b col-md-1" style="margin-left: -7px;margin-top: -4px;margin-bottom: -8px;">
+                                    <li id="CrHtBlank" onclick="SetActive('CrHtBlank','BLANK')">BLANK</li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="part2 ul-b">
+                            <li class="label">@LanguageProvider.get("Pav_Ang") :</li>
+                            <div class="li-content-width sec">
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('FROM','FromPavAng','ToPavAng');" onkeypress="return numvalid(event)" id="FromPavAng" class="numeric" maxlength="6" type="text"><span class="from-to">From</span></li>
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('TO','FromPavAng','ToPavAng');" onkeypress="return numvalid(event)" id="ToPavAng" class="numeric" maxlength="6" type="text"><span class="from-to">To</span></li>
+                                <div id="divPavAngBlank" class="li-content-width wow flipInY animated color common-li ul-b col-md-1" style="margin-left: -7px;margin-top: -4px;margin-bottom: -8px;">
+                                    <li id="PavAngBlank" onclick="SetActive('PavAngBlank','BLANK')">BLANK</li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <ul class="part2 ul-b pavht">
+                            <li class="label">@LanguageProvider.get("Pav_Ht") :</li>
+                            <div class="li-content-width sec">
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('FROM','FromPavHt','ToPavHt');" onkeypress="return numvalid(event)" id="FromPavHt" class="numeric" type="text"><span class="from-to">From</span></li>
+                                <li class="wow flipInY animated" data-wow-delay="0.8s"><input onblur="LeaveTextBox('TO','FromPavHt','ToPavHt');" onkeypress="return numvalid(event)" id="ToPavHt" class="numeric" type="text"><span class="from-to">To</span></li>
+                                <div id="divPavHtBlank" class="li-content-width wow flipInY animated color common-li ul-b col-md-1" style="margin-left: -7px;margin-top: -4px;margin-bottom: -8px;">
+                                    <li id="PavHtBlank" onclick="SetActive('PavHtBlank','BLANK')">BLANK</li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+
+                </div>
+                @*<div id="divButtons" class="row">*@
+                <div class="bottom-button-bar text-right">
+                    <ul class="two">
+                        @if (SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 9 || SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 15
+                            || SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 39 || SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 10) // Nilesh, Ankit Shah, Sandeep, jigijiga
+                        {
+                            <li><a style="width: 100% !important;" href="javascript:void(0);" class="obtn excelbtn" onclick="CustomerExcel(2);"><i class="fa fa-file-excel-o" aria-hidden="true"></i>Customer Excel With Image</a></li>
+                            if (SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 9 || SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 15) // Nilesh, Ankit Shah
+                            {
+                                <li><a style="width: 100% !important;" href="javascript:void(0);" class="obtn excelbtn" onclick="CustomerExcel(4);"><i class="fa fa-file-excel-o" aria-hidden="true"></i>Buyer List</a></li>
+                            }
+                        }
+                        else if (SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 2528) //mehta_ritesh
+                        {
+                            <li><a style="width: 100% !important;" href="javascript:void(0);" class="obtn excelbtn" onclick="CustomerExcel(4);"><i class="fa fa-file-excel-o" aria-hidden="true"></i>Buyer List</a></li>
+                        }
+                        else
+                        {
+                            <li><a style="width: 100% !important;" href="javascript:void(0);" class="obtn" onclick="Search('Customer');"><i class="fa fa-search" aria-hidden="true"></i>Customer</a></li>
+                            <li><a style="width: 100% !important;" href="javascript:void(0);" class="obtn" onclick="Search('Supplier');"><i class="fa fa-search" aria-hidden="true"></i>Supplier</a></li>
+                            <li><a style="width: 100% !important;" href="javascript:void(0);" class="obtn excelbtn" onclick="CustomerExcel(1);"><i class="fa fa-file-excel-o" aria-hidden="true"></i>Customer Excel</a></li>
+                            <li><a style="width: 100% !important;" href="javascript:void(0);" class="obtn excelbtn" onclick="CustomerExcel(2);"><i class="fa fa-file-excel-o" aria-hidden="true"></i>Customer Excel With Image</a></li>
+                            <li><a style="width: 100% !important;" href="javascript:void(0);" class="obtn excelbtn" onclick="CustomerExcel(3);"><i class="fa fa-file-excel-o" aria-hidden="true"></i>Supplier Excel</a></li>
+                            <li><a style="width: 100% !important;" href="javascript:void(0);" class="obtn excelbtn" onclick="CustomerExcel(4);"><i class="fa fa-file-excel-o" aria-hidden="true"></i>Buyer List</a></li>
+                        }
+                        <li><a style="width: 100% !important;" href="javascript:void(0);" class="obtn" onclick="Reset();"><i class="fa fa-refresh" aria-hidden="true"></i>Reset</a></li>
+                    </ul>
+                </div>
+                @*</div>*@
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane result-page-content" id="divGridView" role="tabpanel" style="display:none;">
+        <div class="row" style="margin-bottom: -15px;">
+            <div class="col-md-10">
+                <div class="row mt-3">
+                    <div id="tab1TCount" class="col-xl-12 col-lg-12 col-md-12 col-12 row" style="display:none;margin-top: -39px;margin-bottom: -5px;padding: 0 26px;">
+                        <div><center><span class="g-head-t">Pcs</span></center><center><span id="tab1Pcs" class="g-amt-t"></span></center></div>
+                        <div><center><span class="g-head-t">CTS</span></center><center><span id="tab1CTS" class="g-amt-t"></span></center></div>
+                        <div><center><span class="g-head-t">Rap Value</span></center><center><span id="tab1RapValue" class="g-amt-t"></span></center></div>
+                        @*<div class="sup"><center><span class="g-head-t">Supplier Cost Disc(%)</span></center><center><span id="tab1SupplierCostDiscPer" class="g-amt-t"></span></center></div>
+                            <div class="sup"><center><span class="g-head-t">Supplier Cost Value</span></center><center><span id="tab1SupplierCostValue" class="g-amt-t"></span></center></div>*@
+                        <div><center><span class="g-head-t">Sunrise Disc(%)</span></center><center><span id="tab1SunriseDiscPer" class="g-amt-t"></span></center></div>
+                        <div><center><span class="g-head-t">Sunrise Value US($)</span></center><center><span id="tab1SunriseValueUSDoller" class="g-amt-t"></span></center></div>
+                        @*<div class="sup"><center><span class="g-head-t">Supp Base Offer(%)</span></center><center><span id="tab1SuppBaseOfferPer" class="g-amt-t"></span></center></div>
+                            <div class="sup"><center><span class="g-head-t">Supp Base Offer Value</span></center><center><span id="tab1SuppBaseOfferValue" class="g-amt-t"></span></center></div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2 result-three pull-right" style="margin-top: -20px;">
+                <ul class="pull-right">
+                    <li><a class="effect-one" onclick="SetModifyParameter();" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="@LanguageProvider.get("modify")"><i class="flaticon-edit"></i></a></li>
+                    <li><a class="effect-one" onclick="ByRequestCart();" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="Buy Cart"><i class="flaticon-shopping-cart"></i></a></li>
+                    <li><a class="effect-one" onclick="Download();" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="@LanguageProvider.get("excel")"><i class="fa fa-file-excel-o"></i></a></li>
+                    @*<li>
+                            <a onclick="OpenDownloadCheck()" class="effect-one download-popup" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="@LanguageProvider.get("download")"><i class="flaticon-file"></i></a>
+                            <ul class="download-toggle tab_2">
+                                <li id="liAll_2">
+                                <a href="javascript:void(0);" onclick="ALLDownload()" data-placement="bottom" data-toggle="tooltip" title="@LanguageProvider.get("download") @LanguageProvider.get("excel"), @LanguageProvider.get("image"), @LanguageProvider.get("video"), @LanguageProvider.get("certificate")">@LanguageProvider.get("All")</a>
+                            </li>
+                                <li>
+                                    <a href="javascript:void(0);" onclick="OpenDownloadPopup('Excel')" id="Export" data-placement="bottom" data-toggle="tooltip" title="@LanguageProvider.get("download") @LanguageProvider.get("excel")">@LanguageProvider.get("excel")</a>
+                                </li>
+                                <li class="excel-modelAll">
+                                <a href="javascript:void(0);" onclick="OpenDownloadPopup('Image')" data-placement="bottom" data-toggle="tooltip" title="@LanguageProvider.get("download") @LanguageProvider.get("image")">@LanguageProvider.get("image")</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" onclick="OpenDownloadPopup('Video')" data-placement="bottom" data-toggle="tooltip" title="@LanguageProvider.get("download") @LanguageProvider.get("video")">@LanguageProvider.get("video")</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" onclick="OpenDownloadPopup('Certificate')" data-placement="bottom" data-toggle="tooltip" title="@LanguageProvider.get("download") @LanguageProvider.get("certificate")">@LanguageProvider.get("certificate")</a>
+                            </li>
+                            </ul>
+                        </li>*@
+                </ul>
+            </div>
+        </div>
+        <div id="aggrid-section1" class="aggrid-section gallery-grid">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div id="myGrid" style="width: 100%;" class="ag-theme-balham">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade social-model" id="ExcelModal" aria-modal="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@LanguageProvider.get("download")</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="hdnDownloadType" value="" />
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="customRadio3" name="example" value="1">
+                        <label class="custom-control-label" for="customRadio3">@LanguageProvider.get("All_Stone")</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="customRadio4" name="example" value="2">
+                        <label class="custom-control-label" for="customRadio4">@LanguageProvider.get("Selected_Stone")</label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-focus" autofocus="" onclick="DownloadOK()">@LanguageProvider.get("ok")</button>
+                <button type="submit" class="btn btn-primary btn-focus" data-dismiss="modal">@LanguageProvider.get("cancel")</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="~/Content/Plugins/multiselect/bootstrap-multiselect.js"></script>
+    <script src="~/Content/js/jquery.numeric.js"></script>
+    <script src="~/Content/js/common.js"></script>
+    <script src="~/Content/js/wow.min.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/Labstock.js?version=8.2"></script>
+    <script src="~/Content/js/Pages/detailCellRenderer.js"></script>
+}

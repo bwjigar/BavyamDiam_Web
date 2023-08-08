@@ -1,0 +1,532 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = "Registration";
+    Layout = "~/Views/Shared/_BeforeLoginLayout.cshtml";
+    <link href="~/Content/Login/css/ragistration.css" rel="stylesheet" />
+    <style>
+        .error {
+            border-color: red;
+            color: red;
+            font-size: 12px;
+        }
+    </style>
+}
+<input type="hidden" id="hdn_Wrong_User_Name_or_Password_Kindly_Contact" value="@LanguageProvider.get("Wrong_User_Name_or_Password_Kindly_Contact")" />
+<input type="hidden" id="hdn_User_Is_Not_Active_Please_Contact" value="@LanguageProvider.get("User_Is_Not_Active_Please_Contact")" />
+<input type="hidden" id="hdn_Username_is_invalid_or_in_active" value="@LanguageProvider.get("Username_is_invalid_or_in_active")" />
+<input type="hidden" id="hdn_Your_account_information_have_been_sent_to_you_on" value="@LanguageProvider.get("Your_account_information_have_been_sent_to_you_on")" />
+<input type="hidden" id="hdn_Your_email_address_is_invalid_please_contact_our_Administrator" value="@LanguageProvider.get("Your_email_address_is_invalid_please_contact_our_Administrator")" />
+<input type="hidden" id="hdn_User_registration_failed" value="@LanguageProvider.get("User_registration_failed")" />
+<input type="hidden" id="hdn_User_name_is_already_exists" value="@LanguageProvider.get("User_name_is_already_exists")" />
+<input type="hidden" id="hdn_User_Is_Not_Active_Please_Contact" value="@LanguageProvider.get("User_Is_Not_Active_Please_Contact")" />
+<div class="row">
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+        <div class="ragistration-form">
+            <form id="frmRegister" autocomplete="off">
+                <div class="personal-info one">
+                    <div class="r-label">
+                        <p>@LanguageProvider.get("Registration")</p>
+                    </div>
+                    <div class="row" style="margin-top: 24px;"><div class="col-md-12 "><h2>@LanguageProvider.get("personal_detail")</h2></div></div>
+                    @* <h2>Personal Detail</h2>*@
+
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="form-group input-group zoomIn wow animated" data-wow-delay="1s">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text back"> <i class="fa fa-user"></i> </span>
+                                </div>
+                                <input onblur="SpaceRemoved();" id="txtUserName" name="UserName" class="form-control required" type="text" tabindex="1" style="width: 100%;">
+                                <span class="placeholder-three">@LanguageProvider.get("username")<b>*</b></span>
+                            </div> <!-- form-group// -->
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="form-group input-group zoomIn wow animated" data-wow-delay="1s">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text back"> <i class="fa fa-unlock-alt" aria-hidden="true"></i> </span>
+                                </div>
+                                <input id="txtPassword" name="Password" class="form-control required" tabindex="2" style="width:100%;" autocomplete="new-password" type="password">
+                                <span class="placeholder-three">@LanguageProvider.get("pwd")<b>*</b></span>
+                            </div> <!-- form-group// -->
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="form-group input-group zoomIn wow animated" data-wow-delay="1s">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text back"><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+                                </div>
+                                <input id="txtConfirmPassword" name="ConfirmPassword" tabindex="3" class="form-control required" style="width:100%;" type="password">
+                                <span class="placeholder-three">@LanguageProvider.get("confirmpwd")<b>*</b></span>
+                            </div> <!-- form-group// -->
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="form-group input-group zoomIn wow animated" data-wow-delay="1s">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text back"> <i class="fa fa-user"></i>  </span>
+                                </div>
+                                <input id="txtFirstName" name="FirstName" tabindex="4" class="form-control required character" type="text" style="width:100%;">
+                                <span class="placeholder-three">@LanguageProvider.get("fname")<b>*</b></span>
+                            </div> <!-- form-group// -->
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="form-group input-group zoomIn wow animated" data-wow-delay="1s">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text back"> <i class="fa fa-user"></i> </span>
+                                </div>
+                                <input id="txtLastName" name="LastName" tabindex="5" class="form-control required character" type="text" style="width:100%;">
+                                <span class="placeholder-three">@LanguageProvider.get("lname")<b>*</b></span>
+                            </div> <!-- form-group// -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="personal-info two">
+                    <div class="row"><div class="col-md-12 "><h2 class="margin-two">@LanguageProvider.get("company_detail")</h2></div></div>
+                    @* <h2 class="margin-two">Company Detail</h2>*@
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="form-group input-group zoomIn wow animated" data-wow-delay="1s">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text back"> <i class="fa fa-building" aria-hidden="true"></i> </span>
+                                </div>
+                                <input id="txtCompanyName" name="CompanyName" tabindex="6" class="form-control required" type="text" style="width:100%;">
+                                <span class="placeholder-three">@LanguageProvider.get("CompanyName")<b>*</b></span>
+                            </div> <!-- form-group// -->
+                        </div>
+
+
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="form-group input-group zoomIn wow animated" data-wow-delay="1s">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text back"> <i class="fa fa-envelope"></i> </span>
+                                </div>
+                                <input id="txtEmailId1" name="EmailId1" class="form-control required" tabindex="7" type="text" style="width:100%;">
+                                <span class="placeholder-three">Email Address<b>*</b></span>
+                            </div> <!-- form-group// -->
+                        </div>
+
+                        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+                            <div class="form-group input-group zoomIn wow animated" data-wow-delay="1s">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text back"> <i class="fa fa-phone"></i> </span>
+                                </div>
+                                <div class="custom-placeholder-two">
+                                    <input onkeyup="isdcode();" onclick="isdcode();" tabindex="8" id="mobileSTDCode" name="mobileSTDCode" class="form-control" value="+" type="text" style="max-width: 120px;">
+                                    <span class="placeholder-two" style="left: 33px;">ISD Code<b>*</b></span>
+                                    <div id="mobileSTDCode-error1" class="error"></div>
+                                </div>
+                                <div class="custom-placeholder-three" style="margin-left: -80px;">
+                                    <input id="txtMobile1" maxlength="15" tabindex="9" name="Mobile1" class="form-control required number" type="text" style="width:100%;">
+                                    <span class="placeholder-two">Mobile No / WhatsApp No<b>*</b></span>
+                                </div>
+                            </div> <!-- form-group// -->
+                        </div>
+
+
+
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="form-group login-button">
+                            <button type="button" id="btnSubmit" class="swing wow animated" tabindex="10" data-wow-delay="1s">@LanguageProvider.get("Submit")</button>
+                            <button type="button" id="btnReset" class="swing wow animated" tabindex="11" data-wow-delay="1s" onclick="ClearControl()">@LanguageProvider.get("reset")</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+         $.validator.addMethod(
+                "regex",
+                function(value, element, regexp) {
+                    var re = new RegExp(regexp);
+                    return this.optional(element) || re.test(value);
+                },
+                "@LanguageProvider.get("Please_enter_a_valid_email_address")"
+        );
+        var validator= $('#frmRegister').validate({ // initialize the plugin
+                ignore: "",
+                rules: {
+                    field: {
+                      required: true,
+                      email: true
+                    },
+                    UserName: {
+                        minlength: 5
+                    },
+                    Password: {
+                        minlength: 6
+                    },
+                    ConfirmPassword: {
+                        minlength: 6,
+                        equalTo: "#txtPassword"
+                    },
+                    //mobileSTDCode: {
+                    //    //minlength: 3,
+                    //    maxlength: 4,
+                    //},
+                },
+                messages: {
+                    UserName: {
+                        required: "@LanguageProvider.get("EnterUsername")",
+                        minlength: "@LanguageProvider.get("Enter_Minimum_5_Character_Username")",
+                    },
+                    Password: {
+                        required: "@LanguageProvider.get("EnterPassword")",
+                        minlength: "@LanguageProvider.get("Enter_Minimum_6_Character_Password")",
+                    },
+                    ConfirmPassword: {
+                        required: "Enter Confirm Password",
+                        minlength: "@LanguageProvider.get("Enter_Minimum_6_Character_Password")",
+                        equalTo: "@LanguageProvider.get("Enter_Confirm_Password_Same_as_Password")",
+                    },
+                    FirstName:"@LanguageProvider.get("Enter_First_Name")",
+                    LastName:"@LanguageProvider.get("Enter_Last_Name")",
+                    CompanyName:"Enter Company Name",
+                    EmailId1: {
+                        required: "Enter Email Address",
+                    },
+                    //mobileSTDCode: {
+                    //    required: "Enter ISD Code",
+                    //    //minlength: "Enter Min 3 No.",
+                    //    maxlength: "Enter Max 4 No.",
+                    //},
+                    Mobile1: {
+                        required: "Enter Mobile No / WhatsApp No",
+                    }
+
+
+                },
+                errorElement: "div",
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element);
+                }
+        });
+        function SpaceRemoved() {
+            $('#txtUserName').val($('#txtUserName').val().split(' ').join(''));
+        }
+        function isdcode() {
+            const str = $("#mobileSTDCode").val();
+            const first = str.charAt(0);
+            if (first != "+") {
+                $("#mobileSTDCode").val("+");
+                return false;
+            }
+            if ($("#mobileSTDCode").val().replace("+", "") == "") {
+                $("#mobileSTDCode-error1").html("Enter ISD Code");
+                $("#mobileSTDCode-error1").show();
+                return false;
+            }
+            else if ($("#mobileSTDCode").val().replace("+", "").length > 3) {
+                $("#mobileSTDCode-error1").html("Enter Max 4 No.");
+                $("#mobileSTDCode-error1").show();
+                return false;
+            }
+            else if (isNaN(parseInt($("#mobileSTDCode").val()))) {
+                $("#mobileSTDCode").val("+");
+                return false;
+            }
+            else {
+                $("#mobileSTDCode-error1").html("");
+                $("#mobileSTDCode-error1").hide();
+            }
+        }
+        $(document).ready(function () {
+            $('#txtUserName').on('keypress', function (e) {
+                if (e.which == 32) {
+                    return false;
+                }
+            });
+
+            $("#txtEmailId1").rules("add", { regex: /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/ });
+            $('#txtUserName').blur(function(){
+                validator.element('#txtUserName');
+            });
+
+            $('#txtConfirmPassword').blur(function(){
+                validator.element('#txtConfirmPassword');
+            });
+            $('#txtPassword').blur(function(){
+                validator.element('#txtPassword');
+            });
+            $('#txtFirstName').blur(function(){
+                validator.element('#txtFirstName');
+            });
+            $('#txtLastName').blur(function(){
+                validator.element('#txtLastName');
+            });
+            $('#txtCompanyName').blur(function(){
+                validator.element('#txtCompanyName');
+            });
+            $('#mobileSTDCode').blur(function(){
+                validator.element('#mobileSTDCode');
+            });
+            $('#txtCity').blur(function(){
+                validator.element('#txtCity');
+            });
+            $('#txtCountry').blur(function(){
+                validator.element('#txtCountry');
+            });
+            $('#txtMobile1').blur(function(){
+                validator.element('#txtMobile1');
+            });
+            $('#txtEmailId1').blur(function(){
+                validator.element('#txtEmailId1');
+            });
+            $('#txtEmailId2').blur(function () {
+                if ($('#txtEmailId2').val() != "") {
+                    $("#txtEmailId2").rules("add", { regex: /^([a-zA-Z0-9_.+-])+\@@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/ });
+                    validator.element('#txtEmailId2');
+                }
+            });
+
+            $('#btnSubmit').click(function () {
+                var isvalid = $('#frmRegister').valid();
+                isdcode();
+                if ($("#mobileSTDCode").val().replace("+", "") == "" || !isvalid) {
+                    if ($("#mobileSTDCode").val().replace("+", "") == "") {
+                        $("#mobileSTDCode-error1").html("Enter ISD Code");
+                        $("#mobileSTDCode-error1").show();
+                    }
+                    return false;
+                }
+                
+                //if (!isvalid) {
+                //    return false;
+                //}
+
+                var obj = {
+                    UserName: $('#txtUserName').val(),
+                    Password: $('#txtPassword').val(),
+                    FirstName: $('#txtFirstName').val(),
+                    LastName: $('#txtLastName').val(),
+                    CompanyName: $('#txtCompanyName').val(),
+                    CompEmail: $('#txtEmailId1').val(),
+                    CompMobile : $('#mobileSTDCode').val() +'-'+ $('#txtMobile1').val()
+                };
+
+
+                if (isvalid) {
+                    $('.loading-overlay-image-container').show();
+                    $('.loading-overlay').show();
+                    $.ajax({
+                        url: "@Url.Action("UserRegister","Login")",
+                        type: "POST",
+                        data: obj,
+                        success: function (data, textStatus, jqXHR) {
+                            if (data.Status == "1") {
+                                //toastr.success(data.Message);
+                                ClearControl();
+                                setTimeout(function () {
+                                    location.href = "@Url.Action("Index","Login")";
+                                }, 2000);
+                            } else {
+                                data.Message = data.Message.replace('Wrong User Name or Password Kindly Contact :', $("#hdn_Wrong_User_Name_or_Password_Kindly_Contact").val());
+                                data.Message = data.Message.replace('User Is Not Active, Please Contact', $("#hdn_User_Is_Not_Active_Please_Contact").val());
+                                data.Message = data.Message.replace('Username is invalid or in-active.', $("#hdn_Username_is_invalid_or_in_active").val());
+                                data.Message = data.Message.replace('Your account information have been sent to you on', $("#hdn_Your_account_information_have_been_sent_to_you_on").val());
+                                data.Message = data.Message.replace('Your email address is invalid, please contact our Administrator.', $("#hdn_Your_email_address_is_invalid_please_contact_our_Administrator").val());
+                                data.Message = data.Message.replace('User registration failed.', $("#hdn_User_registration_failed").val());
+                                data.Message = data.Message.replace('User name is already exists.', $("#hdn_User_name_is_already_exists").val());
+                                toastr.error(data.Message);
+                            }
+                            $('.loading-overlay-image-container').hide();
+                            $('.loading-overlay').hide();
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                        }
+                    });
+                }
+            });
+
+            $('.character').keydown(function (e) {
+                if (e.shiftKey || e.ctrlKey || e.altKey||e.tabKey) {
+                    return true;
+                } else {
+                    var key = e.keyCode;
+                    if (!((key == 8) ||(key == 9)|| (key == 32) || (key == 46) || (key >= 35 && key <= 40) || (key >= 65 && key <= 90))) {
+                        e.preventDefault();
+                    }
+                }
+            });
+            $(".number").bind("keypress", function (e) {
+                var keyCode = e.which ? e.which : e.keyCode
+
+                if (!(keyCode >= 48 && keyCode <= 57)) {
+                    return false;
+                } else {
+                    return;
+                }
+            });
+
+
+            $("#txtCountry").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '@Url.Action("GetCountryAutoComplete","Common")',
+                        data: "{ 'sSearch': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data.Data, function (item) {
+                                return {
+                                    label: item.sCountryName,
+                                    val: item.sCountryName,
+                                    CountryCode:item.iCountryId
+                                }
+                            }))
+                        },
+                        error: function (response) {
+                            toastr.error(response.responseText);
+                        },
+                        failure: function (response) {
+                            toastr.error(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#hdnCountryCode").val(i.item.CountryCode);
+                    $("#txtCity").val("");
+                    $("#txtCountry").val("");
+                    $('.isdcode').val("");
+                    $('.stdcode').val("");
+                    $('.stdisdcode').val("");
+                },
+                change: function(event, ui) {
+                    if (!ui.item) {
+                        Country_autoselect($("#txtCountry").val());
+                        $("#hdnCountryCode").val("0");
+                        $("#txtCity").val("");
+                        //$("#txtCountry").val("");
+                        $('.isdcode').val("");
+                        $('.stdcode').val("");
+                        $('.stdisdcode').val("");
+                        //toastr.warning('select country value from dropdown');
+                    }
+                },
+                minLength: 1
+            });
+
+            function Country_autoselect(txtCountry)
+            {
+                $.ajax({
+                    url: "@Url.Action("GetCountryAutoComplete","Common")",
+                    type: "POST",
+                    data: {sSearch : txtCountry},
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.Data!= null && data.Data.length == 1) {
+                            $("#txtCountry").val(data.Data[0].sCountryName);
+                            $("#hdnCountryCode").val(data.Data[0].iCountryId);
+                        }
+                        else {
+                            $("#txtCountry").val("");
+                            toastr.warning('select country value from dropdown');
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                    }
+                });
+            }
+
+            $("#txtCity").autocomplete({
+                source: function (request, response) {
+                    if ($("#hdnCountryCode").val() != "0") {
+                        $.ajax({
+                            url: '@Url.Action("GetCitystateCountryAutoComplete","Common")',
+                            data: "{ 'sSearch': '" + request.term + "', 'CountryId': '" + $("#hdnCountryCode").val() + "'}",
+                            dataType: "json",
+                            type: "POST",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (data) {
+                                response($.map(data.Data, function (item) {
+                                    return {
+                                        label: item.sCityName,
+                                        val: item.sCityName,
+                                        CityCode: item.iCityId,
+                                        CountryCode: item.iCountryId,
+                                        CountryName: item.sCountryName,
+                                        STDCode: item.iSTDCode,
+                                        ISDCode: item.sISDCode
+                                    }
+                                }))
+                            },
+                            error: function (response) {
+                                toastr.error(response.responseText);
+                            },
+                            failure: function (response) {
+                                toastr.error(response.responseText);
+                            }
+                        });
+                    }
+                    else {
+                        toastr.warning('First select country !!');
+                    }
+                },
+                select: function (e, i) {
+                    $("#hdnCityCode").val(i.item.CityCode);
+                    $("#txtCity").val(i.item.val);
+                    $('.isdcode').val('+'+i.item.ISDCode);
+                    if (i.item.STDCode == "0") {
+                        $('.stdisdcode').val('+' + i.item.ISDCode);
+                        $('.stdcode').val('');
+                    } else {
+                        $('.stdisdcode').val('+' + i.item.ISDCode + ' ' + i.item.STDCode);
+                        $('.stdcode').val('+' + i.item.STDCode);
+                    }
+                },
+                change: function(event, ui) {
+                    if (!ui.item) {
+                        $("#hdnCityCode").val("0");
+                        $("#txtCity").val("");
+                        $('.isdcode').val("");
+                        $('.stdcode').val("");
+                        $('.stdisdcode').val("");
+                        if ($("#hdnCountryCode").val() != "0") {
+                            toastr.warning('select city value from dropdown');
+                        }
+                    }
+                },
+                minLength: 1
+            });
+
+            $('input[type="text"]').attr('autocomplete', 'nope');
+            $('#txtConfirmPassword,#txtUserName,#txtPassword').attr('autocomplete', 'new-password');
+        });
+        function ClearControl() {
+            validator.resetForm();
+            $('#txtConfirmPassword').val("");
+            $('#txtUserName').val("");
+            $('#txtPassword').val("");
+            $('#txtFirstName').val("");
+            $('#txtLastName').val("");
+            $('#txtCompanyName').val("");
+            $('#txtAddress1').val("");
+            $('#txtAddress2').val("");
+            $('#mobileSTDCode').val("+");
+            $('#txtMobile1').val("");
+            $('#txtMobile2').val("");
+            $('#txtOfficePh1').val("");
+            $('#txtOfficePh2').val("");
+            $('#txtFaxNo').val("");
+            $('#txtEmailId1').val("");
+            $('#txtRapId').val("");
+            $('#txtBusiRegNo').val("");
+            $('#txtEmailId2').val("");
+            $('#txtWeChatId').val("");
+            $('#txtSkypeId').val("");
+            $('#txtWebsite').val("");
+            $("#hdnCityCode").val("0");
+            $("#hdnCountryCode").val("0");
+            $("#txtCity").val("");
+            $("#txtCountry").val("");
+            $('.isdcode').val("");
+            $('.stdcode').val("");
+            $('.stdisdcode').val("");
+        }
+    </script>
+}

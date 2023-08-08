@@ -1,0 +1,512 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = LanguageProvider.get("mywishlist");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+}
+<style>
+    .g-head-t {
+        font-size: 12px;
+        padding: 0 12px;
+        color: grey;
+    }
+
+    .g-amt-t {
+        font-size: 12px;
+        padding: 0 12px;
+        color: #003d66;
+    }
+
+    .btn-spn-opt:hover {
+        background-color: #80808017;
+        border: 1px solid #003d66;
+    }
+
+    .btn-spn-opt {
+        border: 1px solid #e5e5e5;
+        border-radius: 28px;
+        padding: 5px 15px;
+        float: left;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        transition-duration: 0.3s;
+        -webkit-transition: 0.3s;
+        cursor: pointer;
+        font-size: 11px;
+        white-space: nowrap;
+        font-weight: 600;
+        background: #fff;
+        color: #003d66;
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+        margin-top: 5px;
+    }
+
+    .btn-spn-opt-active {
+        color: #fff !important;
+        background-color: #003d66 !important;
+    }
+</style>
+<input type="hidden" id="hdn_Photo_Real" value="@LanguageProvider.get("Photo_Real")" />
+<input type="hidden" id="hdn_View_Image" value="@LanguageProvider.get("View_Image")" />
+<input type="hidden" id="hdn_date" value="@LanguageProvider.get("date")" />
+<input type="hidden" id="hdn_Stock_Id" value="@LanguageProvider.get("Stock_Id")" />
+<input type="hidden" id="hdn_Stock_Id_DNA" value="@LanguageProvider.get("Stock_Id_DNA")" />
+<input type="hidden" id="hdn_Ref" value="@LanguageProvider.get("Ref")" />
+<input type="hidden" id="hdn_Status" value="@LanguageProvider.get("status")" />
+<input type="hidden" id="hdn_Shape" value="@LanguageProvider.get("shape")" />
+<input type="hidden" id="hdn_Pointer" value="@LanguageProvider.get("Pointer")" />
+<input type="hidden" id="hdn_Certi_No" value="@LanguageProvider.get("certino")" />
+<input type="hidden" id="hdn_BGM" value="@LanguageProvider.get("bgm")" />
+<input type="hidden" id="hdn_Rap_Price_Doller" value="@LanguageProvider.get("Rap_Price_Doller")" />
+<input type="hidden" id="hdn_Rap_Amt_Doller" value="@LanguageProvider.get("Rap_Amt_Doller")" />
+<input type="hidden" id="hdn_Culet" value="@LanguageProvider.get("Culet")" />
+<input type="hidden" id="hdn_girdle" value="@LanguageProvider.get("girdle")" />
+<input type="hidden" id="hdn_Girdle_Type" value="@LanguageProvider.get("Girdle_Type")" />
+<input type="hidden" id="hdn_Location" value="@LanguageProvider.get("location")" />
+<input type="hidden" id="hdn_Username" value="@LanguageProvider.get("username")" />
+<input type="hidden" id="hdn_CompanyName" value="@LanguageProvider.get("CompanyName")" />
+<input type="hidden" id="hdn_CustomerName" value="@LanguageProvider.get("customername")" />
+<input type="hidden" id="hdn_Lab" value="@LanguageProvider.get("lab")" />
+<input type="hidden" id="hdn_Color" value="@LanguageProvider.get("color")" />
+<input type="hidden" id="hdn_Polish" value="@LanguageProvider.get("polish")" />
+<input type="hidden" id="hdn_Fls" value="@LanguageProvider.get("fls")" />
+<input type="hidden" id="hdn_Clarity" value="@LanguageProvider.get("clarity")" />
+<input type="hidden" id="hdn_CTS" value="@LanguageProvider.get("cts")" />
+<input type="hidden" id="hdn_Carat_Weight" value="@LanguageProvider.get("Carat_Weight")" />
+<input type="hidden" id="hdn_Disc_Per" value="@LanguageProvider.get("disc_per")" />
+<input type="hidden" id="hdn_Net_Amt" value="@LanguageProvider.get("netamt")" />
+<input type="hidden" id="hdn_Price_Cts" value="@LanguageProvider.get("Price_Cts")" />
+<input type="hidden" id="hdn_Cut" value="@LanguageProvider.get("cut")" />
+<input type="hidden" id="hdn_Symm" value="@LanguageProvider.get("symm")" />
+<input type="hidden" id="hdn_Length" value="@LanguageProvider.get("length")" />
+<input type="hidden" id="hdn_Width" value="@LanguageProvider.get("width")" />
+<input type="hidden" id="hdn_Depth" value="@LanguageProvider.get("Depth")" />
+<input type="hidden" id="hdn_Depth_Per" value="@LanguageProvider.get("depth_per")" />
+<input type="hidden" id="hdn_Table_Per" value="@LanguageProvider.get("tableper")" />
+<input type="hidden" id="hdn_Key_to_symbol" value="@LanguageProvider.get("Key_to_symbol")" />
+<input type="hidden" id="hdn_Table_Black" value="@LanguageProvider.get("Table_Black")" />
+<input type="hidden" id="hdn_Crown_Natts" value="@LanguageProvider.get("Crown_Black")" />
+<input type="hidden" id="hdn_Table_White" value="@LanguageProvider.get("Table_White")" />
+<input type="hidden" id="hdn_Crown_White" value="@LanguageProvider.get("Crown_White")" />
+<input type="hidden" id="hdn_Crown_Angle" value="@LanguageProvider.get("Cr_Ang")" />
+<input type="hidden" id="hdn_CR_HT" value="@LanguageProvider.get("Cr_Ht")" />
+<input type="hidden" id="hdn_Pav_Ang" value="@LanguageProvider.get("Pav_Ang")" />
+<input type="hidden" id="hdn_Pav_HT" value="@LanguageProvider.get("Pav_Ht")" />
+<input type="hidden" id="hdn_Laser_in_SC" value="@LanguageProvider.get("Laser_in_SC")" />
+<input type="hidden" id="hdn_Discount" value="@LanguageProvider.get("discount")" />
+
+<input type="hidden" id="hdn_Table_Open" value="@LanguageProvider.get("Table_Open")" />
+<input type="hidden" id="hdn_Crown_Open" value="@LanguageProvider.get("Crown_Open")" />
+<input type="hidden" id="hdn_Pav_Open" value="@LanguageProvider.get("Pav_Open")" />
+<input type="hidden" id="hdn_Girdle_Open" value="@LanguageProvider.get("Girdle_Open")" />
+
+<input type="hidden" id="hdn_Pcs" value="@LanguageProvider.get("pcs1")" />
+<input type="hidden" id="hdn_Cts" value="@LanguageProvider.get("cts1")" />
+<input type="hidden" id="hdn_Avg_Disc_Per" value="@LanguageProvider.get("Avg_Dis")" />
+<input type="hidden" id="hdn_Price_Per_Cts" value="@LanguageProvider.get("Price_Per_Cts")" />
+<input type="hidden" id="hdn_Total_Amount" value="@LanguageProvider.get("Total_Amt")" />
+
+<input type="hidden" id="hdn_PlaceOrderMsg_1" value="@LanguageProvider.get("This_Stone_is_not_Available_Stone_You_can_Buy_only_available_Stone")" />
+<input type="hidden" id="hdn_PlaceOrderMsg_2" value="@LanguageProvider.get("Still_you_want_to_continue")" />
+<input type="hidden" id="hdn_PlaceOrderMsg_3" value="@LanguageProvider.get("Please_select_a_company_for_Hold_Stone_Id")" />
+<input type="hidden" id="hdn_PlaceOrderMsg_4" value="@LanguageProvider.get("Either_you_select_Busy_stone_or_Available_stone")" />
+<input type="hidden" id="hdn_PlaceOrderMsg_5" value="@LanguageProvider.get("You_are_not_Authorize_to_Place_Order_of_this_Stone_Id")" />
+<input type="hidden" id="hdn_PleaseContact" value="@LanguageProvider.get("pleasecontact")" />
+<input type="hidden" id="hdn_Select_Avail_Stone_for_place_order" value="@LanguageProvider.get("Please_Select_Available_stone_for_place_order")" />
+<input type="hidden" id="hdn_No_Stone_Selected_for_place_order" value="@LanguageProvider.get("No_stone_selected_for_place_order")" />
+<input type="hidden" id="hdn_order_placed_success" value="@LanguageProvider.get("Your_order_placed_successfully")" />
+<input type="hidden" id="hdn_Transaction_Done_Success" value="@LanguageProvider.get("Your_Transaction_Done_Successfully")" />
+<input type="hidden" id="hdn_This_Stone_is_not_Available_Stone_You_can_add_only_available_Stone_into_Cart" value="@LanguageProvider.get("This_Stone_is_not_Available_Stone_You_can_add_only_available_Stone_into_Cart")" />
+<input type="hidden" id="hdn_Other_Stones_are_added_into_cart_successfully" value="@LanguageProvider.get("Other_Stones_are_added_into_cart_successfully")" />
+<input type="hidden" id="hdn_Select_Avail_Stone_for_add_to_cart" value="@LanguageProvider.get("Please_Select_Available_stone_for_add_to_cart")" />
+<input type="hidden" id="hdn_No_Stone_Selected_for_add_to_cart" value="@LanguageProvider.get("No_stone_selected_for_add_to_cart")" />
+<input type="hidden" id="hdn_No_stones_selected_to_send_email" value="@LanguageProvider.get("No_stones_selected_to_send_email")" />
+<input type="hidden" id="hdn_Invalid_email_format" value="@LanguageProvider.get("Invalid_email_format")" />
+<input type="hidden" id="hdn_No_stone_selected_for_add_to_wishlist" value="@LanguageProvider.get("No_stone_selected_for_add_to_wishlist")" />
+<input type="hidden" id="hdn_Please_select_at_least_2_item_for_compare" value="@LanguageProvider.get("Please_select_at_least_2_item_for_compare")" />
+<input type="hidden" id="hdn_You_can_compare_maximum_4_item" value="@LanguageProvider.get("You_can_compare_maximum_4_item")" />
+<input type="hidden" id="hdn_You_Can_Search_Maximum_5_Result" value="@LanguageProvider.get("You_Can_Search_Maximum_5_Result")" />
+<input type="hidden" id="hdn_View_Details" value="@LanguageProvider.get("View_Details")" />
+<input type="hidden" id="hdn_Carat_is_already_exist" value="@LanguageProvider.get("Carat_is_already_exist")" />
+<input type="hidden" id="hdn_Please_Fill_SearchName" value="@LanguageProvider.get("Please_Fill_SearchName")" />
+<input type="hidden" id="hdn_No_stone_selected_for_download_as_a" value="@LanguageProvider.get("No_stone_selected_for_download_as_a")" />
+<input type="hidden" id="hdn_Please_select_atlist_one_criteria" value="@LanguageProvider.get("Please_select_atlist_one_criteria")" />
+<input type="hidden" id="hdn_Record_Save_Successfully" value="@LanguageProvider.get("Record_Save_Successfully")" />
+<input type="hidden" id="hdn_Please_Enter_Carat" value="@LanguageProvider.get("Please_Enter_Carat")" />
+<input type="hidden" id="hdn_No_stone_selected_for_download_as_a_excel" value="@LanguageProvider.get("No_stone_selected_for_download_as_a_excel")" />
+<input type="hidden" id="hdn_No_stone_selected_for_remove_from_wishlist" value="@LanguageProvider.get("No_stone_selected_for_remove_from_wishlist")" />
+
+<input type="hidden" id="hdn_Avg_Offer_Disc_Per" value="@LanguageProvider.get("Avg_Offer_Disc_Per")" />
+<input type="hidden" id="hdn_Offer_Disc_Per" value="@LanguageProvider.get("Offer_Disc_Per")" />
+<input type="hidden" id="hdn_Avg_Offer_Value_Dollar" value="@LanguageProvider.get("Avg_Offer_Value_Dollar")" />
+<input type="hidden" id="hdn_Offer_Value_Dollar" value="@LanguageProvider.get("Offer_Value_Dollar")" />
+<input type="hidden" id="hdn_Avg_Web_Disc_Dollar" value="@LanguageProvider.get("Avg_Web_Disc_Dollar")" />
+<input type="hidden" id="hdn_Web_Disc_Dollar" value="@LanguageProvider.get("Web_Disc_Dollar")" />
+<input type="hidden" id="hdn_Final_Disc_Per" value="@LanguageProvider.get("Final_Disc_Per")" />
+<input type="hidden" id="hdn_Final_Value" value="@LanguageProvider.get("Final_Value")" />
+
+<div class="container-fluid search_result viewcart-fluid">
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane active result-page-content viewcart-page-content" id="profile-tab2" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="result-nav">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-12">
+                        <div class="viewcartdata-header">
+                            <h1>@LanguageProvider.get("mywishlist")</h1>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-12">
+                        <div class="result-three pull-right">
+                            <ul>
+                                @if ((@SunriseWeb.Helper.SessionFacade.UserSession.IsSubuser == false ||
+                                    (SunriseWeb.Helper.SessionFacade.UserSession.IsSubuser == true &&
+                                   SunriseWeb.Helper.SessionFacade.UserSession.PlaceOrder == true)) &&
+                                    SunriseWeb.Helper.SessionFacade.UserSession.sUsername.ToUpper() != "SUN_TEST")
+                                {
+                                    <li><a class="effect-one" href="javascript:void(0);" data-toggle="modal" @*data-target="#ConfirmOrderModal"*@ onclick="ConfirmOrderModal();" data-placement="bottom" title="@LanguageProvider.get("Place_Order")"><i class="flaticon-checked"></i></a></li>
+                                }
+                                @if (@SunriseWeb.Helper.SessionFacade.UserSession.IsSubuser == false ||
+                                    (SunriseWeb.Helper.SessionFacade.UserSession.IsSubuser == true &&
+                                SunriseWeb.Helper.SessionFacade.UserSession.MyCart == true))
+                                {
+                                    <li><a class="effect-one" onclick="AddToCart()" href="javascript:void(0);" data-placement="bottom" title="@LanguageProvider.get("addtocart")"><i class="flaticon-shopping-cart"></i><span onclick="GoToCart()" class="cntCart"></span></a></li>
+                                }
+                                <li><a class="effect-one" href="javascript:void(0);" data-toggle="modal" data-target="#RemoveCart" data-placement="bottom" title="@LanguageProvider.get("Remove_Stones")"><i class="fa fa-trash-o" aria-hidden="true"></i></a></li>
+                                <li><a class="effect-one" href="javascript:void(0);" data-toggle="modal" data-target="#EmailModal" data-placement="bottom" title="@LanguageProvider.get("emailstone")"><i class="flaticon-email"></i></a></li>
+                                <li>
+                                    <a onclick="OpenDownloadCheck()" class="effect-one download-popup" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="@LanguageProvider.get("download")"><i class="flaticon-file"></i></a>
+                                    <ul class="download-toggle">
+                                        <li id="liAll_1">
+                                            <a href="javascript:void(0);" onclick="ALLDownload()" data-placement="bottom" data-toggle="tooltip" title="@LanguageProvider.get("download") @LanguageProvider.get("excel"), @LanguageProvider.get("image"), @LanguageProvider.get("video"), @LanguageProvider.get("certificate")">@LanguageProvider.get("All")</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="OpenDownloadPopup('Excel')" id="Export" data-placement="bottom" data-toggle="tooltip" title="@LanguageProvider.get("download") @LanguageProvider.get("excel")">@LanguageProvider.get("excel")</a>
+                                        </li>
+                                        @*<li>
+                                                <a href="javascript:void(0);" onclick="OpenDownloadPopup('Pdf')" data-placement="bottom" data-toggle="tooltip" title="Pdf"> Pdf</a>
+                                            </li>*@
+                                        <li class="excel-modelAll">
+                                            <a href="javascript:void(0);" onclick="OpenDownloadPopup('Image')" data-placement="bottom" data-toggle="tooltip" title="@LanguageProvider.get("download") @LanguageProvider.get("image")">@LanguageProvider.get("image")</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="OpenDownloadPopup('Video')" data-placement="bottom" data-toggle="tooltip" title="@LanguageProvider.get("download") @LanguageProvider.get("video")">@LanguageProvider.get("video")</a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0);" onclick="OpenDownloadPopup('Certificate')" data-placement="bottom" data-toggle="tooltip" title="@LanguageProvider.get("download") @LanguageProvider.get("certificate")">@LanguageProvider.get("certificate")</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li><a class="effect-one" onclick="OpenComparStoneModel()" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="@LanguageProvider.get("comparestone")"><i class="flaticon-balance"></i></a></li>
+                                <li><a class="effect-one gallery-pop" id="gallerypoplia1" href="javascript:void(0);" data-toggle="tooltip" data-placement="bottom" title="@LanguageProvider.get("Gallery_View")"><i class="fa fa-th"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="viewcart-data">
+                <div class="result-nav viewcart">
+                    <div class="row">
+                        <div class="col-xl-7 col-lg-9 col-md-12 col-12">
+                            <div id="tab1TCount" class="col-xl-12 col-lg-12 col-md-12 col-12 row" style="display:none;margin-top: -10px;margin-bottom: -7px;padding: 0px 4px;">
+                                <div><center><span class="g-head-t">@LanguageProvider.get("pcs1")</span></center><center><span id="tab1pcs" class="g-amt-t"></span></center></div>
+                                <div><center><span class="g-head-t">@LanguageProvider.get("cts")</span></center><center><span id="tab1cts" class="g-amt-t"></span></center></div>
+                                <div><center><span class="g-head-t">@LanguageProvider.get("Offer_Disc_Per")</span></center><center><span id="tab1disc" class="g-amt-t"></span></center></div>
+                                <div><center><span class="g-head-t">@LanguageProvider.get("Offer_Value_Dollar")</span></center><center><span id="tab1totAmt" class="g-amt-t"></span></center></div>
+                                <div><center><span class="g-head-t">@LanguageProvider.get("Price_Cts")</span></center><center><span id="tab1ppcts" class="g-amt-t"></span></center></div>
+                                <div id="tab1_WebDisc_t" style="display:none;"><center><span class="g-head-t">@LanguageProvider.get("Web_Disc_Dollar")</span></center><center><span id="tab1Web_Disc" class="g-amt-t" style="color: blue;"></span></center></div>
+                                <div id="tab1_FinalValue_t" style="display:none;"><center><span class="g-head-t">@LanguageProvider.get("Final_Disc_Per")</span></center><center><span id="tab1Final_Disc" class="g-amt-t" style="color: red;"></span></center></div>
+                                <div id="tab1_FinalDisc_t" style="display:none;"><center><span class="g-head-t">@LanguageProvider.get("Final_Value")</span></center><center><span id="tab1Net_Value" class="g-amt-t" style="color: red;"></span></center></div>
+                            </div>
+                        </div>
+                        <div class="col-xl-1 col-lg-2 col-md-4 col-12">
+                            @if (@SunriseWeb.Helper.SessionFacade.UserSession.IsPrimary == true)
+                            {
+                                <div class="result-two viewcart">
+                                    <span style="margin-top: -1px;" class="btn-spn-opt" onclick="ActiveOrNot('SubUser');" id="SubUser">My Sub User</span>
+                                </div>
+                            }
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-8 col-12">
+                            <div class="result-two viewcart">
+                                <ul>
+                                    <li><span class="A">A</span>@LanguageProvider.get("available")</li> @*onclick="StatusWiseData('AVAILABLE');"*@
+                                    <li class="O-one"><span class="O">O</span>@LanguageProvider.get("Offer")</li> @*onclick="StatusWiseData('AVAILABLE OFFER');"*@
+                                    <li class="O-one"><span class="N">N</span>@LanguageProvider.get("new")</li> @*onclick="StatusWiseData('NEW');"*@
+                                    <li><span class="H">B</span>@LanguageProvider.get("Busy")</li> @*onclick="StatusWiseData('BUSS. PROCESS');"*@
+                                    @*<li><span class="HB">B</span> @LanguageProvider.get("HoldBusy")</li>*@
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="aggrid-section1" class="aggrid-section viewcart gallery-grid">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <!---- =============== start ag-grid =============== ---->
+
+
+                        <div id="myGrid" style="width: 100%;height:500px;" class="ag-theme-balham">
+
+                        </div>
+
+
+                        <!---- =============== end ag-grid ================= ----->
+                    </div>
+                </div>
+            </div>
+            <div id="gallery-popup1" class="gallery-view">
+                <div class="gallery-modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-body">
+                            <div class="show-gallery">
+                                <div class="row mx-1" id="dvGalleryView1">
+                                </div>
+                                <div class="row mx-1">
+                                    <div class="col-12" style="text-align: center;">
+                                        <div class="back-to-top">
+                                            <i class="fa fa-angle-up" aria-hidden="true"></i>
+                                        </div>
+                                        <button id="btnLoadMore" onclick="LoadMore()" class="btn btn-primary" type="button">@LanguageProvider.get("Load_More")</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------Remove Cart ------------->
+<div id="cartModal" class="modal fade social-model" role="dialog">
+    <div class="modal-dialog modal-md">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@LanguageProvider.get("My_Cart")</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="cartresMsg" class="modalptag"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-darkblue" onclick="GoToCart();">@LanguageProvider.get("Go_to_cart")</button>
+                <button type="button" class="btn btn-darkblue" data-dismiss="modal">@LanguageProvider.get("Stay_On_Same_Page")</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="modal fade social-model" id="RemoveCart">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@LanguageProvider.get("Remove_Wishlist_Data")</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" id="Selected">
+                <li>@LanguageProvider.get("Are_you_sure_to_remove_this_record")</li>
+            </div>
+            <div class="modal-body" id="NotSelected">
+                <label>@LanguageProvider.get("Please_select_atleast_one_stone")</label>
+            </div>
+            <div class="modal-footer">
+                <button id="btnSendMail" class="btn btn-primary" type="button" onclick="RemoveFromWishlist()">@LanguageProvider.get("Remove")</button>
+                <button id="btnCancelMail" class="btn btn-darkblue" type="button" data-dismiss="modal">@LanguageProvider.get("cancel")</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade social-model" id="EmailModal" aria-modal="true" style="padding-left: 17px;">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@LanguageProvider.get("Send_Mail")</h4>
+                <button type="button" class="close" onclick="CloseSendMailPopup();">×</button>
+            </div>
+            <form class="form-horizontal" id="frmSendMail">
+                <div class="modal-body">
+                    <span class="note">@LanguageProvider.get("Email_Stone_Note")</span>
+
+                    <div class="mail-stone-radio-btn">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="customRadiomail" name="example" value="1" checked>
+                            <label class="custom-control-label" for="customRadiomail">@LanguageProvider.get("All_Stone")</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="customRadiomail2" name="example" value="2">
+                            <label class="custom-control-label" for="customRadiomail2">@LanguageProvider.get("Selected_Stone")</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">@LanguageProvider.get("emailaddress") :</label>
+                        @if (SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 1 || SunriseWeb.Helper.SessionFacade.UserSession.isemp == 1)
+                        {
+                            <input type="text" class="input-main required" id="txtemail" name="email" onblur="validmail(this)" placeholder="@LanguageProvider.get("emailaddress")" style="height: 40px;">
+                        }
+                        else
+                        {
+                            if (SunriseWeb.Helper.SessionFacade.UserSession.sCompEmail != "")
+                            {
+                                <input type="text" class="input-main required" id="txtemail" name="email" onblur="validmail(this)" placeholder="@LanguageProvider.get("emailaddress")" value="@SunriseWeb.Helper.SessionFacade.UserSession.sCompEmail," style="height: 40px;">
+                            }
+                            else
+                            {
+                                <input type="text" class="input-main required" id="txtemail" name="email" onblur="validmail(this)" placeholder="@LanguageProvider.get("emailaddress")" value="@SunriseWeb.Helper.SessionFacade.UserSession.sCompEmail2," style="height: 40px;">
+                            }
+                        }
+                    </div>
+                    <div class="form-group mb-0">
+                        <label for="pwd">@LanguageProvider.get("remark") :</label>
+                        <textarea class="input-main" id="txtNotes" placeholder="@LanguageProvider.get("remark")" rows="3"></textarea>
+                    </div>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button id="btnSendMail" class="fdbk-snd-btn" type="button" onclick="SendMail()">@LanguageProvider.get("Send_Mail")</button>
+                    <button type="button" class="fdbk-snd-btn" onclick="ClearSendMail()">@LanguageProvider.get("Clear")</button>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="modal fade social-model" id="ConfirmOrderWarningModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@LanguageProvider.get("Place_Order")</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12" id="ppPlaceOrderMsg" style="font-size: 13px;margin-top: 4px;"></div>
+                <p id="PlaceOrderMsg" class="modalptag"></p>
+                <input type="hidden" id="hdnAvailableStone" value="" />
+            </div>
+            <div class="modal-footer">
+                <button id="btnsaveOrderstone" class="btn btn-darkblue" type="button" data-dismiss="modal" @*onclick="PlaceOrder()"*@>@LanguageProvider.get("ok")</button>
+                <button class="btn btn-darkblue" type="button" data-dismiss="modal">@LanguageProvider.get("cancel")</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade social-model" id="ConfirmOrderModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@LanguageProvider.get("Place_Order")</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form class="form-horizontal" id="frmSaveOrder">
+                <div id="divHoldList"></div>
+                <div class="col-md-12" id="pPlaceOrderMsg" style="font-size: 13px;margin-top: 4px;"></div>
+                <div class="col-md-12" id="divPlaceOrderHoldCompany" style="display:none;">
+                    <span style="font-size: 12px;font-weight: 600;color: #003d66;">Company Name :</span>
+                    <input type="text" tabindex="1" class="form-control" onkeydown="CmpnynmRst();" id="txtCompanyName" name="txtCompanyName" placeholder="Search with Company Name, User Name, Fortune Party Code" autocomplete="none" style="font-size: 12.5px;">
+                </div>
+                <div class="modal-body" id="Selected" style="margin-top: -13px;">
+                    <div class="form-group">
+                        <label>@LanguageProvider.get("comments") : <span class="reqvalidation">*</span></label>
+                        <input type="text" tabindex="2" class="form-control required" name="comments" id="Comments" placeholder="@LanguageProvider.get("Enter_Comments")">
+                    </div>
+                </div>
+                <div class="modal-body" id="NotSelected">
+                    <label>@LanguageProvider.get("Please_select_atleast_one_stone")</label>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnsaveOrderstone" tabindex="3" class="btn btn-darkblue" type="button" onclick="SaveOrder()">@LanguageProvider.get("placeorder")</button>
+                    <button class="btn btn-darkblue" tabindex="4" type="button" data-dismiss="modal">@LanguageProvider.get("cancel")</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div onclick="closeOrderConfirmModal();" class="modal fade social-model" id="order-confirm-modal" tabindex="-1" role="dialog" aria-modal="true">
+    <div class="modal-dialog modal-dialog-centered order-confirm-wrappar" role="document">
+        <div class="modal-content">
+            <button type="button" class="close-order-confirm">
+                <div class="Customer-active-cel"> <a href="javascript:void(0);"><i class="fa fa-check"></i></a></div>
+            </button>
+            <div class="modal-body">
+                <div class="order-confirm-image text-center" data-dismiss="modal" aria-label="Close">
+                    <img src="/Content/images/order-confirm-box.svg" class="img-fluid">
+                </div>
+                <div class="order-confirm-msg text-left">
+                    <p class="m-0" id="lblcheckingavailability"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade social-model" id="ExcelModalAll" aria-modal="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@LanguageProvider.get("download")</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="hdnDownloadType" value="" />
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="customRadio3" name="example" value="1">
+                        <label class="custom-control-label" for="customRadio3">@LanguageProvider.get("All_Stone")</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="customRadio4" name="example" value="2">
+                        <label class="custom-control-label" for="customRadio4">@LanguageProvider.get("Selected_Stone")</label>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btn-focus" autofocus="" onclick="DownloadAll()">@LanguageProvider.get("ok")</button>
+                <button type="submit" class="btn btn-primary btn-focus" data-dismiss="modal">@LanguageProvider.get("cancel")</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- start compare popup -->
+<div id="CompareStone" class="modal compare_stn">
+    <div class="modal-dialog modal-lg">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="float: left">@LanguageProvider.get("comparestone")</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+
+            </div>
+            <div class="modal-body">
+                <div class="simple-table-main">
+                    <div class="row CompareStone-popup-content m-0">
+                        <div class="col-12 table-responsive">
+                            <table id="tblCompare" class="table table-bordered">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end compare popup -->
+@section scripts{
+    @*<script src="~/Content/Plugins/jqueryUI/jquery-ui.js"></script>*@
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/Wishlist.js?version=8.6"></script>
+}
+
+

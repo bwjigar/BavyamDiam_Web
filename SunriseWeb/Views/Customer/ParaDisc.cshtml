@@ -1,0 +1,165 @@
+﻿
+@{
+    ViewBag.Title = "Parameter Discount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="~/Content/Plugins/multiselect/bootstrap-multiselect.css" type="text/css">
+    <style type="text/css">
+        #myTableBody .form-control {
+            width: auto;
+        }
+
+        .ag-theme-balham .ag-row {
+            height: 45px;
+        }
+
+        .btn-group > .btn:first-child {
+            width: 355px;
+        }
+
+        .dropdown-menu.show {
+            max-height: 250px;
+            overflow-y: auto;
+            /*position: fixed !important;*/
+            /*left: 160px !important;*/
+        }
+
+        @@media screen and (min-width: 321px) and (max-width: 411px) {
+            .btn-group > .btn:first-child {
+                width: 265px;
+                margin-left: 10px;
+            }
+
+            .dropdown-menu.show {
+                max-height: 250px;
+                overflow-y: auto;
+                position: fixed !important;
+            }
+        }
+
+        @@media(max-width: 320px) {
+            .btn-group > .btn:first-child {
+                width: 235px;
+                margin-left: 5px;
+            }
+
+            .dropdown-menu.show {
+                max-height: 250px;
+                overflow-y: auto;
+                position: fixed !important;
+            }
+        }
+
+        @@media screen and (min-width: 412px) and (max-width: 414px) {
+            .btn-group > .btn:first-child {
+                width: 315px;
+                margin-left: 10px;
+            }
+
+            .dropdown-menu.show {
+                max-height: 250px;
+                overflow-y: auto;
+                position: fixed !important;
+            }
+        }
+
+        @@media (width: 768px) {
+            .order-history-section .offer-label {
+                width: 20%;
+            }
+
+            .btn-group > .btn:first-child {
+                width: 240px;
+            }
+
+            .dropdown-menu.show {
+                max-height: 250px;
+                overflow-y: auto;
+                position: fixed !important;
+            }
+        }
+    </style>
+}
+<div class="container-fluid order-history-section">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>Overseas Discount</h2>
+            </div>
+        </div>
+    </div>
+    <div class="order-history-data admin muser">
+        <form id="frm">
+            <div class="col-xl-4 col-lg-7 col-md-8 col-sm-6 col-12 float-left pl-2 pr-2">
+                <div id="divVendor" class="common-order">
+                    <div class="offer-label">Vendor:<span class="reqvalidation"> * </span></div>
+                    <select id="ddlVendor" name="Vendor" onchange="GetParaDiscData()" class="form-control common-control">
+                    </select>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-12 float-left pl-2 pr-2">
+                <ul class="offer-inbtn p-0 mb-2">
+                    <li>
+                        <button type="button" id="btnSave" class="offer-btn"><i class="fa fa-save" aria-hidden="true"></i>Save</button>
+                    </li>
+                    <li>
+                        <button type="button" id="btnReset" class="offer-btn"><i class="fa fa-refresh" aria-hidden="true"></i>Reset</button>
+                    </li>
+                </ul>
+            </div>
+        </form>
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="clear:both;">
+            <div class="mb-3 mt-2 pull-right">
+                <button type="button" id="btnAddNew" class="offer-btn" style="display:none;"><i class="fa fa-plus"></i>Add New Row</button>
+            </div>
+            <div style="width:100%;overflow-x:auto">
+                <table id="mytable" class="table table-hover table-bordered" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th style="width:100px">Sr.</th>
+                            <th style="width:450px">Shape</th>
+                            <th style="width:200px">Lab</th>
+                            <th style="width:70px">Cts</th>
+                            <th style="width:70px">Cts</th>
+                            <th style="width:225px">From Color</th>
+                            <th style="width:225px">To Color</th>
+                            <th style="width:225px">From Clarity</th>
+                            <th style="width:225px">To Clarity</th>
+                            <th style="width:225px">From Cut</th>
+                            <th style="width:225px">To Cut</th>
+                            <th style="width:225px">From Polish</th>
+                            <th style="width:225px">To Polish</th>
+                            <th style="width:225px">From Symm</th>
+                            <th style="width:225px">To Symm</th>
+                            <th style="width:225px">From Fls</th>
+                            <th style="width:225px">To Fls</th>
+                            <th style="width:200px">Discount Type</th>
+                            <th style="width:100px">Sign</th>
+                            <th style="width:110px">Discount</th>
+                            <th style="width:50px"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTableBody" class="ui-sortable">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="aggrid-section">
+        <!---- =============== start ag-grid =============== ---->
+        <div id="myGrid" style="width: 100%; height: 400px;" class="ag-theme-balham">
+        </div>
+        <!---- =============== end ag-grid ================= ----->
+    </div>
+</div>
+<!--- end of order-history part---->
+@section scripts{
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="~/Content/Plugins/multiselect/bootstrap-multiselect.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/common.js"></script>
+    <script src="~/Content/js/Pages/detailCellRenderer.js"></script>
+    <script src="~/Content/js/Pages/ParaDisc.js"></script>
+}
+

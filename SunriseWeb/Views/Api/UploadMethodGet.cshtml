@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "Client FTP / API Portal View";
+    ViewBag.ClassName = "search-contnt";
+}
+
+@section styles {
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+}
+<style>
+     .ag-paging-page-summary-panel {
+        left: 10px;
+        position: relative;
+    }
+
+    .ag-theme-balham .ag-cell {
+        white-space: normal !important;
+        line-height: inherit;
+        overflow-y: auto;
+    }
+    .Yes {
+        margin-bottom: 1px;
+        color: white;
+        background-color: #008000ab;
+        padding: 2px 5px;
+        border-radius: 16px;
+        font-weight: bold;
+    }
+    .No {
+        margin-bottom: 1px;
+        color: white;
+        background-color: #ff0000cf;
+        padding: 2px 5px;
+        border-radius: 16px;
+        font-weight: bold;
+    }
+</style>
+<div class="container-fluid search_result viewcart-fluid">
+
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane active result-page-content viewcart-page-content" id="profile-tab2" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="result-nav">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-12">
+                        <div class="viewcartdata-header">
+                            <h1>Client FTP / API Portal View</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="apiViews-form full-acform">
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <div class="row ">
+                                        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-1 px-2">
+                                            <div class="offer-label"> From Date:</div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 px-2">
+                                            <div class=" text-left w-100 ml-0">
+                                                <input type="text" class="offer-input ng-pristine ng-untouched ng-valid ng-not-empty" id="txtFromDate" name="daterange">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-1 px-2">
+                                            <div class="offer-label"> To Date:</div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 px-2">
+                                            <div class=" text-left w-100 ml-0">
+                                                <input type="text" class="offer-input ng-pristine ng-untouched ng-valid ng-not-empty" id="txtToDate" name="daterange">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-1 px-2">
+                                            <div class="offer-label"> Search:</div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 px-2">
+                                            <div class="text-left w-100 ml-0" style="width: 144% !important;">
+                                                <input autocomplete="off" id="txtSearch" class="form-control common-control" placeholder="Assist By / Company Name / User Name" type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <ul class="offer-inbtn pull-right mt-3">
+                                        <li class="mr-2">
+                                            <button type="button" id="btnSearch" onclick="btnSearch();" class="offer-btn">
+                                                <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search
+                                            </button>
+                                        </li>
+                                        <li class="mr-2">
+                                            <button type="button" id="btnSearch" onclick="ExcelGet();" class="offer-btn">
+                                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;Excel
+                                            </button>
+                                        </li>
+                                        <li class="mr-2">
+                                            <button type="button" id="btnReset" onclick="Clear();" class="offer-btn">
+                                                <i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Reset
+                                            </button>
+                                        </li>
+                                        <li class="mr-2">
+                                            <button type="button" id="Export" onclick="Back();" class="offer-btn">
+                                                <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="aggrid-section viewcart">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <!---- =============== start ag-grid =============== ---->
+
+                        <div id="myGrid" style="width: 100%;height:500px;" class="ag-theme-balham">
+
+                        </div>
+
+                        <!---- =============== end ag-grid ================= ----->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/wow.min.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/UploadMethodGet.js"></script>
+}

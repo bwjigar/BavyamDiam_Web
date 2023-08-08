@@ -1,0 +1,154 @@
+﻿@model SunriseWeb.Models.UserLogin
+@using SunriseWeb.Resources
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <title>Terms & Condition</title>
+    <meta name="keyword" content="" />
+    <meta name="description" content="" />
+    <meta name="title" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="50x50" href="~/Content/images/bd-removebg-preview.png">
+    <!-- attach stylesheet -->
+    <link rel="stylesheet" href="~/Content/static_pages/css/bootstrap.min.css">
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- main stylesheet -->
+    <link href="~/Content/static_pages/css/login.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ======================== Start Navbar ============================ -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar login-myScrollspy ragistration-page" id="navigation">
+        <div class="container">
+            <div class="ragister-logo">
+                <button type="button" id="sidebarCollapse" class="custom-toggle">
+                    <i class="fa fa-align-left" aria-hidden="true"></i>
+                </button>
+                <img src="~/Content/Login/images/bd-removebg-preview.png" class="img-responsive" alt="logo">
+                <div class="home-icon">
+                    <a href="@Url.Action("Index","Login")"><i class="fa fa-home" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div id="myScrollspy">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="@Url.Action("Index","Login")">Home</a></li>
+                    <li><a href="@Url.Action("Aboutus","Login")">About Us</a></li>
+                    <li><a href="@Url.Action("ExtensiveInventory","Login")">Extensive Inventory</a></li>
+                    @*<li><a href="@Url.Action("Service","Login")">Service</a></li>*@
+                    @*<li><a href="@Url.Action("Policy","Login")">Privacy Policy</a></li>
+                    <li><a href="@Url.Action("Terms","Login")">Terms & Condition</a></li>*@
+                    <li><a href="@Url.Action("ContactUs","Login")">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ======================== End Navbar ============================ -->
+    <!-- ======================== Start Home ============================ -->
+    <section class="section ragistration" id="ragistration">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="ragistration-form one">
+                        <div class="personal-info common-eee" style="text-align: justify;background-image: url('/Content/images/dashboard-pattern.png');">
+                            <div class="r-label">
+                                <p>Terms & Conditions</p>
+                            </div>
+                            <div class="login-pages-dta aboutus-page">
+                                <p>
+                                    Welcome to our website. Please read these terms and conditions of use (“Conditions”) carefully before using our website. By using our website, you indicate that You accept these Conditions and that You agree to abide by them. If You do not agree to these Conditions, please refrain from using our website.
+                                </p>
+                                <p>
+                                    <b>Information about us</b><br />
+                                    1) “This website is operated by <b>Bhavyam Diam</b> (“We” or “Us”) whose registered office is E(W) 53, Ground Floor, Bharat Diamond Bourse,  Bandra Kurla Complex, Mumbai, India. @*We are registered in India under Part IX of the Company Act, 1956 and the registration number is CIN : U36941MH2013PTC247457.*@ The term “You” refers to the user or viewer of our website.”
+                                </p>
+                                <p>
+                                    <b>Accessing our website</b><br />
+                                    1) The content of the pages of our website is for your general information and use only. It is subject to change without notice and We reserve the right to withdraw or amend the service We provide on our website without notice. We will not be liable if for any reason our website is not available at any time or for any period.
+                                    <br />2) From time to time, we may restrict access to some parts of our website, or our entire website, to users who have registered with us.
+                                    <br />3) Unauthorised use of our website may result for a claim for damages and/or be a criminal offence.
+                                </p>
+                                <p>
+                                    <b>Intellectual property rights</b><br />
+                                    1) We are the owner or the licensee of all intellectual property rights in our site, and in the material published on it. Those works are protected by copyright laws and treaties around the world. All such rights are reserved.
+                                    <br />2) You may print off one copy, and may download extracts, of any page(s) from our website for your personal reference and You may draw the attention of others within your organisation to material posted on our site.
+                                    <br />3) Our status (and that of any identified contributors) as the authors of material on our website must always be acknowledged.
+                                    <br />4) You may not use any part of the materials on our website for commercial purposes without obtaining our prior written consent.
+                                    <br />5) All trademarks reproduced on our website, which are neither our property nor licensed to us, are acknowledged on our website.
+                                </p>
+                                <p>
+                                    <b>Provenance Claims</b><br />
+                                    The policies relating to this section are part of the Business Principles adopted by <b>Bhavyam Diam</b> and are presented below for reference:
+                                    <br />1) "The company shall ensure all its Provenance Claims made will be fully valid along with available evidence to support the claim(s)".
+                                    <br />2) The company shall ensure that all claims and statements (made to consumers or other businesses) on practices in the supply chain and the origin or source of Diamonds, Synthetics, Gold and / or Platinum through the use of both descriptions and symbols are valid.
+                                    <br />3) The company shall ensure that there will be no attempt to mislead consumers through illustrations, descriptions, expressions, words, figures, depictions or symbols relating to the Provenance Claim(s).
+                                    <br />4) The company implements suggestion / complaint / grievance procedure and publicly display contact details of compliance officer / promoters where anyone can register their concerns. Further the company set mechanism of internal audit at regular interval to ensure compliance with respect to provenance claim.
+                                    <br />5) The company shall ensure that all the relevant employees are aware about the provenance claim and it procedures.
+                                    <br />6) In case of any query / complaints / grievances / suggestion pertaining to provenance claim please contact on <u style="color: blue;">bhavyamdiam@yahoo.com</u>
+                                </p>
+                                <p>
+                                    <b>Reliance on information on our website</b><br />
+                                    Your use of any information or materials on this website is entirely at your own risk, and We therefore disclaim all liability and responsibility arising from any reliance placed on such information or materials by any visitor to our website, or by anyone who may be informed of its contents.
+                                </p>
+                                <p>
+                                    <b>Our liability</b><br />
+                                    The material displayed on our website is provided without any warranty or guarantee whatsoever as to its accuracy, timeliness, performance, completeness or suitability for any particular purpose. You acknowledge that such information and materials may contain inaccuracies or errors and We expressly exclude any liability for any such inaccuracies or errors to the fullest extent permitted by law (including, but not limited to, any indirect or consequential loss of any kind howsoever arising). This does not affect our liability for death or personal injury resulting from our negligence, nor our liability for fraudulent misrepresentation, nor any other liability that cannot be excluded or limited by law.
+                                </p>
+                                <p>
+                                    <b>External links</b><br />
+                                    Our website may also include links to other websites. These links are provided for your convenience to provide further information only and do not signify that We endorse those websites. We have no control over the content of those websites, and We accept no responsibility for any loss or damage that may arise from your use of them.
+                                </p>
+                                <p>
+                                    <b>General</b><br />
+                                    1) We may revise these Conditions at any time by amending this page. You are expected to check this page from time to time to take notice of any changes we make as they will be binding on You.
+                                    <br />2) If any provision of these Conditions is determined to be illegal, invalid or otherwise unenforceable by reason of the laws of any state or country in which they are intended to be effective, that provision or part-provision shall, to the extent required, be deemed not to form part of these Conditions, and the validity and enforceability of the other provisions of these Conditions shall not be affected.
+                                    <br />3) Any failure or delay by us to exercise any right or remedy provided by these Conditions does not waive our right to enforce such right or remedy nor shall it preclude or restrict our further exercise of that or any other right or remedy. No single or partial exercise of such right or remedy shall preclude or restrict our further exercise of that or any other right or remedy.
+                                    <br />4) Your use of our website and any dispute arising out of or in connection with it, or with these Conditions, is subject to the laws of India.
+                                </p>
+                                <p>
+                                    <b>Policy on Supply Chain Integrity</b><br />
+                                    1) The company shall complete the due diligence process prior to initiate business relationship. We only buy and sale natural diamonds that are fully compliant with Kimberly Process Certification Scheme.
+                                    <br />2) The company shall ensure that all of its respective activities are in line with the OECD Due Diligence Guidelines, The Responsible Jewellery Council Standard and as per Universal Declaration on Human Rights laid down by United Nations.
+                                    <br />3) The company shall conduct appropriate due diligence and assessment of all compliances to prohibit any conflicted procurement from conflict-Affected & High-Risk areas and ensure to compliance with standards on Anti-Money Laundering (AML) and Combatting the Financing of Terrorism (CFT) of suppliers.
+                                    <br />4) Relevant Employees shall be trained on the Supply Chain & Due Diligence Requirement and OECD guideline at regular interval. We shall also provide support to our business partners and stakeholder for the same.
+                                    <br />5) The company shall carry out risk assessment for its supply chain and shall not enter into any business relationship or if may require then shall suspend/discontinue the engagement with any such supplier involved in dealing with Conflict-Affected and High-Risk areas, Any form of Human Right Violation; Torture, Cruel, inhuman and Degrading Treatment; Forced/Compulsory Labour; Child Labour; Abuses such as widespread Sexual Violence; War Crimes; other serious violations of International Humanitarian Law, Crime against Humanity; Genocide and/or To Bribe or To be Bribed.
+                                    <br />6) We strictly condemn and prohibit any Direct/Indirect support to public/private security forces, which illegally Control, Tax or Extort money from Mining Sites, Transportation Routes and Upstream Sectors.
+                                    <br />7) The company shall verify counterparty details, including the Know Your Customer (KYC) for any precious metals supplying Counterparties at regular interval.
+                                    <br />8) The company shall carry out risk-based assessment, set appropriate verification control and monitoring of all such commercial activities and transactions.
+                                    <br />9) The company shall assign responsibility of Supply Chain Integrity and due diligence compliance to senior personnel of the organisation to prevent any risk of illegal activities or beach of it. The company shall implement the management strategy to respond to identified risks.
+                                    <br />10) For the same, Compliance Officer shall report to Senior Management in case of any such violation of this policy.
+                                    <br />11) The company has established a risk assessment module and any business partners with high risk rating shall be red flagged and report to be submitted to senior management.
+                                </p>
+                                <p>
+                                    <b>Grievance Mechanism</b><br />
+                                    The purpose of this document is to outline a process though which any stakeholder can understand due diligence and supply chain integrity policy of the organization. The identity of the person who so ever has registered a concern shall be kept confidential and no retaliatory action shall be taken against any whistle blower. For anonymous submissions, you may refrain to provide your contact information.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function open_side() {
+            document.getElementById("myScrollspy").style.width = "250px";
+        }
+        function close_side() {
+            document.getElementById("myScrollspy").style.width = "0";
+        }
+    </script>
+    <!-- ======================== End Home ============================ -->
+    <!-- end of login -->
+    <script src="~/Content/static_pages/js/jquery.min.js"></script>
+    <script src="~/Content/static_pages/js/bootstrap.min.js"></script>
+    <script src="~/Content/static_pages/js/propper.min.js"></script>
+    <script src="~/Content/static_pages/js/login.js"></script>
+
+</body>
+</html>

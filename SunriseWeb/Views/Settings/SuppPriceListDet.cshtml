@@ -1,0 +1,352 @@
+﻿@{
+    ViewBag.Title = "Supplier Wise Price List Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <style>
+        /* Style the tab */
+        .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+            /* Style the buttons inside the tab */
+            .tab button {
+                background-color: inherit;
+                float: left;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                padding: 2px 11px;
+                transition: 0.5s;
+                font-size: 16px;
+            }
+
+                /* Change background color of buttons on hover */
+                .tab button:hover {
+                    background-color: #ddd;
+                }
+
+                /* Create an active/current tablink class */
+                .tab button.active {
+                    background-color: #ccc;
+                }
+
+        /* Style the tab content */
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+
+        .tblbody_sr {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .ui-menu {
+            width: 434.328px !important;
+        }
+
+            .ui-menu .ui-menu-item {
+                width: 415.328px !important;
+            }
+
+        .autocomplete {
+            position: relative;
+            display: inline-block;
+        }
+
+        .g-head-t {
+            font-size: 12px;
+            padding: 0 12px;
+            color: grey;
+        }
+
+        .g-amt-t {
+            font-size: 15px;
+            padding: 0 12px;
+            color: #003d66;
+            font-weight: 700;
+        }
+
+        .spn-Yes1 {
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 0px 5px 0px 5px;
+            font-size: 10px;
+            font-weight: 600;
+            background: #28a745;
+            color: white;
+        }
+
+        .spn-No1 {
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 0px 5px 0px 5px;
+            font-size: 10px;
+            font-weight: 600;
+            background: #ef0808;
+            color: white;
+        }
+
+        .disabled {
+            cursor: not-allowed;
+        }
+
+        .btn-spn-opt:hover {
+            background-color: #80808017;
+            border: 1px solid #003d66;
+        }
+
+        .btn-spn-opt {
+            border: 1px solid #e5e5e5;
+            border-radius: 28px;
+            padding: 5px 15px;
+            float: left;
+            margin-bottom: 5px;
+            margin-right: 5px;
+            transition-duration: 0.3s;
+            -webkit-transition: 0.3s;
+            cursor: pointer;
+            font-size: 11px;
+            white-space: nowrap;
+            font-weight: 600;
+            background: #fff;
+            color: #003d66;
+            position: relative;
+            z-index: 0;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .btn-spn-opt-active {
+            color: #fff !important;
+            background-color: #003d66 !important;
+        }
+
+        .pwd_field {
+            -webkit-text-security: disc;
+        }
+
+        #txtCompanyName_suggestion {
+            font-size: 11.5px;
+        }
+
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+            display: none !important;
+        }
+
+        .img-block {
+            display: block;
+        }
+
+        .img-none {
+            display: none;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #CaratModal .form-control {
+            border: 1px solid black;
+        }
+
+        .api-filter-popup ul.color-whit-box li {
+            display: inline-block;
+            margin: 4px 4px;
+        }
+
+        ul.color-whit-box li.active {
+            background: rgba(0, 61, 102,1);
+            color: #fff;
+        }
+
+        ul.color-whit-box li {
+            padding: 3px 13px;
+            -webkit-box-shadow: 0 0 2px rgba(0, 61, 102,0.3);
+            -moz-box-shadow: 0 0 2px rgba(0, 61, 102,0.3);
+            box-shadow: 0 0 2px rgba(0, 61, 102,0.3);
+            margin: 2px 4px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #003d66;
+            font-weight: 500;
+            background: #fff;
+            white-space: nowrap;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .custom-box-list p {
+            word-break: break-all;
+            border: 1px solid #ced4da;
+            padding: 0px 4px;
+            font-weight: 400;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            font-size: 13px;
+            height: 35px;
+            line-height: normal;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            overflow: auto;
+            margin: 0;
+        }
+
+        .Fi-Criteria {
+            font-size: 13px;
+        }
+
+        .tabboxdiv > .row {
+            border-bottom: none;
+        }
+
+        .allcrt {
+            margin: 0px 4px 4px 0px;
+            color: #003d66;
+            font-weight: normal !important;
+            padding: 5px 12px;
+        }
+
+        .fncy-rst {
+            right: -6px;
+            top: 13px;
+            position: absolute;
+            /*font-size: 14px;*/
+            cursor: pointer;
+        }
+
+        .sym-sec .carat-dropdown-main ul li {
+            display: inline-block;
+            margin: -3px 0px 0px 0px;
+            width: 23%;
+        }
+
+        .g-head-t {
+            font-size: 12px;
+            padding: 0 12px;
+            color: grey;
+        }
+
+        .g-amt-t {
+            font-size: 12px;
+            padding: 0 12px;
+            color: #003d66;
+        }
+
+        .f_clr_clk {
+            margin-top: -11px;
+            z-index: 9999;
+            width: 109px;
+        }
+    </style>
+}
+@if (Request.QueryString.Count > 0)
+{
+    <input type="hidden" id="hdnId" value="@Request.QueryString["Id"].ToString()" />
+}
+else
+{
+    <input type="hidden" id="hdnId" value="0" />
+}
+
+
+
+<div class="container-fluid order-history-section manage-user apifilter">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>Supplier Wise Price List Detail</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row col-md-12">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="offer-label" for="txtAPI">Supplier Name <span style="color:red;">*</span></label>
+                <div class="col-sm-6">
+                    <select class="form-control select2" id="DdlSupplierName" name="DdlSupplierName" onchange="SupplierNameChange();">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <ul class="offer-inbtn pull-right">
+                <li>
+                    <button onclick="SuppPriceList_View();" class="save offer-btn"> <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Back</button>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div id="dv_PrefixValue" style="display: none;">
+        <div class="col-md-12 tab">
+            <button class="tablinks btnStockPrefix" onclick="opendv('StockPrefix', true)">Stock Prefix</button>
+            <button class="tablinks btnStockValue" onclick="opendv('StockValue', true)">Stock Value</button>
+        </div>
+
+        <div id="divStockPrefix" class="tabcontent">
+            <div class="row mg0 pd5" style="text-align: center;">
+                <div class="col-md-9 table-responsive">
+                    <table id="tbl_Prefix" class="table table-hover table-bordered" style="width:100%; display:inline-block;">
+                        <thead>
+                            <tr>
+                                <th style="width:0%;">Sr.</th>
+                                <th style="width:30%;">Pointer <span style="color:red;">*</span></th>
+                                <th style="width:30%;">Location</th>
+                                <th style="width:30%;">Prefix <span style="color:red;">*</span> <span style="font-size: 10px;">(Ex. IND, HK, KUW)</span></th>
+                                <th style="width:5%;">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblbody_Prefix" class="ui-sortable">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-3">
+                    <ul class="offer-inbtn pull-right">
+                        <li>
+                            <button onclick="AddNewPrefix();" class="save offer-btn"><i class="fa fa-plus"></i>Add Row</button>
+                        </li>
+                        <li>
+                            <button onclick="SavePrefixData();" class="save offer-btn" id="Save_btn" style="display:none;"><i class="fa fa-save" aria-hidden="true"></i>&nbsp;Save</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="divStockValue" class="tabcontent">
+
+            @Html.Partial(@"~/Views/Settings/SuppPriceListStockValue.cshtml")
+        
+        </div>
+    </div>
+
+
+</div>
+
+@section scripts{
+    <script src="~/Content/js/wow.min.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/common.js"></script>
+
+    <script src="~/Content/js/Pages/SuppPriceListDet.js"></script>
+ 
+    <script src="~/Content/js/Pages/SuppPriceListStockValue.js"></script>
+}

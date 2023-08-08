@@ -1,0 +1,202 @@
+﻿@{
+    ViewBag.Title = "Supplier Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link href="~/Content/Plugins/jqueryUI/jquery-ui.css?version=1" rel="stylesheet" />
+}
+@if (Request.QueryString.Count > 0)
+{
+    <input type="hidden" id="hdnId" value="@Request.QueryString["Id"].ToString()" />
+}
+else
+{
+    <input type="hidden" id="hdnId" value="0" />
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="dv-dsp-inblk bdr-btm pb-0">
+                <div class="main-header-page">
+                    <a href="">
+                        <h1> Supplier Detail</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="myoffer-form full-acform mt-0">
+                <div class="row fl-sec-form">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="row fl-sec-form">
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">Supplier Name <span style="color:red;">*</span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input autocomplete="off" class="form-control" id="txtSupplierName" name="txtSupplierName" type="text">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">File Name <span style="color:red;">*</span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input autocomplete="off" class="form-control" id="txtFileName" name="txtFileName" type="text" value="">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">URL <span style="color:red;">*</span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input autocomplete="off" class="form-control" id="txtURL" name="txtURL" type="text">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">File Location <span style="color:red;">*</span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input autocomplete="off" class="form-control" id="txtFileLocation" name="txtFileLocation" type="text" value="">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">API Response <span style="color:red;">*</span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <select class="form-control select2" id="ddlAPIResponse" name="ddlAPIResponse">
+                                        <option value="">Select</option>
+                                        <option value="JSON">JSON</option>
+                                        <option value="XML">XML</option>
+                                        <option value="HTML">HTML</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">Export Type <span style="color:red;">*</span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <select class="form-control select2" id="LocationExportType" name="LocationExportType">
+                                        <option value="">Select</option>
+                                        <option value="EXCEL (.xlsx)">EXCEL (.xlsx)</option>
+                                        <option value="EXCEL (.xls)">EXCEL (.xls)</option>
+                                        <option value="CSV">CSV</option>
+                                        <option value="XML">XML</option>
+                                        <option value="JSON (File)">JSON (File)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">API Method</div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <select class="form-control select2" id="ddlAPIMethod" name="ddlAPIMethod">
+                                        <option value="">Select</option>
+                                        <option value="GET">GET</option>
+                                        <option value="POST">POST</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">Repeat Every <span style="color:red;">*</span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class="row">
+                                    <div class="col-sm-5 col-xs-6 api-plr" style="margin-left: 13px;">
+                                        <select class="form-control select2" id="DdlRepeatevery" name="DdlRepeatevery" onchange="Repeatevery();">
+                                            <option value="Minute">Minute</option>
+                                            <option value="Hour">Hour</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-5 col-xs-6 api-plr" style="float: right;">
+                                        <input type="text" id="txtMinute" name="From" value="" class="form-control" autocomplete="off" onkeypress="return isNumberKey(event)">
+                                        <input type="time" id="txtHour" name="From" value="" class="form-control" autocomplete="off" style="display:none;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">API Status</div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input checked="checked" data-val="true" id="APIStatus" name="APIStatus" type="checkbox" value="true"><input name="APIStatus" type="hidden" value="false" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">New Disc. Generate</div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input data-val="true" id="NewDiscGen" name="NewDiscGen" type="checkbox" value="true" onchange="NewDiscGen();"><input name="NewDiscGen" type="hidden" value="false" />
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">New RefNo Generate</div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input data-val="true" id="NewRefNoGen" name="NewRefNoGen" type="checkbox" value="true"><input name="NewRefNoGen" type="hidden" value="false" />
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 DiscInverse" style="display:none;">
+                                <div class="offer-label">Disc. Inverse</div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 DiscInverse" style="display:none;">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input data-val="true" id="DiscInverse" name="DiscInverse" type="checkbox" value="true"><input name="DiscInverse" type="hidden" value="false" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid order-history-section manage-user apifilter">
+
+    <div class="col-12 api-plr">
+        <div class="row">
+            <div class="col-xl-12">
+                <ul class="offer-inbtn pull-right">
+                    @if (Request.QueryString.Count > 0 && Convert.ToInt64(Request.QueryString["Id"]) > 0)
+                    {
+                        <li>
+                            <button onclick="SaveApiData();" class="save offer-btn" title="Update"><i class="fa fa-save" aria-hidden="true"></i>&nbsp;Update</button>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <button onclick="SaveApiData();" class="save offer-btn" title="Save"><i class="fa fa-save" aria-hidden="true"></i>&nbsp;Save</button>
+                        </li>
+                    }
+                    <li>
+                        <button onclick="Clear();" class="save offer-btn" title="Reset"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Reset</button>
+                    </li>
+                    <li>
+                        <button onclick="API_List_View();" class="save offer-btn" title="Upload Method View"> <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Back</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/Content/Plugins/jqueryUI/jquery-ui.js"></script>
+    <script src="~/Content/js/Pages/SupplierDet.js"></script>
+}

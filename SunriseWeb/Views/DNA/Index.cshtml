@@ -1,0 +1,813 @@
+﻿@model Lib.Models.SearchStone
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html class="">
+<!--<![endif]-->
+<head>
+    <title>
+        @Model.stone_ref_no :: DNA
+    </title>
+    <link rel="stylesheet" href="~/Content/css/StoneDetail/bootstrap.min.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/bd-removebg-preview.png">
+    <link href="~/Content/css/StoneDetail/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/Plugins/toastr/toastr.css" rel="stylesheet" />
+    <link href="~/Content/css/animate.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/dna/Finestar Dna_files/searchbutton.css">
+    <link href="~/Content/dna/Finestar Dna_files/magnify.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/dna/Finestar Dna_files/bootstrap.min.css">
+    <link href="~/Content/dna/Finestar Dna_files/jsCarousel-2.0.0.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/dna/Finestar Dna_files/NewDnaStyle.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Verdana;
+        }
+
+        .tempFmRemove {
+            display: none;
+        }
+
+        header {
+            background-color: #383838 !important;
+        }
+
+        .bg-dark {
+            background-color: #063758 !important;
+        }
+
+        .topset {
+            top: -70px !important;
+        }
+
+        .navigation ul ul ul {
+            min-width: 159px !important;
+        }
+
+        .RoughJS {
+            min-height: 250px;
+        }
+
+        .dna_img_zoom {
+            box-shadow: 0 3px 5px #888;
+        }
+
+        .iframe-width {
+            max-width: 85%;
+            margin-left: 40px;
+        }
+
+        .download-box {
+            width: 115% !important;
+        }
+
+        .img-box-set {
+            max-width: 248px;
+            max-height: 248px;
+        }
+
+        .img-hand {
+            cursor: pointer;
+        }
+
+        .loading-overlay {
+            display: none;
+            background: rgba( 26, 26, 26, 0.7 );
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            top: 0;
+        }
+
+        .loading-overlay-image-container {
+            display: none;
+            position: fixed;
+            z-index: 7;
+            top: 50%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+        }
+
+        .loading-overlay-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+
+        .whatsapp-share {
+            color: white;
+            background-color: #063758;
+        }
+
+        .btn:hover {
+            color: white !important;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="loading-overlay"></div>
+    <div class="loading-overlay-image-container">
+        <img src="~/Content/images/loader.gif" class="loading-overlay-img" />
+    </div>
+    @if (Model != null)
+    {
+        <header>
+            <div class="navbar navbar-dark bg-dark box-shadow" style="height: 77px;">
+                <div class="container d-flex justify-content-between col-md-12" style="max-width: 85%;">
+                    <div style="padding: 6px;background-color: white;" class="col-lg-1 col-md-2">
+                        <center>
+                            <img src="/Content/Login/images/bd-removebg-preview.png" class="img-responsive img-two" style="width: 59px;">
+                        </center>
+                    </div>
+                    <div class="col-lg-11 col-md-9 col-sm-4 col-xs-5" style="color:white;font-family:Muli-SemiBold;" id="divHead">
+                        <a style="float: left">
+                            <strong style="font-weight: 400 !important;font-size: 23px;padding-right: 15px;">@Model.stone_ref_no</strong>
+                        </a>
+                        <a style="float: left">
+                            <strong style="font-weight: 400 !important;font-size: 23px;padding-right: 15px;">@Model.certi_no</strong>
+                        </a>
+                        <a style="float: left;">
+                            <strong id="lblmsg" style="color: white;font-weight: 400 !important;font-size: 23px;font-family:Muli-SemiBold;">
+                                [&nbsp;@Model.shape&nbsp;&nbsp;@Model.cts&nbsp;&nbsp;@Model.color&nbsp;&nbsp;@Model.clarity&nbsp;&nbsp;@Model.cut&nbsp;&nbsp;@Model.polish&nbsp;&nbsp;@Model.symm&nbsp;&nbsp;@Model.fls&nbsp;]
+                            </strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main role="main">
+            <div class="mx-auto album py-5 bg-light" style="padding-top: 1rem!important;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="hedfmt">Video</h5>
+                            <div class="card mb-4 box-shadow">
+                                @if (Model.sVdoLink != "" && Model.sVdoLink != null)
+                                {
+                                    <iframe src="@Model.sVdoLink" id="videoimage" class="videoimage" frameborder="0"></iframe>
+                                }
+                                else
+                                {
+                                    <img src="~/Content/images/Video_NA.png" />
+                                }
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="hedfmt">Image</h5>
+                            <div class="card mb-4 box-shadow" style="min-height: 540px;">
+                                @if (Model.sImglink != "" && Model.sImglink != null)
+                                {
+                                    <div class="magnify" id="ImageFound">
+                                        <div class="magnify-lens" style="background: url(&quot;https://s3.ap-south-1.amazonaws.com/finestargroup/RealImages/140031591.jpg&quot;) 0px 0px no-repeat;"></div>
+                                        <img src="@Model.sImglink" id="imageset" class="card-img-top images1 img-responsive imageset" style="border-radius: 17px; max-height: 100%; display: block;">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div>
+                                        <img src="/Content/images/Image_NA.png" style="width: 538px;">
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class="hedfmt">Diamond Details </h5>
+                            <div class="row">
+                                <div class="col-md-12 row">
+                                    <div class="col-md-4">
+                                        <table class="table table-bordered" style="margin-bottom: 0rem">
+                                            <tbody>
+                                                <tr>
+                                                    <th colspan="2" scope="col" style="font-family:Verdana;">
+                                                        Details
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        STOCK ID
+                                                    </td>
+                                                    <td id="lblRefNo">@Model.stone_ref_no</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        CERT. NO.
+                                                    </td>
+                                                    <td id="lblCertiNo">@Model.certi_no</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        SHAPE
+                                                    </td>
+                                                    <td id="lblShape">@Model.shape</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        COLOR
+                                                    </td>
+                                                    <td id="lblColor">@Model.color</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        CLARITY
+                                                    </td>
+                                                    <td id="lblClarity">@Model.clarity</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        CTS
+                                                    </td>
+                                                    <td id="lblCts">@Model.cts</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        CUT
+                                                    </td>
+                                                    <td id="lblCut">@Model.cut</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        POLISH
+                                                    </td>
+                                                    <td id="lblPolish">@Model.polish</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        SYM
+                                                    </td>
+                                                    <td id="lblSymm">@Model.symm</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        FLS
+                                                    </td>
+                                                    <td id="lblFls">@Model.fls</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="col-md-4">
+
+                                        <div class="col-md-12">
+                                            <table class="table table-bordered" style="margin-bottom: 0rem">
+                                                <tbody>
+                                                    <tr>
+                                                        <th colspan="2" scope="col" style="font-family:Verdana;">
+                                                            Measurements
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            MEASUREMENT
+                                                        </td>
+                                                        <td id="lblMeasurements">@Model.Measurement</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            TABLE
+                                                        </td>
+                                                        <td id="lblWidth">@Model.table_per</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            T.D.
+                                                        </td>
+                                                        <td id="lblDepth">@Model.depth_per</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <br />
+
+                                        <div class="col-md-12">
+                                            <table class="table table-bordered" style="margin-bottom: 0rem">
+                                                <tbody>
+                                                    <tr>
+                                                        <th colspan="2" scope="col" style="font-family:Verdana;">
+                                                            Price
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            RAP PRICE ($)
+                                                        </td>
+                                                        <td id="lblRapPrice_Dollar">
+                                                            @Model.cur_rap_rate
+                                                        </td>
+                                                    </tr>
+
+
+                                                    <tr id="TrDisc">
+                                                        <td>
+                                                            BACK
+                                                        </td>
+                                                        <td id="lblDisc_Per" style="color:red;">
+                                                            @Model.sales_disc_per
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>
+                                                            PRICE/CTS
+                                                        </td>
+                                                        <td id="lblRapAmt_Dollar">
+                                                            @Model.price_per_cts
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr id="TrAmt">
+                                                        <td>
+                                                            TOTAL AMT ($)
+                                                        </td>
+                                                        <td id="lblNetAmt_Dollar">
+                                                            @Model.net_amount
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <table class="table table-bordered" style="margin-bottom: 0rem">
+                                            <tbody>
+                                                <tr>
+                                                    <th colspan="2" scope="col" style="font-family:Verdana;">
+                                                        Inclusion Details
+                                                    </th>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        LAB
+                                                    </td>
+                                                    <td id="lblShade">@Model.lab</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="height: 125px;vertical-align: middle;">
+                                                        MEMBER COMMENTS
+                                                    </td>
+                                                    <td id="lblUserComments" style="vertical-align: middle;">@Model.sComments</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="height: 125px;vertical-align: middle;">
+                                                        KEY TO SYMBOLS
+                                                    </td>
+                                                    <td id="lblKeyToSymbol" style="vertical-align: middle;">@Model.symbol</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 20px;">
+                        <div class="col-md-12">
+                            <h5 class="hedfmt">Certificate</h5>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @if (Model.view_certi_url != "" && Model.view_certi_url != null)
+                                    {
+                                        <iframe src="@Model.view_certi_url" id="CertiFound" style="width:100%;height:600px;border:1px solid #815d4a;border-radius:3px;"></iframe>
+                                    }
+                                    else
+                                    {
+                                        <center>
+                                            <img id="CertiNotFound" src="/Content/images/Certificate_NA.png" style="width: 538px;">
+                                        </center>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*<div class="row" style="margin-top: 10px;">
+                            <div class="col-md-12">
+                                <h5 class="hedfmt">Download & Share</h5>
+                                <div class="navigation">
+                                    <div class="nav_outer text-center">
+                                        <ul style="">
+
+                                            <li class="dropdown DownloadImages" style="position: relative; width: 118px;" id="Section-WhatsApp">
+                                                <h2 data-toggle="dropdown" class="dropdown-toggle">
+                                                    <a>
+                                                        <span>
+                                                            Whats App
+                                                            <b class="caret"></b>
+                                                        </span>
+                                                    </a>
+                                                </h2>
+                                                <ul class="dropdown-menu navigation Downloadlist" role="menu">
+                                                    <li class="Downloadreal ImagesDownload" id="Share-Image">
+                                                        <h2>
+                                                            <a>
+                                                                <label style="text-align: left;">
+                                                                    <input type="checkbox" value="" name="chkStock" id="Chk_Share_Image" chkvideo="Real" class="ImageList">&nbsp;Image
+                                                                </label>
+                                                            </a>
+                                                        </h2>
+                                                    </li>
+                                                    <li class="DownloadPloating ImagesDownload" id="Share-Video">
+                                                        <h2>
+                                                            <a>
+                                                                <label style="text-align: left;">
+                                                                    <input type="checkbox" value="" name="chkStock" id="Chk_Share_Video" chkvideo="PlottingImage" class="ImageList imgTradRetil">&nbsp;Video
+                                                                </label>
+                                                            </a>
+                                                        </h2>
+                                                    </li>
+                                                    <li class="Downloadheart ImagesDownload" id="Share-Certificate">
+                                                        <h2>
+                                                            <a>
+                                                                <label style="text-align: left;">
+                                                                    <input type="checkbox" value="" name="chkStock" id="Chk_Share_Certificate" chkvideo="HeartImage" class="ImageList imgTradRetil">&nbsp;Certificate
+                                                                </label>
+                                                            </a>
+                                                        </h2>
+                                                    </li>
+
+                                                    <li class="ImagesDownloads BtnDownloadCol downloadall" effect="Images" id="Btn-Share">
+                                                        <h2><a><span style="text-align: center;">Share</span></a></h2>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="DownloadStock downloadall downloadall" effect="stock" id="Btn-Excel">
+                                                <h2>
+                                                    <a>
+                                                        <span>
+                                                            Excel
+                                                        </span>
+                                                    </a>
+                                                </h2>
+                                            </li>
+
+                                            <li class="dropdown DownloadImages" style="position: relative; width: 118px;" id="Section-Image">
+                                                <h2 data-toggle="dropdown" class="dropdown-toggle">
+                                                    <a>
+                                                        <span>
+                                                            Images
+                                                            <b class="caret"></b>
+                                                        </span>
+                                                    </a>
+                                                </h2>
+                                                <ul class="dropdown-menu navigation Downloadlist" role="menu">
+                                                    <li class="Downloadreal ImagesDownload download-box" id="Download_PhotoReal">
+                                                        <h2>
+                                                            <a>
+                                                                <label style="text-align: left;">
+                                                                    <input type="checkbox" value="" name="chkStock" id="Chk_Img_PhotoReal" chkvideo="Real" class="ImageList">&nbsp;Photo Real
+                                                                </label>
+                                                            </a>
+                                                        </h2>
+                                                    </li>
+                                                    <li class="Downloadheart ImagesDownload download-box" id="Download_AsetScope">
+                                                        <h2>
+                                                            <a>
+                                                                <label style="text-align: left;">
+                                                                    <input type="checkbox" value="" name="chkStock" id="Chk_Img_AsetScope" chkvideo="HeartImage" class="ImageList imgTradRetil">&nbsp;Aset Scope
+                                                                </label>
+                                                            </a>
+                                                        </h2>
+                                                    </li>
+                                                    <li class="DownloadAssetScope ImagesDownload download-box" id="Download_H_A_Top">
+                                                        <h2>
+                                                            <a>
+                                                                <label style="text-align: left;">
+                                                                    <input type="checkbox" value="" name="chkStock" id="Chk_Img_H_A_Top" chkvideo="AssetImage" class="ImageList imgTradRetil">&nbsp;H & A Top
+                                                                </label>
+                                                            </a>
+                                                        </h2>
+                                                    </li>
+                                                    <li class="DownloadAssetScope ImagesDownload download-box" id="Download_H_A_Bottom">
+                                                        <h2>
+                                                            <a>
+                                                                <label style="text-align: left;">
+                                                                    <input type="checkbox" value="" name="chkStock" id="Chk_Img_H_A_Bottom" chkvideo="DefaultImage" class="ImageList imgTradRetil">&nbsp;H & A Bottom
+                                                                </label>
+                                                            </a>
+                                                        </h2>
+                                                    </li>
+                                                    <li class="DownloadAssetScope ImagesDownload download-box" id="Download_Fluorescence">
+                                                        <h2>
+                                                            <a>
+                                                                <label style="text-align: left;">
+                                                                    <input type="checkbox" value="" name="chkStock" id="Chk_Img_Fluorescence" chkvideo="Faceup" class="ImageList imgTradRetil">&nbsp;Fluorescence
+                                                                </label>
+                                                            </a>
+                                                        </h2>
+                                                    </li>
+                                                    <li class="DownloadAssetScope ImagesDownload download-box" id="Download_Dark_Field">
+                                                        <h2>
+                                                            <a>
+                                                                <label style="text-align: left;">
+                                                                    <input type="checkbox" value="" name="chkStock" id="Chk_Img_Dark_Field" chkvideo="IdealImage" class="ImageList imgTradRetil">&nbsp;Dark Field
+                                                                </label>
+                                                            </a>
+                                                        </h2>
+                                                    </li>
+
+                                                    <li class="ImagesDownloads BtnDownloadCol downloadall download-box" effect="Images" id="Download-Image">
+                                                        <h2><a><span style="text-align: center;">Download</span></a></h2>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li class="DownloadStock downloadall downloadall" effect="stock" id="Download-Video">
+                                                <h2>
+                                                    <a>
+                                                        <span>
+                                                            Video
+                                                        </span>
+                                                    </a>
+                                                </h2>
+                                            </li>
+                                            <li class="DownloadStock downloadall downloadall" effect="stock" id="Download-Certificate">
+                                                <h2>
+                                                    <a>
+                                                        <span>
+                                                            Certificate
+                                                        </span>
+                                                    </a>
+                                                </h2>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+
+
+                    @*<div class="row">
+                            <div class="col-md-12">
+                                <h5 class="hedfmt">Diamond Images [ Click on image for enlarge view ] </h5>
+                                <div class="row">
+                                    <div class="col-md-4 image_main_content">
+                                        <center>
+                                            <div class="card mb-4 box-shadow image_content">
+                                                <img src="" id="img_PR" class="card-img-top img-box-set" onclick="ImageEnlarge('PR');">
+                                            </div>
+                                            <div class="card-body card-body_new">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h6>Photo Real</h6>
+                                                </div>
+                                            </div>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-4 image_main_content">
+                                        <center>
+                                            <div class="card mb-4 box-shadow image_content">
+                                                <img src="" id="img_AS" class="card-img-top img-box-set" onclick="ImageEnlarge('AS');">
+                                            </div>
+                                            <div class="card-body card-body_new">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h6>Aset Scope</h6>
+                                                </div>
+                                            </div>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-4 image_main_content">
+                                        <center>
+                                            <div class="card mb-4 box-shadow image_content">
+                                                <img src="" id="img_HT" class="card-img-top img-box-set" onclick="ImageEnlarge('HT');">
+                                            </div>
+                                            <div class="card-body card-body_new">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h6>H & A Top</h6>
+                                                </div>
+                                            </div>
+                                        </center>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 5%; margin-bottom: 5%;">
+                                    <div class="col-md-4 image_main_content">
+                                        <center>
+                                            <div class="card mb-4 box-shadow image_content">
+                                                <img src="" id="img_HB" class="card-img-top img-box-set" onclick="ImageEnlarge('HB');">
+                                            </div>
+                                            <div class="card-body card-body_new">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h6>H & A Bottom</h6>
+                                                </div>
+                                            </div>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-4 image_main_content">
+                                        <center>
+                                            <div class="card mb-4 box-shadow image_content">
+                                                <img src="" id="img_FLS" class="card-img-top img-box-set" onclick="ImageEnlarge('FLS');">
+                                            </div>
+                                            <div class="card-body card-body_new">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h6>Fluorescence</h6>
+                                                </div>
+                                            </div>
+                                        </center>
+                                    </div>
+                                    <div class="col-md-4 image_main_content">
+                                        <center>
+                                            <div class="card mb-4 box-shadow image_content">
+                                                <img src="" id="img_DW" class="card-img-top img-box-set" onclick="ImageEnlarge('DW');">
+                                            </div>
+                                            <div class="card-body card-body_new">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <h6>Dark Field</h6>
+                                                </div>
+                                            </div>
+                                        </center>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>*@
+
+
+
+                </div>
+            </div>
+        </main>
+
+        <footer class="text-muted">
+            <div class="container">
+                <p class="float-right">
+                    <a href="/DNA?StoneNo=@Model.stone_ref_no">Back to top</a>
+                </p>
+
+            </div>
+        </footer>
+    }
+    else
+    {
+        <center style="margin-top: 25px;"><span style="font-size: 25px;font-weight: 600;" id="spnmsg"></span></center>
+    }
+
+    <!-- Bootstrap core JavaScript
+        ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script src="~/Content/js/StoneDetail/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Content/js/popper.min.js"></script>
+    <script src="~/Content/Plugins/toastr/toastr.js"></script>
+    <script src="~/Content/js/StoneDetail/bootstrap.min.js"></script>
+    <style>
+
+        #DivPopup {
+            background-color: #fff;
+            border: 2px solid #383838;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #70616c;
+            margin-top: -260px;
+            display: block;
+        }
+
+        #DivPopup, .EmailStockPopup, #DivDisclaimer {
+            font-family: 'Open Sans',sans-serif;
+            z-index: 9999;
+        }
+
+        .OfficeStonePopup {
+            font-family: "Open Sans",sans-serif,Verdana;
+            max-width: 645px;
+            min-width: 300px;
+            padding: 0 !important;
+            color: #4682b4 !important;
+        }
+
+        .dv1 h2, .dv2 h2 {
+            * background-color: #c7a566;
+            background: linear-gradient(to bottom, #383838 0%,#383838 100%) !important;
+            background: #ecd180;
+            background: -moz-linear-gradient(top, #383838 0%, #383838 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#383838 ), color-stop(100%,#383838 ));
+            background: -webkit-linear-gradient(top, #383838 0%,#383838 100%);
+            background: -o-linear-gradient(top, #383838 0%,#383838 100%);
+            background: -ms-linear-gradient(top, #383838 0%,#383838 100%);
+            background: linear-gradient(to bottom, #383838 0%,#383838 100%);
+            -webkit-border-radius: 7px 7px 0 0;
+            -moz-border-radius: 7px 7px 0 0;
+            /* border-radius: 3px 3px 0 0; */
+            font-family: Verdana;
+            font-weight: 700;
+            color: #FFF;
+            letter-spacing: .5px;
+            font-size: 10.5pt;
+            text-align: left;
+            padding: 4px 0 4px 10px;
+            margin-top: 0px;
+        }
+
+        #maskFinal {
+            background-color: #000;
+            display: none;
+            left: 0;
+            position: fixed;
+            top: 0;
+            z-index: 9999;
+        }
+
+        .dv1 .ClosePop, .dv2 .ClosePop {
+            float: right;
+            padding-right: 1px;
+            padding-top: 5px;
+            margin-right: 10px;
+        }
+
+        .OfficeStonePopup {
+            top: 63%;
+            left: 55%;
+        }
+
+        .AddTOMemoPopup, .OfficeStonePopup, .WishStonePopup {
+            font-family: "Open Sans",sans-serif,Verdana;
+            max-width: 645px;
+            min-width: 300px;
+            padding: 0 !important;
+            color: #4682b4 !important;
+        }
+
+        #DivAlertPopup, #DivPopup {
+            margin-left: -283px;
+            position: fixed;
+        }
+
+        .firsttd {
+            max-width: 15px !important;
+            width: 0px !important;
+        }
+
+        #DivPopup table tr td:first-child {
+            max-width: 15px !important;
+            width: 0px !important;
+        }
+
+        #mask {
+            background-color: #000;
+            display: none;
+            left: 0;
+            position: fixed;
+            top: 0;
+            z-index: 9000;
+        }
+
+        #txtMobileNo {
+            width: 100%;
+        }
+
+        .EMSHAPE {
+            border-radius: 50%;
+            position: absolute;
+            width: 33px;
+            background-image: linear-gradient(rgba(137,225,0,1),rgba(-78,49,0,1), rgba(137,225,0,1));
+            color: white;
+            text-align: center;
+        }
+    </style>
+
+    @*<script src="~/Content/js/Pages/dna.js"></script>*@
+    <script>
+        $(document).ready(function (e) {
+            if (getParameterByName("StoneNo") != "") {
+                if ($("#lblRapPrice_Dollar").text() != "") {
+                    $("#lblRapPrice_Dollar").text(formatNumber($("#lblRapPrice_Dollar").text()));
+                }
+                if ($("#lblRapAmt_Dollar").text() != "") {
+                    $("#lblRapAmt_Dollar").text(formatNumber($("#lblRapAmt_Dollar").text()));
+                }
+                if ($("#lblDisc_Per").text() != "") {
+                    $("#lblDisc_Per").text(formatNumber($("#lblDisc_Per").text()));
+                }
+                if ($("#lblNetAmt_Dollar").text() != "") {
+                    $("#lblNetAmt_Dollar").text(formatNumber($("#lblNetAmt_Dollar").text()));
+                }
+            }
+            $("#spnmsg").html("Data not available" + (getParameterByName("StoneNo") != null && getParameterByName("StoneNo") != "" ? " for this Stone Id <span style='color: red;'>" + getParameterByName("StoneNo") + "</span>" : ""));
+
+
+        });
+        function formatNumber(value) {
+            return (parseFloat(value).toFixed(2)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+        }
+        function getParameterByName(name) {
+            var url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 480 Stock Found, process time 12-Aug-2022 01:05:37 PM to 12-Aug-2022 01:05:38 PM, Log Time : 12-08-2022 01:05:38 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 506 Stock Found, process time 27-Aug-2022 09:59:28 AM to 27-Aug-2022 09:59:29 AM, Log Time : 27-08-2022 09:59:29 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 510 Stock Found, process time 29-Aug-2022 09:36:14 AM to 29-Aug-2022 09:36:16 AM, Log Time : 29-08-2022 09:36:16 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 510 Stock Found, process time 29-Aug-2022 03:14:43 PM to 29-Aug-2022 03:14:45 PM, Log Time : 29-08-2022 03:14:45 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 507 Stock Found, process time 02-Sep-2022 04:40:03 PM to 02-Sep-2022 04:40:23 PM, Log Time : 02-09-2022 04:40:23 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 506 Stock Found, process time 03-Sep-2022 12:01:36 PM to 03-Sep-2022 12:01:38 PM, Log Time : 03-09-2022 12:01:38 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 506 Stock Found, process time 03-Sep-2022 12:08:17 PM to 03-Sep-2022 12:08:19 PM, Log Time : 03-09-2022 12:08:19 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 506 Stock Found, process time 03-Sep-2022 12:10:46 PM to 03-Sep-2022 12:10:48 PM, Log Time : 03-09-2022 12:10:48 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 506 Stock Found, process time 03-Sep-2022 12:18:51 PM to 03-Sep-2022 12:18:52 PM, Log Time : 03-09-2022 12:18:52 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 506 Stock Found, process time 03-Sep-2022 12:19:10 PM to 03-Sep-2022 12:19:11 PM, Log Time : 03-09-2022 12:19:11 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 506 Stock Found, process time 03-Sep-2022 12:20:15 PM to 03-Sep-2022 12:20:20 PM, Log Time : 03-09-2022 12:20:20 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 506 Stock Found, process time 03-Sep-2022 12:21:22 PM to 03-Sep-2022 12:21:23 PM, Log Time : 03-09-2022 12:21:23 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 506 Stock Found, process time 03-Sep-2022 12:34:06 PM to 03-Sep-2022 12:34:08 PM, Log Time : 03-09-2022 12:34:08 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 506 Stock Found, process time 03-Sep-2022 12:34:30 PM to 03-Sep-2022 12:34:33 PM, Log Time : 03-09-2022 12:34:33 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 12:36:39 PM to 03-Sep-2022 12:36:40 PM, Log Time : 03-09-2022 12:36:40 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 12:46:15 PM to 03-Sep-2022 12:46:17 PM, Log Time : 03-09-2022 12:46:17 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 12:54:20 PM to 03-Sep-2022 12:54:22 PM, Log Time : 03-09-2022 12:54:22 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 12:55:40 PM to 03-Sep-2022 12:55:42 PM, Log Time : 03-09-2022 12:55:42 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 12:56:37 PM to 03-Sep-2022 12:56:39 PM, Log Time : 03-09-2022 12:56:39 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:05:00 PM to 03-Sep-2022 01:05:02 PM, Log Time : 03-09-2022 01:05:02 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:07:26 PM to 03-Sep-2022 01:07:27 PM, Log Time : 03-09-2022 01:07:27 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:08:08 PM to 03-Sep-2022 01:08:10 PM, Log Time : 03-09-2022 01:08:10 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:09:37 PM to 03-Sep-2022 01:09:39 PM, Log Time : 03-09-2022 01:09:39 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:10:21 PM to 03-Sep-2022 01:10:23 PM, Log Time : 03-09-2022 01:10:23 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:11:45 PM to 03-Sep-2022 01:11:47 PM, Log Time : 03-09-2022 01:11:47 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:12:47 PM to 03-Sep-2022 01:12:49 PM, Log Time : 03-09-2022 01:12:49 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:13:47 PM to 03-Sep-2022 01:13:48 PM, Log Time : 03-09-2022 01:13:48 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:18:00 PM to 03-Sep-2022 01:18:02 PM, Log Time : 03-09-2022 01:18:02 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:20:33 PM to 03-Sep-2022 01:20:34 PM, Log Time : 03-09-2022 01:20:34 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:22:25 PM to 03-Sep-2022 01:22:27 PM, Log Time : 03-09-2022 01:22:27 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:28:35 PM to 03-Sep-2022 01:29:22 PM, Log Time : 03-09-2022 01:29:22 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:31:52 PM to 03-Sep-2022 01:32:29 PM, Log Time : 03-09-2022 01:32:29 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:30:37 PM to 03-Sep-2022 01:33:30 PM, Log Time : 03-09-2022 01:33:30 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 505 Stock Found, process time 03-Sep-2022 01:34:47 PM to 03-Sep-2022 01:34:49 PM, Log Time : 03-09-2022 01:34:49 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 502 Stock Found, process time 03-Sep-2022 01:38:48 PM to 03-Sep-2022 01:38:53 PM, Log Time : 03-09-2022 01:38:53 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 502 Stock Found, process time 03-Sep-2022 01:39:20 PM to 03-Sep-2022 01:39:22 PM, Log Time : 03-09-2022 01:39:22 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 502 Stock Found, process time 03-Sep-2022 01:39:56 PM to 03-Sep-2022 01:39:57 PM, Log Time : 03-09-2022 01:39:57 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 502 Stock Found, process time 03-Sep-2022 01:42:18 PM to 03-Sep-2022 01:42:21 PM, Log Time : 03-09-2022 01:42:21 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 502 Stock Found, process time 03-Sep-2022 01:43:34 PM to 03-Sep-2022 01:43:35 PM, Log Time : 03-09-2022 01:43:35 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 502 Stock Found, process time 03-Sep-2022 01:45:05 PM to 03-Sep-2022 01:45:14 PM, Log Time : 03-09-2022 01:45:14 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 502 Stock Found, process time 03-Sep-2022 01:56:18 PM to 03-Sep-2022 01:56:21 PM, Log Time : 03-09-2022 01:56:21 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 502 Stock Found, process time 03-Sep-2022 02:00:56 PM to 03-Sep-2022 02:00:58 PM, Log Time : 03-09-2022 02:00:58 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 502 Stock Found, process time 03-Sep-2022 02:04:38 PM to 03-Sep-2022 02:04:40 PM, Log Time : 03-09-2022 02:04:40 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 502 Stock Found, process time 03-Sep-2022 02:06:38 PM to 03-Sep-2022 02:06:40 PM, Log Time : 03-09-2022 02:06:40 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 502 Stock Found, process time 03-Sep-2022 02:08:59 PM to 03-Sep-2022 02:09:01 PM, Log Time : 03-09-2022 02:09:01 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 09:31:10 AM to 05-Sep-2022 09:31:12 AM, Log Time : 05-09-2022 09:31:12 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 09:56:22 AM to 05-Sep-2022 09:56:25 AM, Log Time : 05-09-2022 09:56:25 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 09:56:49 AM to 05-Sep-2022 09:56:51 AM, Log Time : 05-09-2022 09:56:51 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 09:58:57 AM to 05-Sep-2022 09:59:00 AM, Log Time : 05-09-2022 09:59:00 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 10:00:30 AM to 05-Sep-2022 10:00:32 AM, Log Time : 05-09-2022 10:00:32 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 10:16:13 AM to 05-Sep-2022 10:16:15 AM, Log Time : 05-09-2022 10:16:15 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 10:17:57 AM to 05-Sep-2022 10:17:59 AM, Log Time : 05-09-2022 10:17:59 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 10:19:33 AM to 05-Sep-2022 10:19:35 AM, Log Time : 05-09-2022 10:19:35 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 10:23:42 AM to 05-Sep-2022 10:23:44 AM, Log Time : 05-09-2022 10:23:44 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 10:28:55 AM to 05-Sep-2022 10:28:56 AM, Log Time : 05-09-2022 10:28:56 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 10:32:31 AM to 05-Sep-2022 10:32:33 AM, Log Time : 05-09-2022 10:32:33 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+Unable to connect to the remote server, Log Time : 05-09-2022 10:58:06 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+Unable to connect to the remote server, Log Time : 05-09-2022 10:58:49 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+Unable to connect to the remote server, Log Time : 05-09-2022 11:14:28 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+Unable to connect to the remote server, Log Time : 05-09-2022 11:34:21 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+Unable to connect to the remote server, Log Time : 05-09-2022 11:42:28 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 04:02:53 PM to 05-Sep-2022 04:02:56 PM, Log Time : 05-09-2022 04:02:56 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 04:06:02 PM to 05-Sep-2022 04:06:05 PM, Log Time : 05-09-2022 04:06:05 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 04:08:50 PM to 05-Sep-2022 04:08:53 PM, Log Time : 05-09-2022 04:08:53 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 512 Stock Found, process time 05-Sep-2022 04:25:45 PM to 05-Sep-2022 04:25:48 PM, Log Time : 05-09-2022 04:25:48 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 512 Stock Found, process time 05-Sep-2022 04:26:38 PM to 05-Sep-2022 04:26:41 PM, Log Time : 05-09-2022 04:26:41 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 512 Stock Found, process time 05-Sep-2022 04:30:51 PM to 05-Sep-2022 04:30:54 PM, Log Time : 05-09-2022 04:30:54 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 512 Stock Found, process time 05-Sep-2022 04:34:52 PM to 05-Sep-2022 04:34:54 PM, Log Time : 05-09-2022 04:34:54 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 512 Stock Found, process time 05-Sep-2022 04:35:23 PM to 05-Sep-2022 04:35:26 PM, Log Time : 05-09-2022 04:35:26 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 512 Stock Found, process time 05-Sep-2022 04:36:11 PM to 05-Sep-2022 04:36:14 PM, Log Time : 05-09-2022 04:36:14 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 04:38:54 PM to 05-Sep-2022 04:38:57 PM, Log Time : 05-09-2022 04:38:57 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 04:44:19 PM to 05-Sep-2022 04:46:36 PM, Log Time : 05-09-2022 04:46:36 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 04:47:11 PM to 05-Sep-2022 04:47:32 PM, Log Time : 05-09-2022 04:47:32 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 04:49:44 PM to 05-Sep-2022 04:49:47 PM, Log Time : 05-09-2022 04:49:47 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 04:59:37 PM to 05-Sep-2022 05:01:36 PM, Log Time : 05-09-2022 05:01:36 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 05:03:32 PM to 05-Sep-2022 05:03:41 PM, Log Time : 05-09-2022 05:03:41 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 05:08:35 PM to 05-Sep-2022 05:08:38 PM, Log Time : 05-09-2022 05:08:38 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 511 Stock Found, process time 05-Sep-2022 05:10:15 PM to 05-Sep-2022 05:10:17 PM, Log Time : 05-09-2022 05:10:17 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 05-Sep-2022 05:16:35 PM to 05-Sep-2022 05:16:38 PM, Log Time : 05-09-2022 05:16:38 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 05-Sep-2022 05:17:09 PM to 05-Sep-2022 05:17:12 PM, Log Time : 05-09-2022 05:17:12 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 05-Sep-2022 05:32:11 PM to 05-Sep-2022 05:32:13 PM, Log Time : 05-09-2022 05:32:13 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 05-Sep-2022 05:34:15 PM to 05-Sep-2022 05:34:18 PM, Log Time : 05-09-2022 05:34:18 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 05-Sep-2022 05:44:49 PM to 05-Sep-2022 05:44:53 PM, Log Time : 05-09-2022 05:44:53 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 05-Sep-2022 05:49:31 PM to 05-Sep-2022 05:49:34 PM, Log Time : 05-09-2022 05:49:34 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 05-Sep-2022 05:52:06 PM to 05-Sep-2022 05:52:09 PM, Log Time : 05-09-2022 05:52:09 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 05-Sep-2022 05:56:07 PM to 05-Sep-2022 05:56:09 PM, Log Time : 05-09-2022 05:56:09 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 06-Sep-2022 09:30:55 AM to 06-Sep-2022 09:30:59 AM, Log Time : 06-09-2022 09:30:59 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 06-Sep-2022 09:39:30 AM to 06-Sep-2022 09:39:32 AM, Log Time : 06-09-2022 09:39:32 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 06-Sep-2022 09:40:35 AM to 06-Sep-2022 09:40:37 AM, Log Time : 06-09-2022 09:40:37 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 06-Sep-2022 09:41:00 AM to 06-Sep-2022 09:41:02 AM, Log Time : 06-09-2022 09:41:02 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 513 Stock Found, process time 06-Sep-2022 09:42:30 AM to 06-Sep-2022 09:42:32 AM, Log Time : 06-09-2022 09:42:32 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 519 Stock Found, process time 06-Sep-2022 05:19:29 PM to 06-Sep-2022 05:19:32 PM, Log Time : 06-09-2022 05:19:32 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 520 Stock Found, process time 07-Sep-2022 09:37:45 AM to 07-Sep-2022 09:37:47 AM, Log Time : 07-09-2022 09:37:47 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 519 Stock Found, process time 07-Sep-2022 01:48:54 PM to 07-Sep-2022 01:48:57 PM, Log Time : 07-09-2022 01:48:57 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 530 Stock Found, process time 12-Sep-2022 12:50:30 PM to 12-Sep-2022 12:52:06 PM, Log Time : 12-09-2022 12:52:06 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 529 Stock Found, process time 15-Sep-2022 11:10:17 AM to 15-Sep-2022 11:10:20 AM, Log Time : 15-09-2022 11:10:20 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 530 Stock Found, process time 15-Sep-2022 12:58:09 PM to 15-Sep-2022 12:58:12 PM, Log Time : 15-09-2022 12:58:12 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 530 Stock Found, process time 15-Sep-2022 01:19:58 PM to 15-Sep-2022 01:20:00 PM, Log Time : 15-09-2022 01:20:00 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 516 Stock Found, process time 17-Sep-2022 11:23:06 AM to 17-Sep-2022 11:23:19 AM, Log Time : 17-09-2022 11:23:19 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 517 Stock Found, process time 17-Sep-2022 03:11:08 PM to 17-Sep-2022 03:11:15 PM, Log Time : 17-09-2022 03:11:15 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 517 Stock Found, process time 17-Sep-2022 03:12:49 PM to 17-Sep-2022 03:12:56 PM, Log Time : 17-09-2022 03:12:56 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 517 Stock Found, process time 17-Sep-2022 03:24:08 PM to 17-Sep-2022 03:24:15 PM, Log Time : 17-09-2022 03:24:15 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 543 Stock Found, process time 12-Oct-2022 03:38:30 PM to 12-Oct-2022 03:38:32 PM, Log Time : 12-10-2022 03:38:32 PM

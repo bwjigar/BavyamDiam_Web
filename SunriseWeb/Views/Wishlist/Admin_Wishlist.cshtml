@@ -1,0 +1,160 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = LanguageProvider.get("wishlist");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/Plugins/multiselect/bootstrap-multiselect.css" type="text/css">
+    <style type="text/css">
+        .btn-group > .btn:first-child {
+            width: 250px;
+        }
+
+        .g-head-t {
+            font-size: 12px;
+            padding: 0 12px;
+            color: grey;
+        }
+
+        .g-amt-t {
+            font-size: 12px;
+            padding: 0 12px;
+            color: #003d66;
+        }
+    </style>
+}
+<input type="hidden" id="hdn_Avg_Offer_Disc_Per" value="@LanguageProvider.get("Avg_Offer_Disc_Per")" />
+<input type="hidden" id="hdn_Offer_Disc_Per" value="@LanguageProvider.get("Offer_Disc_Per")" />
+<input type="hidden" id="hdn_Avg_Offer_Value_Dollar" value="@LanguageProvider.get("Avg_Offer_Value_Dollar")" />
+<input type="hidden" id="hdn_Offer_Value_Dollar" value="@LanguageProvider.get("Offer_Value_Dollar")" />
+<input type="hidden" id="hdn_Avg_Web_Disc_Dollar" value="@LanguageProvider.get("Avg_Web_Disc_Dollar")" />
+<input type="hidden" id="hdn_Web_Disc_Dollar" value="@LanguageProvider.get("Web_Disc_Dollar")" />
+<input type="hidden" id="hdn_Final_Disc_Per" value="@LanguageProvider.get("Final_Disc_Per")" />
+<input type="hidden" id="hdn_Final_Value" value="@LanguageProvider.get("Final_Value")" />
+<input type="hidden" id="hdn_Table_Open" value="@LanguageProvider.get("Table_Open")" />
+<input type="hidden" id="hdn_Crown_Open" value="@LanguageProvider.get("Crown_Open")" />
+<input type="hidden" id="hdn_Pav_Open" value="@LanguageProvider.get("Pav_Open")" />
+<input type="hidden" id="hdn_Girdle_Open" value="@LanguageProvider.get("Girdle_Open")" />
+
+<div class="container-fluid search_result viewcart-fluid">
+
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane active result-page-content viewcart-page-content" id="profile-tab2" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="result-nav">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-12">
+                        <div class="viewcartdata-header">
+                            <h1>@LanguageProvider.get("wishlist")</h1>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="column-setting-form full-acform">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                                    <div class="common-order">
+                                        <div class="offer-label">Date:</div>
+                                        <input type="text" name="From" id="txtFromDate" value="" autocomplete="off" class="offer-input offer-input1" />
+                                        <input type="text" name="To" id="txtToDate" value="" autocomplete="off" class="offer-input offer-input1" />
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                                    <div class="order-stone-id common-order">
+                                        <div class="offer-label">Company Name:</div>
+                                        <input id="txtCompanyName" class="form-control common-control" placeholder="Company Name/User Name" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                                    <div class="order-stone-id common-order">
+                                        <div class="offer-label">Stock ID:</div>
+                                        <input id="txtStoneId" class="form-control common-control" placeholder="Stock Id/Certi No" type="text">
+                                    </div>
+                                </div>
+                                @*<div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                                        <div class="offer-label">Status:</div>
+                                        <select id="ddlStatus" class="form-control common-control" multiple="multiple" style="width:100%">
+                                            <option value="A">Available</option>
+                                            <option value="O">Offer</option>
+                                            <option value="P">Promotion</option>
+                                            <option value="B">Busy</option>
+                                        </select>
+                                    </div>*@
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                                    <ul class="offer-inbtn pull-right mt-3">
+                                        <li class="mr-2">
+                                            <button type="button" id="btnSearch" onclick="GetSearch();" class="offer-btn">
+                                                <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search
+                                            </button>
+                                        </li>
+                                        <li class="mr-2">
+                                            <button type="button" id="Export" onclick="DownloadWishlist();" class="offer-btn">
+                                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;Excel
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button type="button" id="btnReset" onclick="Reset();" class="offer-btn">
+                                                <i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Reset
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-xl-8 col-lg-8 col-md-12 col-12">
+                                    @*<div class="result-one">
+                                            <ul class="result-one-fir-ul viewcart">
+                                                <li id="tab1pcs"></li>
+                                                <li id="tab1cts"></li>
+                                                <li id="tab1disc"></li>
+                                                <li id="tab1ppcts"></li>
+                                                <li id="tab1totAmt"></li>
+                                            </ul>
+                                        </div>*@
+                                    <div id="tab1TCount" class="col-xl-12 col-lg-12 col-md-12 col-12 row" style="display:none;margin-top: -48px;margin-bottom: -7px;padding: 0px 4px;">
+                                        <div><center><span class="g-head-t">@LanguageProvider.get("pcs1")</span></center><center><span id="tab1pcs" class="g-amt-t"></span></center></div>
+                                        <div><center><span class="g-head-t">@LanguageProvider.get("cts")</span></center><center><span id="tab1cts" class="g-amt-t"></span></center></div>
+                                        <div><center><span class="g-head-t">@LanguageProvider.get("Offer_Disc_Per")</span></center><center><span id="tab1disc" class="g-amt-t"></span></center></div>
+                                        <div><center><span class="g-head-t">@LanguageProvider.get("Offer_Value_Dollar")</span></center><center><span id="tab1totAmt" class="g-amt-t"></span></center></div>
+                                        <div><center><span class="g-head-t">@LanguageProvider.get("Price_Cts")</span></center><center><span id="tab1ppcts" class="g-amt-t"></span></center></div>
+                                        <div id="tab1_WebDisc_t" style="display:none;"><center><span class="g-head-t">@LanguageProvider.get("Web_Disc_Dollar")</span></center><center><span id="tab1Web_Disc" class="g-amt-t" style="color: blue;"></span></center></div>
+                                        <div id="tab1_FinalValue_t" style="display:none;"><center><span class="g-head-t">@LanguageProvider.get("Final_Disc_Per")</span></center><center><span id="tab1Final_Disc" class="g-amt-t" style="color: red;"></span></center></div>
+                                        <div id="tab1_FinalDisc_t" style="display:none;"><center><span class="g-head-t">@LanguageProvider.get("Final_Value")</span></center><center><span id="tab1Net_Value" class="g-amt-t" style="color: red;"></span></center></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="aggrid-section viewcart">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <!---- =============== start ag-grid =============== ---->
+
+                        <div id="myGrid" style="width: 100%;" class="ag-theme-balham">
+
+                        </div>
+
+
+                        <!---- =============== end ag-grid ================= ----->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script type="text/javascript" src="~/Content/Plugins/multiselect/bootstrap-multiselect.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/common.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/Admin_Wishlist.js?version=8.6"></script>
+}
+
+
+
+

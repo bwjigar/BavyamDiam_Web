@@ -1,0 +1,1337 @@
+﻿@model Lib.Models.SearchStone
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stone Detail - @Model.stone_ref_no</title>
+    <!-- Bootstrap CSS -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/bd-removebg-preview.png">
+    <link rel="stylesheet" href="~/Content/css/StoneDetail/bootstrap.min.css">
+    <!-- font-awesome CSS -->
+    <link href="~/Content/css/StoneDetail/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/css/StoneDetail/enlarge.css" rel="stylesheet">
+    <link href="~/Content/css/StoneDetail/magnific-popup.css" rel="stylesheet">
+    <link href="~/Content/Plugins/toastr/toastr.css" rel="stylesheet" />
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="~/Content/css/StoneDetail/style.css">
+    <style>
+        .tab-content {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            /*padding-top: 100%;*/
+        }
+
+        .responsive-iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .jb-video-iframe {
+            margin-top: -47px;
+        }
+
+        .loading-overlay {
+            display: none;
+            background: rgba( 26, 26, 26, 0.7 );
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            top: 0;
+        }
+
+        .loading-overlay-image-container {
+            display: none;
+            position: fixed;
+            z-index: 7;
+            top: 50%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+        }
+
+        .loading-overlay-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+
+        .Multidown {
+            display: inline-block;
+            border-radius: 5px;
+            margin: 10px 0px;
+            position: relative;
+            background: #003d66;
+            padding: 7px 10px;
+            color: #fff !important;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        .Multidown-item {
+            display: block;
+            width: 100%;
+            padding: .25rem 1.5rem;
+            clear: both;
+            font-weight: 400;
+            color: #212529;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .dropdown-menu a:hover {
+            color: white;
+            background-color: #003d66;
+            text-decoration: none;
+        }
+
+        #a {
+            width: 500px;
+        }
+
+        img {
+            width: 100%;
+            height: auto
+        }
+
+        .Down_divider {
+            margin: 1px 0px -3px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-overlay"></div>
+    <div class="loading-overlay-image-container">
+        <img src="~/Content/images/loader.gif" class="loading-overlay-img" />
+    </div>
+    @if (Model != null)
+    {
+        <input type="hidden" id="hdnStoneRefNo" value="@Model.stone_ref_no" />
+        <input type="hidden" id="hdn_IsOverseas" value="@Model.IsOverseas" />
+        <input type="hidden" id="hdn_cur_rap_rate" value="@Model.cur_rap_rate" />
+
+        if (Model.bPRimg != null && Model.bPRimg.Value == true)
+        {
+            <input type="hidden" id="hdnbPRimg" value="true" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnbPRimg" value="" />
+        }
+
+        if (Model.bHBimg != null && Model.bHBimg.Value == true)
+        {
+            <input type="hidden" id="hdnbHBimg" value="true" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnbHBimg" value="" />
+        }
+
+        if (Model.bHTimg != null && Model.bHTimg.Value == true)
+        {
+            <input type="hidden" id="hdnbHTimg" value="true" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnbHTimg" value="" />
+        }
+
+        if (Model.bASimg != null && Model.bASimg.Value == true)
+        {
+            <input type="hidden" id="hdnbASimg" value="true" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnbASimg" value="" />
+        }
+
+        <input type="hidden" id="hdnMovieUrl" value="@Model.movie_url" />
+        <input type="hidden" id="hdnViewCertiUrl" value="@Model.view_certi_url" />
+        <input type="hidden" id="hdnCertiNo" value="@Model.certi_no" />
+
+        if (Model.sImglink != null && Model.sImglink != "")
+        {
+            <input type="hidden" id="hdnOSImglink" value="@Model.sImglink" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOSImglink" value="" />
+        }
+        if (Model.sVdoLink != null && Model.sVdoLink != "")
+        {
+            <input type="hidden" id="hdnOSVdoLink" value="@Model.sVdoLink" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOSVdoLink" value="" />
+        }
+    }
+    else
+    {
+        <input type="hidden" id="hdnStoneRefNo" value="" />
+        <input type="hidden" id="hdn_cur_rap_rate" value="" />
+        <input type="hidden" id="hdnbPRimg" value="" />
+        <input type="hidden" id="hdnbHBimg" value="" />
+        <input type="hidden" id="hdnbHTimg" value="" />
+        <input type="hidden" id="hdnbASimg" value="" />
+        <input type="hidden" id="hdnMovieUrl" value="" />
+        <input type="hidden" id="hdnViewCertiUrl" value="" />
+        <input type="hidden" id="hdnCertiNo" value="" />
+        <input type="hidden" id="hdnOSImglink" value="" />
+        <input type="hidden" id="hdnOSVdoLink" value="" />
+    }
+
+    @if (Model != null && Model.IsOverseas == 1)
+    {
+
+        if (Model.pointer != null && Model.pointer != "")
+        {
+            <input type="hidden" id="hdnOS_Pointer" value="@Model.pointer" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Pointer" value="" />
+        }
+        if (Model.shape != null && Model.shape != "")
+        {
+            <input type="hidden" id="hdnOS_Shape" value="@Model.shape" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Shape" value="" />
+        }
+        if (Model.stone_ref_no != null && Model.stone_ref_no != "")
+        {
+            <input type="hidden" id="hdnOS_stone_ref_no" value="@Model.stone_ref_no" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_stone_ref_no" value="" />
+        }
+        if (Model.color != null && Model.color != "")
+        {
+            <input type="hidden" id="hdnOS_Color" value="@Model.color" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Color" value="" />
+        }
+        if (Model.polish != null && Model.polish != "")
+        {
+            <input type="hidden" id="hdnOS_Polish" value="@Model.polish" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Polish" value="" />
+        }
+        if (Model.clarity != null && Model.clarity != "")
+        {
+            <input type="hidden" id="hdnOS_Clarity" value="@Model.clarity" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Clarity" value="" />
+        }
+        if (Model.symbol != null && Model.symbol != "")
+        {
+            <input type="hidden" id="hdnOS_symbol" value="@Model.symbol" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_symbol" value="" />
+        }
+        if (Model.symbol != null && Model.symbol != "")
+        {
+            <input type="hidden" id="hdnOS_Symm" value="@Model.symbol" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Symm" value="" />
+        }
+        if (Model.fls != null && Model.fls != "")
+        {
+            <input type="hidden" id="hdnOS_Fls" value="@Model.fls" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Fls" value="" />
+        }
+        if (Model.Location != null && Model.Location != "")
+        {
+            <input type="hidden" id="hdnOS_Location" value="@Model.Location" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Location" value="" />
+        }
+    }
+    @if (Model != null)
+    {
+        <div class="wrapper">
+            <div id="content" class="contnt search-contnt">
+                <div class="container-fluid stone-detail p-0">
+                    <div class="" id="">
+                        <div class="search-page-content offersearch">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+                                    <div class="tab-content">
+                                        @if (Model.sImglink != null && Model.sImglink != "")
+                                        {
+                                            <b style="color: #1c2f7a; ">Stone Image  Link : </b><a href="@Model.sImglink" target="_blank" style="color: #1c2f7a;"> Click Here To Enlarge...</a>
+                                            @*<iframe height="450" frameborder="0" id="image1" src="@Model.sImglink&amp;resize=299" style="text-align: center; width: 100%;"></iframe>*@
+                                            <img src="@Model.sImglink" style="width: 100%;" />
+                                        }
+                                        else
+                                        {
+                                            <div class="stone-big-img tab-pane active">
+                                                <div class="enlarge_pane_contain">
+                                                    <div class="enlarge_pane">
+                                                        <div class="">
+                                                            <div class="enlarge_contain">
+                                                                <img src="~/Content/images/Img Not Avail.png" style="border: double #003d66;width: 100%;">
+                                                            </div>
+                                                            <a href="~/Content/images/Img Not Avail.png" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="video">
+                                        @if (Model.movie_url != null && Model.movie_url != "")
+                                        {
+                                            <div class="tab-content">
+                                                <b style="color: #1c2f7a; ">Stone  Video Link : </b><a href="@Model.movie_url" target="_blank" style="color: #1c2f7a;">Click Here To Enlarge...</a>
+                                                <iframe height="400" frameborder="0" id="video1" src="@Model.movie_url" style="text-align: center; width: 100%;"></iframe>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/images/Vdo Not Avail.png" height="400" style="border: double #003d66;width: 100%;">
+                                        }
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                    @if (Model.view_certi_url != null && Model.view_certi_url != "")
+                                    {
+                                        <div class="stone-det-big-img p-0" ng-hide="CertDiv">
+                                            <iframe id="CertiFrame" width="100%" height="600" frameborder="0" src="@Model.view_certi_url" style="text-align: center;width: 100%;"></iframe>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <center>
+                                            <div class="stone-det-big-img p-0" ng-hide="CertDiv">
+                                                <img src="~/Content/images/Certi Not Avail.png" style="border: double #003d66;width: 80%;">
+                                            </div>
+                                        </center>
+                                    }
+                                </div>
+                                <div class="col-lg-3 col-sm-12">
+
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="stone-detail-bx-main">
+                                                <div id="accordion">
+                                                    <div class="card">
+                                                        <div class="stone-detail-head" style="cursor:pointer;" onclick="CollaOne();">
+
+                                                            <a class="card-link" data-toggle="collapse">
+                                                                <i class="fa fa-minus-circle" id="iconcollapseOne" aria-hidden="true"></i> ADDITIONAL INFO
+                                                            </a>
+                                                        </div>
+                                                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                                            <div class="stn-dtl-row card-body">
+
+                                                                <ul>
+                                                                    <li class="one">STOCK ID :</li>
+                                                                    <li class="two">
+                                                                        @Model.stone_ref_no
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">LAB :</li>
+                                                                    <li class="two">
+                                                                        @Model.lab
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">SHAPE :</li>
+                                                                    <li class="two">
+                                                                        @Model.shape
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">WEIGHT :</li>
+                                                                    <li class="two">
+                                                                        @Model.cts
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">COLOR :</li>
+                                                                    <li class="two">
+                                                                        @Model.color
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">CLARITY :</li>
+                                                                    <li class="two">
+                                                                        @Model.clarity
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">CUT :</li>
+                                                                    <li class="two">
+                                                                        @Model.cut
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">POLISH :</li>
+                                                                    <li class="two">
+                                                                        @Model.polish
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">SYM :</li>
+                                                                    <li class="two">
+                                                                        @Model.symm
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">FLORO :</li>
+                                                                    <li class="two">
+                                                                        @Model.fls
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">RAP PRICE :</li>
+                                                                    <li id="liRapPrice" class="two">
+                                                                        @if (@Model.cur_rap_rate != 0)
+                                                                        {
+                                                                            @Model.cur_rap_rate
+                                                                        }
+                                                                    <li>
+                                                                </ul>
+                                                                @if (@Model.iUserid != 0)
+                                                                {
+                                                                    <ul>
+                                                                        <li class="one">BACK :</li>
+                                                                        <li class="two" style="color: red;">
+                                                                            @if (@Model.cur_rap_rate != 0)
+                                                                            {
+                                                                                @Model.sales_disc_per
+                                                                            }
+                                                                        </li>
+                                                                    </ul>
+                                                                }
+                                                                <ul>
+                                                                    <li class="one">RAP X WT :</li>
+                                                                    <li id="liRapValue" class="two">
+                                                                        @if (@Model.cur_rap_rate != 0)
+                                                                        {
+                                                                            @Model.rap_amount
+                                                                        }
+                                                                    </li>
+                                                                </ul>
+                                                                @if (@Model.iUserid != 0)
+                                                                {
+                                                                    <ul>
+                                                                        <li class="one">TOTAL AMOUNT :</li>
+                                                                        <li id="liTotal" class="two" style="color: red;">
+                                                                            @Model.net_amount
+                                                                        </li>
+                                                                    </ul>
+                                                                }
+                                                                <ul>
+                                                                    <li class="one">
+                                                                        MEASUREMENT :
+                                                                    </li>
+                                                                    <li class="two">
+                                                                        @Model.Measurement
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">TABLE :</li>
+                                                                    <li class="two">
+                                                                        @Model.table_per
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">T.D. :</li>
+                                                                    <li class="two">
+                                                                        @Model.depth_per
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">CERT. NO. :</li>
+                                                                    <li class="two">
+                                                                        @Model.certi_no
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">KEY TO SYMBOLS :</li>
+                                                                    <li class="two">
+                                                                        @Model.symbol
+                                                                    <li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">MEMBER COMMENTS :</li>
+                                                                    <li class="two">
+                                                                        @Model.sComments
+                                                                    </li>
+                                                                </ul>
+
+                                                                @*<ul>
+                                                                        <li class="one">Status :</li>
+                                                                        <li class="two">
+                                                                            @if (Model != null)
+                                                                            {@Model.status}
+                                                                        </li>
+                                                                    </ul>
+                                                                    <ul>
+                                                                        <li class="one">Depth :</li>
+                                                                        <li class="two">
+                                                                            @if (Model != null)
+                                                                            {@Model.depth}
+                                                                        </li>
+                                                                    </ul>
+
+                                                                    <ul>
+                                                                        <li class="one">Girdle % :</li>
+                                                                        <li class="two">
+                                                                            @if (Model != null)
+                                                                            {@Model.girdle_per}
+                                                                        </li>
+                                                                    </ul>
+                                                                    <ul>
+                                                                        <li class="one">Girdle Type :</li>
+                                                                        <li class="two">
+                                                                            @if (Model != null)
+                                                                            {@Model.girdle_type}
+                                                                        </li>
+                                                                    </ul>
+                                                                    <ul>
+                                                                        <li class="one">Culet :</li>
+                                                                        <li class="two">
+                                                                            @if (Model != null)
+                                                                            {@Model.sCulet}
+                                                                        </li>
+                                                                    </ul>
+
+                                                                    <ul>
+                                                                        <li class="one">Inscription :</li>
+                                                                        <li class="two">
+                                                                            @if (Model != null)
+                                                                            {@Model.sInscription}
+                                                                        </li>
+                                                                    </ul>*@
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="display:none;">
+                                            <div class="stone-detail-bx-main">
+                                                <div id="accordion">
+                                                    <div class="card">
+                                                        <div class="stone-detail-head" style="cursor:pointer;" onclick="CollaTwo();">
+                                                            <a class="card-link" data-toggle="collapse">
+                                                                <i class="fa fa-plus-circle" id="iconcollapseTwo" aria-hidden="true"></i> PARAMETER INFO
+                                                            </a>
+                                                        </div>
+                                                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                                            <div class="stn-dtl-row card-body">
+                                                                <ul>
+                                                                    <li class="one">Length :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.length}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Width :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.width}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Depth :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.depth}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Depth % :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.depth_per}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Table % :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.table_per}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Girdle % :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.girdle_per}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Girdle Type :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.girdle_type}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Crown Angle :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.crown_angle}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Crown Height :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.crown_height}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Pav Angle :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.pav_angle}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Pav Height :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.pav_height}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Culet :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.sCulet}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Lab :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.lab}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Inscription :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.sInscription}
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">GIA Comments :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {
+                                                                            @Model.sComments.ToUpper()
+                                                                        }
+                                                                    </li>
+                                                                </ul>
+                                                                <ul>
+                                                                    <li class="one">Key to Symbols :</li>
+                                                                    <li class="two">
+                                                                        @if (Model != null)
+                                                                        {@Model.symbol}
+                                                                    <li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+
+    <script src="~/Content/js/StoneDetail/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <!-- Popper.JS -->
+    <script src="~/Content/js/StoneDetail/popper.min.js"></script>
+
+    <script src="~/Content/js/StoneDetail/enlarge.js"></script>
+    <script src="~/Content/js/StoneDetail/enlarge.init.js"></script>
+    <script src="~/Content/js/StoneDetail/init.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/Content/js/StoneDetail/bootstrap.min.js"></script>
+    <script src="~/Content/js/StoneDetail/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/StoneDetail/custom.js"></script>
+    <script src="~/Content/Plugins/toastr/toastr.js"></script>
+</body>
+
+</html>
+<div class="modal fade social-model" id="MobileModal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                @* <h4 class="modal-title">Place Order</h4>*@
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <form class="form-horizontal" id="frmSaveOrder">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mobile No :</label>
+                        <input type="text" class="form-control required" onkeypress="return whatsAppKeypress(event);" name="MobileNo" id="txtMobileNo" placeholder="Enter MobileNo with country code" autocomplete="off">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-darkblue" type="button" onclick="sendWhatsapp()">OK</button>
+                    <button class="btn btn-darkblue" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*@section scripts{*@
+<script>
+    var AllD = false;
+    var vars = [];
+    function OverSeasExcelDownload(type) {
+        if (type == "Excel") {
+            OverSeasExcel();
+        }
+        else if (type == "Image") {
+            OverSeasImage();
+        }
+        else if (type == "Video") {
+            OverSeasVideo();
+        }
+        else if (type == "All") {
+            AllD = true;
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+
+            OverSeasImage();
+            OverSeasVideo();
+            OverSeasExcel();
+
+            $('.loading-overlay-image-container').hide();
+            $('.loading-overlay').hide();
+            AllD = false;
+        }
+    }
+    function OverSeasExcel() {
+        if (AllD == false) {
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+        }
+
+        var sobj = {};
+        sobj.Clarity = $("#hdnOS_Clarity").val();
+        sobj.Color = $("#hdnOS_Color").val();
+        sobj.PageNo = 1;
+        sobj.Shape = $("#hdnOS_Shape").val();
+        sobj.StoneID = $("#hdnOS_stone_ref_no").val();
+        sobj.isAdmin = false;
+        sobj.isEmp = false;
+        sobj.keytosymbol = $("#hdnOS_symbol").val();
+        $.ajax({
+            url: "/Common/OverseasStockExcelDownload",
+            type: "POST",
+            data: { obj: sobj, tabNo: "1" },
+            success: function (data, textStatus, jqXHR) {
+                if (AllD == false) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+                if (data.indexOf('proper format') > -1) {
+                    toastr.warning(data);
+                }
+                else {
+                    location.href = data;
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.loading-overlay-image-container').hide();
+                $('.loading-overlay').hide();
+            }
+        });
+    }
+    function OverSeasImage() {
+        if (getExtension(OverSeasExcelMediaURLGet('Image')) == "jpg") {
+            if (AllD == false) {
+                $('.loading-overlay-image-container').show();
+                $('.loading-overlay').show();
+            }
+            $.ajax({
+                url: "/Common/OverseasDNAMediaDownloadByURLWithoutToken",
+                type: "POST",
+                data: { URL: OverSeasExcelMediaURLGet('Image'), Type: 'Image', StoneId: $("#hdnStoneRefNo").val() },
+                success: function (data, textStatus, jqXHR) {
+                    if (data.search('.zip') == -1) {
+                        toastr.warning(data);
+                    } else {
+                        location.href = data;
+                    }
+                    if (AllD == false) {
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            });
+        }
+        else {
+            toastr.warning("Image is not .jpg format in this stone !");
+        }
+    }
+    function OverSeasVideo() {
+        if (getExtension(OverSeasExcelMediaURLGet('Video')) == "mp4") {
+            if (AllD == false) {
+                $('.loading-overlay-image-container').show();
+                $('.loading-overlay').show();
+            }
+            $.ajax({
+                url: "/Common/OverseasDNAMediaDownloadByURLWithoutToken",
+                type: "POST",
+                data: { URL: OverSeasExcelMediaURLGet('Video'), Type: 'Video', StoneId: $("#hdnStoneRefNo").val() },
+                success: function (data, textStatus, jqXHR) {
+                    if (data.search('.zip') == -1) {
+                        toastr.warning(data);
+                    } else {
+                        location.href = data;
+                    }
+                    if (AllD == false) {
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            });
+        }
+        else {
+            toastr.warning("Video is not .mp4 format in this stone !");
+        }
+    }
+    function OverSeasExcelMediaURLGet(type) {
+        if (type == "Image") {
+            return $("#hdnOSImglink").val();
+            //if (getUrlVars($("#hdnOSImglink").val())["x"] == "A") {
+            //    return "http://diamondimages.co/Home/StoneDetail?ReportNo=" + getUrlVars($("#hdnOSImglink").val())["c"];
+            //}
+            //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "B") {
+            //    return "https://diamonds.kirangems.com:8080/imaged/imaged/" + getUrlVars($("#hdnOSImglink").val())["c"] + "/ still.jpg";
+            //}
+            //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "C") {
+            //    return "https://dna.stonehdfile.com/stoneimages/" + getUrlVars($("#hdnOSImglink").val())["s"] + ".jpg";
+            //}
+            //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "D") {
+            //    return "https://media.hdfiles.in:8520/HD4/imaged/" + getUrlVars($("#hdnOSImglink").val())["s"] + "/still.jpg";
+            //}
+            //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "E") {
+            //    return "https://storageweweb.blob.core.windows.net/files/INVENTORYDATA/VISION360/imaged/" + getUrlVars($("#hdnOSImglink").val())["s"] + "/still.jpg";
+            //}
+            //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "F") {
+            //    return "https://www.laxmidiamond.com/certifiedstone/diamondimages/" + getUrlVars($("#hdnOSImglink").val())["s"] + "/" + getUrlVars($("#hdnOSImglink").val())["s"] + "_1.jpg";
+            //}
+            //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "G") {
+            //    return "http://61.93.195.114/Krishdiam/KDViewDiamondImageDesk.aspx?sid=" + getUrlVars($("#hdnOSImglink").val())["s"];
+            //}
+            //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "I") {
+            //    return "https://diamanti.s3.amazonaws.com/images/diamond/" + getUrlVars($("#hdnOSImglink").val())["s"] + ".jpg";
+            //}
+            //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "K") {
+            //    return "https://starrays.com/diaImages/Images/" + getUrlVars($("#hdnOSImglink").val())["s"] + ".jpg";
+            //}
+            //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "L") {
+            //    return "https://diamond.ankitgems.com:4443/DIAMONDIMG/" + getUrlVars($("#hdnOSImglink").val())["s"] + ".jpg";
+            //}
+            //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "M") {
+            //    return "https://4e0s0i2r4n0u1s0.com/img/" + getUrlVars($("#hdnOSImglink").val())["c"] + "/PR.jpg";
+            //}
+        }
+        else if (type == "Video") {
+            return $("#hdnOSVdoLink").val();
+            //if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "A") {
+            //    return "https://v360.in/Excellent/vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"];
+            //}
+            //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "B") {
+            //    return "https://photo.diamondasset.in/photo/NewViewer/Vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["c"];
+            //}
+            //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "C") {
+            //    return "https://dna.stonehdfile.com/ViewHD.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"];
+            //}
+            //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "D") {
+            //    return "https://media.hdfiles.in:8520/HD4//Vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"] + "&btn=0,1,2,3,5,6&sv=0,2,3,4,5&faceupviewSpeed=30&sideviewSpeed=30&zoomslide=1&z=0&v=4&s=-10&h=450&displayEyeScan=1&sw=200&sh=200";
+            //}
+            //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "E") {
+            //    return "https://storageweweb.blob.core.windows.net/files/INVENTORYDATA/VISION360/Vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"] + "&autoPlay=1";
+            //}
+            //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "F") {
+            //    return "https://www.certifiedstone.info/viewer/Vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"];
+            //}
+            //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "G") {
+            //    return "http://61.93.195.114/Krishdiam/KDWatchVideoDesk.aspx?sno=" + getUrlVars($("#hdnOSVdoLink").val())["s"];
+            //}
+            //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "H") {
+            //    return "https://v360.in/viewer4.0/vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"] + "&z=1&surl=https%3a%2f%2fs4.v360.in%2fimages%2fcompany%2f256%2f";
+            //}
+            //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "I") {
+            //    return "https://diamanti.s3.amazonaws.com/video/Vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"];
+            //}
+            //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "J") {
+            //    return "https://v360.in/Excellent/vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"];
+            //}
+            //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "K") {
+            //    return "https://starrays.com/diaImages/Movies/MV" + getUrlVars($("#hdnOSVdoLink").val())["s"] + ".mp4";
+            //}
+            //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "L") {
+            //    return "https://diamond.ankitgems.com:4443/VIDEOS/" + getUrlVars($("#hdnOSVdoLink").val())["s"] + ".html";
+            //}
+        }
+        else if (type == "Certi") {
+            return $("#hdnViewCertiUrl").val();
+        }
+    }
+
+    function CollaOne() {
+        if ($('#collapseOne.show').length == 1) {
+            $('#collapseOne').removeClass('show');
+            $('#collapseOne').addClass('hide');
+            $('#iconcollapseOne').removeClass('fa-minus-circle');
+            $('#iconcollapseOne').addClass('fa-plus-circle');
+        }
+        else {
+            $('#collapseOne').removeClass('hide');
+            $('#collapseOne').addClass('show');
+            $('#iconcollapseOne').removeClass('fa-plus-circle');
+            $('#iconcollapseOne').addClass('fa-minus-circle');
+        }
+    }
+    function CollaTwo() {
+        if ($('#collapseTwo.show').length == 1) {
+            $('#collapseTwo').removeClass('show');
+            $('#collapseTwo').addClass('hide');
+            $('#iconcollapseTwo').removeClass('fa-minus-circle');
+            $('#iconcollapseTwo').addClass('fa-plus-circle');
+        }
+        else {
+            $('#collapseTwo').removeClass('hide');
+            $('#collapseTwo').addClass('show');
+            $('#iconcollapseTwo').removeClass('fa-plus-circle');
+            $('#iconcollapseTwo').addClass('fa-minus-circle');
+        }
+    }
+    function Download(type) {
+        if (type == "Excel") {
+            DownloadExcel();
+        }
+        else if (type == "Image") {
+            DownloadImage();
+        }
+        else if (type == "Video") {
+            DownloadVideo();
+        }
+        else if (type == "Certificate") {
+            DownloadCertificate();
+        }
+        else if (type == "All") {
+            AllD = true;
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+
+            DownloadExcel();
+            DownloadImage();
+            DownloadVideo();
+            DownloadCertificate();
+
+
+            $('.loading-overlay-image-container').hide();
+            $('.loading-overlay').hide();
+            AllD = false;
+        }
+    }
+
+    function DownloadImage() {
+        if (AllD == false) {
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+        }
+        var stoneId = $("#hdnStoneRefNo").val();
+
+        $.ajax({
+            url: "/Common/StockMediaDownloadByStoneIdWithoutToken",
+            type: "POST",
+            data: { StoneID: stoneId, MediaType: 'Image' },
+            success: function (data, textStatus, jqXHR) {
+                debugger
+                if (data.search('.zip') == -1 && data.search('.pdf') == -1) {
+                    toastr.warning(data);
+                } else {
+                    location.href = data;
+                }
+                if (AllD == false) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.loading-overlay-image-container').hide();
+                $('.loading-overlay').hide();
+            }
+        });
+    }
+    function DownloadVideo() {
+        if (AllD == false) {
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+        }
+        var stoneId = $("#hdnStoneRefNo").val();
+        $.ajax({
+            url: "/Common/StockMediaDownloadByStoneIdWithoutToken",
+            type: "POST",
+            data: { StoneID: stoneId, MediaType: 'Video' },
+            success: function (data, textStatus, jqXHR) {
+                debugger
+                if (data.search('.zip') == -1 && data.search('.pdf') == -1) {
+                    toastr.warning(data);
+                } else {
+                    location.href = data;
+                }
+                if (AllD == false) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.loading-overlay-image-container').hide();
+                $('.loading-overlay').hide();
+            }
+        });
+    }
+    function DownloadCertificate() {
+        if (AllD == false) {
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+        }
+        var stoneId = $("#hdnStoneRefNo").val();
+        $.ajax({
+            url: "/Common/StockMediaDownloadByStoneIdWithoutToken",
+            type: "POST",
+            data: { StoneID: stoneId, MediaType: 'Certificate' },
+            success: function (data, textStatus, jqXHR) {
+                debugger
+                if (data.search('.zip') == -1 && data.search('.pdf') == -1) {
+                    toastr.warning(data);
+                } else {
+                    location.href = data;
+                }
+                if (AllD == false) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.loading-overlay-image-container').hide();
+                $('.loading-overlay').hide();
+            }
+        });
+    }
+    function DownloadExcel() {
+        if (AllD == false) {
+            $('.loading-overlay-image-container').show();
+            $('.loading-overlay').show();
+        }
+        var stoneId = $("#hdnStoneRefNo").val();
+
+        $.ajax({
+            url: "/Common/StockExcelDownloadByStoneIdWithoutToken",
+            type: "POST",
+            data: { StoneID: stoneId },
+            success: function (data, textStatus, jqXHR) {
+                debugger
+                location.href = data;
+                if (AllD == false) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.loading-overlay-image-container').hide();
+                $('.loading-overlay').hide();
+            }
+        });
+    }
+
+
+    function formatNumber(number) {
+        return (parseFloat(number).toFixed(2)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    }
+    jQuery(document).ready(function ($) {
+        //if ($("#hdn_IsOverseas").val() == "1") {
+        //    alert('hi')
+        //    //$("#video1").addClass("jb-video-iframe");
+        //    $("#myIframe").addClass("jb-video-iframe");
+        //}
+
+        //if ($('.btn-share-cls a').length == 0) {
+        //    $('.btn-share-id').hide();
+        //    document.querySelector('.container').style.width = '226px';
+        //}
+        //if ($('.btn-download-cls a').length == 0) {
+        //    $('.btn-download-id').hide();
+        //    document.querySelector('.container').style.width = '300px';
+        //}
+
+        if ($("#hdnStoneRefNo").val() != "") {
+            if (($("#hdn_cur_rap_rate").val() != "" && $("#hdn_cur_rap_rate").val() != null ? $("#hdn_cur_rap_rate").val() : 0) != 0) {
+                if ($("#liRapPrice").text() != "") {
+                    $("#liRapPrice").text(($("#liRapPrice").text() != "" ? formatNumber($("#liRapPrice").text()) : ""));
+                }
+
+                if ($("#liRapValue").text() != "") {
+                    $("#liRapValue").text(($("#liRapValue").text() != "" ? formatNumber($("#liRapValue").text()) : ""));
+                }
+            }
+        }
+        if ($("#liTotal").text() != "") {
+            $("#liTotal").text(formatNumber($("#liTotal").text()));
+        }
+
+        $("#playvideo").click(function () {
+            var symbol = $("#video1")[0].src.indexOf("?") > -1 ? "&" : "?";
+            $("#video1")[0].src += symbol + "autoplay=1";
+        });
+        if (window.location.protocol.indexOf('http') == 0) {
+            var el = document.createElement('meta')
+            el.setAttribute('http-equiv', 'Content-Security-Policy')
+            el.setAttribute('content', 'upgrade-insecure-requests')
+            document.head.append(el)
+        }
+        //$('.slick-slider').slick({
+        //    dots: false,
+        //    infinite: true,
+        //    speed: 500,
+        //    slidesToShow: 1,
+        //    slidesToScroll: 1,
+        //    autoplay: false,
+        //    autoplaySpeed: 500,
+        //    arrows: true,
+        //    responsive: [{
+        //        breakpoint: 600,
+        //        settings: {
+        //            slidesToShow: 1,
+        //            slidesToScroll: 1
+        //        }
+        //    },
+        //    {
+        //        breakpoint: 400,
+        //        settings: {
+        //            arrows: false,
+        //            slidesToShow: 1,
+        //            slidesToScroll: 1
+        //        }
+        //    }]
+        //});
+
+
+    });
+
+    function openpopup(type) {
+        if (type != "") {
+            //$('#sendtype').val(type);
+            //$('#MobileModal').modal('show');
+            sendWhatsapp(type);
+        }
+    }
+    function whatsAppKeypress(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode == 43 || (charCode >= 48 && charCode <= 57)) {
+            return true;
+        }
+        if (charCode == 13) {
+            sendWhatsapp();
+            return true;
+        }
+
+        return false;
+    }
+    function sendWhatsapp(type) {
+        //var isvalid = $('#frmSaveOrder').valid();
+        //if (!isvalid) {
+        //    return false;
+        //}
+        //else {
+        var message = "";
+        //var type = $('#sendtype').val();
+
+        if ($("#hdn_IsOverseas").val() == "0") {
+            var bPRimg = $("#hdnbPRimg").val();
+            var bHBimg = $("#hdnbHBimg").val();
+            var bHTimg = $("#hdnbHTimg").val();
+            var bASimg = $("#hdnbASimg").val();
+            var movie_url = $("#hdnMovieUrl").val();
+            var view_certi_url = $("#hdnViewCertiUrl").val();
+
+            if (type == 'image') {
+                if (bPRimg.toLowerCase() == 'true' || bPRimg.toLowerCase() == '1') {
+                    message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/PR.jpg \n";
+                }
+
+                if (bHBimg.toLowerCase() == 'true' || bHBimg.toLowerCase() == '1') {
+                    message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/HB.jpg \n";
+                }
+
+                if (bHTimg.toLowerCase() == 'true' || bHTimg.toLowerCase() == '1') {
+                    message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/HT.jpg \n";
+                }
+
+                if (bASimg.toLowerCase() == 'true' || bASimg.toLowerCase() == '1') {
+                    message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/AS.jpg \n";
+                }
+            }
+            if (type == 'video') {
+                if (movie_url.toLowerCase() != "") {
+                    message = message + movie_url;
+                }
+            }
+            if (type == 'certi') {
+                if (view_certi_url.toLowerCase() != "") {
+                    message = message + view_certi_url;
+                }
+            }
+            if (type == 'All') {
+                if (bPRimg.toLowerCase() == 'true' || bPRimg.toLowerCase() == '1') {
+                    message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/PR.jpg \n";
+                }
+
+                if (bHBimg.toLowerCase() == 'true' || bHBimg.toLowerCase() == '1') {
+                    message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/HB.jpg \n";
+                }
+
+                if (bHTimg.toLowerCase() == 'true' || bHTimg.toLowerCase() == '1') {
+                    message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/HT.jpg \n";
+                }
+
+                if (bASimg.toLowerCase() == 'true' || bASimg.toLowerCase() == '1') {
+                    message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/AS.jpg \n";
+                }
+
+                if (movie_url.toLowerCase() != "") {
+                    message = message + movie_url + " \n ";
+                }
+
+                if (view_certi_url.toLowerCase() != "") {
+                    message = message + view_certi_url + " \n ";
+                }
+            }
+        }
+        else if ($("#hdn_IsOverseas").val() == "1") {
+            if (type == 'image') {
+                if ($("#hdnOSImglink").val() != "") {
+                    message = message + OverSeasExcelMediaURLGet('Image') + " \n";
+                }
+            }
+            if (type == 'video') {
+                if ($("#hdnOSVdoLink").val() != "") {
+                    message = message + OverSeasExcelMediaURLGet('Video') + " \n"
+                }
+            }
+            if (type == 'certi') {
+                if ($("#hdnViewCertiUrl").val() != "") {
+                    message = message + OverSeasExcelMediaURLGet('Certi') + " \n"
+                }
+            }
+            if (type == 'All') {
+                if ($("#hdnOSImglink").val() != "") {
+                    message = message + OverSeasExcelMediaURLGet('Image') + " \n";
+                }
+                if ($("#hdnOSVdoLink").val() != "") {
+                    message = message + OverSeasExcelMediaURLGet('Video') + " \n"
+                }
+                if ($("#hdnViewCertiUrl").val() != "") {
+                    message = message + OverSeasExcelMediaURLGet('Certi') + " \n"
+                }
+            }
+        }
+        navigator.clipboard.writeText(message);
+        //var mobileno = $('#txtMobileNo').val();
+        //var URL = "https://api.whatsapp.com/send?phone=+" + mobileno + "&text=" + message;
+        //window.open(URL);
+        //$('#txtMobileNo').val("");
+        //$('#MobileModal').modal('hide');
+        //}
+    }
+    function getUrlVars(URL) {
+        var hash;
+        var hashes = URL.slice(URL.indexOf('?') + 1).split('&');
+        for (var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+    function getExtension(path) {
+        var basename = path.split(/[\\/]/).pop(), pos = basename.lastIndexOf(".");
+        if (basename === "" || pos < 1)
+            return "";
+
+        return basename.slice(pos + 1);
+    }
+
+</script>
+
+@*}*@

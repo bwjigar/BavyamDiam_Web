@@ -1,0 +1,135 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = "Api Views";
+    ViewBag.ClassName = "search-contnt";
+}
+
+@section styles{
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+}
+
+<div class="container-fluid search_result viewcart-fluid">
+
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane active result-page-content viewcart-page-content" id="profile-tab2" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="result-nav">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-4 col-md-12 col-12">
+                        <div class="viewcartdata-header">
+                            <h1>Api Views</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="apiViews-form full-acform">
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                    <div class="row ">
+                                        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-1 px-2">
+                                            <div class="offer-label"> From Date:</div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 px-2">
+                                            <div class=" text-left w-100 ml-0">
+                                                <input type="text" class="offer-input ng-pristine ng-untouched ng-valid ng-not-empty" id="txtFromDate" name="daterange">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-1 px-2">
+                                            <div class="offer-label"> To Date:</div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 px-2">
+                                            <div class=" text-left w-100 ml-0">
+                                                <input type="text" class="offer-input ng-pristine ng-untouched ng-valid ng-not-empty" id="txtToDate" name="daterange">
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-1 px-2">
+                                            <div class="offer-label"> Type:</div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 px-2">
+                                            <div class=" dash-newarrival-select-main text-left w-100 ml-0 cust-main-select">
+                                                <select id="ddlType" class="form-control MinWith input-sm" onchange="GetDropDownList(this);">
+                                                    <option value="" selected="selected">Select an Option</option>
+                                                    <option value="UN">UserName</option> @*UserName*@
+                                                    <option value="CM">CompanyName</option>
+                                                    <option value="CUN">CustomerName</option> @*UserId*@
+                                                    <option value="CT">Country</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-1 px-2">
+                                            <div class="offer-label"> Value:</div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-2 px-2">
+                                            <div class=" dash-newarrival-select-main text-left w-100 ml-0 cust-main-select">
+                                                <select id="ddlValue" class="form-control MinWith input-sm">
+                                                    <option value="">Select an Option
+                                                    <option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-1">
+                                    <ul class="offer-inbtn pull-right">
+                                        <li>
+                                            <button onclick="FillGrid()" class="offer-btn">Search</button>
+                                        </li>
+                                        <li>
+                                            <button onclick="Clear()" class="offer-btn">Reset</button>
+                                        </li>
+                                        <li>
+                                            <button onclick="Back()" class="offer-btn">Back</button>
+
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="aggrid-section viewcart">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <!---- =============== start ag-grid =============== ---->
+
+                        <div id="myGrid" style="width: 100%;height:500px;" class="ag-theme-balham">
+
+                        </div>
+
+                        <!---- =============== end ag-grid ================= ----->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--------------Remove Country ------------->
+<div class="modal fade social-model" id="Remove">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Remove User</h4>
+                <button type="button" class="close" onclick="ClearRemoveModel()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <li> @LanguageProvider.get("Are_you_sure_to_remove_this_record") </li>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnSendMail" class="btn btn-primary" type="button" onclick="DeleteApiData()">@LanguageProvider.get("Remove")</button>
+                <button id="btnremove" class="btn btn-primary" type="button" onclick="ClearRemoveModel()">@LanguageProvider.get("cancel")</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/js/wow.min.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/ApiView.js"></script>
+}

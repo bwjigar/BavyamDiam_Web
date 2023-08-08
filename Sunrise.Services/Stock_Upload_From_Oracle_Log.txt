@@ -1,0 +1,16 @@
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+Last Stock Upload time (08-Aug-2022 11:25:34 AM) and Current time (08-Aug-2022 11:34:11 AM) Must be more than or equals to 15 minutes, Log Time : 08-08-2022 11:30:18 AM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 508 Stock Found, process time 08-Aug-2022 11:58:48 AM to 08-Aug-2022 12:00:47 PM, Log Time : 08-08-2022 12:00:47 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 508 Stock Found, process time 08-Aug-2022 12:30:43 PM to 08-Aug-2022 12:30:51 PM, Log Time : 08-08-2022 12:30:51 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 476 Stock Found, process time 08-Aug-2022 02:45:29 PM to 08-Aug-2022 02:45:33 PM, Log Time : 08-08-2022 02:45:33 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 476 Stock Found, process time 08-Aug-2022 03:04:50 PM to 08-Aug-2022 03:04:52 PM, Log Time : 08-08-2022 03:04:52 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 476 Stock Found, process time 08-Aug-2022 04:31:37 PM to 08-Aug-2022 04:31:41 PM, Log Time : 08-08-2022 04:31:41 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 476 Stock Found, process time 08-Aug-2022 05:15:48 PM to 08-Aug-2022 05:15:51 PM, Log Time : 08-08-2022 05:15:51 PM
+= = = = = = = = = = = = = = = = = = = = = = = = = = = 
+SUCCESS 478 Stock Found, process time 09-Aug-2022 04:34:39 PM to 09-Aug-2022 04:35:03 PM, Log Time : 09-08-2022 04:35:03 PM

@@ -1,0 +1,1638 @@
+﻿@model SunriseWeb.Models.UploadMethodModel
+@{
+    ViewBag.Title = "Client FTP / API Portal";
+}
+
+@section styles{
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+            display: none !important;
+        }
+
+        .img-block {
+            display: block;
+        }
+
+        .img-none {
+            display: none;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #CaratModal .form-control {
+            border: 1px solid black;
+        }
+
+        .api-filter-popup ul.color-whit-box li {
+            display: inline-block;
+            margin: 4px 4px;
+        }
+
+        ul.color-whit-box li.active {
+            background: rgba(0, 61, 102,1);
+            color: #fff;
+        }
+
+        ul.color-whit-box li {
+            padding: 5px 20px;
+            -webkit-box-shadow: 0 0 2px rgba(0, 61, 102,0.3);
+            -moz-box-shadow: 0 0 2px rgba(0, 61, 102,0.3);
+            box-shadow: 0 0 2px rgba(0, 61, 102,0.3);
+            margin: 2px 4px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 13px;
+            color: #003d66;
+            font-weight: 500;
+            background: #fff;
+            white-space: nowrap;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+
+        .custom-box-list p {
+            word-break: break-all;
+            border: 1px solid #ced4da;
+            padding: 0px 4px;
+            font-weight: 400;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            font-size: 13px;
+            height: 35px;
+            line-height: normal;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            overflow: auto;
+            margin: 0;
+        }
+
+        .Fi-Criteria {
+            font-size: 13px;
+        }
+
+        .tabboxdiv > .row {
+            border-bottom: none;
+        }
+    </style>
+}
+
+
+@Html.HiddenFor(x => x.IsModify)
+@Html.HiddenFor(x => x.TransId)
+@Html.HiddenFor(x => x.dTransDate)
+<input type="hidden" id="hdnApiMethod" value="@Model.ApiMethod" />
+<div class="container-fluid order-history-section manage-user apifilter">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>Client FTP / API Portal</h2>
+            </div>
+        </div>
+    </div>
+    <div class="admin muser">
+        <div class="row m-0 api-full-box">
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-1"></div>
+                        <div class="col-11 api-plr" style="text-align:right;">
+                            <label class="cust-chk-bx text-left api-check">
+                                @*<input type="checkbox" id="checkbox" on  name="checkbox-1" onmodel="APIView.ApiUrl" class="onpristine onuntouched onvalid onempty">*@
+                                @Html.RadioButtonFor(x => x.ApiMethod, "WEBAPI", new { @name = "APIMethod", @checked = "checked", @class = "onpristine onuntouched onvalid onempty chkBx" })
+                                <strong>WEB API</strong>
+                                <span class="cust-chkmark"></span>
+                            </label>
+                        </div>
+                        @*<div class="col-9 api-plr">
+                                <strong>WEB API</strong>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-1"></div>
+                        <div class="col-2 api-plr" style="text-align: right;">
+                            <label class="cust-chk-bx text-left api-check">
+                                @*<input type="checkbox" id="checkbox" on  name="checkbox-1" onmodel="APIView.ApiUrl" class="onpristine onuntouched onvalid onempty">*@
+                                @Html.RadioButtonFor(x => x.ApiMethod, "FTP", new { @name = "APIMethod", @class = "onpristine onuntouched onvalid onempty chkBx" })
+                                <strong>FTP</strong>
+                                <span class="cust-chkmark"></span>
+                            </label>
+                        </div>
+                        @*<div class="col-9 api-plr">
+                                <strong>FTP</strong>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-1"></div>
+                        <div class="col-2 api-plr" style="text-align:right;">
+                            <label class="cust-chk-bx text-left api-check">
+                                @*<input type="checkbox" id="checkbox" on  name="checkbox-1" onmodel="APIView.ApiUrl" class="onpristine onuntouched onvalid onempty">*@
+                                @Html.RadioButtonFor(x => x.ApiMethod, "URL", new { @name = "APIMethod", @class = "onpristine onuntouched onvalid onempty chkBx" })
+                                <strong>URL</strong>
+                                <span class="cust-chkmark"></span>
+                            </label>
+                        </div>
+                        @*<div class="col-9 api-plr">
+                                <strong>URL</strong>
+                            </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <br />
+        </div>
+        <div id="APIMethodWEBAPI" class="row m-0 api-full-box Div-Method">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="order-title">
+                    <h2>WEB API credential detail</h2>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>User Name <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+
+
+                            @Html.TextBoxFor(x => x.WebAPIUserName, new { @value = Model.WebAPIUserName, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @autocomplete = "off" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Password <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+
+
+                            @*@Html.PasswordFor(x => x.WebAPIPassword, new { @value = Model.WebAPIPassword, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @autocomplete = "none" })*@
+                            @Html.TextBoxFor(x => x.WebAPIPassword, new { @value = Model.WebAPIPassword, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @autocomplete = "none" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+            </div>
+            @if (Model.ApiMethod == "WEBAPI" && Model.APIUrl != null)
+            {
+                <strong style="font-size: 12px; color:red;">API Link : @Model.APIUrl</strong>
+            }
+        </div>
+        <div id="APIMethodFTP" class="row m-0 api-full-box Div-Method" style="display:none;">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="order-title">
+                    <h2>FTP credential detail</h2>
+                    <strong style="font-size: 12px;color:red;float:right;margin-top: 16px;">
+                        File will be uploaded in every 30 minutes
+                    </strong>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Type <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            @Html.DropDownListFor(x => x.FTPType, Model.FtpTypeList, "Select", new { @class = "form-control select2", onchange = "FTPTypeDDL();" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>FTP HOST <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @*<input onblur="LeaveTextBox('FROM','APINAME');" type="text" class="form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength" onmodel="APIView.APIName" maxlength="100">*@
+
+                            @Html.TextBoxFor(x => x.FTPHost, new { @value = Model.FTPHost, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @autocomplete = "off" })
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>FTP Uname <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @*<input onblur="LeaveTextBox('FROM','APINAME');" type="text" class="form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength" onmodel="APIView.APIName" maxlength="100">*@
+
+                            @Html.TextBoxFor(x => x.FTPUser, new { @value = Model.FTPUser, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @autocomplete = "off" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>FTP Password <span style="color:red;margin-left: -4px;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @*<input onblur="LeaveTextBox('FROM','APINAME');" type="text" class="form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength" onmodel="APIView.APIName" maxlength="100">*@
+
+                            @*@Html.PasswordFor(x => x.FTPPass, new { @value = Model.FTPPass, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @autocomplete = "none" })*@
+                            @Html.TextBoxFor(x => x.FTPPass, new { @value = Model.FTPPass, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @autocomplete = "none" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Export Type <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            @Html.DropDownListFor(x => x.FTPExportType, Model.ExportTypeList, "Select", new { @class = "form-control select2", })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (Model.ApiMethod == "FTP" && Model.APIUrl != null)
+            {
+                <strong style="font-size: 12px; color:red;">API Link : @Model.APIUrl</strong>
+            }
+        </div>
+        <div id="APIMethodURL" class="row m-0 api-full-box Div-Method" style="display:none;">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="order-title">
+                    <h2>URL credential detail</h2>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>User Name <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @*<input onblur="LeaveTextBox('FROM','APINAME');" type="text" class="form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength" onmodel="APIView.APIName" maxlength="100">*@
+
+                            @Html.TextBoxFor(x => x.URLUserName, new { @value = Model.URLUserName, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @autocomplete = "off" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Password <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @*<input onblur="LeaveTextBox('FROM','APINAME');" type="text" class="form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength" onmodel="APIView.APIName" maxlength="100">*@
+
+                            @*@Html.PasswordFor(x => x.URLPassword, new { @value = Model.URLPassword, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @autocomplete = "none" })*@
+                            @Html.TextBoxFor(x => x.URLPassword, new { @value = Model.URLPassword, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @autocomplete = "none" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Export Type <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            @Html.DropDownListFor(x => x.URLExportType, Model.ExportTypeList, "Select", new { @class = "form-control select2" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @if (Model.ApiMethod == "URL" && Model.APIUrl != null)
+            {
+                <strong style="font-size: 12px; color:red;">API Link : @Model.APIUrl</strong>
+            }
+        </div>
+        <div>
+            <br />
+        </div>
+        <div class="row m-0 api-full-box">
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>File Name <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.APIName, new { @value = Model.APIName, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @onblur = "LeaveTextBox('FROM','APINAME');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>User <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @Html.DropDownListFor(x => x.For_iUserId, Model.For_iUserIds, "Select", new { @class = "form-control", onchange = "UserDDL()" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>API Status</strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @Html.CheckBoxFor(x => x.APIStatus, new { @class = "form-check-input", @checked = Model.APIStatus })
+                        </div>
+                    </div>
+                    <div class="row m-0" style="margin-top: 17px !important;">
+                        <div class="col-sm-4 col-xs-12 api-plr">
+                            <strong>Company Name :</strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            <strong id="sCompany" style="font-weight: 100;">@Model.CompanyName</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="offer-label mr-4" style="color:red;">Discount: 32.75<br>1) 32.75 + 2 = 34.75<br>2) 32.75 - 2 = 30.75</div>
+                <div class="offer-label mr-4" style="color:red;">Discount: -32.75<br>3) -32.75 + 2 = -30.75<br>4) -32.75 - 2 = -34.75</div>
+                <div class="offer-label" style="color:red;">Value: 100<br>5) 100 + 1% = 101<br>6) 100 - 1% = 99</div>
+            </div>
+        </div>
+        <div>
+            <br />
+        </div>
+        <div class="row m-0 api-full-box">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="order-title">
+                    <h2>API Filter</h2>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Vendor</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            @Html.DropDownListFor(x => x.Vendor, Model.VendorList, "Select Vendor", new { @class = "form-control select2", onchange = "VendorListDDL()" })
+                        </div>
+
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Location</strong>
+                        </div>
+                        @*<div class="col-sm-8 col-xs-5 api-plr">
+                                @Html.DropDownList("Location", new SelectList(Model.LocationList, "iSr", "sName"), new { @class = "form-control locationselect2", multiple = "multiple" })
+                            </div>*@
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedLocationValue"></p>
+                        </div>
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                            <div class="list-icn">
+                                <i id="aLocationrefresh" style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedLocationValue',LocationList)"></i>
+                                <a id="aLocationselection" href="javascript:void(0);" onclick="ModalShow('Location',LocationList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Shape</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedShapeValue"></p>
+                        </div>
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedShapeValue',ShapeList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('Shape',ShapeList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Carat</strong>
+                        </div>
+
+
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedCaratValue"></p>
+                        </div>
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="reicon list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetCheckCarat()"></i>
+                                <a href="" data-toggle="modal" data-target="#CaratModal"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Color</strong>
+                        </div>
+
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedColorValue"></p>
+                        </div>
+
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedColorValue',ColorList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('Color',ColorList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Clarity</strong>
+                        </div>
+
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedClarityValue"></p>
+                        </div>
+
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedClarityValue',ClarityList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('Clarity',ClarityList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Cut</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedCutValue"></p>
+                        </div>
+
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedCutValue',CutList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('Cut',CutList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Polish</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedPolValue"></p>
+                        </div>
+
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedPolValue',PolishList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('Polish',PolishList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Sym</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedSymValue"></p>
+                        </div>
+
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedSymValue',SymmList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('Sym',SymmList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Fls</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedFLsValue"></p>
+                        </div>
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedFLsValue',FlsList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('Fls',FlsList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Lab</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedLabValue"></p>
+                        </div>
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedLabValue',LabList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('Lab',LabList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0" style="margin-top: 6px !important;">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Length</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @*<input onblur="LeaveTextBox('FROM','LENGTH');" type="text" class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" onmodel="APIView.FromLength" valid-number="" allow-decimal="true" allow-negative="false" decimal-upto="2" maxlength="6">*@
+                            @Html.TextBoxFor(x => x.FromLength, "{0:n2}", new { @value = Model.FromLength, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','LENGTH');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToLength, "{0:n2}", new { @value = Model.ToLength, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','LENGTH');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Width</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromWidth, "{0:n2}", new { @value = Model.FromWidth, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','WIDTH');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToWidth, "{0:n2}", new { @value = Model.ToWidth, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','WIDTH');" })
+                            @*<input onblur="LeaveTextBox('TO','WIDTH');" type="text" class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" onmodel="APIView.ToWidth" valid-number="" allow-decimal="true" allow-negative="false" decimal-upto="2" maxlength="6">*@
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Depth</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromDepth, "{0:n2}", new { @value = Model.FromDepth, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','DEPTH');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToDepth, "{0:n2}", new { @value = Model.ToDepth, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','DEPTH');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Depth(%)</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromDepthPer, "{0:n2}", new { @value = Model.FromDepthPer, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','DEPTHPER');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToDepthPer, "{0:n2}", new { @value = Model.ToDepthPer, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','DEPTHPER');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Table(%)</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromTablePer, "{0:n2}", new { @value = Model.FromTablePer, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','TABLEPER');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToTablePer, "{0:n2}", new { @value = Model.ToTablePer, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','TABLEPER');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Cr Ang</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromCrAng, "{0:n2}", new { @value = Model.FromCrAng, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','CRANG');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToCrAng, "{0:n2}", new { @value = Model.ToCrAng, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','CRANG');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Cr Ht</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromCrHt, "{0:n2}", new { @value = Model.FromCrHt, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','CRHT');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToCrHt, "{0:n2}", new { @value = Model.ToCrHt, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','CRHT');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Pav Ang</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromPavAng, "{0:n2}", new { @value = Model.FromPavAng, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','PAVANG');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToPavAng, "{0:n2}", new { @value = Model.ToPavAng, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','PAVANG');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Pav Ht</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromPavHt, "{0:n2}", new { @value = Model.FromPavHt, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','PAVHT');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToPavHt, "{0:n2}", new { @value = Model.ToPavHt, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','PAVHT');" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Key to symbol</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <div class="sym-sec">
+                                <div class="sym-main-wrap">
+                                    <div class="sym-iner">
+                                        <span id="spanselected">0 - Selected </span> / <span id="spanunselected">0 - Deselected</span>
+                                    </div>
+                                    <div class="sym-btn">
+                                        <i class="fa fa-caret-down"></i>
+                                    </div>
+                                </div>
+                                <div class="carat-dropdown-main">
+                                    <div class="carat-dropdown-half-col src-shape-main-pcscroll ps-container ps-theme-default row m-0" id="searchkeytosymbol">
+                                        <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="list-icn">
+                                <span class="res-btn"><a href="javascript:void(0);" onclick="resetKeytoSymbol()" data-toggle="tooltip" data-placement="bottom" title="Reset"><i class="fa fa-refresh" aria-hidden="true"></i></a></span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="row m-0" style="margin-top: 8px !important;">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>BGM</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedBGMValue"></p>
+                        </div>
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedBGMValue',BgmList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('Bgm',BgmList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Crown Black</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedCrnBlackValue"></p>
+                        </div>
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedCrnBlackValue',CrnBlackList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('CrownBlack',CrnBlackList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Table Black</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedTblBlackValue"></p>
+                        </div>
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedTblBlackValue',TblBlackList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('TableBlack',TblBlackList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Crown White</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedCrnWhiteValue"></p>
+                        </div>
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedCrnWhiteValue',CrnWhiteList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('CrownWhite',CrnWhiteList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Table White</strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            <p class="divCheckedTblWhiteValue"></p>
+                        </div>
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('.divCheckedTblWhiteValue',TblWhiteList)"></i>
+                                <a href="javascript:void(0);" onclick="ModalShow('TableWhite',TblWhiteList)"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0" style="margin-top: 8px !important;">
+                        <div class="col-sm-4 col-xs-12 api-plr">
+                            <strong>Image</strong>
+                        </div>
+                        <div class="col-sm-2 col-xs-5 api-plr">
+                            <label class="cust-chk-bx text-left api-check">
+                                @*<input type="checkbox" id="checkbox" on  name="checkbox-1" onmodel="APIView.ApiUrl" class="onpristine onuntouched onvalid onempty">*@
+                                @Html.RadioButtonFor(x => x.Img, "Yes", new { @name = "RdbImage", @class = "onpristine onuntouched onvalid onempty IgYes" })
+                                <strong>YES</strong>
+                                <span class="cust-chkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-sm-2 col-xs-5 api-plr">
+                            <label class="cust-chk-bx text-left api-check">
+                                @Html.RadioButtonFor(x => x.Img, "No", new { @name = "RdbImage", @class = "onpristine onuntouched onvalid onempty IgNo" })
+                                <strong>NO</strong>
+                                <span class="cust-chkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-sm-2 col-xs-5 api-plr">
+                            <label class="cust-chk-bx text-left api-check">
+                                @Html.RadioButtonFor(x => x.Img, "All", new { @name = "RdbImage", @class = "onpristine onuntouched onvalid onempty IgAll", @checked = true })
+                                <strong>ALL</strong>
+                                <span class="cust-chkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row m-0" style="margin-top: 8px !important;">
+                        <div class="col-sm-4 col-xs-12 api-plr">
+                            <strong>Video</strong>
+                        </div>
+                        <div class="col-sm-2 col-xs-5 api-plr">
+                            <label class="cust-chk-bx text-left api-check">
+                                @*<input type="checkbox" id="checkbox" on  name="checkbox-1" onmodel="APIView.ApiUrl" class="onpristine onuntouched onvalid onempty">*@
+                                @Html.RadioButtonFor(x => x.Vdo, "Yes", new { @name = "RdbVideo", @class = "onpristine onuntouched onvalid onempty VdYes" })
+                                <strong>YES</strong>
+                                <span class="cust-chkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-sm-2 col-xs-5 api-plr">
+                            <label class="cust-chk-bx text-left api-check">
+                                @Html.RadioButtonFor(x => x.Vdo, "No", new { @name = "RdbVideo", @class = "onpristine onuntouched onvalid onempty VdNo" })
+                                <strong>NO</strong>
+                                <span class="cust-chkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col-sm-2 col-xs-5 api-plr">
+                            <label class="cust-chk-bx text-left api-check">
+                                @Html.RadioButtonFor(x => x.Vdo, "All", new { @name = "RdbVideo", @class = "onpristine onuntouched onvalid onempty VdAll", @checked = true })
+                                <strong>ALL</strong>
+                                <span class="cust-chkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row m-0" style="margin-top: 6px !important;">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Price Method <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            @Html.DropDownListFor(x => x.PricingMethod, Model.PricingMethodList, "Select Method", new { @class = "form-control select2", onchange = "PricingMethodDDL();" })
+                        </div>
+
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Percentage <span style="color:red;">*</span></strong>
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr">
+                            @Html.TextBoxFor(x => x.Percentage, new { @value = Model.Percentage, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", type = "number", min = "-100", max = "100", step = "1", disabled = "disabled" })
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div>
+        <br />
+    </div>
+    <div class="row m-0 api-full-box">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" style="clear:both;">
+            <div class="mb-3 mt-2 pull-right">
+                <button type="button" id="btnAddNewRow" name="btnAddNewRow" class="offer-btn"><i class="fa fa-plus"></i>Add Row</button>
+            </div>
+            <div style="width:100%;overflow-x:auto">
+                <table id="mytable1" class="table table-bordered " style="display: none;">
+                    <thead>
+                        <tr>
+                            <th style="">Sr.</th>
+                            <th style="">Vendor</th>
+                            <th style="">Location</th>
+                            <th style="">Shape</th>
+                            <th style="">Carat</th>
+                            <th style="">Color</th>
+                            <th style="">Clarity</th>
+                            <th style="">Cut</th>
+                            <th style="">Polish</th>
+                            <th style="">Sym</th>
+                            <th style="">Fls</th>
+                            <th style="">Lab</th>
+                            <th style="">From Length</th>
+                            <th style="">To Length</th>
+                            <th style="">From Width</th>
+                            <th style="">To Width</th>
+                            <th style="">From Depth</th>
+                            <th style="">To Depth</th>
+                            <th style="">From Depth(%)</th>
+                            <th style="">To Depth(%)</th>
+                            <th style="">From Table(%)</th>
+                            <th style="">To Table(%)</th>
+                            <th style="">From Cr Ang</th>
+                            <th style="">To Cr Ang</th>
+                            <th style="">From Cr Ht</th>
+                            <th style="">To Cr Ht</th>
+                            <th style="">From Pav Ang</th>
+                            <th style="">To Pav Ang</th>
+                            <th style="">From Pav Ht</th>
+                            <th style="">To Pav Ht</th>
+                            <th style="">Key to symbol</th>
+                            <th style="">BGM</th>
+                            <th style="">Crown Black</th>
+                            <th style="">Table Black</th>
+                            <th style="">Crown White</th>
+                            <th style="">Table White</th>
+                            <th style="">Image</th>
+                            <th style="">Video</th>
+                            <th style="">Price Method</th>
+                            <th style="">Percentage</th>
+                            <th style="">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody id="myTableBody1">
+                        @foreach (var item in Model.APIFilters)
+                        {
+                            <tr id="tr">
+                                <th class="Row Fi-Criteria" style="">@item.Sr</th>
+                                <td style=""><span class="Fi-Criteria Vendor">@item.iVendor</span></td>
+                                <td style=""><span class="Fi-Criteria Location">@item.iLocation</span></td>
+                                <td style=""><span class="Fi-Criteria Shape">@item.sShape</span></td>
+                                <td style=""><span class="Fi-Criteria Carat">@item.sPointer</span></td>
+                                <td style=""><span class="Fi-Criteria Color">@item.sColor</span></td>
+                                <td style=""><span class="Fi-Criteria Clarity">@item.sClarity</span></td>
+                                <td style=""><span class="Fi-Criteria Cut">@item.sCut</span></td>
+                                <td style=""><span class="Fi-Criteria Polish">@item.sPolish</span></td>
+                                <td style=""><span class="Fi-Criteria Sym">@item.sSymm</span></td>
+                                <td style=""><span class="Fi-Criteria Fls">@item.sFls</span></td>
+                                <td style=""><span class="Fi-Criteria Lab">@item.sLab</span></td>
+                                <td style=""><span class="Fi-Criteria FromLength">@item.dFromLength</span></td>
+                                <td style=""><span class="Fi-Criteria ToLength">@item.dToLength</span></td>
+                                <td style=""><span class="Fi-Criteria FromWidth">@item.dFromWidth</span></td>
+                                <td style=""><span class="Fi-Criteria ToWidth">@item.dToWidth</span></td>
+                                <td style=""><span class="Fi-Criteria FromDepth">@item.dFromDepth</span></td>
+                                <td style=""><span class="Fi-Criteria ToDepth">@item.dToDepth</span></td>
+                                <td style=""><span class="Fi-Criteria FromDepthinPer">@item.dFromDepthPer</span></td>
+                                <td style=""><span class="Fi-Criteria ToDepthinPer">@item.dToDepthPer</span></td>
+                                <td style=""><span class="Fi-Criteria FromTableinPer">@item.dFromTablePer</span></td>
+                                <td style=""><span class="Fi-Criteria ToTableinPer">@item.dToTablePer</span></td>
+                                <td style=""><span class="Fi-Criteria FromCrAng">@item.dFromCrAng</span></td>
+                                <td style=""><span class="Fi-Criteria ToCrAng">@item.dToCrAng</span></td>
+                                <td style=""><span class="Fi-Criteria FromCrHt">@item.dFromCrHt</span></td>
+                                <td style=""><span class="Fi-Criteria ToCrHt">@item.dToCrHt</span></td>
+                                <td style=""><span class="Fi-Criteria FromPavAng">@item.dFromPavAng</span></td>
+                                <td style=""><span class="Fi-Criteria ToPavAng">@item.dToPavAng</span></td>
+                                <td style=""><span class="Fi-Criteria FromPavHt">@item.dFromPavHt</span></td>
+                                <td style=""><span class="Fi-Criteria ToPavHt">@item.dToPavHt</span></td>
+                                <td style=""><span class="Fi-Criteria Keytosymbol">@item.dKeyToSymbol</span></td>
+                                <td style="display:none;"><span class="Fi-Criteria dCheckKTS">@item.dCheckKTS</span></td>
+                                <td style="display:none;"><span class="Fi-Criteria dUNCheckKTS">@item.dUNCheckKTS</span></td>
+                                <td style=""><span class="Fi-Criteria BGM">@item.sBGM</span></td>
+                                <td style=""><span class="Fi-Criteria CrownBlack">@item.sCrownBlack</span></td>
+                                <td style=""><span class="Fi-Criteria TableBlack">@item.sTableBlack</span></td>
+                                <td style=""><span class="Fi-Criteria CrownWhite">@item.sCrownWhite</span></td>
+                                <td style=""><span class="Fi-Criteria TableWhite">@item.sTableWhite</span></td>
+                                <td style=""><span class="Fi-Criteria Image">@item.Img</span></td>
+                                <td style=""><span class="Fi-Criteria Video">@item.Vdo</span></td>
+                                <td style=""><span class="Fi-Criteria PriceMethod">@item.PriceMethod</span></td>
+                                <td style=""><span class="Fi-Criteria Percentage">@item.PricePer</span></td>
+                                <td style=""><i style="cursor:pointer;" class="error RemoveCriteria"><img src="~/Content/images/trash-delete-icon.png" style="width: 20px;"/></i></td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <br />
+    </div>
+    <div class="row m-0 api-full-box">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div id="TB_ColSetting" class="tab-pane active">
+                <div class="row mg0 pd5" style="text-align: center;">
+                    <div class="col-md-12 table-responsive">
+                        <table id="mytable" class="table table-hover table-bordered" style="height: calc(100vh - 240px); display: inline-block;">
+                            <colgroup>
+                                <col style="width: 5%;">
+                                <col style="width: 38%;">
+                                <col style="width: 38%;">
+                                <col style="width: 5%;">
+                                <col style="width: 8%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th style="display: none;"></th>
+                                    <th></th>
+                                    <th>Caption</th>
+                                    <th>Custom Caption</th>
+                                    <th>Order</th>
+                                    <th style="display: none;"></th>
+                                    <th>
+                                        <div class="row" style="margin-left: 10px;">
+                                            <span style="margin-right: 6px;">Visibility</span>
+                                            <img src="~/Content/images/chebox-fill.png" class="img-none" id="chebox_fillImg_Header" onclick="chebox_fill('header')" style="cursor:pointer;width: 20px;height: 19px;" />
+                                            <img src="~/Content/images/chebox-empty.png" class="img-block" id="chebox_emptyImg_Header" onclick="chebox_empty('header')" style="cursor:pointer;width: 20px;height: 19px;" />
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="myTableBody" class="ui-sortable">
+                                @foreach (var item in Model.ColumnList)
+                                {
+                                    <tr>
+                                        <td id="lblCoolName" style="display: none;"></td>
+                                        <td><i style="cursor: move;" class="fa fa-bars" aria-hidden="true"></i></td>
+                                        <td id="lblFieldName" class="onbinding">@item.sUser_ColumnName</td>
+                                        <td class="CustName">
+                                            <input onblur="" type="text" class="form-control form-control onpristine onvalid onnot-empty onvalid-maxlength ontouched" value="@item.sCustMiseCaption" maxlength="100">
+                                        </td>
+                                        <td id="lblColId" style="display: none; " class="onbinding">@item.icolumnId</td>
+                                        <td id="lblOrder" class="ColumnOrder onbinding">@item.iPriority</td>
+
+                                        <td>
+                                            <center>
+                                                @*<label class="cust-chk-bx text-left">*@
+                                                @if (item.IsActive)
+                                                {
+                                                    @*<input type="checkbox" id="checkbox2" name="checkbox-1" checked class="onpristine onuntouched onvalid onempty">*@
+                                                    <img src="~/Content/images/chebox-fill.png" class="chebox-fill img-block" id="chebox_fillImg_@item.icolumnId" onclick="chebox_fill('@item.icolumnId')" style="cursor:pointer;width: 20px;" />
+                                                    <img src="~/Content/images/chebox-empty.png" class="chebox-empty img-none" id="chebox_emptyImg_@item.icolumnId" onclick="chebox_empty('@item.icolumnId')" style="cursor:pointer;width: 20px;margin-bottom: 7px;" />
+                                                }
+                                                else
+                                                {
+                                                    @*<input type="checkbox" id="checkbox2" name="checkbox-1" class="onpristine onuntouched onvalid onempty">*@
+                                                    <img src="~/Content/images/chebox-fill.png" class="chebox-fill img-none" id="chebox_fillImg_@item.icolumnId" onclick="chebox_fill('@item.icolumnId')" style="cursor:pointer;width: 20px;" />
+                                                    <img src="~/Content/images/chebox-empty.png" class="chebox-empty img-block" id="chebox_emptyImg_@item.icolumnId" onclick="chebox_empty('@item.icolumnId')" style="cursor:pointer;width: 20px;margin-top: 0px;" />
+                                                }
+                                                @*<span class="cust-chkmark"></span>*@
+                                                @*</label>*@
+                                            </center>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <br />
+    </div>
+    <div class="col-12 api-plr">
+        <div class="myoffer-form api-btn">
+            <div class="row">
+                <div class="col-xl-12">
+                    <ul class="offer-inbtn pull-right">
+                        @if (Request.QueryString.Count > 0 && Request.QueryString["Type"].ToLower() == "modify")
+                        {
+                            <li>
+                                <button onclick="SaveApiData();" class="save offer-btn" title="Update"><i class="fa fa-save" aria-hidden="true"></i>&nbsp;Update</button>
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <button onclick="SaveApiData();" class="save offer-btn" title="Save"><i class="fa fa-save" aria-hidden="true"></i>&nbsp;Save</button>
+                            </li>
+                        }
+                        <li>
+                            <button onclick="Clear();" class="save offer-btn" title="Reset"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Reset</button>
+                        </li>
+                        <li>
+                            <button onclick="Upload_Method_View();" class="save offer-btn" title="Upload Method View"> <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Back</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!------------------- Modal -------------------->
+<div class="modal social-model fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog search-width api-filter-popup" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ng-binding" id="exampleModalLabel"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12">
+                    <div class="popup-field">
+                        <div id="divModal" class="ng-hide">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="modal-footer" class="modal-footer search-model-footer">
+                @*<button type="button" class="btn btn-primary" ng-click="ResetSelectedAttr(ParameterLabel);">Reset</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal social-model fade" id="CaratModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg cst-inpt-mn" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Carat</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="popup-field">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mrg1">
+
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size2" onchange="GetSelectedCarat()">
+                                        0.18-0.22
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize2" placeholder="0.18" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize2" placeholder="0.22" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size3" onchange="GetSelectedCarat()">
+                                        0.23-0.29
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize3" placeholder="0.23" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize3" placeholder="0.29" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size4" onchange="GetSelectedCarat()">
+                                        0.30-0.39
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize4" placeholder="0.30" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize4" placeholder="0.39" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size5" onchange="GetSelectedCarat()">
+                                        0.40-0.49
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize5" placeholder="0.40" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize5" placeholder="0.49" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size6" onchange="GetSelectedCarat()">
+                                        0.50-0.59
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize6" placeholder="0.50" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize6" placeholder="0.59" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size7" onchange="GetSelectedCarat()">
+                                        0.60-0.69
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize7" placeholder="0.60" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize7" placeholder="0.69" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size8" onchange="GetSelectedCarat()">
+                                        0.70-0.79
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize8" placeholder="0.70" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize8" placeholder="0.79" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mrg1">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size9" onchange="GetSelectedCarat()">
+                                        0.80-0.89
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize9" placeholder="0.80" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize9" placeholder="0.89" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size10" onchange="GetSelectedCarat()">
+                                        0.90-0.99
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize10" placeholder="0.90" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize10" placeholder="0.99" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size11" onchange="GetSelectedCarat()">
+                                        1.00-1.19
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize11" placeholder="1.00" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize11" placeholder="1.19" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size12" onchange="GetSelectedCarat()">
+                                        1.20-1.49
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize12" placeholder="1.20" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize12" placeholder="1.49" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size13" onchange="GetSelectedCarat()">
+                                        1.50-1.99
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize13" placeholder="1.50" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize13" placeholder="1.69" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size15" onchange="GetSelectedCarat()">
+                                        2.00-2.99
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize15" placeholder="2.00" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize15" placeholder="2.49" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size17" onchange="GetSelectedCarat()">
+                                        3.00-99.99
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize17" placeholder="3.00" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize17" placeholder="99.99" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer search-model-footer">
+                <button type="button" class="btn btn-primary" onclick="ResetCheckCarat()">Reset</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/Content/js/Pages/select2.min.js"></script>
+    <script src="~/Content/js/Pages/APIUploadMethod.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $("#FTPExportType option[value='XML']").remove();
+            $("#FTPExportType option[value='JSON']").remove();
+
+            $(".Div-Method").hide();
+            if ('@Model.ApiMethod' == 'WEBAPI') {
+                $("#APIMethodWEBAPI").show();
+            }
+            else if ('@Model.ApiMethod' == 'FTP') {
+                $("#APIMethodFTP").show();
+            }
+            else if ('@Model.ApiMethod' == 'URL') {
+                $("#APIMethodURL").show();
+            }
+            else {
+                 $("#APIMethodWEBAPI").show();
+            }
+            PricingMethodDDL();
+        });
+        $('.locationselect2').select2();
+        var ShapeList = [];
+        var ColorList = [];
+        var ClarityList = [];
+        var CutList = [];
+        var PolishList = [];
+        var SymmList = [];
+        var FlsList = [];
+        var ShadeList = [];
+        var BgmList = [];
+        var CrnBlackList = [];
+        var TblBlackList = [];
+        var CrnWhiteList = [];
+        var TblWhiteList = [];
+
+        var NattsList = [];
+        var InclusionList = [];
+        var LabList = [];
+        var Detaillist = [];
+        var CaratList = [];
+        var ShapeObj ="";
+        var ColorObj = "";
+        var ClarityObj = "";
+        var CutObj = "";
+        var PolishObj = "";
+        var SymmObj = "";
+        var FlsObj = "";
+        var ShadeObj = "";
+        var NattsObj = "";
+        var InclusionObj = "";
+        var LocationObj = "";
+        var LabObj = "";
+        var CheckedLocationValue = "";
+        var CheckedShapeValue = "";
+        var CheckedColorValue = "";
+        var CheckedClarityValue = "";
+        var CheckedCutValue = "";
+        var CheckedPolValue = "";
+        var CheckedSymValue = "";
+        var CheckedLabValue = "";
+        var CheckedCaratValue = "";
+        var CheckedFLsValue = "";
+        var CheckedBgmValue = "";
+        var CheckedCrnBlackValue = "";
+        var CheckedTblBlackValue = "";
+        var CheckedCrnWhiteValue = "";
+        var CheckedTblWhiteValue = "";
+        var ColumnList = [];
+
+
+        $("#mytable tbody").sortable({
+            update: function () {
+                SetTableOrder();
+            }
+        });
+        function VendorListDDL() {
+            if ($("#Vendor").val() == "SUNRISE" || $("#Vendor").val() == "") {
+                $("#aLocationselection").show();
+                $("#aLocationrefresh").show();
+            }
+            else {
+                ResetSelectedAttr('.divCheckedLocationValue', LocationList);
+                $("#aLocationselection").hide();
+                $("#aLocationrefresh").hide();
+            }
+        }
+        function SetTableOrder() {
+            var OrderNo = 1;
+            $("#mytable tbody tr").each(function () {
+                ($(this).find(".ColumnOrder").text(OrderNo));
+                OrderNo = OrderNo + 1;
+            });
+        };
+        //$("#mytable1 tbody").sortable({
+        //    update: function () {
+        //        SetTableOrder1();
+        //    }
+        //});
+        //function SetTableOrder1() {
+        //    var OrderNo = 1;
+        //    $("#mytable1 tbody tr").each(function () {
+        //        ($(this).find(".Row").text(OrderNo));
+        //        OrderNo = OrderNo + 1;
+        //    });
+        //};
+        LocationList = JSON.parse('@Html.Raw(Json.Encode(Model.LocationList))');
+
+        ShapeList = JSON.parse('@Html.Raw(Json.Encode(Model.ShapeList))');
+        ShapeList.push({ iSr: 12, sName: "OTHERS", isActive: false });
+
+        ColorList = JSON.parse('@Html.Raw(Json.Encode(Model.ColorList))');
+        ClarityList = JSON.parse('@Html.Raw(Json.Encode(Model.ClarityList))');
+
+        CutList = JSON.parse('@Html.Raw(Json.Encode(Model.CutList))');
+        $.each(CutList, function() { if (this.sName == "FR") { this.sName = "F"; } });
+
+        PolishList = JSON.parse('@Html.Raw(Json.Encode(Model.PolishList))');
+        SymmList = JSON.parse('@Html.Raw(Json.Encode(Model.SymmList))');
+        FlsList = JSON.parse('@Html.Raw(Json.Encode(Model.FlsList))');
+        ShadeList = JSON.parse('@Html.Raw(Json.Encode(Model.ShadeList))');
+        NattsList = JSON.parse('@Html.Raw(Json.Encode(Model.NattsList))');
+        InclusionList = JSON.parse('@Html.Raw(Json.Encode(Model.InclusionList))');
+        LabList = JSON.parse('@Html.Raw(Json.Encode(Model.LabList))');
+        BgmList = JSON.parse('@Html.Raw(Json.Encode(Model.BGMList))');
+         CrnBlackList = JSON.parse('@Html.Raw(Json.Encode(Model.CrnBlackList))');
+         TblBlackList = JSON.parse('@Html.Raw(Json.Encode(Model.TblBlackList))');
+         CrnWhiteList = JSON.parse('@Html.Raw(Json.Encode(Model.CrnWhiteList))');
+         TblWhiteList = JSON.parse('@Html.Raw(Json.Encode(Model.TblWhiteList))');
+
+
+        ColumnList = JSON.parse('@Html.Raw(Json.Encode(Model.ColumnList))');
+
+
+        var SetSearchParameter = function () {
+            //$("#FromCarat").val($("#FromCarat").val() == "" ? "0.00" : $("#FromCarat").val() == undefined || $("#FromCarat").val() == "NAN" ? "0.00" : parseFloat($("#FromCarat").val()).toFixed(2));
+            //$("#ToCarat").val($("#ToCarat").val() == "" ? "0.00" : $("#ToCarat").val() == undefined || $("#ToCarat").val() == "NAN" ? "0.00" : parseFloat($("#ToCarat").val()).toFixed(2));
+            var locationLst = _.pluck(_.filter(LocationList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var shapeLst = _.pluck(_.filter(ShapeList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var colorLst = _.pluck(_.filter(ColorList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var clarityLst = _.pluck(_.filter(ClarityList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var cutlst = _.pluck(_.filter(CutList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var Pollst = _.pluck(_.filter(PolishList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var Symlst = _.pluck(_.filter(SymmList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var labLst = _.pluck(_.filter(LabList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var flslst = _.pluck(_.filter(FlsList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var bgmlst = _.pluck(_.filter(BgmList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var crnblacklst = _.pluck(_.filter(CrnBlackList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var tblblacklst = _.pluck(_.filter(TblBlackList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var crnwhitelst = _.pluck(_.filter(CrnWhiteList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var tblwhitelst = _.pluck(_.filter(TblWhiteList, function (e) { return e.isActive == true }), 'sName').join(",");
+
+            //var cutLst = _.pluck(_.filter(CutList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+            //var polishLst = _.pluck(_.filter(PolishList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+            //var symLst = _.pluck(_.filter(SymmList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+            //var fluoLst = _.pluck(_.filter(FlsList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+            //var locationLst = _.pluck(_.filter(LocationList, function (e) { return e.ACTIVE == true }), 'id').join(",");
+            //var ShadeLst = _.pluck(_.filter(ShadeList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+            //var NattsLst = _.pluck(_.filter(NattsList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+            //var InclusionLst = _.pluck(_.filter(InclusionList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+
+            CheckedLocationValue = locationLst;
+            CheckedShapeValue = shapeLst;
+            CheckedColorValue = colorLst;
+            CheckedClarityValue = clarityLst;
+            CheckedCutValue = cutlst;
+            CheckedPolValue = Pollst;
+            CheckedSymValue = Symlst;
+            CheckedLabValue = labLst;
+            CheckedFLsValue = flslst; //divCheckedFLsValue
+            CheckedBgmValue = bgmlst;
+            CheckedCrnBlackValue = crnblacklst;
+            CheckedTblBlackValue = tblblacklst;
+            CheckedCrnWhiteValue = crnwhitelst;
+            CheckedTblWhiteValue = tblwhitelst;
+
+            if (CheckedLocationValue.split(",").length >= 1) {
+                $(".divCheckedLocationValue").empty();
+                $(".divCheckedLocationValue").append(CheckedLocationValue);
+                $(".divCheckedLocationValue").attr({
+                    "title": CheckedLocationValue
+                });
+            }
+
+            if (CheckedShapeValue.split(",").length >= 1) {
+                $(".divCheckedShapeValue").empty();
+                $(".divCheckedShapeValue").append(CheckedShapeValue);
+                $(".divCheckedShapeValue").attr({
+                    "title": CheckedShapeValue
+                });
+            }
+
+
+            if (CheckedColorValue.split(",").length >= 1) {
+
+                $(".divCheckedColorValue").empty();
+                $(".divCheckedColorValue").append(CheckedColorValue);
+                $(".divCheckedColorValue").attr({
+                    "title": CheckedColorValue
+                });
+            }
+
+
+            if (CheckedClarityValue.split(",").length >= 1) {
+
+                $(".divCheckedClarityValue").empty();
+                $(".divCheckedClarityValue").append(CheckedClarityValue);
+                $(".divCheckedClarityValue").attr({
+                    "title": CheckedClarityValue
+                });
+            }
+            if (CheckedCutValue.split(",").length >= 1) {
+
+                $(".divCheckedCutValue").empty();
+                $(".divCheckedCutValue").append(CheckedCutValue);
+                $(".divCheckedCutValue").attr({
+                    "title": CheckedCutValue
+                });
+            }
+            if (CheckedPolValue.split(",").length >= 1) {
+
+                $(".divCheckedPolValue").empty();
+                $(".divCheckedPolValue").append(CheckedPolValue);
+                $(".divCheckedPolValue").attr({
+                    "title": CheckedPolValue
+                });
+            }
+            if (CheckedSymValue.split(",").length >= 1) {
+
+                $(".divCheckedSymValue").empty();
+                $(".divCheckedSymValue").append(CheckedSymValue);
+                $(".divCheckedSymValue").attr({
+                    "title": CheckedSymValue
+                });
+            }
+
+
+            if (CheckedLabValue.split(",").length >= 1) {
+
+                $(".divCheckedLabValue").empty();
+                $(".divCheckedLabValue").append(CheckedLabValue);
+                $(".divCheckedLabValue").attr({
+                    "title": CheckedLabValue
+                });
+            }
+            if (CheckedFLsValue.split(",").length >= 1) {
+
+                $(".divCheckedFLsValue").empty();
+                $(".divCheckedFLsValue").append(CheckedFLsValue);
+                $(".divCheckedFLsValue").attr({
+                    "title": CheckedFLsValue
+                });
+            }
+            if (CheckedBgmValue.split(",").length >= 1) {
+
+                $(".divCheckedBGMValue").empty();
+                $(".divCheckedBGMValue").append(CheckedBgmValue);
+                $(".divCheckedBGMValue").attr({
+                    "title": CheckedFLsValue
+                });
+            }
+            if (CheckedCrnBlackValue.split(",").length >= 1) {
+
+                $(".divCheckedCrnBlackValue").empty();
+                $(".divCheckedCrnBlackValue").append(CheckedCrnBlackValue);
+                $(".divCheckedCrnBlackValue").attr({
+                    "title": CheckedCrnBlackValue
+                });
+            }
+            if (CheckedCrnWhiteValue.split(",").length >= 1) {
+
+                $(".divCheckedCrnWhiteValue").empty();
+                $(".divCheckedCrnWhiteValue").append(CheckedCrnWhiteValue);
+                $(".divCheckedCrnWhiteValue").attr({
+                    "title": CheckedCrnWhiteValue
+                });
+            }
+            if (CheckedTblBlackValue.split(",").length >= 1) {
+
+                $(".divCheckedTblBlackValue").empty();
+                $(".divCheckedTblBlackValue").append(CheckedTblBlackValue);
+                $(".divCheckedTblBlackValue").attr({
+                    "title": CheckedTblBlackValue
+                });
+            }
+            if (CheckedTblWhiteValue.split(",").length >= 1) {
+
+                $(".divCheckedTblWhiteValue").empty();
+                $(".divCheckedTblWhiteValue").append(CheckedTblWhiteValue);
+                $(".divCheckedTblWhiteValue").attr({
+                    "title": CheckedTblWhiteValue
+                });
+            }
+        }
+
+        $(function () {
+
+            if ($("#IsModify").val() == "True") {
+                    BindPara(@Request.QueryString["TransId"]);
+                }
+
+        });
+
+
+    </script>
+
+}
+

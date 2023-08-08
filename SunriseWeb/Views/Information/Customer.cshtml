@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Information";
+}
+
+    <div class="container-fluid order-history-section">
+        <div class="result-nav">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="order-title">
+                        <h2>Information</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="aggrid-section">
+            <div class="row">
+                <div class="col-xl-12">
+                    <!---- =============== start ag-grid =============== ---->
+                    <div id="myGrid" style="width: 100%;" class="ag-theme-balham">
+                    </div>
+                    <!---- =============== end ag-grid ================= ----->
+                </div>
+            </div>
+        </div>
+    </div>
+
+@section scripts{
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/CustInfo.js"></script>
+    <script type="text/javascript">
+        function getApiUrl() {
+            return '@System.Configuration.ConfigurationManager.AppSettings["APIURL"]';
+        }
+    </script>
+}

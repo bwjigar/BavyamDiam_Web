@@ -1,0 +1,1369 @@
+﻿@using SunriseWeb.Helper;
+@using SunriseWeb.Resources;
+<!DOCTYPE html>
+<html translate="no">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewBag.Title</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/bd-removebg-preview.png">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-50404066-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-50404066-1');
+    </script>
+
+    @*<link href="~/Content/css/mdb.min.css" rel="stylesheet">*@
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link href="~/Content/css/flaticon.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Our Custom CSS -->
+    <link href="~/Content/Plugins/toastr/toastr.css" rel="stylesheet" />
+    <link href="~/Content/css/animate.css" rel="stylesheet" />
+    <link href="~/Content/css/style-grid.css" rel="stylesheet" />
+    <link href="~/Content/css/custom.css?version=1.1" rel="stylesheet" />
+    <link href="~/Content/css/ag-theme-balham.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css?version=1.1" rel="stylesheet" />
+    <link href="//cdn.syncfusion.com/17.4.0.46/js/web/flat-azure/ej.web.all.min.css" rel="stylesheet" />
+    <link href="17.4.0.46/themes/web/content/default.css" rel="stylesheet" />
+    <link href="17.4.0.46/themes/web/content/default-responsive.css" rel="stylesheet" />
+    @RenderSection("styles", required: false)
+    <style>
+        .ag-icon-filter {
+            color: red !important;
+        }
+
+        .loading-overlay {
+            display: none;
+            background: rgba( 26, 26, 26, 0.7 );
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            top: 0;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .loading-overlay-image-container {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            top: 50%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+        }
+
+        .loading-overlay-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            /*background-color:#fff;*/
+        }
+
+        .loading-overlay-img1 {
+            width: 100px;
+            height: auto;
+            border-radius: 5px;
+            /*background-color:#fff;*/
+        }
+
+        .loading-overlay-img2 {
+            width: 250px;
+            height: auto;
+            border-radius: 5px;
+            /*background-color:#fff;*/
+        }
+
+        .loading-overlay-img3 {
+            width: 80px;
+            height: auto;
+            border-radius: 5px;
+            /*background-color:#fff;*/
+        }
+
+        .loading-overlay-img-spinner {
+            width: 38px;
+            height: auto;
+            border-radius: 5px;
+            /*background-color:#fff;*/
+        }
+
+        .offerrow {
+            background-color: #CCFFFF !important; /*lightblue !important;*/
+        }
+
+        .upcomingrow {
+            background-color: #FFFF99 !important; /*lightyellow !important;*/
+        }
+
+        .tcpgopen_bg {
+            background-color: #fff2cc !important;
+        }
+
+        .multiselect-native-select span {
+            font-size: 13px;
+        }
+
+        .notify {
+            width: 500px !important;
+        }
+
+        .dismiss {
+            margin-bottom: 1px;
+            color: white;
+            background-color: #299eec;
+            padding: 0px 5px;
+            border-radius: 16px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .skip {
+            margin-bottom: 1px;
+            color: white;
+            background-color: #ef0f0fb8;
+            padding: 0px 5px;
+            border-radius: 16px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .dismiss:hover {
+            background-color: #066aad;
+            cursor: pointer;
+        }
+
+        .skip:hover {
+            background-color: #bf0202ed;
+            cursor: pointer;
+        }
+
+        .dropdown-item:active {
+            background-color: inherit;
+        }
+
+        #div_Alerts_Center::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        #div_Alerts_Center::-webkit-scrollbar-thumb {
+            background-color: #000000;
+        }
+
+        .Notify-count {
+            color: white;
+            background-color: green;
+            padding: 1px 5px;
+            border-radius: 19px;
+            font-size: 11px;
+            margin-top: -24px;
+            margin-left: -6px;
+            margin-right: -12px;
+        }
+
+        #content-desktop {
+            display: block !important;
+        }
+
+        #content-mobile {
+            display: none !important;
+        }
+
+        @@media screen and (max-width: 1440px) {
+            #imgRapnet1 {
+                max-width: 61%;
+                margin-left: 4px;
+            }
+
+            #imgRapnet2 {
+                max-width: 70%;
+                margin-left: 4px;
+            }
+
+            #imgRapnet3 {
+                max-width: 80%;
+                margin-left: 4px;
+            }
+        }
+
+        @@media screen and (max-width: 425px) {
+            #content-desktop {
+                display: none !important;
+            }
+
+            #content-mobile {
+                display: block !important;
+                margin-top: 66px;
+                margin-left: -390px;
+                margin-bottom: 10px;
+            }
+
+            .topbar {
+                height: 7.375rem !important;
+            }
+
+            #navbar-top {
+                margin-top: -45px;
+            }
+
+            #imgRapnet1 {
+                max-width: 42%;
+                margin-top: -48px;
+                margin-left: 35px;
+            }
+        }
+
+        @@media screen and (max-width: 375px) {
+            #content-mobile {
+                display: block !important;
+                margin-top: 66px;
+                margin-left: -342px;
+                margin-bottom: 10px;
+            }
+        }
+
+        @@media screen and (max-width: 320px) {
+            #content-mobile {
+                display: block !important;
+                margin-top: 66px;
+                margin-left: -285px;
+                margin-bottom: 10px;
+            }
+        }
+
+        .topbar {
+            /*height: 4.375rem;*/
+            height: 4.500rem;
+        }
+
+        #txtCompanyName_suggestion, #_txtCompanyName_suggestion, #___txtCompanyName_suggestion {
+            font-size: 11.5px;
+        }
+    </style>
+
+</head>
+<body>
+    <input type="hidden" id="External_ImageURL" value="https://4e0s0i2r4n0u1s0.com/img/" /> @*https://cdn2.brainwaves.co.in/img/*@
+    <input type="hidden" id="hdn_Enter_only_positive_numbers" value="@LanguageProvider.get("Enter_only_positive_numbers")" />
+    <input type="hidden" id="hdn_Please_Enter_Only_Number_only" value="@LanguageProvider.get("Please_Enter_Only_Number_only")" />
+    <input type="hidden" id="hdn_To_date_must_be_greater_than_From_date" value="@LanguageProvider.get("To_date_must_be_greater_than_From_date")" />
+    <input type="hidden" id="hdn_This_Stones_are_subject_to_availbility" value="@LanguageProvider.get("This_Stones_are_subject_to_availbility")" />
+    <input type="hidden" id="hdn_Please_contact_your_sales_person" value="@LanguageProvider.get("Please_contact_your_sales_person")" />
+    <input type="hidden" id="hdn_Your_Transaction_Done_Successfully" value="@LanguageProvider.get("Your_Transaction_Done_Successfully")" />
+    <input type="hidden" id="hdn_Mail_sent_successfully" value="@LanguageProvider.get("Mail_sent_successfully")" />
+    <input type="hidden" id="hdn_Error_to_download_video_video_is_not_MP4" value="@LanguageProvider.get("Error_to_download_video_video_is_not_MP4")" />
+    <input type="hidden" id="hdn_Image_is_not_available_in_this_stone" value="@LanguageProvider.get("Image_is_not_available_in_this_stone")" />
+    <input type="hidden" id="hdn_No_data_found" value="@LanguageProvider.get("No_data_found")" />
+
+    <input type="hidden" id="hdn_Your_offer_was_not_uploaded_due_to_out_of_discount_Range_Kindly_try_again" value="@LanguageProvider.get("Your_offer_was_not_uploaded_due_to_out_of_discount_Range_Kindly_try_again")" />
+    <input type="hidden" id="hdn_Your_offer_was_partially_uploaded_Below_are_the_stones_which_are_not_uploaded" value="@LanguageProvider.get("Your_offer_was_partially_uploaded_Below_are_the_stones_which_are_not_uploaded")" />
+    <input type="hidden" id="hdn_Range_of_dicount_is_not_valid_for_the_stones" value="@LanguageProvider.get("Range_of_dicount_is_not_valid_for_the_stones")" />
+    <input type="hidden" id="hdn_Please_change_discount_and_reupload" value="@LanguageProvider.get("Please_change_discount_and_reupload")" />
+    <input type="hidden" id="hdn_Offer_already_received_for_the_stones" value="@LanguageProvider.get("Offer_already_received_for_the_stones")" />
+    <input type="hidden" id="hdn_Please_change_discount_and_reupload_it" value="@LanguageProvider.get("Please_change_discount_and_reupload_it")" />
+    <input type="hidden" id="hdn_You_have_already_upload_discount_for_the_stones" value="@LanguageProvider.get("You_have_already_upload_discount_for_the_stones")" />
+    <input type="hidden" id="hdn_Offer_uploaded_Successfully" value="@LanguageProvider.get("Offer_uploaded_Successfully")" />
+
+    <input type="hidden" id="hdn_Stones_added_in_cart_successfully" value="@LanguageProvider.get("Stones_added_in_cart_successfully")" />
+    <input type="hidden" id="hdn_Stones_removed_from_cart_successfully" value="@LanguageProvider.get("Stones_removed_from_cart_successfully")" />
+    <input type="hidden" id="hdn_This_Stones_are_already_added_to_cart" value="@LanguageProvider.get("This_Stones_are_already_added_to_cart")" />
+
+    <input type="hidden" id="hdn_Stones_added_in_wishlist_successfully" value="@LanguageProvider.get("Stones_added_in_wishlist_successfully")" />
+    <input type="hidden" id="hdn_Stones_removed_from_wishList_successfully" value="@LanguageProvider.get("Stones_removed_from_wishList_successfully")" />
+    <input type="hidden" id="hdn_Add_in_to_wishList_failed" value="@LanguageProvider.get("Add_in_to_wishList_failed")" />
+
+    <input type="hidden" id="hdn_Stones_removed_from_cart_successfully" value="@LanguageProvider.get("Stones_removed_from_cart_successfully")" />
+    <input type="hidden" id="hdn_Remove_from_cart_failed" value="@LanguageProvider.get("Remove_from_cart_failed")" />
+
+
+    <div class="loading-overlay"></div>
+    <div class="loading-overlay-image-container">
+        @*<img src="~/Content/images/loader.gif" class="loading-overlay-img" />*@
+        @*<img src="~/Content/images/loader1.gif" class="loading-overlay-img1" />*@
+        @*<img src="~/Content/images/loader3.gif" class="loading-overlay-img2" />*@
+        @*<img src="~/Content/images/MadeupWillingKronosaurus-small.gif" class="loading-overlay-img3" />*@
+        @*<img src="~/Content/images/ZlXo.gif" class="loading-overlay-img3" />*@
+        <img src="~/Content/images/Loader2.gif" class="loading-overlay-img3" />
+        @*<img src="~/Content/images/kkk.gif" class="loading-overlay-img3" />*@
+        @*<img src="~/Content/images/g0R9.gif" class="loading-overlay-img3" />*@
+
+        @*<img src="/Content/images/ic_logo.png" style="animation: rotation-image 2s infinite linear;" class="loading-overlay-img-spinner" />*@
+    </div>
+    @*<div id="loading">
+            <img id="loading-image" src="~/Content/images/loader.gif" alt="Loading..." />
+        </div>*@
+    <input type="hidden" id="hdnisadminflg" value="@SunriseWeb.Helper.SessionFacade.UserSession.isadmin" />
+    <input type="hidden" id="hdnisempflg" value="@SunriseWeb.Helper.SessionFacade.UserSession.isemp" />
+
+    <input type="hidden" id="hdnUserType" value="@SunriseWeb.Helper.SessionFacade.UserSession.iUserType" />
+    <input type="hidden" id="hdnIsPrimary" value="@SunriseWeb.Helper.SessionFacade.UserSession.IsPrimary.ToString()" />
+    <input type="hidden" id="hdnIsSubUser" value="@SunriseWeb.Helper.SessionFacade.UserSession.IsSubuser.ToString()" />
+    <input type="hidden" id="hdnSearchStock" value="@SunriseWeb.Helper.SessionFacade.UserSession.SearchStock.ToString()" />
+    <input type="hidden" id="hdnPlaceOrder" value="@SunriseWeb.Helper.SessionFacade.UserSession.PlaceOrder.ToString()" />
+    <input type="hidden" id="hdnOrderHisrory" value="@SunriseWeb.Helper.SessionFacade.UserSession.OrderHisrory.ToString()" />
+    <input type="hidden" id="hdnMyCart" value="@SunriseWeb.Helper.SessionFacade.UserSession.MyCart.ToString()" />
+    <input type="hidden" id="hdnMyWishlist" value="@SunriseWeb.Helper.SessionFacade.UserSession.MyWishlist.ToString()" />
+    <input type="hidden" id="hdnQuickSearch" value="@SunriseWeb.Helper.SessionFacade.UserSession.QuickSearch.ToString()" />
+
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar" class="active">
+            <div class="sidebar-header">
+                <center style="margin-top: -13px;margin-bottom: -24px;"><img src="~/Content/Login/images/bd-removebg-preview.png" class="img-responsive img-one" style="width: 87px;"></center>
+                <center style="margin-top: 13px;">
+                    <img src="~/Content/Login/images/bd-removebg-preview.png" class="img-responsive img-two" style="width: 53px;">
+                </center>
+            </div>
+            <div class="sidebar-info">
+                @if (@SunriseWeb.Helper.SessionFacade.UserSession.IsSubuser == true)
+                {
+                    <ul class="data">
+                        <li class="active">
+                            <a href="@Url.Action("Index", "Dashboard")">
+                                <i class="fa fa-tachometer" aria-hidden="true"></i>
+                                @LanguageProvider.get("dashboard")
+                            </a>
+                        </li>
+                        @if (SunriseWeb.Helper.SessionFacade.UserSession.SearchStock == true)
+                        {
+                            <li>
+                                <a href="@Url.Action("Search", "SearchStock")">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    @LanguageProvider.get("search_stock")
+                                </a>
+                            </li>
+                        }
+                        @if (SunriseWeb.Helper.SessionFacade.UserSession.OrderHisrory == true)
+                        {
+                            <li>
+                                <a href="@Url.Action("OrderHistory", "Order")">
+                                    <i class="fa fa-file-text" aria-hidden="true"></i>
+                                    @LanguageProvider.get("order_history")
+                                </a>
+                            </li>
+                        }
+                        @if (SunriseWeb.Helper.SessionFacade.UserSession.MyCart == true)
+                        {
+                            <li>
+                                <a href="@Url.Action("Index", "Cart")">
+                                    <i class="fa fa-cart-plus" aria-hidden="true"></i>My Cart
+                                </a>
+                            </li>
+                        }
+                        @if (SunriseWeb.Helper.SessionFacade.UserSession.MyWishlist == true)
+                        {
+                            @*<li>
+                                    <a href="@Url.Action("Index", "Wishlist")">
+                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                        @LanguageProvider.get("mywishlist")
+                                    </a>
+                                </li>*@
+                        }
+                        @if (SunriseWeb.Helper.SessionFacade.UserSession.QuickSearch == true)
+                        {
+                            @*<li>
+                                    <a href="@Url.Action("QuickSearch", "SearchStock")">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                        @LanguageProvider.get("Quick_Search")
+                                    </a>
+                                </li>*@
+                        }
+                        @*<li>
+                                <a href="@Url.Action("RecentSearch", "SearchStock")">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    @LanguageProvider.get("Recent_Search")
+                                </a>
+                            </li>*@
+                        @*<li>
+                                <a href="@Url.Action("SaveSearch", "SearchStock")">
+                                    <i class="fa fa-diamond" aria-hidden="true"></i>
+                                    @LanguageProvider.get("save_search")
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("PairSearch", "PairSearch")">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                    @LanguageProvider.get("Pair_Search")
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "NewArrival")">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                    @LanguageProvider.get("New_Arrival")
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Offer")">
+                                    <i class="fa fa-percent" aria-hidden="true"></i>
+                                    @LanguageProvider.get("Offer_Stone")
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("OfferHistory", "Offer")">
+                                    <i class="fa fa-gift" aria-hidden="true"></i>
+                                    @LanguageProvider.get("Offer_History")
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Account")">
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    @LanguageProvider.get("My_Account")
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Customer", "Information")">
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                    @LanguageProvider.get("Information")
+                                </a>
+                            </li>*@
+                        @if (SunriseWeb.Helper.SessionFacade.UserSession.SearchStock == true)
+                        {
+                            @*<li>
+                                    <a href="@Url.Action("ColumnsSettings", "Settings")">
+                                        <i class="fa fa-columns" aria-hidden="true"></i>
+                                        @LanguageProvider.get("Column_Setting")
+                                    </a>
+                                </li>*@
+                        }
+                        <li>
+                            <a href="@Url.Action("Logout", "Login")">
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                @LanguageProvider.get("logout")
+                            </a>
+                        </li>
+                    </ul>
+                }
+                else
+                {
+            <ul class="data">
+                <li class="active">
+                    <a href="@Url.Action("Index", "Dashboard")">
+                        <i class="fa fa-tachometer" aria-hidden="true"></i>
+                        @LanguageProvider.get("dashboard")
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Search", "SearchStock")">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                        @LanguageProvider.get("search_stock")
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("OrderHistory", "Order")">
+                        <i class="fa fa-file-text" aria-hidden="true"></i>
+                        @LanguageProvider.get("order_history")
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index", "Cart")">
+                        <i class="fa fa-cart-plus" aria-hidden="true"></i>My Cart
+                    </a>
+                </li>
+                @if (SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 0 && SunriseWeb.Helper.SessionFacade.UserSession.isemp == 0)
+                {
+                    @*<li>
+                <a href="@Url.Action("Index", "Wishlist")">
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    @LanguageProvider.get("mywishlist")
+                </a>
+            </li>*@
+                }
+
+                @if (SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 0)
+                {
+                    @*<li>
+                <a href="@Url.Action("RecentSearch", "SearchStock")">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @LanguageProvider.get("Recent_Search")
+                </a>
+            </li>*@
+                    if (SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 0 && SunriseWeb.Helper.SessionFacade.UserSession.isemp == 0)
+                    {
+                        @*<li>
+                    <a href="@Url.Action("Index", "Offer")">
+                        <i class="fa fa-percent" aria-hidden="true"></i>
+                        @LanguageProvider.get("Offer_Stone")
+                    </a>
+                </li>*@
+                    }
+                    @*<li>
+                <a href="@Url.Action("SaveSearch", "SearchStock")">
+                    <i class="fa fa-diamond" aria-hidden="true"></i>
+                    @LanguageProvider.get("save_search")
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("PairSearch", "PairSearch")">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @LanguageProvider.get("Pair_Search")
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "NewArrival")">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    @LanguageProvider.get("New_Arrival")
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("ColumnsSettings", "Settings")">
+                    <i class="fa fa-columns" aria-hidden="true"></i>
+                    @LanguageProvider.get("Column_Setting")
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index", "Account")">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    @LanguageProvider.get("My_Account")
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("QuickSearch", "SearchStock")">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                    @LanguageProvider.get("Quick_Search")
+                </a>
+            </li>*@
+
+
+                }
+                @*<li>
+            <a href="@Url.Action("OfferHistory", "Offer")">
+                <i class="fa fa-gift" aria-hidden="true"></i>
+                @LanguageProvider.get("Offer_History")
+            </a>
+        </li>*@
+                @if (SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 1)
+                {
+                    @*<li>
+                <a href="@Url.Action("Admin_Wishlist", "Wishlist")">
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    @LanguageProvider.get("mywishlist")
+                </a>
+            </li>*@
+                }
+                @if (SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 0)
+                {
+                    @*<li>
+                <a href="@Url.Action("Customer", "Information")">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                    @LanguageProvider.get("Information")
+                </a>
+            </li>*@
+                    if (SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 2528)
+                    {
+                        @*<li>
+                    <a href="@Url.Action("Index", "LabStock")">@LanguageProvider.get("Lab_Stock")</a>
+                </li>*@
+                        @*<li>
+                    <a href="@Url.Action("LabByRequestCart", "LabStock")">Buy Cart</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("LabByRequest", "LabStock")">Buy Request</a>
+                </li>*@
+                    }
+                }
+                @if (SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 1 || SunriseWeb.Helper.SessionFacade.UserSession.isemp == 1)
+                {
+                    @*<li style="display: none">
+                <a href="@Url.Action("ParaDisc", "Customer")">
+                    <i class="fa fa-percent"></i>
+                    @LanguageProvider.get("Parameter_Discount")
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("StockDiscMgt", "Customer")">
+                    <i class="fa fa-percent"></i>
+                    Stock & Disc Mgt.
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("StockDiscMgtReport", "Customer")">
+                    <i class="fa fa-file-o"></i>
+                    Stock & Disc Mgt. Report
+                </a>
+            </li>*@
+                    <li>
+                        <a href="@Url.Action("Manage", "User")">Manage User</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("UserStatusReport", "User")">User Status Report</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("CustWiseDisc", "Customer")">Customer Wise Disc Mgt.</a>
+                    </li>
+                    if (@SunriseWeb.Helper.SessionFacade.UserSession.sUsername == "hardik_d")
+                    {
+                        <li>
+                            <a href="@Url.Action("SupplierMas", "Settings")">Supplier Master</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("SuppColSettings", "Settings")">Supplier Wise Col. Master</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("SuppPriceList", "Settings")">Supplier Price List</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("StockUpload", "Settings")">Stock Upload</a>
+                        </li>
+                    }
+                    @*<li>
+                <a href="@Url.Action("ConfirmOrder", "Order")">@LanguageProvider.get("Confirm_Order")</a>
+            </li>
+            <li>
+                <a href="@Url.Action("HoldStoneReport", "Order")">Hold Stone Report</a>
+            </li>*@
+                }
+                @if ((SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 1 || SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 9 ||
+                    SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 10 || SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 15 ||
+                    SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 39) &&
+                    SunriseWeb.Helper.SessionFacade.UserSession.sUsername.ToUpper() != "SUN_TEST")
+                {
+                    @*<li>
+                <a href="@Url.Action("ConfirmOrderHistory", "ConfirmOrder")">@LanguageProvider.get("SuppplierOrder")</a>
+            </li>
+            <li>
+                <a href="@Url.Action("SupplierOrderLog", "ConfirmOrder")">@LanguageProvider.get("SuppplierOrderLog")</a>
+            </li>*@
+                }
+                @if (SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 9 || SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 10
+                    || SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 15 || SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 39
+                    || SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 41 || SunriseWeb.Helper.SessionFacade.UserSession.iUserid == 2922)
+                {
+                    @*<li>
+                <a href="@Url.Action("Index", "LabStock")">@LanguageProvider.get("Lab_Stock")</a>
+            </li>
+            <li>
+                <a href="@Url.Action("LabByRequestCart", "LabStock")">Buy Cart</a>
+            </li>
+            <li>
+                <a href="@Url.Action("LabByRequest", "LabStock")">Buy Request</a>
+            </li>*@
+                }
+                @if (SunriseWeb.Helper.SessionFacade.UserSession.iUserType == 1)
+                {
+                    @*<li>
+                <a href="@Url.Action("MessageMst", "User")">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    Message Mst.
+                </a>
+            </li>*@
+                }
+                @if (SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 1 || SunriseWeb.Helper.SessionFacade.UserSession.IsPrimary == true || SunriseWeb.Helper.SessionFacade.UserSession.IsAssistByForAnyUser == true)
+                {
+                    @*<li>
+                <a href="@Url.Action("UserMgt", "User")">
+                    <i class="fa fa-tasks" aria-hidden="true"></i>
+                    User Mgt.
+                </a>
+            </li>*@
+                }
+                @*@if (SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 1)
+        {
+            <li class="active">
+                <a href="#admin" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i>
+                    @LanguageProvider.get("Admin")
+                </a>
+                <ul class="collapse list-unstyled" id="admin">
+                    <li>
+                        <a href="@Url.Action("UserStatusReport", "User")">User Status Report</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("PacketTrace", "User")">Packet Trace</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("News", "User")">@LanguageProvider.get("News")</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ErrorLog", "User")">@LanguageProvider.get("Error_Log")</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("NotifyDet", "User")">Notify</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("UploadMethodGet", "Api")">FTP / API Portal</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("UploadMethodReport", "Api")">FTP / API Portal Report</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("FTPAPIPortalLog", "Api")">FTP / API Portal Log</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("APIGroupLog", "Api")">API last updated record</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("OrderDisc", "User")">
+                            <i class="fa fa-percent" aria-hidden="true"></i>
+                            Scheme Disc
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ColumnsSettings", "Settings")">
+                            <i class="fa fa-columns" aria-hidden="true"></i>
+                            @LanguageProvider.get("Column_Setting")
+                        </a>
+                    </li>
+                    <li style="display: none">
+                        <a href="#"> @LanguageProvider.get("FeedBack")</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("UserActivity", "UserActivity")">@LanguageProvider.get("User_Activity")</a>
+                    </li>
+                    <li style="display:none">
+                        <a href="@Url.Action("Index", "Notification")">@LanguageProvider.get("Notification_Master")</a>
+                    </li>
+                    <li style="display:none">
+                        <a href="#">@LanguageProvider.get("Hold_Transaction")</a>
+                    </li>
+                    <li style="display:none">
+                        <a href="#">@LanguageProvider.get("Party_Info")</a>
+                    </li>
+
+                    <li style="display:none">
+                        <a href="#">@LanguageProvider.get("Calender_Events")</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("OfferCriteria", "Offer")">@LanguageProvider.get("Offer_Criteria")</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("LoginInfo", "LoginInfo")">@LanguageProvider.get("Login_Info")</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("UserList", "User")">@LanguageProvider.get("User_List")</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Filter", "Api")">@LanguageProvider.get("API_Filter")</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index", "LabStock")">@LanguageProvider.get("Lab_Stock")</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("LabByRequestCart", "LabStock")">Buy Cart</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("LabByRequest", "LabStock")">Buy Request</a>
+                    </li>
+                    @if (SessionFacade.UserSession.iUserid == 1 || SessionFacade.UserSession.iUserid == 8 ||
+                            SessionFacade.UserSession.iUserid == 2003)
+                    {
+                        <li>
+                            <a target="_blank" href="@Url.Action("LabStockAPI", "LabStock")">Lab Stock API</a>
+                        </li>
+                    }
+                    <li>
+                        <a href="@Url.Action("Index", "Information")">@LanguageProvider.get("Information")</a>
+                    </li>
+                    @if (SessionFacade.UserSession.iUserid == 1)
+                    {
+                        <li>
+                            <a href="@Url.Action("StockPrefix", "Settings")">Stock Prefix</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("StockUpload", "Settings")">Stock Upload</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("SupplierMas", "Settings")">Supplier Master</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("SuppColSettings", "Settings")">Supplier Wise Column Settings</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("SuppPriceList", "Settings")">Supplier Wise Price List</a>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+        else
+        {
+            if (SessionFacade.UserSession.iUserid == 10 || SessionFacade.UserSession.iUserid == 5682 ||
+                SessionFacade.UserSession.iUserid == 41)
+            {
+                <li>
+                    <a target="_blank" href="@Url.Action("LabStockAPI", "LabStock")">Lab Stock API</a>
+                </li>
+            }
+        }*@
+
+                <li>
+                    <a href="@Url.Action("Logout", "Login")">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        @LanguageProvider.get("logout")
+                    </a>
+                </li>
+            </ul>
+                }
+            </div>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="contnt @ViewBag.ClassName">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar sticky shadow" id="header-nav">
+                <button type="button" id="sidebarCollapse" class="btn btn-info custom-toggle">
+                    <i class="fa fa-align-left" aria-hidden="true"></i>
+                </button>
+                <button type="button" id="" class="btn btn-info custom-toggle two">
+                    <i class="fa fa-align-left" aria-hidden="true"></i>
+                </button>
+                <!-- Topbar Search -->
+                <div id="content-desktop" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <div class="input-group">
+                        <input autocomplete="off" type="text" maxlength="4000" class="form-control border-0 small" id="search_desktop" onkeyup="CommaSeperatedStone_list(event)" placeholder="@LanguageProvider.get("Stock_Id") / @LanguageProvider.get("Cerificate_No") (Separated by Comma)">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button" onclick="SmartSearch();">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:none;">
+                    @*<a target="_blank" href="http://www.rapnet.com/member-badge">
+                            <img id="imgRapnet1" src="/Content/images/RapNet_Primary-Supplier_badge_100x100.png" style="width: 61%;">
+                        </a>*@
+                    <a>
+                        <img id="imgRapnet1" src="/Content/images/carbonneutral.jpg" style="width: 51%;">
+                    </a>
+                    @*<a target="_blank" href="http://www.rapnet.com/member-badge">
+                            <img id="imgRapnet2" src="/Content/images/RapNet_Primary-Supplier_badge_100x100.png" style="width: 28%;">
+                        </a>
+                        <a target="_blank" href="http://www.rapnet.com/member-badge">
+                            <img id="imgRapnet3" src="/Content/images/RapNet_Primary-Supplier_badge_100x100.png" style="width: 24%;">
+                        </a>*@
+                </div>
+                @*<div>
+                                <font style="font-weight: 600;
+                    color: #3f7aa8 !important;
+                    font-size: 20px;
+                    letter-spacing: 1px;
+                    font-family: Calibri Light;">SUNRISE DIAMONDS LTD</font>
+                            </div>*@
+                <!-- Topbar Navbar -->
+                <ul class="navbar-nav ml-auto" id="navbar-top">
+                    @*<div class="row">*@
+                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                    <li class="nav-item dropdown no-arrow d-sm-none">
+                        <a class="nav-link custom-toggle dropdown-toggle" href="javascript:void(0);" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </a>
+
+                    </li>
+
+                    <!-- Download Stock -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link" href="javascript:void(0);" id="allstockdownload" data-toggle="tooltip" data-placement="bottom" title="All Stock Download">
+                            <img src="~/Content/images/stock-down.png" class="stock-image">
+                            <span class="mr-2 d-lg-inline stock-dwl"> All Stock Download</span>
+                        </a>
+                    </li>
+
+                    <!-- Language Selection -->
+                    <li class="nav-item dropdown no-arrow" style="display:none;">
+
+                        @if (Request.Cookies["language"] != null)
+                        {
+                            if (Request.Cookies["language"].Value == "en")
+                            {
+                                <a class="nav-link language dropdown-toggle" href="javascript:void(0);" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-lg-inline">English</span>
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu user-drop dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item english active" href="javascript:void(0);" onclick="LanguageChange('en')">
+                                        English
+                                    </a>
+                                    <a class="dropdown-item" href="javascript:void(0);" onclick="LanguageChange('cn')">
+                                        中文
+                                    </a>
+                                </div>
+                            }
+                            else
+                            {
+                                <a class="nav-link language dropdown-toggle" href="javascript:void(0);" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-lg-inline">中文</span>
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <div class="dropdown-menu user-drop dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item english" href="javascript:void(0);" onclick="LanguageChange('en')">
+                                        English
+                                    </a>
+                                    <a class="dropdown-item active" href="javascript:void(0);" onclick="LanguageChange('cn')">
+                                        中文
+                                    </a>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <a class="nav-link language dropdown-toggle" href="javascript:void(0);" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-lg-inline">English</span>
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu user-drop dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                <a class="dropdown-item english active" href="javascript:void(0);" onclick="LanguageChange('en')">
+                                    English
+                                </a>
+                                <a class="dropdown-item" href="javascript:void(0);" onclick="LanguageChange('cn')">
+                                    中文
+                                </a>
+                            </div>
+                        }
+
+
+                    </li>
+
+                    <!-- Nav Item - Alerts -->
+                    <li class="nav-item dropdown no-arrow mx-1" style="display:none;">
+                        <a onclick="onclickAlertsCenter()" class="nav-link dropdown-toggle alert" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="cursor: pointer;">
+                            <i class="fa fa-bell" aria-hidden="true"></i>
+
+                            <span class="Notify-count" id="Notify-count" style="display:none;">
+                                0
+                            </span>
+
+                            @*<span class="badge badge-danger badge-counter">3+</span>*@
+                        </a>
+                        <!-- Dropdown - Alerts -->
+                        <div id="AlertsCenter" class="dropdown-list dropdown-menu notify dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown" style="right: 7px;">
+                            <h6 class="dropdown-header">
+                                Alerts Center
+                            </h6>
+                            <div id="div_Alerts_Center" style="max-height: 330px;overflow-y: scroll;">
+                                <a class="dropdown-item d-flex align-items-center">
+                                    <div style=" width: 500px !important;">
+                                        <span style="font-size: 16px;">No Notification Found !</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <span class="dropdown-item text-center small text-gray-500"></span>
+                        </div>
+                    </li>
+
+                    <!-- Nav Item - Messages -->
+
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
+
+                    <!-- Nav Item - User Information -->
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle alert" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline">@SessionFacade.UserSession.sFullName</span>
+                            @*@if (SessionFacade.UserSession.ProfileImage != "null")
+                                {
+                                    <img class="img-profile rounded-circle" src="data:image/png;base64,@SessionFacade.UserSession.ProfileImage">
+                                }
+                                else
+                                {
+                                    <img class="img-profile rounded-circle" src="~/Content/images/user.png">
+                                }*@
+                            <img class="img-profile rounded-circle" src="~/Content/Login/images/bd-removebg-preview.png">
+
+                        </a>
+                        <!-- Dropdown - User Information -->
+                        <div class="dropdown-menu user-drop dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                            @*<a class="dropdown-item" href="@Url.Action("Index","Account")">
+                                    <i class="fa fa-user mr-2 text-gray-400" aria-hidden="true"></i>
+                                    @LanguageProvider.get("Profile")
+                                </a>*@
+                            <a class="dropdown-item" href="@Url.Action("ChangePassword","Account")">
+                                <i class="fa fa-unlock-alt mr-2 text-gray-400" aria-hidden="true"></i>
+                                @LanguageProvider.get("pwd")
+                            </a>
+                            @*<a class="dropdown-item" href="#" style="display: none !important;">
+                                    <i class="fa fa-commenting mr-2 text-gray-400" aria-hidden="true"></i>
+                                    @LanguageProvider.get("Feedback")
+                                </a>*@
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="@Url.Action("Logout","Login")">
+                                <i class="fa fa-sign-out mr-2 text-gray-400" aria-hidden="true"></i>
+                                @LanguageProvider.get("logout")
+                            </a>
+                        </div>
+                    </li>
+                    @*</div>*@
+                </ul>
+                <div id="content-mobile" class="row col-md-12" style="">
+                    <div class="d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input autocomplete="off" type="text" maxlength="4000" class="form-control border-0 small" id="search_mobile" onkeyup="CommaSeperatedStone_list(event)" placeholder="@LanguageProvider.get("Stock_Id") / @LanguageProvider.get("Cerificate_No") (Separated by Comma)">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button" onclick="SmartSearch();">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </nav>
+
+            <!-- Begin Page Content -->
+            @*<div class="container-fluid">*@
+
+            @RenderBody()
+            @* </div> *@
+        </div>
+    </div>
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    @*<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>*@
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/Plugins/jqueryUI/jquery-ui.js"></script>
+    <!-- Popper.JS -->
+    <script src="~/Content/js/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/Content/js/underscore-min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    @*<script src="~/Content/js/custom.js"></script>*@
+    <script type="text/javascript" src="~/Content/js/mdb.min.js"></script>
+    <script src="~/Content/Plugins/toastr/toastr.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="//cdn.syncfusion.com/js/assets/external/jquery.easing.1.3.min.js"></script>
+    <script src="17.4.0.46/scripts/web/jsondata.min.js"></script>
+    <script type="text/javascript" src="//cdn.syncfusion.com/17.4.0.46/js/web/ej.web.all.min.js"></script>
+    <script src="17.4.0.46/scripts/web/properties.js" type="text/javascript"></script>
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        var IsAlertsCenterOpen = 0;
+        var L_d = new Date();
+        var L_month = L_d.getMonth()+1;
+        var L_day = L_d.getDate();
+        var L_curdate = L_d.getFullYear() + '' + (L_month<10 ? '0' : '') + L_month + '' + (L_day<10 ? '0' : '') + '' + L_day + '' + L_d.getHours() + '' + L_d.getMinutes() + '' + L_d.getSeconds();
+
+        $(document).ready(function () {
+            NotifyGet_User();
+             $('[data-toggle="tooltip"],[data-toggle="modal"]').tooltip();
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $('.contnt').toggleClass('min-content');
+            });
+            $('.custom-toggle.two').on('click', function () {
+                $('#sidebar').toggleClass('active');
+                $('.contnt').toggleClass('min-content');
+            });
+            $('#allstockdownload').click(function () {
+                $('.loading-overlay-image-container').show();
+                $('.loading-overlay').show();
+                var link = "";
+                var obj = {};
+                $.ajax({
+                    url: "@Url.Action("Chk_StockDisc_Avail","Dashboard")",
+                    type: "POST",
+                    data: null,
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.Data != null) {
+                            //if (data.Data[0].Status == true) {
+                                link = "@Url.Action("StockDownload","Dashboard")";
+                                obj.UsedFor = "Download";
+                            @*}
+                            else if (data.Data[0].Status == false) {
+                                link = "@Url.Action("TotalStockDownload","Dashboard")";
+                            }*@
+                            if (link != "") {
+                                $.ajax({
+                                    url: link,
+                                    type: "POST",
+                                    data: obj,
+                                    success: function (data, textStatus, jqXHR) {
+                                        $('.loading-overlay-image-container').hide();
+                                        $('.loading-overlay').hide();
+                                        location.href = data;
+                                    },
+                                    error: function (jqXHR, textStatus, errorThrown) {
+
+                                    }
+                                });
+                            }
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                    }
+                });
+            });
+            LoginCheck();
+            if ($("#hdnIsSubUser").val() == "True") {
+                PagePermission();
+            }
+        });
+        function PagePermission() {
+            var pathname = window.location.pathname.toLowerCase(), search = window.location.search;
+            if ((pathname == "/searchstock/search" || pathname == "/settings/columnssettings") && $("#hdnSearchStock").val() == "False") {
+                if (search == "") {
+                    window.location.href = "/Dashboard";
+                }
+            }
+            if (pathname == "/order/orderhistory" && $("#hdnOrderHisrory").val() == "False") {
+                window.location.href = "/Dashboard";
+            }
+            if ((pathname == "/wishlist/index" || pathname == "/wishlist") && $("#hdnMyWishlist").val() == "False") {
+                window.location.href = "/Dashboard";
+            }
+            if (pathname == "/wishlist/admin_wishlist") {
+                window.location.href = "/Dashboard";
+            }
+            if ((pathname == "/cart/index" || pathname == "/cart") && $("#hdnMyCart").val() == "False") {
+                window.location.href = "/Dashboard";
+            }
+            if (pathname == "/searchstock/quicksearch" && $("#hdnQuickSearch").val() == "False") {
+                window.location.href = "/Dashboard";
+            }
+        }
+        function MoveToErrorPage(data_Status) {
+            var flag = false;
+            data_Status = String(data_Status);
+
+            if (data_Status == "0") {
+                flag = true;
+            }
+            else if (data_Status.toUpperCase() == "FAIL") {
+                flag = true;
+            }
+
+            if (flag == true) {
+                window.location.href = "/Error";
+            }
+        }
+        var Stone_List = "";
+        function CommaSeperatedStone_list(e) {
+            var data = "";
+            if (!$("#content-desktop").is(":hidden")) {
+                data = document.getElementById("search_desktop").value;
+
+                //var ary = (data).split(/(?!$)/u);
+                //var str = "", finalstr = "";
+                //for (var i = 0; i < ary.length; i++) {
+                //    if (parseInt(ary[i]).toString() != "NaN" && ary[i+1] == " ") {
+                //        str += ary[i] + ","
+                //    }
+                //    else {
+                //        str += ary[i];
+                //    }
+                //}
+                //var ary1 = (str).split(",");
+                //for (var i = 0; i < ary1.length; i++) {
+                //    finalstr += ary1[i].trim() + (ary1.length-1 == i ? "" : ",");
+                //}
+                //Stone_List = finalstr;
+                Stone_List = data;
+                //document.getElementById("search_desktop").value = finalstr;
+            }
+            if (!$("#content-mobile").is(":hidden")) {
+                data = document.getElementById("search_mobile").value;
+
+                //var ary = (data).split(/(?!$)/u);
+                //var str = "", finalstr = "";
+                //for (var i = 0; i < ary.length; i++) {
+                //    if (parseInt(ary[i]).toString() != "NaN" && ary[i+1] == " ") {
+                //        str += ary[i] + ","
+                //    }
+                //    else {
+                //        str += ary[i];
+                //    }
+                //}
+                //var ary1 = (str).split(",");
+                //for (var i = 0; i < ary1.length; i++) {
+                //    finalstr += ary1[i].trim() + (ary1.length-1 == i ? "" : ",");
+                //}
+                //Stone_List = finalstr;
+                Stone_List = data;
+                //document.getElementById("search_mobile").value = finalstr;
+            }
+
+            var key = e.which;
+            if (key == 13) {
+                SmartSearch();
+            } else {
+                return false;
+            }
+        }
+
+
+        function SmartSearch() {
+            if (Stone_List != "") {
+                if (getParameterByName('type') != "SmartSearch") {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/SearchStock/SmartSearchURLSet',
+                        dataType: "json",
+                        data: { URL: window.location.href },
+                        success: function (data) {
+
+                        }
+                    });
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: '/SearchStock/StoneSmartSearch',
+                    dataType: "json",
+                    data: { StoneList: Stone_List },
+                    success: function (data) {
+                        Stone_List = "";
+                        var Type = "SmartSearch";
+                        window.location = '/SearchStock/Search?type=' + Type;
+                    }
+                });
+            }
+        }
+        function LanguageChange(langCode) {
+            $.ajax({
+                url: "/Dashboard/ChangeLanguage",
+                async: false,
+                type: "POST",
+                data: { LangCode: langCode },
+                success: function (data, textStatus, jqXHR) {
+                    window.location.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    window.location.reload();
+                }
+            });
+        }
+
+        function GetLoginUrl() {
+            return '@Url.Action("Logout","Login")';
+        }
+        function getParameterByName(name) {
+            var url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function NotifyGet_User() {
+            $.ajax({
+                type: 'POST',
+                url: '/User/NotifyGet_User',
+                dataType: "json",
+                data: { iUserid: '' },
+                success: function (data) {
+                    var _html = "";
+                    if (data.Data.length != 0) {
+                        $("#Notify-count").show();
+                        $("#Notify-count").html(data.Data.length);
+                        for (var i = 0; i < data.Data.length; i++) {
+                            _html += "<a class='dropdown-item d-flex align-items-center' id='a_Alerts" + data.Data[i].Id + "'>";
+                            _html += "<div style='width: 500px !important;'>";
+                            _html += "<div>";
+                            _html += "<span class='small text-gray-500'>" + data.Data[i].ValidityFromDate + "</span>";
+                            _html += "<span class='dismiss pull-right' onclick=\"DismissClick('" + data.Data[i].Id + "')\">Dismiss</span>";
+                            _html += "<span class='skip pull-right' onclick=\"SkipClick('" + data.Data[i].Id + "')\" style='margin-right: 2px;'>Skip</span>";
+                            _html += "</div>";
+                            _html += "<span style='font-size: 16px;'>" + data.Data[i].Message.replace(/'/g, ' &_ ') + "</span>";
+                            _html += "</div>";
+                            _html += "</a>";
+                        }
+                    }
+                    else {
+                        $("#Notify-count").hide();
+                        _html += "<a class='dropdown-item d-flex align-items-center'>";
+                        _html += "<div style='width: 500px !important;'>";
+                        _html += "<span style='font-size: 16px;'>No Notification Found !</span>";
+                        _html += "</div>";
+                        _html += "</a>";
+                    }
+                    $("#div_Alerts_Center").html(_html.replace(/ &_ /g, "'"));
+                }
+            });
+        }
+        function onclickAlertsCenter() {
+            if (IsAlertsCenterOpen == 0) {
+                NotifyGet_User();
+                $("#AlertsCenter").show();
+                IsAlertsCenterOpen = 1;
+            }
+            else if (IsAlertsCenterOpen == 1) {
+                $("#AlertsCenter").hide();
+                IsAlertsCenterOpen = 0;
+            }
+        }
+        function DismissClick(Id) {
+            $.ajax({
+                url: "/User/SaveNotifyList",
+                type: "POST",
+                data: {
+                    FromDate: '',
+                    ToDate: '',
+                    Message: '',
+                    UserIdList: '',
+                    NotifyId: Id
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (data.Status == "1") {
+                        $("#div_Alerts_Center #a_Alerts" + Id).remove();
+                        if ($('#div_Alerts_Center:empty').length == 1) {
+                            $("#Notify-count").hide();
+                            var _html = "<a class='dropdown-item d-flex align-items-center'>";
+                            _html += "<div style='width: 500px !important;'>";
+                            _html += "<span>No Notification Found !</span>";
+                            _html += "</div>";
+                            _html += "</a>";
+                            $("#div_Alerts_Center").html(_html.replace(/ &_ /g, "'"));
+                        }
+                        else {
+                            $("#Notify-count").show();
+                            $("#Notify-count").html(parseInt($("#Notify-count").html()) - 1);
+                        }
+                    } else {
+                        toastr.error(data.Message);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            });
+        }
+        function SkipClick(Id) {
+            $("#AlertsCenter").hide();
+            IsAlertsCenterOpen = 0;
+        }
+        function fn60sec() {
+            $.ajax({
+                url: "/Login/LoginCheck",
+                type: "POST",
+                data: null,
+                success: function (data, textStatus, jqXHR) {
+                    if (data != "OK") {
+                        window.location.href = "/Login";
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                }
+            });
+        }
+        function LoginCheck() {
+            fn60sec();
+            setInterval(fn60sec, 60 * 1000);
+        }
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode != 46 && charCode > 31
+                && (charCode < 48 || charCode > 57)) {
+                toastr.warning("Please Enter Only Number only !");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+
+</html>

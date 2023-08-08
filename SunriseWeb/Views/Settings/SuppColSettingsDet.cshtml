@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Supplier Wise Column Settings Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (Request.QueryString.Count > 0)
+{
+    <input type="hidden" id="hdnId" value="@Request.QueryString["Id"].ToString()" />
+}
+else
+{
+    <input type="hidden" id="hdnId" value="0" />
+
+}
+
+<div class="container-fluid order-history-section manage-user apifilter">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>Supplier Wise Column Settings Detail</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row col-md-12 apicol-head">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label class="offer-label" for="DdlSupplierName">Supplier Name <span style="color:red;">*</span></label>
+                <div class="col-md-4">
+                    <select class="form-control select2" id="DdlSupplierName" name="DdlSupplierName" onchange="SupplierNameChange();">
+                    </select>
+                </div>
+                <div class="col-xl-12">
+                    <ul class="offer-inbtn pull-right">
+                        <li>
+                            <button onclick="SaveData();" class="save offer-btn" id="Save_btn"><i class="fa fa-save" aria-hidden="true"></i>&nbsp;Save</button>
+                        </li>
+                        <li>
+                            <button onclick="Clear();" class="save offer-btn" id="RefreshCurrentAPI_btn"><i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Refresh Current API</button>
+                        </li>
+                        <li>
+                            <button onclick="Supp_List_View();" class="save offer-btn"> <i class="fa fa-undo" aria-hidden="true"></i>&nbsp;Back</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 apicol-tbl">
+        <div id="TB_ColSetting" class="tab-pane active" style="display: none;">
+            <div class="row mg0 pd5" style="text-align: center;">
+                <div class="col-md-12 table-responsive">
+                    <table id="mytable" class="table table-hover table-bordered" style="height: 345px;display: inline-block;">
+                        <thead>
+                            <tr>
+                                <th style="width: 3%;">Sr.</th>
+                                <th style="width: 50%;">Supplier Column</th>
+                                <th style="width: 50%;">Custom Column</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myTableBody" class="ui-sortable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/Pages/SuppColSettingsDet.js"></script>
+}

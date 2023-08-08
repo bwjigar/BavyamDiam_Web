@@ -1,0 +1,132 @@
+﻿@model SunriseWeb.Models.UserLogin
+@using SunriseWeb.Resources
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <title>Extensive Inventory</title>
+    <meta name="keyword" content="" />
+    <meta name="description" content="" />
+    <meta name="title" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="50x50" href="~/Content/images/bd-removebg-preview.png">
+    <!-- attach stylesheet -->
+    <link rel="stylesheet" href="~/Content/static_pages/css/bootstrap.min.css">
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- main stylesheet -->
+    <link href="~/Content/static_pages/css/login.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- ======================== Start Navbar ============================ -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar login-myScrollspy ragistration-page" id="navigation">
+        <div class="container">
+            <div class="ragister-logo">
+                <button type="button" id="sidebarCollapse" class="custom-toggle">
+                    <i class="fa fa-align-left" aria-hidden="true"></i>
+                </button>
+                <img src="~/Content/Login/images/bd-removebg-preview.png" class="img-responsive" alt="logo">
+                <div class="home-icon">
+                    <a href="@Url.Action("Index","Login")"><i class="fa fa-home" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div id="myScrollspy">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="@Url.Action("Index","Login")">Home</a></li>
+                    <li><a href="@Url.Action("Aboutus","Login")">About Us</a></li>
+                    <li><a href="@Url.Action("ExtensiveInventory","Login")">Extensive Inventory</a></li>
+                    @*<li><a href="@Url.Action("Service","Login")">Service</a></li>*@
+                    @*<li><a href="@Url.Action("Policy","Login")">Privacy Policy</a></li>
+                    <li><a href="@Url.Action("Terms","Login")">Terms & Condition</a></li>*@
+                    <li><a href="@Url.Action("ContactUs","Login")">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ======================== End Navbar ============================ -->
+    <!-- ======================== Start Home ============================ -->
+    <section class="section ragistration" id="ragistration">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="ragistration-form one">
+                        <div class="personal-info common-eee" style="text-align: justify;background-image: url('/Content/images/dashboard-pattern.png');">
+                            <div class="r-label">
+                                <p>Extensive Inventory</p>
+                            </div>
+                            <div class="login-pages-dta aboutus-page">
+                                <ul style="text-align: justify;">
+                                    <li>You’ll find an incredibly broad selection of colors, Round shapes, and sizes at <b>Bhavyam Diam</b>.</li>
+                                    <br />
+                                    <li>The quality of our merchandise is unquestionable — over 90% of our inventory is Gemological India of America (G.I.A.) certified — and we guarantee you’ll find exactly what you’re looking for.</li>
+                                    <br />
+                                    <li>Our inventory consists many GIA certified and non-certified diamonds.</li>
+                                    <br />
+                                    <li>They range from 0.30ct to 3.00 carats in Round shapes, D-L color and i1 to i2 clarity.</li>
+                                    <br />
+                                    <li>You can see (360 degree video) video of every stones in our inventory. How the stone look, you can easily see in the video.</li>
+                                    <br />
+                                    <li>We have specialization in Clarity of diamond in i1, i2 that maximum not include such as open, cavity, big black. Generally every stones have maximum inclusion are feather base, table face clearly include, So you can find best quality in our inventory</li>
+                                    <br />
+                                    <li>Exceptional quality, unparalleled service-that's what <b>Bhavyam Diam</b> is all about. Your satisfaction is the cornerstone of our company and we treat your business like our own.</li>
+                                </ul>
+                            </div>
+                            @*<div class="login-pages-dta aboutus-page">
+            <b style="color: #003d66;font-size: revert;">OUR COMPANY</b>
+            <ul>
+                <li>Last 10 years, our company has been located in surat city in INDIA country that city is famous for production of real diamond in the world.</li>
+                <li>So, with this experience, we can find, Manufacturing and maintain quality from the basic market of Diamond.</li>
+                <li>We have speciation in Clarity of diamond in Si2, i1, i2 that maximum not include such as open, cavity, big black. Generally every stones have maximum inclusion are feather base, table face clearly include, So in our inventory you can find any time best quality in Si2, i1, i2 clarity.</li>
+            </ul>
+            <br />
+            <b style="color: #003d66;font-size: revert;">COMPANY VISION</b>
+            <ul>
+                <li>Si2 to I2  are Commercial Price Range, in 365 Days for every people, can easily purchase this type of real diamond in their budget.</li>
+                <li>So in this price range anybody purchase best quality in si2 to i2 clarity.</li>
+                <li>Company Vision is “Best quality With Reasonable Price”</li>
+            </ul>
+            <br />
+            <b style="color: #003d66;font-size: revert;">EXTENSIVE INVENTORY</b>
+            <ul>
+                <li>You’ll find an incredibly broad selection of colors, Round shapes, and sizes at <b>Bhavyam Diam.</b></li>
+                <li>The quality of our merchandise is unquestionable — over 90% of our inventory is G.I.A. certified — and we guarantee you’ll find exactly what you’re looking for.</li>
+                <li>Our inventory consists of many of GIA certified and non-certified diamonds.</li>
+                <li>They range from 0.30ct to 10+ carats in Round shapes, D-L color and Si2 to i2 clarity.</li>
+                <li>You can see (360 degree video) video of every stones in our inventory. How the look stone, you can easily see in the video.</li>
+            </ul>
+            <br />
+            <b style="color: #003d66;font-size: revert;">EXCEPTIONAL QUALITY, UNPARALLELED SERVICE</b>
+            <ul>
+                <li>Exceptional quality, unparalleled service-that's what <b>Bhavyam Diam</b> is all about. Your satisfaction is the cornerstone of our company and we treat your business like our own. </li>
+                <li>We are committed to supplying our customers in a timely and courteous manner.</li>
+                <li>Feel free to call our offices at +91 88662 50872 or email us at <u style="color: blue;">bhavyamdiam@yahoo.com</u></li>
+            </ul>
+        </div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function open_side() {
+            document.getElementById("myScrollspy").style.width = "250px";
+        }
+        function close_side() {
+            document.getElementById("myScrollspy").style.width = "0";
+        }
+    </script>
+    <!-- ======================== End Home ============================ -->
+    <!-- end of login -->
+    <script src="~/Content/static_pages/js/jquery.min.js"></script>
+    <script src="~/Content/static_pages/js/bootstrap.min.js"></script>
+    <script src="~/Content/static_pages/js/propper.min.js"></script>
+    <script src="~/Content/static_pages/js/login.js"></script>
+
+</body>
+</html>

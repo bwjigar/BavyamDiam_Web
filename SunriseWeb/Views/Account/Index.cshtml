@@ -1,0 +1,260 @@
+﻿@model SunriseWeb.Models.AccountModel
+@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = "My Account";
+}
+
+@section styles{
+    <link href="~/Content/Plugins/jqueryUI/jquery-ui.css" rel="stylesheet" />
+}
+<div class="container-fluid search_result viewcart-fluid">
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane active result-page-content viewcart-page-content" id="profile-tab">
+            <form id="frmMyAccount" enctype="multipart/form-data">
+                <div class="result-nav myaccount">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-2 col-2">
+                            <div class="viewcartdata-header savesearch">
+                                <h1>My Account</h1>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-10 col-sm-10 col-10 text-right myaccount-forn-btn">
+                            <button type="button" id="btnBack" onclick="Back()" class="btn" style="color:ButtonText">@LanguageProvider.get("back")</button>
+                            <button type="button" id="btnReset" onclick="ClearControl()" class="btn" style="color:ButtonText">@LanguageProvider.get("reset")</button>
+                            <button type="button" id="btnSubmit" class="btn" style="color:ButtonText">@LanguageProvider.get("update1")</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                            <div class="full-acform">
+                                <div class="row">
+
+                                    <div class="col-12 text-center">
+                                        <div class="profile-images">
+                                            <div class="avatar-upload">
+                                                <div class="avatar-edit">
+                                                    @*<input type="text" required="" autofocus="" tabindex="8" class="input-sm form-control ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required" ng-model="CustData.PROFILEPIC">*@
+                                                    <input type="file" id="imageUpload"
+                                                           onchange="Image_Browse1(event)" accept=".png, .jpg, .jpeg">
+                                                    <label for="imageUpload"></label>
+                                                </div>
+                                                <div class="avatar-preview">
+                                                    <div id="imagePreview12">
+                                                        <img class="img-fluid" id="imagePreview1" default="~/Content/images/NA.png" src="~/Content/images/NA.png">
+                                                        <input type="hidden" id="hdnIsProfileChanged" value="0" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <div class="fr-head">
+                                                <label for="FirstName">@LanguageProvider.get("fname"):<span class="requird-fild-str"> * </span></label>
+                                            </div>
+                                            <input type="text" tabindex="1" class="form-control required alphabet" id="txtFirstName" name="FirstName" placeholder="@LanguageProvider.get("fname")" value="@Model.FirstName">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="LastName">@LanguageProvider.get("lname"):<span class="requird-fild-str"> * </span></label>
+                                            <input type="text" tabindex="2" class="form-control required alphabet" id="txtLastName" name="LastName" placeholder="@LanguageProvider.get("lname")" value="@Model.LastName">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="CompanyName">@LanguageProvider.get("CompanyName"):<span class="requird-fild-str"> * </span></label>
+                                            <input type="text" tabindex="3" class="form-control required" id="txtCompanyName" name="CompanyName" placeholder="@LanguageProvider.get("CompanyName")" value="@Model.CompanyName">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="Address1">@LanguageProvider.get("Address1"):<span class="requird-fild-str"> * </span></label>
+                                            <input type="text" tabindex="4" class="form-control required" id="txtAddress1" name="Address1" placeholder="@LanguageProvider.get("Address1")" value="@Model.Address1">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="Address2">@LanguageProvider.get("Address2"):</label>
+                                            <input type="text" tabindex="5" class="form-control" id="txtAddress2" name="Address2" placeholder="@LanguageProvider.get("Address2")" value="@Model.Address2">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        @*<div class="form-group select-form">
+                                                <label for="uname">Country:<span class="requird-fild-str"> * </span></label>
+                                                <select class="form-control select2 select2-hidden-accessible" data-select2-id="1" tabindex="-1" aria-hidden="true">
+
+                                                </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="2" style="width: 336.328px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-p7i8-container"><span class="select2-selection__rendered" id="select2-p7i8-container" role="textbox" aria-readonly="true" title="Select">Select</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                            </div>*@
+                                        <div class="form-group">
+                                            <label for="City">@LanguageProvider.get("city"): <span class="requird-fild-str"> * </span></label>
+                                            <input type="text" tabindex="6" class="form-control required" placeholder="@LanguageProvider.get("city")" id="txtCity" name="City" value="@Model.City">
+                                            <input type="hidden" id="hdnCityCode" value="@Model.CompCityId" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="ZipCode">@LanguageProvider.get("zipcode"): </label>
+                                            <input type="text" tabindex="7" class="form-control number" id="txtZipCode" name="ZipCode" placeholder="@LanguageProvider.get("zipcode")" maxlength="10" value="@Model.ZipCode">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="Country">@LanguageProvider.get("country"): </label>
+                                            <input type="text" tabindex="8" class="form-control" readonly="readonly" id="txtCountry" name="Country" placeholder="@LanguageProvider.get("country")" value="@Model.Country">
+                                            <input type="hidden" id="hdnCountryCode" value="@Model.CompCountryId" />
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+
+                                            <label for="Mobile1">@LanguageProvider.get("Mobile1"):<span class="requird-fild-str"> * </span></label>         <div class="d-flex">
+                                                <div class="regis-sml-inpt">
+                                                    <input type="text" class="form-control isdcode " tabindex="9" placeholder="@LanguageProvider.get("ISD")" id="txtmobile1STDCode" name="Mobile1STDCode" readonly="readonly" value="@Model.Mobile1STDCode">
+                                                </div>
+                                                <input type="text" class="form-control required number required" tabindex="10" placeholder="@LanguageProvider.get("Mobile1")" id="txtMobile1" name="Mobile1" maxlength="15" onkeypress="return isNumberKey(event)" value="@Model.Mobile1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="Mobile2">@LanguageProvider.get("Mobile2"):</label>
+                                            <div class="d-flex">
+                                                <div class="regis-sml-inpt">
+                                                    <input type="text" class="form-control isdcode" tabindex="11" placeholder="@LanguageProvider.get("ISD")" id="txtmobile2STDCode" name="Mobile2STDCode" readonly="readonly" value="@Model.Mobile2STDCode">
+                                                </div>
+                                                <input type="text" class="form-control number" tabindex="12" placeholder="@LanguageProvider.get("Mobile2")" id="txtMobile2" maxlength="15" name="Mobile2" onkeypress="return isNumberKey(event)" value="@Model.Mobile2">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="OfficePh1">@LanguageProvider.get("OfficePh1"): </label>
+                                            <div class="d-flex">
+                                                <div class="regis-sml-inpt">
+                                                    <input id="txtoffice1STDCode" name="Office1STDCode" class="form-control stdcode" placeholder="@LanguageProvider.get("areacode")" type="text" readonly="readonly" tabindex="13" value="@Model.Office1STDCode">
+                                                </div>
+                                                <input type="text" class="form-control number" tabindex="14" placeholder="@LanguageProvider.get("OfficePh1")" id="txtOfficePh1" name="OfficePh1" maxlength="15" onkeypress="return isNumberKey(event)" value="@Model.OfficePh1">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="OfficePh2">@LanguageProvider.get("OfficePh2"):</label>
+                                            <div class="d-flex">
+                                                <div class="regis-sml-inpt">
+                                                    <input id="txtoffice2STDCode" name="Office2STDCode" class="form-control stdcode" placeholder="@LanguageProvider.get("areacode")" type="text" readonly="readonly" tabindex="15" value="@Model.Office2STDCode">
+                                                </div>
+
+                                                <input type="text" class="form-control number" tabindex="16" placeholder="@LanguageProvider.get("OfficePh2")" id="txtOfficePh2" name="OfficePh2" maxlength="15" onkeypress="return isNumberKey(event)" value="@Model.OfficePh2">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="FaxNo">@LanguageProvider.get("Faxno"):</label>
+                                            <div class="d-flex">
+                                                <div class="regis-sml-inpt">
+                                                    <input id="txtFaxSTDCode" name="FaxSTDCode" class="form-control stdisdcode" placeholder="@LanguageProvider.get("Code")" type="text" readonly="readonly" tabindex="17" value="@Model.FaxSTDCode">
+                                                </div>
+
+                                                <input type="text" class="form-control number" tabindex="18" placeholder="@LanguageProvider.get("Faxno")" id="txtFaxNo" name="FaxNo" maxlength="10" onkeypress="return isNumberKey(event)" value="@Model.FaxNo">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="Website">@LanguageProvider.get("website"):</label>
+                                            <input type="text" tabindex="19" class="form-control" id="txtWebsite" name="Website" placeholder="@LanguageProvider.get("website")" value="@Model.Website">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="EmailId1">@LanguageProvider.get("EmailAdd1"):<span class="requird-fild-str"> * </span></label>
+                                            <input type="text" tabindex="20" class="form-control required" id="txtEmailId1" name="EmailId1" placeholder="@LanguageProvider.get("EmailAdd1")" value="@Model.EmailId1">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="uname">@LanguageProvider.get("EmailAdd2"):</label>
+                                            <input type="text" tabindex="21" class="form-control" id="txtEmailId2" name="EmailId2" placeholder="@LanguageProvider.get("EmailAdd2")" value="@Model.EmailId2">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="BusiRegNo">@LanguageProvider.get("RegNo"):</label>
+                                            <input type="text" tabindex="22" class="form-control" id="txtBusiRegNo" name="BusiRegNo" placeholder="@LanguageProvider.get("RegNo")" value="@Model.BusiRegNo">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="WeChatId">@LanguageProvider.get("wechatid"):</label>
+                                            <input type="text" tabindex="23" class="form-control" id="txtWeChatId" name="WeChatId" placeholder="@LanguageProvider.get("wechatid")" value="@Model.WeChatId">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="SkypeId">@LanguageProvider.get("Skype"):</label>
+                                            <input type="text" tabindex="24" class="form-control" id="txtSkypeId" name="SkypeId" placeholder="@LanguageProvider.get("Skype")" value="@Model.SkypeId">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label for="RapId">@LanguageProvider.get("RapId"): </label>
+                                            <input type="text" tabindex="25" class="form-control" id="txtRapId" name="RapId" placeholder="@LanguageProvider.get("RapId")" value="@Model.RapId">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label></label>
+                                            <input type="text" tabindex="25" class="form-control " style="display:none;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+<div id="errorModal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">@LanguageProvider.get("validation")</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="diverror">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">@LanguageProvider.get("close")</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/Plugins/jqueryUI/jquery-ui.js"></script>
+    <script src="~/Content/js/Pages/MyAccount.js"></script>
+}

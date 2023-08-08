@@ -1,0 +1,234 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = "Message Master";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .ui-menu {
+        width: 434.328px !important;
+    }
+
+        .ui-menu .ui-menu-item {
+            width: 415.328px !important;
+        }
+
+    .autocomplete {
+        position: relative;
+        display: inline-block;
+    }
+
+    .g-head-t {
+        font-size: 12px;
+        padding: 0 12px;
+        color: grey;
+    }
+
+    .g-amt-t {
+        font-size: 15px;
+        padding: 0 12px;
+        color: #003d66;
+        font-weight: 700;
+    }
+
+    .spn-Yes1 {
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 0px 5px 0px 5px;
+        font-size: 10px;
+        font-weight: 600;
+        background: #28a745;
+        color: white;
+    }
+
+    .spn-No1 {
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 0px 5px 0px 5px;
+        font-size: 10px;
+        font-weight: 600;
+        background: #ef0808;
+        color: white;
+    }
+
+    .disabled {
+        cursor: not-allowed;
+    }
+
+    .btn-spn-opt:hover {
+        background-color: #80808017;
+        border: 1px solid #003d66;
+    }
+
+    .btn-spn-opt {
+        border: 1px solid #e5e5e5;
+        border-radius: 28px;
+        padding: 5px 15px;
+        float: left;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        transition-duration: 0.3s;
+        -webkit-transition: 0.3s;
+        cursor: pointer;
+        font-size: 11px;
+        white-space: nowrap;
+        font-weight: 600;
+        background: #fff;
+        color: #003d66;
+        position: relative;
+        z-index: 0;
+        overflow: hidden;
+        margin-top: 5px;
+    }
+
+    .btn-spn-opt-active {
+        color: #fff !important;
+        background-color: #003d66 !important;
+    }
+
+    .pwd_field {
+        -webkit-text-security: disc;
+    }
+</style>
+
+<input type="hidden" id="hdnMsgId" />
+<div class="container-fluid order-history-section">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2 id="h2Title">Message Master</h2>
+                <h2 id="h2AddTitle" style="display: none;">Message Master <label style="color:#808080bd;font-size: 14px;">(Add)</label></h2>
+                <h2 id="h2EditTitle" style="display:none;">Message Master <label style="color:#808080bd;font-size: 14px;">(Edit)</label></h2>
+            </div>
+        </div>
+    </div>
+    <div class="Filters admin GidData" style="margin-top: -30px;">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-2 pt-2">
+            <ul class="offer-inbtn pull-right mrtop">
+                <li>
+                    <button class="offer-btn" onclick="AddNew()"><i class="fa fa-plus" aria-hidden="true"></i>Add New</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="aggrid-section GidData">
+        <div class="row">
+            <div class="col-xl-12">
+                <div id="myGrid" style="width: 100%;margin-bottom: -90px;" class="ag-theme-balham">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="divAddNew" style="display:none;">
+        <div class="col-12">
+            <div class="myoffer-form full-acform mt-0">
+                <div class="row">
+                    <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12">
+                        <div class="row fl-sec-form">
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-4">
+                                <div class="offer-label">Message Name:<span class="reqvalidation"> * </span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-8">
+                                <div class="dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input tabindex="1" type="text" id="txtMessageName" name="txtMessageName" class="form-control" autocomplete="off" maxlength="100" />
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-4">
+                                <div for="ChkLogout" class="offer-label">
+                                    <label for="ChkLogout" style="cursor: pointer;">Log Out Compulsary</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-8" style="margin-right: -10px;">
+                                <div class="dash-newarrival-select-main text-left w-100 ml-0" style="margin-top: 6px;">
+                                    <input tabindex="2" class="onpristine onuntouched onvalid onempty chkBx" id="ChkLogout" name="ChkLogout" type="checkbox" value="IsLogout" style="cursor: pointer;">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-4">
+                                <div for="ChkActive" class="offer-label">
+                                    <label for="ChkActive" style="cursor: pointer;">Active</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-8" style="margin-right: -10px;">
+                                <div class="dash-newarrival-select-main text-left w-100 ml-0" style="margin-top: 6px;">
+                                    <input tabindex="3" class="onpristine onuntouched onvalid onempty chkBx" id="ChkActive" name="ChkActive" type="checkbox" value="IsActive" style="cursor: pointer;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12">
+                        <div class="row fl-sec-form">
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-1">
+                                <div class="offer-label">Message:<span class="reqvalidation"> * </span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-11">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <textarea type="text" tabindex="4" class="form-control" id="txtMessage" placeholder="Message" name="txtMessage" maxlength="2000" rows="5" cols="10"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-2 pt-2">
+                                <ul class="offer-inbtn pull-right mrtop">
+                                    <li>
+                                        <button id="btnSave" type="button" onclick="Save()" tabindex="17" class="offer-btn">
+                                            <i class="fa fa-floppy-o" aria-hidden="true"></i>Save
+                                        </button>
+                                    </li>
+                                    <li id="btBack">
+                                        <button onclick="Back()" tabindex="19" class="offer-btn">
+                                            <i class="fa fa-undo" aria-hidden="true"></i>Back
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade social-model" id="ErrorModel">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Validation</h4>
+                <button type="button" class="close" onclick="ErroClearRemoveModel()">&times;</button>
+            </div>
+            <div class="modal-body">
+
+                <div id="divError">
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button id="btnremove" class="btn btn-primary" type="button" onclick="ErroClearRemoveModel()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade social-model" id="Remove">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Remove Message</h4>
+                <button type="button" class="close" onclick="ClearRemoveModel()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <li>@LanguageProvider.get("Are_you_sure_to_remove_this_record") </li>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnSendMail" class="btn btn-primary" type="button" onclick="Delete()">@LanguageProvider.get("Remove")</button>
+                <button id="btnremove" class="btn btn-primary" type="button" onclick="ClearRemoveModel()">@LanguageProvider.get("cancel")</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/detailCellRenderer.js"></script>
+    <script src="~/Content/js/Pages/MessageMst.js"></script>
+}
