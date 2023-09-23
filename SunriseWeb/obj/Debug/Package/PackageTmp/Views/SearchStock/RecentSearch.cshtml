@@ -1,0 +1,53 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = LanguageProvider.get("Recent_Search");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+}
+<!--- start of search&result part---->
+<input type="hidden" id="hdn_Date" value="@LanguageProvider.get("date")" />
+<input type="hidden" id="hdn_Total_found" value="@LanguageProvider.get("Total_found")" />
+<input type="hidden" id="hdn_Criteria" value="@LanguageProvider.get("criteria")" />
+<input type="hidden" id="hdn_Show_result" value="@LanguageProvider.get("Show_result")" />
+
+<div class="container-fluid search_result viewcart-fluid">
+
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane active result-page-content viewcart-page-content" id="profile-tab2" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="result-nav">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                        <div class="viewcartdata-header savesearch">
+                            <h1>@LanguageProvider.get("Recent_Search")</h1>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="aggrid-section viewcart">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <!---- =============== start ag-grid =============== ---->
+
+
+                        <div id="myGrid" style="width: 100%;height:500px;" class="ag-theme-balham">
+
+                        </div>
+
+
+                        <!---- =============== end ag-grid ================= ----->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--- end of search&result part---->
+@section scripts{
+    @*<script src="~/Content/Plugins/jqueryUI/jquery-ui.js"></script>*@
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/RecentSearch.js"></script>
+}

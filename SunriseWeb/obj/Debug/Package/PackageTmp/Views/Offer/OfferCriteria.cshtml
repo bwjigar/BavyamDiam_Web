@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Offer Criteria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+}
+<style type="text/css">
+    .ag-paging-page-summary-panel {
+        left: 10px;
+        position: relative;
+    }
+</style>
+
+
+<div class="container-fluid order-history-section">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>Offer Criteria</h2>
+            </div>
+        </div>
+    </div>
+    <div class="order-history-data admin">
+        <form method="post" id="frmOfferCre">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                        <div class="order-date common-order">
+                            <div class="offer-label">Offer (%):</div>
+                            <input type="text" name="txtOfferPer" id="txtOfferPer" onkeypress="return isNumberKey(event)" autocomplete="off" value="" class="offer-input offer-input1" />
+                            <button type="button" id="btnSave" class="offer-btn pull-right">
+                                <i class="fa fa-save" aria-hidden="true"></i>Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/js/Pages/OfferCriteria.js"></script>
+}

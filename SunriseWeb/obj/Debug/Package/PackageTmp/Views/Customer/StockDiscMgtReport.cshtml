@@ -1,0 +1,93 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = "Stock & Disc Management Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+}
+<style>
+    .spn-Yes1 {
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 0px 5px 0px 5px;
+        font-size: 10px;
+        font-weight: 600;
+        background: #28a745;
+        color: white;
+    }
+
+    .spn-No1 {
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 0px 5px 0px 5px;
+        font-size: 10px;
+        font-weight: 600;
+        background: #ef0808;
+        color: white;
+    }
+</style>
+<input type="hidden" id="hdn_Remove" value="@LanguageProvider.get("Remove")" />
+<input type="hidden" id="hdnDelId" value="0" />
+<div class="container-fluid order-history-section">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>Stock & Disc Management Report</h2>
+            </div>
+        </div>
+    </div>
+    <div class="order-history-data admin muser">
+        <form id="frm">
+            <div class="col-xl-5 col-lg-5 col-md-7 col-sm-6 col-12 float-left pl-2 pr-2">
+                <div class="common-order">
+                    <div class="offer-label">User Name:</div>
+                    <input type="text" id="txtCommonName" class="form-control common-control" placeholder="Customer Name / Company Name / User Name">
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-7 col-md-7 col-sm-6 col-12 float-left">
+                <ul class="offer-inbtn p-0 mb-2">
+                    <li>
+                        <button type="button" id="btnSearch" class="offer-btn"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+                    </li>
+                    <li>
+                        <button type="button" id="btnReset" class="offer-btn"><i class="fa fa-refresh" aria-hidden="true"></i>Reset</button>
+                    </li>
+                    <li>
+                        <button type="button" id="btnSearch" onclick="ExcelGet();" class="offer-btn">
+                            <i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;Excel
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </form>
+    </div>
+    <div class="aggrid-section">
+        <div id="myGrid" style="width: 100%; height: 400px;" class="ag-theme-balham">
+        </div>
+    </div>
+</div>
+<div class="modal fade social-model" id="Remove">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Remove Filter</h4>
+                <button type="button" class="close" onclick="ClearRemoveModel()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <li>@LanguageProvider.get("Are_you_sure_to_remove_this_record") </li>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnSendMail" class="btn btn-primary" type="button" onclick="RemoveDisc()">@LanguageProvider.get("Remove")</button>
+                <button id="btnremove" class="btn btn-primary" type="button" onclick="ClearRemoveModel()">@LanguageProvider.get("cancel")</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/common.js"></script>
+    <script src="~/Content/js/Pages/detailCellRenderer.js"></script>
+    <script src="~/Content/js/Pages/StockDiscMgtReport.js?version=1.1"></script>
+}

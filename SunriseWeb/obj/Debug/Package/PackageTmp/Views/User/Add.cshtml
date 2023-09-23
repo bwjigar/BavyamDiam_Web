@@ -1,0 +1,218 @@
+﻿@model SunriseWeb.Models.UserDetailsModel
+@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = "Add Admin";
+}
+
+@section styles{
+    <link href="~/Content/Plugins/jqueryUI/jquery-ui.css?version=1" rel="stylesheet" />
+    <style>
+        .ui-menu .ui-menu-item {
+            width: 362px !important;
+        }
+        .multiselect-native-select {
+            width: 100%;
+        }
+
+        .btn-group > .btn:first-child {
+            display: block;
+            width: 100%;
+            height: calc(2.25rem + 2px);
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            text-align: left;
+        }
+
+        .btn-group {
+            width: 100%;
+        }
+
+        .multiselect-container {
+            width: 100%;
+        }
+    </style>
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="dv-dsp-inblk bdr-btm pb-0">
+                <div class="main-header-page">
+                    <a href="">
+                        <h1> Add Admin </h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="myoffer-form full-acform mt-0">
+                <div class="row">
+                    <div class="col-12 mb-2 pb-2" style="border-bottom: 1px solid #ddd;">
+                        <ul class="offer-inbtn text-right">
+                            <li>
+                                <a href="@Url.Action("Manage","User")" class="offer-btn">@LanguageProvider.get("back")</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="row fl-sec-form">
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">@LanguageProvider.get("username"):<span class="reqvalidation"> * </span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input type="text" tabindex="1" class="form-control" id="UNAME" onblur="BlurClearEvent();" placeholder="@LanguageProvider.get("username")" name="fname" maxlength="50" value="@Model.UserName">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">@LanguageProvider.get("pwd"):<span class="reqvalidation"> * </span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input readonly onfocus="this.removeAttribute('readonly');" type="password" tabindex="2" class="form-control" placeholder="@LanguageProvider.get("pwd")" onblur="BlurClearEvent();" id="PASS" maxlength="50" value="@Model.Password">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">@LanguageProvider.get("active"):</div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <label class="cust-chk-bx text-left">
+                                        <input type="checkbox" name="checkbox-1" tabindex="3" id="chkActive" onchange="BlurClearEvent();" checked="@Model.IsActive">
+                                        <span class="cust-chkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">@LanguageProvider.get("usertype"):<span class="reqvalidation"> * </span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0 cust-main-select">
+                                    <select class="form-control MinWith input-sm" id="USERTYPE" tabindex="4" chosen="" onchange="BlurClearEvent();">
+                                        <option value="1">Admin</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">@LanguageProvider.get("fname"):<span class="reqvalidation"> * </span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input type="text" class="form-control" tabindex="5" placeholder="@LanguageProvider.get("fname")" id="FNAME" onblur="BlurClearEvent();" onkeypress="return AllowAlphabet(event)" name="fname" maxlength="100" value="@Model.FirstName">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">@LanguageProvider.get("lname"):<span class="reqvalidation"> * </span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input type="text" class="form-control " tabindex="6" placeholder="@LanguageProvider.get("lname")" id="LNAME" onblur="BlurClearEvent();" onkeypress="return AllowAlphabet(event)" name="lname" maxlength="100" value="@Model.LastName">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">Email Address:<span class="reqvalidation"> * </span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <input readonly onfocus="this.removeAttribute('readonly');" type="email" class="form-control " tabindex="7" placeholder="Email Address" id="EMAIL" onblur="BlurClearEvent();" maxlength="100" value="@Model.CompEmail">
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                                <div class="offer-label">Mobile No / WhatsApp No:<span class="reqvalidation"> * </span></div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                <div class=" dash-newarrival-select-main text-left w-100 ml-0">
+                                    <div class="d-flex">
+                                        <div class="regis-sml-inpt">
+                                            <input onkeyup="isdcode();" onclick="isdcode();" type="text" class="form-control  isdcode" placeholder="ISD Code" id="ISD_CompMobile1" value="+">
+                                            @*<div id="mobileSTDCode-error1" class="error"></div>*@
+                                        </div>
+                                        <input type="text" class="form-control" tabindex="8" placeholder="Mobile No / WhatsApp No" id="CompMobile1" name="lname" onblur="BlurClearEvent();" maxlength="14" onkeypress="return isNumberKey(event)" value="@( !string.IsNullOrEmpty(Model.CompMobile)?  Model.CompMobile.Substring(Model.CompMobile.LastIndexOf('-') + 1, Model.CompMobile.Length - (Model.CompMobile.LastIndexOf('-') + 1)):"")">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-2 pt-2" style="border-top:1px solid #ddd;">
+                                <ul class="offer-inbtn pull-right mrtop">
+                                    <li>
+                                        <button onclick="SaveCompanyUser()" tabindex="9" class="offer-btn">@LanguageProvider.get("save")</button>
+                                    </li>
+                                    <li>
+                                        <button onclick="Clear()" tabindex="10" class="offer-btn">@LanguageProvider.get("reset")</button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <input type="hidden" id="hdnCityCode" />
+                            <input type="hidden" id="hdnCountryCode" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--------------ErrorMesss------------->
+<div class="modal fade social-model" id="ErrorModel">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@LanguageProvider.get("validation")</h4>
+                <button type="button" class="close" onclick="ErroClearRemoveModel()">&times;</button>
+            </div>
+            <div class="modal-body">
+
+                <div id="divError">
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button id="btnremove" class="btn btn-primary" type="button" onclick="ErroClearRemoveModel()">@LanguageProvider.get("ok")</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/Plugins/jqueryUI/jquery-ui.js"></script>
+    <script src="~/Content/js/Pages/AddUser.js"></script>
+    <link href="~/Content/Plugins/multiselect/bootstrap-multiselect.css" rel="stylesheet" />
+    <script src="~/Content/Plugins/multiselect/bootstrap-multiselect.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#ddlSupplier').multiselect({
+                includeSelectAllOption: true, numberDisplayed: 1
+
+            });
+        });
+        isdcode();
+        var SupplierIdLst = "@Model.SupplierIdLst";
+        if (SupplierIdLst != null && SupplierIdLst != "") {
+
+            var values = SupplierIdLst;
+                 $.each(values.split(","), function (i, e) {
+                     $("#ddlSupplier option[value='" + e + "']").prop("selected", true);
+                  });
+              }
+    </script>
+}

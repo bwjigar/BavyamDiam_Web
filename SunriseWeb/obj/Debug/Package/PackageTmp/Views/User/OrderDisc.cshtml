@@ -1,0 +1,135 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = "Scheme Disc";
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+    <style type="text/css">
+            .contnt {
+                padding-bottom: 5px;
+            }
+
+            .offer-input2 {
+                width: 200px;
+            }
+
+            .avatar-upload .avatar-edit {
+                right: 10px;
+            }
+
+            @@media (max-width: 543px) {
+                .offer-input1 {
+                    width: 105px;
+                }
+            }
+
+            @@media (width: 768px) {
+                .avatar-upload .avatar-edit {
+                    right: 45px;
+                    top: 36px;
+                }
+            }
+
+            @@media (max-width: 450px) {
+                .avatar-upload .avatar-edit {
+                    right: 83px;
+                    top: 36px;
+                }
+
+                .avatar-upload {
+                    margin: 0px;
+                }
+            }
+    </style>
+}
+
+<div class="container-fluid order-history-section">
+    <div class="result-nav">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="order-title">
+                    <h2>Scheme Disc</h2>
+                </div>
+            </div>
+        </div>
+        <div class="order-history-data admin">
+            <form id="frm">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                    <div class="order-date common-order">
+                        <div class="offer-label">Date<span class="error">*</span></div>
+                        <input required type="text" name="From" id="txtFromDate" value="" class="offer-input offer-input1" autocomplete="off" />
+                        <input required type="text" name="To" id="txtToDate" value="" class="offer-input offer-input1" autocomplete="off" />
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                    <div class="order-date common-order">
+                        <div class="offer-label">Type<span class="error">*</span></div>
+                        <select required id="ddlType" name="ddlType" class="offer-input offer-input1">
+                            <option value="Discount">Discount</option>
+                            <option value="Value">Value</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                    <div class="order-date common-order">
+                        <div id="lblval" class="offer-label">Discount<span class="error">*</span></div>
+                        <input required type="number" name="txtVal" id="txtVal" value="" class="offer-input offer-input1" autocomplete="off" min="-100" max="100" />
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                    <ul class="offer-inbtn mrtop mt-2 mb-2 float-left p-0">
+                        <li>
+                            <button id="btnSave" type="button" class="offer-btn"><i class="fa fa-save" aria-hidden="true"></i>Save</button>
+                        </li>
+                        <li>
+                            <button id="btnReset" type="button" class="offer-btn"><i class="fa fa-refresh" aria-hidden="true"></i>Reset</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-12 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                    <div class="offer-label mr-4" style="color:red;">Discount: 32.75<br>1) 32.75 + 2 = 34.75<br>2) 32.75 - 2 = 30.75</div>
+                    <div class="offer-label mr-4" style="color:red;">Discount: -32.75<br>3) -32.75 + 2 = -30.75<br>4) -32.75 - 2 = -34.75</div>
+                    <div class="offer-label" style="color:red;">Value: 100<br>5) 100 + 1% = 101<br>6) 100 - 1% = 99</div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="aggrid-section">
+        <div class="row">
+            <div class="col-xl-12">
+                <!---- =============== start ag-grid =============== ---->
+                <div id="myGrid" style="width: 100%;" class="ag-theme-balham">
+                </div>
+                <!---- =============== end ag-grid ================= ----->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade social-model" id="Remove">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Remove Scheme Disc</h4>
+                <button type="button" class="close" onclick="ClearRemoveModel()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <li>@LanguageProvider.get("Are_you_sure_to_remove_this_record") </li>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnSendMail" class="btn btn-primary" type="button" onclick="Delete()">@LanguageProvider.get("Remove")</button>
+                <button id="btnremove" class="btn btn-primary" type="button" onclick="ClearRemoveModel()">@LanguageProvider.get("cancel")</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/Pages/OrderDisc.js"></script>
+    <script type="text/javascript">
+        function getApiUrl() {
+            return '@System.Configuration.ConfigurationManager.AppSettings["APIURL"]';
+        }
+    </script>
+}

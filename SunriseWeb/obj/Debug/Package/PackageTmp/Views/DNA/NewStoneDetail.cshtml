@@ -1,0 +1,1832 @@
+﻿@model Lib.Models.SearchStone
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Stone Detail</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="~/Content/css/StoneDetail/bootstrap.min.css">
+    <!-- font-awesome CSS -->
+    <link href="~/Content/css/StoneDetail/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/css/StoneDetail/enlarge.css" rel="stylesheet">
+    <link href="~/Content/css/StoneDetail/magnific-popup.css" rel="stylesheet">
+    <link href="~/Content/Plugins/toastr/toastr.css" rel="stylesheet" />
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="~/Content/css/StoneDetail/style.css">
+
+    <style>
+        .jb-video-iframe {
+            margin-top: -47px;
+        }
+
+        .loading-overlay {
+            display: none;
+            background: rgba( 26, 26, 26, 0.7 );
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            top: 0;
+        }
+
+        .loading-overlay-image-container {
+            display: none;
+            position: fixed;
+            z-index: 7;
+            top: 50%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+        }
+
+        .loading-overlay-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+
+        .Multidown {
+            display: inline-block;
+            border-radius: 5px;
+            margin: 10px 0px;
+            position: relative;
+            background: #003d66;
+            padding: 7px 10px;
+            color: #fff !important;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+
+        .Multidown-item {
+            display: block;
+            width: 100%;
+            padding: .25rem 1.5rem;
+            clear: both;
+            font-weight: 400;
+            color: #212529;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+            cursor: pointer;
+        }
+
+        .dropdown-menu a:hover {
+            color: white;
+            background-color: #003d66;
+            text-decoration: none;
+        }
+
+        #a {
+            width: 500px;
+        }
+
+
+
+        .Down_divider {
+            margin: 1px 0px -3px 0px;
+        }
+
+
+        body {
+            padding: 1%;
+            /*font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;*/
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .box1, .box2 {
+            /*float: left;*/
+            /*width: 50%;*/
+            color: white;
+            padding: 10px;
+            height: 500px;
+            text-align: center;
+        }
+
+        .box3 {
+            /*float: left;*/
+            /*width: 100%;*/
+            color: white;
+            padding: 10px;
+            height: 580px;
+            text-align: center;
+        }
+
+        .box4, .box5 {
+            /*float: left;*/
+            /*width: 50%;*/
+            color: white;
+            padding: 10px;
+            height: 565px;
+            text-align: center;
+        }
+
+        .box1, .box2, .box3, .box4, .box5 {
+            border-top: 2px solid #003d6624;
+            border-bottom: 2px solid #003d6624;
+            border-left: 2px solid #003d6624;
+            border-right: 2px solid #003d6624;
+            background: none !important;
+            color: black;
+        }
+
+
+
+        .container:after {
+            clear: both;
+        }
+
+        .stonedet {
+            width: 49%;
+        }
+
+        .stonedet-1 {
+            width: 23%;
+        }
+
+        .stonedet-dash {
+            width: 2%;
+        }
+
+        .st-al-le {
+            float: left;
+        }
+
+        .st-al-ri {
+            float: right;
+            /*text-shadow: 1px 10px 44px #003d66, 0 0 14em white, 0 0 1.2em #dbe4e9;
+            color: black;
+            font: 1em "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;*/
+        }
+
+        .dropbtn {
+            background-color: white;
+            color: #003d66;
+            padding: 6px;
+            font-size: 13px;
+            border: none;
+            font-weight: 500;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 121px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            font-size: 15px;
+            margin-top: -9px;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 1px 1px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #003d66;
+                    color: white;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #dbe4e9;
+        }
+
+        table {
+            max-width: 100%;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #003d660d;
+        }
+
+        th {
+            background-color: #555;
+            color: #fff;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 0.1em 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay"></div>
+    <div class="loading-overlay-image-container">
+        <img src="~/Content/images/loader.gif" class="loading-overlay-img" />
+    </div>
+    @if (Model != null)
+    {
+        <input type="hidden" id="hdnStoneRefNo" value="@Model.stone_ref_no" />
+        <input type="hidden" id="hdn_IsOverseas" value="@Model.IsOverseas" />
+
+        if (Model.bPRimg != null && Model.bPRimg.Value == true)
+        {
+            <input type="hidden" id="hdnbPRimg" value="true" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnbPRimg" value="" />
+        }
+
+        if (Model.bHBimg != null && Model.bHBimg.Value == true)
+        {
+            <input type="hidden" id="hdnbHBimg" value="true" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnbHBimg" value="" />
+        }
+
+        if (Model.bHTimg != null && Model.bHTimg.Value == true)
+        {
+            <input type="hidden" id="hdnbHTimg" value="true" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnbHTimg" value="" />
+        }
+
+        if (Model.bASimg != null && Model.bASimg.Value == true)
+        {
+            <input type="hidden" id="hdnbASimg" value="true" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnbASimg" value="" />
+        }
+
+        <input type="hidden" id="hdnMovieUrl" value="@Model.movie_url" />
+        <input type="hidden" id="hdnViewCertiUrl" value="@Model.view_certi_url" />
+        <input type="hidden" id="hdnCertiNo" value="@Model.certi_no" />
+
+        if (Model.sImglink != null && Model.sImglink != "")
+        {
+            <input type="hidden" id="hdnOSImglink" value="@Model.sImglink" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOSImglink" value="" />
+        }
+        if (Model.sVdoLink != null && Model.sVdoLink != "")
+        {
+            <input type="hidden" id="hdnOSVdoLink" value="@Model.sVdoLink" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOSVdoLink" value="" />
+        }
+    }
+    else
+    {
+        <input type="hidden" id="hdnStoneRefNo" value="" />
+        <input type="hidden" id="hdnbPRimg" value="" />
+        <input type="hidden" id="hdnbHBimg" value="" />
+        <input type="hidden" id="hdnbHTimg" value="" />
+        <input type="hidden" id="hdnbASimg" value="" />
+        <input type="hidden" id="hdnMovieUrl" value="" />
+        <input type="hidden" id="hdnViewCertiUrl" value="" />
+        <input type="hidden" id="hdnCertiNo" value="" />
+        <input type="hidden" id="hdnOSImglink" value="" />
+        <input type="hidden" id="hdnOSVdoLink" value="" />
+    }
+
+    @if (Model != null && Model.IsOverseas == 1)
+    {
+
+        if (Model.pointer != null && Model.pointer != "")
+        {
+            <input type="hidden" id="hdnOS_Pointer" value="@Model.pointer" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Pointer" value="" />
+        }
+        if (Model.shape != null && Model.shape != "")
+        {
+            <input type="hidden" id="hdnOS_Shape" value="@Model.shape" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Shape" value="" />
+        }
+        if (Model.stone_ref_no != null && Model.stone_ref_no != "")
+        {
+            <input type="hidden" id="hdnOS_stone_ref_no" value="@Model.stone_ref_no" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_stone_ref_no" value="" />
+        }
+        if (Model.color != null && Model.color != "")
+        {
+            <input type="hidden" id="hdnOS_Color" value="@Model.color" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Color" value="" />
+        }
+        if (Model.polish != null && Model.polish != "")
+        {
+            <input type="hidden" id="hdnOS_Polish" value="@Model.polish" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Polish" value="" />
+        }
+        if (Model.clarity != null && Model.clarity != "")
+        {
+            <input type="hidden" id="hdnOS_Clarity" value="@Model.clarity" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Clarity" value="" />
+        }
+        if (Model.symbol != null && Model.symbol != "")
+        {
+            <input type="hidden" id="hdnOS_symbol" value="@Model.symbol" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_symbol" value="" />
+        }
+        if (Model.symbol != null && Model.symbol != "")
+        {
+            <input type="hidden" id="hdnOS_Symm" value="@Model.symbol" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Symm" value="" />
+        }
+        if (Model.fls != null && Model.fls != "")
+        {
+            <input type="hidden" id="hdnOS_Fls" value="@Model.fls" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Fls" value="" />
+        }
+        if (Model.Location != null && Model.Location != "")
+        {
+            <input type="hidden" id="hdnOS_Location" value="@Model.Location" />
+        }
+        else
+        {
+            <input type="hidden" id="hdnOS_Location" value="" />
+        }
+    }
+
+
+    <div id="DivContainer" class="" style="max-width: 1244px;width: 100%;padding-right: 15px;padding-left: 15px;margin-right: auto;margin-left: auto;">
+        <div style="text-align: center;color: white;font-size: 31px;background: #003d66;margin: -5px -10px -4px;">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="dropdown" style="float:left;padding: 5px 11px 0px 25px;" id="ddl_share">
+                        <button class="dropbtn" style="margin-bottom: 10px;">SHARE</button>
+                        <div class="dropdown-content ddl-share">
+
+                            @if (Model != null && Model.IsOverseas == 1)
+                            {
+                                if (Model.sImglink != "" && Model.sImglink != null)
+                                {
+                                    <a href="javascript:void(0);" onclick="openpopup('image')">Image</a>
+                                }
+                            }
+                            else
+                            {
+                                if (Model != null &&
+                                (Model.bPRimg == true || Model.bHBimg == true || Model.bHTimg == true || Model.bASimg == true))
+                                {
+                                    <a href="javascript:void(0);" onclick="openpopup('image')">Image</a>
+                                }
+                            }
+
+                            @if (Model != null && Model.IsOverseas == 1)
+                            {
+                                if (Model.sVdoLink != "" && Model.sVdoLink != null)
+                                {
+                                    <a href="javascript:void(0);" onclick="openpopup('video')">Video</a>
+                                }
+                            }
+                            else
+                            {
+                                if (Model != null && (Model.movie_url != null && Model.movie_url != ""))
+                                {
+                                    <a href="javascript:void(0);" onclick="openpopup('video')">Video</a>
+                                }
+                            }
+
+                            @if (Model.view_certi_url != null && Model.view_certi_url != "")
+                            {
+                                <a href="javascript:void(0);" onclick="openpopup('certi')">Certificate</a>
+                            }
+
+                            @if (Model != null && Model.IsOverseas == 1)
+                            {
+                                if (Model.sImglink != null && Model.sVdoLink != null && Model.sImglink != "" && Model.sVdoLink != "")
+                                {
+                                    <a href="javascript:void(0);" onclick="openpopup('All')">All</a>
+                                }
+                            }
+                            else
+                            {
+                                if (Model != null &&
+                                (Model.bPRimg == true || Model.bHBimg == true || Model.bHTimg == true || Model.bASimg == true || Model.movie_url != null && Model.movie_url != "" && Model.view_certi_url != null && Model.view_certi_url != ""))
+                                {
+                                    <a href="javascript:void(0);" onclick="openpopup('All')">All</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4" style="padding: 8px;">
+                    <span>@Model.stone_ref_no</span>
+                </div>
+                <div class="col-sm-4">
+                    <div class="dropdown" style="float:right;padding: 5px 22px 4px 25px;" id="ddl_download">
+                        <button class="dropbtn" style="margin-bottom: 10px;">DOWNLOAD</button>
+                        <div class="dropdown-content ddl-download">
+
+                            @if (Model != null && Model.IsOverseas == 1)
+                            {
+                                if (Model.sImglink != "" && Model.sImglink != null)
+                                {
+                                    @*<a href="javascript:void(0);" onclick="OverSeasExcelDownload('Image')" class="Multidown-item">Image</a>
+                                        <div class="dropdown-divider Down_divider"></div>*@
+                                }
+                            }
+                            else
+                            {
+                                if (Model != null &&
+                                (Model.bPRimg == true || Model.bHBimg == true || Model.bHTimg == true || Model.bASimg == true))
+                                {
+                                    <a href="javascript:void(0);" onclick="Download('Image')">Image</a>
+                                }
+                            }
+
+                            @if (Model != null && Model.IsOverseas == 1)
+                            {
+                                if (Model.sVdoLink != "" && Model.sVdoLink != null)
+                                {
+                                    @*<a id="aOS_Video" href="javascript:void(0);" onclick="OverSeasExcelDownload('Video')" class="Multidown-item">Video</a>
+                                        <div class="dropdown-divider Down_divider"></div>*@
+                                }
+                            }
+                            else
+                            {
+                                if (Model != null &&
+                                (Model.movie_url != null && Model.movie_url != ""))
+                                {
+                                    <a href="javascript:void(0);" onclick="Download('Video')">Video</a>
+                                }
+                            }
+
+                            @if (Model != null && Model.IsOverseas == 0)
+                            {
+                                if (Model.view_certi_url != "" && Model.view_certi_url != null)
+                                {
+                                    <a href="javascript:void(0);" onclick="Download('Certificate')">Certificate</a>
+                                }
+                            }
+                            @if (Model != null && Model.IsOverseas == 0)
+                            {
+                                <a href="javascript:void(0);" onclick="Download('Excel')">Excel</a>
+                            }
+                            else
+                            {
+                                @*<a href="javascript:void(0);" onclick="OverSeasExcelDownload('Excel')" class="Multidown-item">Excel</a>*@
+                            }
+
+
+                            @if (Model != null && Model.IsOverseas == 1)
+                            {
+                                if (Model != null && (Model.sImglink != null || Model.sVdoLink != null || Model.sImglink != "" || Model.sVdoLink != ""))
+                                {
+                                    @*<div class="dropdown-divider Down_divider"></div>
+                                        <a href="javascript:void(0);" onclick="OverSeasExcelDownload('All')" class="Multidown-item">All</a>*@
+                                }
+                            }
+                            else
+                            {
+                                if (Model != null &&
+                                (Model.bPRimg == true || Model.bHBimg == true || Model.bHTimg == true || Model.bASimg == true || Model.movie_url != null && Model.movie_url != "" && Model.view_certi_url != null && Model.view_certi_url != ""))
+                                {
+                                    <a href="javascript:void(0);" onclick="Download('All')">All</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6" style="padding: 10px 5px 5px 5px;">
+                <div class="box1 contnt search-contnt search-page-content offersearch">
+                    <center>
+                        <div class="tab-content" style="width: 377px;">
+                            @if (Model != null && Model.IsOverseas == 0)
+                            {
+                                if (Model != null &&
+                                (Model.bPRimg == true || Model.bHBimg == true || Model.bHTimg == true || Model.bASimg == true))
+                                {
+                                    if (Model.bPRimg == true)
+                                    {
+                                        <div class="stone-big-img tab-pane active" id="PR_@(Model.certi_no)_PR">
+                                            <div class="enlarge_pane_contain">
+                                                <div class="enlarge_pane">
+                                                    <div class="enlarge">
+                                                        <div class="enlarge_contain">
+                                                            <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/PR.jpg">
+                                                        </div>
+                                                        <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/PR.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                    </div>
+                                                    <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/PR.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                    if (Model.bASimg == true)
+                                    {
+                                        if (Model.bPRimg == false)
+                                        {
+                                            <div class="stone-big-img tab-pane active" id="AS_@(Model.certi_no)_AS">
+                                                <div class="enlarge_pane_contain">
+                                                    <div class="enlarge_pane">
+                                                        <div class="enlarge">
+                                                            <div class="enlarge_contain">
+                                                                <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg">
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                        </div>
+                                                        <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="stone-big-img tab-pane fade" id="AS_@(Model.certi_no)_AS">
+                                                <div class="enlarge_pane_contain">
+                                                    <div class="enlarge_pane">
+                                                        <div class="enlarge">
+                                                            <div class="enlarge_contain">
+                                                                <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg">
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                        </div>
+                                                        <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    }
+                                    if (Model.bHBimg == true)
+                                    {
+                                        if (Model.bASimg == false && Model.bPRimg == false)
+                                        {
+                                            <div class="stone-big-img tab-pane active" id="HB_@(Model.certi_no)_HB">
+                                                <div class="enlarge_pane_contain">
+                                                    <div class="enlarge_pane">
+                                                        <div class="enlarge">
+                                                            <div class="enlarge_contain">
+                                                                <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg">
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                        </div>
+                                                        <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="stone-big-img tab-pane fade" id="HB_@(Model.certi_no)_HB">
+                                                <div class="enlarge_pane_contain">
+                                                    <div class="enlarge_pane">
+                                                        <div class="enlarge">
+                                                            <div class="enlarge_contain">
+                                                                <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg">
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                        </div>
+                                                        <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                    if (Model.bHTimg == true)
+                                    {
+                                        if (Model.bASimg == false && Model.bPRimg == false && Model.bHBimg == false)
+                                        {
+                                            <div class="stone-big-img tab-pane active" id="HT_@(Model.certi_no)_HT">
+                                                <div class="enlarge_pane_contain">
+                                                    <div class="enlarge_pane">
+                                                        <div class="enlarge">
+                                                            <div class="enlarge_contain">
+                                                                <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg">
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                        </div>
+                                                        <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="stone-big-img tab-pane fade" id="HT_@(Model.certi_no)_HT">
+                                                <div class="enlarge_pane_contain">
+                                                    <div class="enlarge_pane">
+                                                        <div class="enlarge">
+                                                            <div class="enlarge_contain">
+                                                                <img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg">
+                                                            </div>
+                                                            <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg" class="enlarge_btn" title="Toggle Zoom"></a>
+                                                        </div>
+                                                        <a href="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg" title="" class="img-zoom"><i class="fa fa-expand" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="stone-big-img tab-pane active">
+                                        <div class="enlarge_pane_contain">
+                                            <div class="enlarge_pane">
+                                                <div class="">
+                                                    <div class="enlarge_contain">
+                                                        <img src="~/Content/images/No_Image_Available.jpg">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            else if (Model != null && Model.IsOverseas == 1)
+                            {
+                                if (Model.sImglink != null && Model.sImglink != "")
+                                {
+
+                                    @*<div id="divOSImage"></div>*@
+                                    @*<b style="color: #1c2f7a; ">Stone Image Link : </b><a href="@Model.sImglink&amp;resize=450" target="_blank" style="color: #1c2f7a;">Click Here...</a>*@
+                                    <iframe frameborder="0" id="image1" src="@Model.sImglink&amp;resize=350" style="text-align: center; width: 100%; height: 400px;"></iframe>
+                                }
+                                else
+                                {
+                                    <div class="stone-big-img tab-pane active">
+                                        <div class="enlarge_pane_contain">
+                                            <div class="enlarge_pane">
+                                                <div class="">
+                                                    <div class="enlarge_contain">
+                                                        <img src="~/Content/images/No_Image_Available.jpg">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        @if (Model != null && Model.IsOverseas == 0)
+                        {
+                            if (Model != null &&
+                            (Model.bPRimg == true || Model.bHBimg == true || Model.bHTimg == true || Model.bASimg == true))
+                            {
+                                <div class="stone-det-big-img">
+                                    <div class="dna-images">
+                                        <ul class="nav nav-tabs">
+                                            @if (Model.bPRimg == true)
+                                            {
+                                                <li class="">
+                                                    <a id="one" data-toggle="tab" href="#PR_@(Model.certi_no)_PR" class="nav-link active"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/PR.jpg"></a>
+                                                </li>
+                                            }
+                                            @if (Model.bASimg == true)
+                                            {
+                                                <li class="">
+                                                    @if (Model.bPRimg == false)
+                                                    {
+                                                        <a id="two" data-toggle="tab" href="#AS_@(Model.certi_no)_AS" class="nav-link active"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg"></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a id="two" data-toggle="tab" href="#AS_@(Model.certi_no)_AS" class="nav-link"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/AS.jpg"></a>
+                                                    }
+                                                </li>
+                                            }
+                                            @if (Model.bHBimg == true)
+                                            {
+                                                <li class="">
+                                                    @if (Model.bASimg == false && Model.bPRimg == false)
+                                                    {
+                                                        <a id="three" data-toggle="tab" href="#HB_@(Model.certi_no)_HB" class="nav-link active"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg"></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a id="three" data-toggle="tab" href="#HB_@(Model.certi_no)_HB" class="nav-link"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HB.jpg"></a>
+                                                    }
+                                                </li>
+                                            }
+                                            @if (Model.bHTimg == true)
+                                            {
+                                                <li class="">
+                                                    @if (Model.bASimg == false && Model.bPRimg == false && Model.bHBimg == false)
+                                                    {
+                                                        <a id="four" data-toggle="tab" href="#HT_@(Model.certi_no)_HT" class="nav-link active"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg"></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a id="four" data-toggle="tab" href="#HT_@(Model.certi_no)_HT" class="nav-link"><img src="https://4e0s0i2r4n0u1s0.com/img/@(Model.certi_no)/HT.jpg"></a>
+                                                    }
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </center>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 10px 5px 5px 5px;">
+                <div class="box2">
+                    <div class="video">
+                        @if (Model != null && Model.IsOverseas == 0)
+                        {
+                            if (Model.movie_url != null && Model.movie_url != "")
+                            {
+                                @*<b style="color: #1c2f7a; ">Stone Video Link : </b><a href="@Model.movie_url" target="_blank" style="color: #1c2f7a;">Click Here To Enlarge...</a>*@
+                                <iframe height="430" frameborder="0" id="video1" src="@Model.movie_url&amp;autoplay=1" style="text-align: center; width: 100%;"></iframe>
+                            }
+                            else
+                            {
+                                <img src="/Content/images/No_Video_Available.png" style="height: 296px;margin-top: -8px;width: 388px;">
+                            }
+                        }
+                        else if (Model != null && Model.IsOverseas == 1)
+                        {
+                            if (Model.sVdoLink != null && Model.sVdoLink != "")
+                            {
+                                @*<b style="color: #1c2f7a;">Stone Video Link : </b><a href="@Model.sVdoLink" target="_blank" style="color: #1c2f7a;">Click Here...</a>*@
+                                <iframe height="520" width="350" frameborder="0" id="video1" src="@Model.sVdoLink&amp;height=83&amp;autoplay=1" style="text-align: center;"></iframe>
+                            }
+                            else
+                            {
+                                <img src="/Content/images/No_Video_Available.png" style="height: 296px;margin-top: -8px;width: 388px;">
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" style="padding: 10px 5px 5px 5px;">
+                <div class="box3" style="margin-bottom: 10px;">
+                    @if (Model.view_certi_url != null && Model.view_certi_url != "")
+                    {
+                        <div class="stone-det-big-img p-0" ng-hide="CertDiv">
+                            @if (Model.IsOverseas == 0)
+                            {
+                                <iframe height="550" id="CertiFrame" width="50" frameborder="0" src="@Model.view_certi_url" style="text-align: center;width: 100%;"></iframe>
+                            }
+                            else if (Model.IsOverseas == 1)
+                            {
+                                if (Model.certi_type == "IMAGE")
+                                {
+                                    <img src="@Model.view_certi_url" />
+                                }
+                                else if (Model.certi_type == "PDF")
+                                {
+                                    <iframe id="CertiFrame" width="100%" height="600" frameborder="0" src="@Model.view_certi_url" style="text-align: center;width: 100%;"></iframe>
+                                }
+                            }
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="stone-det-big-img p-0" ng-hide="CertDiv">
+                            <img src="/Content/images/certificate-not-available.png">
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 10px 5px 5px 5px;">
+                <div class="box4">
+                    <div style="color: white;font-size: 17px;background: #003d66;">..... ADDITIONAL INFO .....</div>
+                    <center>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Stock ID</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.stone_ref_no}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Certi No</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.certi_no}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Location</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.Location}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Shape</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.shape}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Carat</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.cts}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Color</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.color}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Clarity</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.clarity}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Rap Price</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri" id="liRapPrice">
+                                            @if (Model != null)
+                                            {@Model.cur_rap_rate}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Rap Value</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri" id="liRapValue">
+                                            @if (Model != null)
+                                            {@Model.rap_amount}
+                                        </span>
+                                    </td>
+                                </tr>
+                                @if (@Model.iUserid != 0)
+                                {
+                                    <tr>
+                                        <td class="stonedet"><span class="st-al-le">Disc</span></td>
+                                        <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                        <td class="stonedet">
+                                            <span class="st-al-ri" style="color: red;">
+                                                @if (Model != null)
+                                                {@Model.sales_disc_per}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="stonedet"><span class="st-al-le">Total$</span></td>
+                                        <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                        <td class="stonedet">
+                                            <span class="st-al-ri" style="color: red;" id="liTotal">
+                                                @if (Model != null)
+                                                {@Model.net_amount}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                }
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Status</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri two">
+                                            @if (Model != null)
+                                            {@Model.status}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Cut</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.cut}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Polish</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.polish}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Symmetry</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.symm}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Fls</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.fls}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Table Black</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.table_natts}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Crown Black</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.Crown_Natts}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Table White</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.inclusion}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet"><span class="st-al-le">Crown White</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.Crown_Inclusion}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </center>
+                </div>
+            </div>
+            <div class="col-md-6" style="padding: 10px 5px 5px 5px;">
+                <div class="box5">
+                    <div style="color: white;font-size: 17px;background: #003d66;">..... PARAMETER INFO .....</div>
+                    <center>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Length</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.length}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Width</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.width}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Depth</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.depth}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Depth %</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.depth_per}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Table %</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.table_per}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Girdle %</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.girdle_per}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Girdle Type</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.girdle_type}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Crown Angle</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.crown_angle}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Crown Height</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.crown_height}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Pav Angle</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.pav_angle}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Pav Height</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.pav_height}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Culet</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.sCulet}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Lab</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.lab}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Inscription</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.sInscription}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">GIA Comments</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.sComments}
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="stonedet-1"><span class="st-al-le">Key to Symbols</span></td>
+                                    <td class="stonedet-dash"><div style="text-align:center;">:</div></td>
+                                    <td class="stonedet-1">
+                                        <span class="st-al-ri">
+                                            @if (Model != null)
+                                            {@Model.symbol}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </center>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="~/Content/js/StoneDetail/jquery.min.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <!-- Popper.JS -->
+    <script src="~/Content/js/StoneDetail/popper.min.js"></script>
+
+    <script src="~/Content/js/StoneDetail/enlarge.js"></script>
+    <script src="~/Content/js/StoneDetail/enlarge.init.js"></script>
+    <script src="~/Content/js/StoneDetail/init.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/Content/js/StoneDetail/bootstrap.min.js"></script>
+    <script src="~/Content/js/StoneDetail/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/js/StoneDetail/custom.js"></script>
+    <script src="~/Content/Plugins/toastr/toastr.js"></script>
+
+    <script>
+        var AllD = false;
+        var vars = [];
+        function OverSeasExcelDownload(type) {
+            if (type == "Excel") {
+                OverSeasExcel();
+            }
+            else if (type == "Image") {
+                OverSeasImage();
+            }
+            else if (type == "Video") {
+                OverSeasVideo();
+            }
+            else if (type == "All") {
+                AllD = true;
+                $('.loading-overlay-image-container').show();
+                $('.loading-overlay').show();
+
+                OverSeasImage();
+                OverSeasVideo();
+                OverSeasExcel();
+
+                $('.loading-overlay-image-container').hide();
+                $('.loading-overlay').hide();
+                AllD = false;
+            }
+        }
+        function OverSeasExcel() {
+            if (AllD == false) {
+                $('.loading-overlay-image-container').show();
+                $('.loading-overlay').show();
+            }
+
+            var sobj = {};
+            sobj.Clarity = $("#hdnOS_Clarity").val();
+            sobj.Color = $("#hdnOS_Color").val();
+            sobj.PageNo = 1;
+            sobj.Shape = $("#hdnOS_Shape").val();
+            sobj.StoneID = $("#hdnOS_stone_ref_no").val();
+            sobj.isAdmin = false;
+            sobj.isEmp = false;
+            sobj.keytosymbol = $("#hdnOS_symbol").val();
+            $.ajax({
+                url: "/Common/OverseasStockExcelDownload",
+                type: "POST",
+                data: { obj: sobj, tabNo: "1" },
+                success: function (data, textStatus, jqXHR) {
+                    if (AllD == false) {
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                    }
+                    if (data.indexOf('proper format') > -1) {
+                        toastr.warning(data);
+                    }
+                    else {
+                        location.href = data;
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            });
+        }
+        function OverSeasImage() {
+            if (getExtension(OverSeasExcelMediaURLGet('Image')) == "jpg") {
+                if (AllD == false) {
+                    $('.loading-overlay-image-container').show();
+                    $('.loading-overlay').show();
+                }
+                $.ajax({
+                    url: "/Common/OverseasDNAMediaDownloadByURLWithoutToken",
+                    type: "POST",
+                    data: { URL: OverSeasExcelMediaURLGet('Image'), Type: 'Image', StoneId: $("#hdnStoneRefNo").val() },
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.search('.zip') == -1) {
+                            toastr.warning(data);
+                        } else {
+                            location.href = data;
+                        }
+                        if (AllD == false) {
+                            $('.loading-overlay-image-container').hide();
+                            $('.loading-overlay').hide();
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                    }
+                });
+            }
+            else {
+                toastr.warning("Image is not .jpg format in this stone !");
+            }
+        }
+        function OverSeasVideo() {
+            if (getExtension(OverSeasExcelMediaURLGet('Video')) == "mp4") {
+                if (AllD == false) {
+                    $('.loading-overlay-image-container').show();
+                    $('.loading-overlay').show();
+                }
+                $.ajax({
+                    url: "/Common/OverseasDNAMediaDownloadByURLWithoutToken",
+                    type: "POST",
+                    data: { URL: OverSeasExcelMediaURLGet('Video'), Type: 'Video', StoneId: $("#hdnStoneRefNo").val() },
+                    success: function (data, textStatus, jqXHR) {
+                        if (data.search('.zip') == -1) {
+                            toastr.warning(data);
+                        } else {
+                            location.href = data;
+                        }
+                        if (AllD == false) {
+                            $('.loading-overlay-image-container').hide();
+                            $('.loading-overlay').hide();
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                    }
+                });
+            }
+            else {
+                toastr.warning("Video is not .mp4 format in this stone !");
+            }
+        }
+        function OverSeasExcelMediaURLGet(type) {
+            if (type == "Image") {
+                return $("#hdnOSImglink").val();
+                //if (getUrlVars($("#hdnOSImglink").val())["x"] == "A") {
+                //    return "http://diamondimages.co/Home/StoneDetail?ReportNo=" + getUrlVars($("#hdnOSImglink").val())["c"];
+                //}
+                //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "B") {
+                //    return "https://diamonds.kirangems.com:8080/imaged/imaged/" + getUrlVars($("#hdnOSImglink").val())["c"] + "/ still.jpg";
+                //}
+                //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "C") {
+                //    return "https://dna.stonehdfile.com/stoneimages/" + getUrlVars($("#hdnOSImglink").val())["s"] + ".jpg";
+                //}
+                //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "D") {
+                //    return "https://media.hdfiles.in:8520/HD4/imaged/" + getUrlVars($("#hdnOSImglink").val())["s"] + "/still.jpg";
+                //}
+                //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "E") {
+                //    return "https://storageweweb.blob.core.windows.net/files/INVENTORYDATA/VISION360/imaged/" + getUrlVars($("#hdnOSImglink").val())["s"] + "/still.jpg";
+                //}
+                //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "F") {
+                //    return "https://www.laxmidiamond.com/certifiedstone/diamondimages/" + getUrlVars($("#hdnOSImglink").val())["s"] + "/" + getUrlVars($("#hdnOSImglink").val())["s"] + "_1.jpg";
+                //}
+                //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "G") {
+                //    return "http://61.93.195.114/Krishdiam/KDViewDiamondImageDesk.aspx?sid=" + getUrlVars($("#hdnOSImglink").val())["s"];
+                //}
+                //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "I") {
+                //    return "https://diamanti.s3.amazonaws.com/images/diamond/" + getUrlVars($("#hdnOSImglink").val())["s"] + ".jpg";
+                //}
+                //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "K") {
+                //    return "https://starrays.com/diaImages/Images/" + getUrlVars($("#hdnOSImglink").val())["s"] + ".jpg";
+                //}
+                //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "L") {
+                //    return "https://diamond.ankitgems.com:4443/DIAMONDIMG/" + getUrlVars($("#hdnOSImglink").val())["s"] + ".jpg";
+                //}
+                //else if (getUrlVars($("#hdnOSImglink").val())["x"] == "M") {
+                //    return "https://4e0s0i2r4n0u1s0.com/img/" + getUrlVars($("#hdnOSImglink").val())["c"] + "/PR.jpg";
+                //}
+            }
+            else if (type == "Video") {
+                return $("#hdnOSVdoLink").val();
+                //if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "A") {
+                //    return "https://v360.in/Excellent/vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"];
+                //}
+                //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "B") {
+                //    return "https://photo.diamondasset.in/photo/NewViewer/Vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["c"];
+                //}
+                //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "C") {
+                //    return "https://dna.stonehdfile.com/ViewHD.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"];
+                //}
+                //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "D") {
+                //    return "https://media.hdfiles.in:8520/HD4//Vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"] + "&btn=0,1,2,3,5,6&sv=0,2,3,4,5&faceupviewSpeed=30&sideviewSpeed=30&zoomslide=1&z=0&v=4&s=-10&h=450&displayEyeScan=1&sw=200&sh=200";
+                //}
+                //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "E") {
+                //    return "https://storageweweb.blob.core.windows.net/files/INVENTORYDATA/VISION360/Vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"] + "&autoPlay=1";
+                //}
+                //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "F") {
+                //    return "https://www.certifiedstone.info/viewer/Vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"];
+                //}
+                //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "G") {
+                //    return "http://61.93.195.114/Krishdiam/KDWatchVideoDesk.aspx?sno=" + getUrlVars($("#hdnOSVdoLink").val())["s"];
+                //}
+                //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "H") {
+                //    return "https://v360.in/viewer4.0/vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"] + "&z=1&surl=https%3a%2f%2fs4.v360.in%2fimages%2fcompany%2f256%2f";
+                //}
+                //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "I") {
+                //    return "https://diamanti.s3.amazonaws.com/video/Vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"];
+                //}
+                //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "J") {
+                //    return "https://v360.in/Excellent/vision360.html?d=" + getUrlVars($("#hdnOSVdoLink").val())["s"];
+                //}
+                //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "K") {
+                //    return "https://starrays.com/diaImages/Movies/MV" + getUrlVars($("#hdnOSVdoLink").val())["s"] + ".mp4";
+                //}
+                //else if (getUrlVars($("#hdnOSVdoLink").val())["x"] == "L") {
+                //    return "https://diamond.ankitgems.com:4443/VIDEOS/" + getUrlVars($("#hdnOSVdoLink").val())["s"] + ".html";
+                //}
+            }
+            else if (type == "Certi") {
+                return $("#hdnViewCertiUrl").val();
+            }
+        }
+
+        function CollaOne() {
+            if ($('#collapseOne.show').length == 1) {
+                $('#collapseOne').removeClass('show');
+                $('#collapseOne').addClass('hide');
+                $('#iconcollapseOne').removeClass('fa-minus-circle');
+                $('#iconcollapseOne').addClass('fa-plus-circle');
+            }
+            else {
+                $('#collapseOne').removeClass('hide');
+                $('#collapseOne').addClass('show');
+                $('#iconcollapseOne').removeClass('fa-plus-circle');
+                $('#iconcollapseOne').addClass('fa-minus-circle');
+            }
+        }
+        function CollaTwo() {
+            if ($('#collapseTwo.show').length == 1) {
+                $('#collapseTwo').removeClass('show');
+                $('#collapseTwo').addClass('hide');
+                $('#iconcollapseTwo').removeClass('fa-minus-circle');
+                $('#iconcollapseTwo').addClass('fa-plus-circle');
+            }
+            else {
+                $('#collapseTwo').removeClass('hide');
+                $('#collapseTwo').addClass('show');
+                $('#iconcollapseTwo').removeClass('fa-plus-circle');
+                $('#iconcollapseTwo').addClass('fa-minus-circle');
+            }
+        }
+        function Download(type) {
+            if (type == "Excel") {
+                DownloadExcel();
+            }
+            else if (type == "Image") {
+                DownloadImage();
+            }
+            else if (type == "Video") {
+                DownloadVideo();
+            }
+            else if (type == "Certificate") {
+                DownloadCertificate();
+            }
+            else if (type == "All") {
+                AllD = true;
+                $('.loading-overlay-image-container').show();
+                $('.loading-overlay').show();
+
+                DownloadExcel();
+                DownloadImage();
+                DownloadVideo();
+                DownloadCertificate();
+
+
+                $('.loading-overlay-image-container').hide();
+                $('.loading-overlay').hide();
+                AllD = false;
+            }
+        }
+
+        function DownloadImage() {
+            if (AllD == false) {
+                $('.loading-overlay-image-container').show();
+                $('.loading-overlay').show();
+            }
+            var stoneId = $("#hdnStoneRefNo").val();
+
+            $.ajax({
+                url: "/Common/StockMediaDownloadByStoneIdWithoutToken",
+                type: "POST",
+                data: { StoneID: stoneId, MediaType: 'Image' },
+                success: function (data, textStatus, jqXHR) {
+
+                    if (data.search('.zip') == -1 && data.search('.pdf') == -1) {
+                        toastr.warning(data);
+                    } else {
+                        location.href = data;
+                    }
+                    if (AllD == false) {
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            });
+        }
+        function DownloadVideo() {
+            if (AllD == false) {
+                $('.loading-overlay-image-container').show();
+                $('.loading-overlay').show();
+            }
+            var stoneId = $("#hdnStoneRefNo").val();
+            $.ajax({
+                url: "/Common/StockMediaDownloadByStoneIdWithoutToken",
+                type: "POST",
+                data: { StoneID: stoneId, MediaType: 'Video' },
+                success: function (data, textStatus, jqXHR) {
+
+                    if (data.search('.zip') == -1 && data.search('.pdf') == -1) {
+                        toastr.warning(data);
+                    } else {
+                        location.href = data;
+                    }
+                    if (AllD == false) {
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            });
+        }
+        function DownloadCertificate() {
+            if (AllD == false) {
+                $('.loading-overlay-image-container').show();
+                $('.loading-overlay').show();
+            }
+            var stoneId = $("#hdnStoneRefNo").val();
+            $.ajax({
+                url: "/Common/StockMediaDownloadByStoneIdWithoutToken",
+                type: "POST",
+                data: { StoneID: stoneId, MediaType: 'Certificate' },
+                success: function (data, textStatus, jqXHR) {
+
+                    if (data.search('.zip') == -1 && data.search('.pdf') == -1) {
+                        toastr.warning(data);
+                    } else {
+                        location.href = data;
+                    }
+                    if (AllD == false) {
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            });
+        }
+        function DownloadExcel() {
+            if (AllD == false) {
+                $('.loading-overlay-image-container').show();
+                $('.loading-overlay').show();
+            }
+            var stoneId = $("#hdnStoneRefNo").val();
+
+            $.ajax({
+                url: "/Common/StockExcelDownloadByStoneIdWithoutToken",
+                type: "POST",
+                data: { StoneID: stoneId },
+                success: function (data, textStatus, jqXHR) {
+
+                    location.href = data;
+                    if (AllD == false) {
+                        $('.loading-overlay-image-container').hide();
+                        $('.loading-overlay').hide();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.loading-overlay-image-container').hide();
+                    $('.loading-overlay').hide();
+                }
+            });
+        }
+
+
+        function formatNumber(number) {
+            return (parseFloat(number).toFixed(2)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+        }
+        jQuery(document).ready(function ($) {
+            if ($('.ddl-share a').length == 0) {
+                $('#ddl_share').hide();
+            }
+            if ($('.ddl-download a').length == 0) {
+                $('#ddl_download').hide();
+            }
+
+            if ($("#liRapPrice").text() != "") {
+                $("#liRapPrice").text(formatNumber($("#liRapPrice").text()));
+            }
+
+            if ($("#liRapValue").text() != "") {
+                $("#liRapValue").text(formatNumber($("#liRapValue").text()));
+            }
+
+            if ($("#liTotal").text() != "") {
+                $("#liTotal").text(formatNumber($("#liTotal").text()));
+            }
+            //var wid = (screen.width)-200
+            //$("#DivContainer").attr("style", "max-width: " + wid + "px;");
+
+            //$("#playvideo").click(function () {
+            //    var symbol = $("#video1")[0].src.indexOf("?") > -1 ? "&" : "?";
+            //    $("#video1")[0].src += symbol + "autoplay=1";
+            //});
+
+            if (window.location.protocol.indexOf('http') == 0) {
+                var el = document.createElement('meta')
+                el.setAttribute('http-equiv', 'Content-Security-Policy')
+                el.setAttribute('content', 'upgrade-insecure-requests')
+                document.head.append(el)
+            }
+            //$('.slick-slider').slick({
+            //    dots: false,
+            //    infinite: true,
+            //    speed: 500,
+            //    slidesToShow: 1,
+            //    slidesToScroll: 1,
+            //    autoplay: false,
+            //    autoplaySpeed: 500,
+            //    arrows: true,
+            //    responsive: [{
+            //        breakpoint: 600,
+            //        settings: {
+            //            slidesToShow: 1,
+            //            slidesToScroll: 1
+            //        }
+            //    },
+            //    {
+            //        breakpoint: 400,
+            //        settings: {
+            //            arrows: false,
+            //            slidesToShow: 1,
+            //            slidesToScroll: 1
+            //        }
+            //    }]
+            //});
+
+
+        });
+
+        function openpopup(type) {
+            if (type != "") {
+                //$('#sendtype').val(type);
+                //$('#MobileModal').modal('show');
+                sendWhatsapp(type);
+            }
+        }
+        function whatsAppKeypress(evt) {
+            var charCode = (evt.which) ? evt.which : evt.keyCode;
+            if (charCode == 43 || (charCode >= 48 && charCode <= 57)) {
+                return true;
+            }
+            if (charCode == 13) {
+                sendWhatsapp();
+                return true;
+            }
+
+            return false;
+        }
+        function sendWhatsapp(type) {
+            //var isvalid = $('#frmSaveOrder').valid();
+            //if (!isvalid) {
+            //    return false;
+            //}
+            //else {
+            var message = "";
+            //var type = $('#sendtype').val();
+
+            if ($("#hdn_IsOverseas").val() == "0") {
+                var bPRimg = $("#hdnbPRimg").val();
+                var bHBimg = $("#hdnbHBimg").val();
+                var bHTimg = $("#hdnbHTimg").val();
+                var bASimg = $("#hdnbASimg").val();
+                var movie_url = $("#hdnMovieUrl").val();
+                var view_certi_url = $("#hdnViewCertiUrl").val();
+
+                if (type == 'image') {
+                    if (bPRimg.toLowerCase() == 'true' || bPRimg.toLowerCase() == '1') {
+                        message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/PR.jpg \n";
+                    }
+
+                    if (bHBimg.toLowerCase() == 'true' || bHBimg.toLowerCase() == '1') {
+                        message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/HB.jpg \n";
+                    }
+
+                    if (bHTimg.toLowerCase() == 'true' || bHTimg.toLowerCase() == '1') {
+                        message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/HT.jpg \n";
+                    }
+
+                    if (bASimg.toLowerCase() == 'true' || bASimg.toLowerCase() == '1') {
+                        message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/AS.jpg \n";
+                    }
+                }
+                if (type == 'video') {
+                    if (movie_url.toLowerCase() != "") {
+                        message = message + movie_url;
+                    }
+                }
+                if (type == 'certi') {
+                    if (view_certi_url.toLowerCase() != "") {
+                        message = message + view_certi_url;
+                    }
+                }
+                if (type == 'All') {
+                    if (bPRimg.toLowerCase() == 'true' || bPRimg.toLowerCase() == '1') {
+                        message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/PR.jpg \n";
+                    }
+
+                    if (bHBimg.toLowerCase() == 'true' || bHBimg.toLowerCase() == '1') {
+                        message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/HB.jpg \n";
+                    }
+
+                    if (bHTimg.toLowerCase() == 'true' || bHTimg.toLowerCase() == '1') {
+                        message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/HT.jpg \n";
+                    }
+
+                    if (bASimg.toLowerCase() == 'true' || bASimg.toLowerCase() == '1') {
+                        message = message + "https://4e0s0i2r4n0u1s0.com/img/" + $("#hdnCertiNo").val() + "/AS.jpg \n";
+                    }
+
+                    if (movie_url.toLowerCase() != "") {
+                        message = message + movie_url + " \n";
+                    }
+
+                    if (view_certi_url.toLowerCase() != "") {
+                        message = message + view_certi_url + " \n";
+                    }
+                }
+            }
+            else if ($("#hdn_IsOverseas").val() == "1") {
+                if (type == 'image') {
+                    if ($("#hdnOSImglink").val() != "") {
+                        message = message + OverSeasExcelMediaURLGet('Image') + " \n";
+                    }
+                }
+                if (type == 'video') {
+                    if ($("#hdnOSVdoLink").val() != "") {
+                        message = message + OverSeasExcelMediaURLGet('Video') + " \n"
+                    }
+                }
+                if (type == 'certi') {
+                    if ($("#hdnViewCertiUrl").val() != "") {
+                        message = message + OverSeasExcelMediaURLGet('Certi') + " \n"
+                    }
+                }
+                if (type == 'All') {
+                    if ($("#hdnOSImglink").val() != "") {
+                        message = message + OverSeasExcelMediaURLGet('Image') + " \n";
+                    }
+                    if ($("#hdnOSVdoLink").val() != "") {
+                        message = message + OverSeasExcelMediaURLGet('Video') + " \n"
+                    }
+                    if ($("#hdnViewCertiUrl").val() != "") {
+                        message = message + OverSeasExcelMediaURLGet('Certi') + " \n"
+                    }
+                }
+            }
+            navigator.clipboard.writeText(message);
+            //var mobileno = $('#txtMobileNo').val();
+            //var URL = "https://api.whatsapp.com/send?phone=+" + mobileno + "&text=" + message;
+            //window.open(URL);
+            //$('#txtMobileNo').val("");
+            //$('#MobileModal').modal('hide');
+            //}
+        }
+        function getUrlVars(URL) {
+            var hash;
+            var hashes = URL.slice(URL.indexOf('?') + 1).split('&');
+            for (var i = 0; i < hashes.length; i++) {
+                hash = hashes[i].split('=');
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+        function getExtension(path) {
+            var basename = path.split(/[\\/]/).pop(), pos = basename.lastIndexOf(".");
+            if (basename === "" || pos < 1)
+                return "";
+
+            return basename.slice(pos + 1);
+        }
+
+    </script>
+</body>
+</html>

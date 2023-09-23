@@ -1,0 +1,71 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = LanguageProvider.get("save_search");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+}
+<input type="hidden" id="hdn_Date" value="@LanguageProvider.get("date")" />
+<input type="hidden" id="hdn_Save_Name" value="@LanguageProvider.get("Save_Name")" />
+<input type="hidden" id="hdn_Criteria" value="@LanguageProvider.get("criteria")" />
+<input type="hidden" id="hdn_Load_Search" value="@LanguageProvider.get("Load_Search")" />
+<input type="hidden" id="hdn_Show_result" value="@LanguageProvider.get("Show_result")" />
+<input type="hidden" id="hdn_Action" value="@LanguageProvider.get("action")" />
+<!--- start of search&result part---->
+<div class="container-fluid search_result viewcart-fluid">
+
+    <div class="tab-content" id="myTabContent">
+
+        <div class="tab-pane active result-page-content viewcart-page-content" id="profile-tab2" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="result-nav">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-12">
+                        <div class="viewcartdata-header savesearch">
+                            <h1>@LanguageProvider.get("save_search")</h1>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="aggrid-section viewcart">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <!---- =============== start ag-grid =============== ---->
+
+
+                        <div id="myGrid" style="width: 100%;" class="ag-theme-balham">
+
+                        </div>
+
+
+                        <!---- =============== end ag-grid ================= ----->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade social-model" id="Remove" aria-modal="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">@LanguageProvider.get("Remove_Save_Search_Data")</h4>
+                <button type="button" class="close" onclick="ClearRemoveModel()">×</button>
+            </div>
+            <div class="modal-body">
+                <li>@LanguageProvider.get("Are_you_sure_to_remove_this_record") </li>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnSendMail" class="btn btn-primary" type="button" onclick="RemoveSaveSearch()">@LanguageProvider.get("Remove")</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--- end of search&result part---->
+@section scripts{
+    <script src="~/Content/Plugins/jqueryUI/jquery-ui.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/SaveSearch.js"></script>
+}

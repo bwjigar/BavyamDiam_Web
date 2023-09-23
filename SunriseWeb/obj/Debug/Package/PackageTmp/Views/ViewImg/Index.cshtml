@@ -1,0 +1,571 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<meta name="format-detection" content="telephone=no" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <link rel="shortcut icon" href="~/Content/images/nav-logo.png" type="image/x-icon" />
+    <title>Sunrise Dimaonds</title>
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css" />
+    <link href="~/Content/css/flaticon.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/Plugins/toastr/toastr.css" rel="stylesheet" />
+    <link rel="Stylesheet" href="~/Content/OldProject/Style1.css" type="text/css" />
+    <link href="~/Content/OldProject/Magnifier/css/magnify.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        /*#outer { width:100%;}*/
+        #body-div, body {
+            background-color: #00183D;
+            color: #73B8E3;
+        }
+
+        #header-bg {
+            background-color: #00183D;
+        }
+
+        #header {
+            background: #00183D url(../Images/bg-dark.png) repeat-y;
+            height: 82px;
+        }
+
+            #header img {
+                margin: 5px 0 0 50px;
+            }
+
+        #header-left, #header-right {
+            height: 82px;
+        }
+
+        h5 {
+            font-size: 30px;
+            margin-top: 10px;
+        }
+
+        h6 {
+            color: #dad9d9;
+            font-size: 20px;
+        }
+
+        #footer-bg {
+            background-color: #00183D;
+        }
+
+        #footer {
+            background: #00183D url(../Images/bg-dark.png) repeat-y;
+        }
+    </style>
+
+    @*<script type="text/javascript" language="javascript">
+        function imgClick(imgCur) {
+            alert(imgCur.src);
+            //document.getElementById('<%=imgLarge.ClientID%>').src = "";
+        }
+        </script>*@
+
+</head>
+<body>
+    <center>
+        <div id="body-div" style="width: 1000px; margin: 0px -2px;">
+            @*<div id="body-div">*@
+
+            <form id="form1" runat="server">
+                <div id="header-bg">
+                    <div id="header">
+                        <div id="header-left">
+                            <img src="~/Content/OldProject/logo.png" alt="Sunrise Diamonds" />
+                        </div>
+                        <div id="header-right">
+                            <h5>
+                                <asp:Literal ID="litHead1" runat="server"></asp:Literal>
+                            </h5>
+                            <h6>
+                                <asp:Literal ID="litHead2" runat="server"></asp:Literal>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div id="header-sh" class="_invalid">
+                </div>
+                <div class="br _invalid">
+                </div>
+                <div id="outer" class="_invalid">
+                    <div id="img-left">
+                        <table class="det fl">
+                            <tr>
+                                <td colspan="4" style="height: 30px;">
+                                    @*<asp:HyperLink ID="hlLab" runat="server" class="invoice" Target="_blank">GIA Report</asp:HyperLink>*@
+                                    <a id="hlLab" class="invoice" target="_blank"></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Ref#
+                                </th>
+                                <td colspan="3">
+                                    <asp:Literal ID="litRefNo" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Certi
+                                </th>
+                                <td colspan="3">
+                                    <asp:Literal ID="litCertiNo" runat="server" />
+                                    <asp:Literal ID="litLab" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="space">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Shape
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litShape" runat="server" />
+                                </td>
+                                <th>
+                                    Cut
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litCut" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Color
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litColor" runat="server" />
+                                </td>
+                                <th>
+                                    Polish
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litPolish" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Clarity
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litClarity" runat="server" />
+                                </td>
+                                <th>
+                                    Symm
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litSymm" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Fls
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litFls" runat="server" />
+                                </td>
+                                <th>
+                                    Girdle
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litGirdle" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="space">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Cts
+                                </th>
+                                <td colspan="3">
+                                    <asp:Literal ID="litCts" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Rap Price($)
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litRapPrice" runat="server" />
+                                </td>
+
+                                @*<th>
+                                        Disc
+                                    </th>
+                                    <td>
+                                        <asp:Literal ID="litDisc" runat="server" />
+                                    </td>*@
+                            </tr>
+                            <tr>
+                                <th width="72px">
+                                    Rap Amt($)
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litRapAmt" runat="server" />
+                                </td>
+
+                                @*<th width="72px">
+                                        Net Amt($)
+                                    </th>
+                                    <td>
+                                        <asp:Literal ID="litNetAmt" runat="server" />
+                                    </td>*@
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="space">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Measure
+                                </th>
+                                <td colspan="3">
+                                    <asp:Literal ID="litMeasure" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Depth(%)
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litDepth" runat="server" />
+                                </td>
+                                <th>
+                                    Table(%)
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litTable" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Cr Ang
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litCrAng" runat="server" />
+                                </td>
+                                <th>
+                                    Pav Ang
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litPavAng" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Cr Ht
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litCrHt" runat="server" />
+                                </td>
+                                <th>
+                                    Pav Ht
+                                </th>
+                                <td>
+                                    <asp:Literal ID="litPavHt" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="space">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Symbol
+                                </th>
+                                <td colspan="3">
+                                    <asp:Literal ID="LitSymbol" runat="server" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Comments
+                                </th>
+                                <td colspan="3">
+                                    <asp:Literal ID="LitComments" runat="server" />
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="br">
+                        </div>
+                        <div class="s-img">
+                            <ul style="padding: 0;">
+                                <li runat="server" id="liPr" style="display:none;">
+                                    <span>Photo Real</span>
+                                    @*<asp:ImageButton ID="imgPr" runat="server" OnClick="imgPr_Click" OnClientClick="return CallImage();" />*@
+                                    <img src="" ID="imgPr" style="width: 86px;cursor:pointer;" onclick="imgPr_Click()" />
+                                </li>
+                                <li runat="server" id="liPrb" style="display:none;">
+                                    <span>Photo Real Bottom</span>
+                                    @*<asp:ImageButton ID="imgPrb" runat="server" OnClick="imgPr_Click" OnClientClick="return CallImage();" />*@
+                                    <img src="" ID="imgPrb" style="width: 86px;cursor:pointer;" onclick="imgPrb_Click()"/>
+                                </li>
+                                <li runat="server" id="liAs" style="display:none;">
+                                    <span>Aset Scope</span>
+                                    @*<asp:ImageButton ID="imgAs" runat="server" OnClick="imgPr_Click" OnClientClick="return CallImage();" />*@
+                                    <img src="" ID="imgAs" style="width: 86px;cursor:pointer;" onclick="imgAs_Click()"/>
+                                </li>
+                                <li runat="server" id="liHt" style="display:none;">
+                                    <span>H & A Top</span>
+                                    @*<asp:ImageButton ID="imgHt" runat="server" OnClick="imgPr_Click" OnClientClick="return CallImage();" />*@
+                                    <img src="" ID="imgHt" style="width: 86px;cursor:pointer;" onclick="imgHt_Click()"/>
+                                </li>
+                                <li runat="server" id="liHb" style="display:none;">
+                                    <span>H & A Bottom</span>
+                                    @*<asp:ImageButton ID="imgHb" runat="server" OnClick="imgPr_Click" OnClientClick="return CallImage();" />*@
+                                    <img src="" ID="imgHb" style="width: 86px;cursor:pointer;" onclick="imgHb_Click()"/>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="full-img fr">
+                        @*<asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>*@
+                                <h6>
+                                    <asp:Literal ID="litImageName" runat="server" />
+                                </h6>
+                                <div class="br">
+                                </div>
+
+                                <div class="img-magnifier-container">
+                                    @*<asp:Image ID="imgLarge" runat="server" data-magnify-src="" />*@
+                                    <img src="" ID="imgLarge" data-magnify-src=""/>
+                                </div>
+
+                            @*</ContentTemplate>
+                            <Triggers>
+                                <asp:AsyncPostBackTrigger ControlID="imgPr" EventName="Click" />
+                                <asp:AsyncPostBackTrigger ControlID="imgPrb" EventName="Click" />
+                                <asp:AsyncPostBackTrigger ControlID="imgAs" EventName="Click" />
+                                <asp:AsyncPostBackTrigger ControlID="imgHt" EventName="Click" />
+                                <asp:AsyncPostBackTrigger ControlID="imgHb" EventName="Click" />
+                            </Triggers>
+                        </asp:UpdatePanel>*@
+                    </div>
+                    <div class="br">
+                    </div>
+                    <div class="br">
+                    </div>
+                </div>
+                <div id="footer-sh" class="_invalid">
+                </div>
+                <div id="footer-bg">
+                    <div id="footer">
+                        <p>
+                            Copyrights © 2010-@DateTime.Now.Year.ToString()
+                            Shairu Gems. All Rights Reserved.<img src="~/Content/OldProject/dtc-small-wht.png" alt="dtc sightholder" />
+                            is a trade mark used under licence from The De Beers Group of Companies.
+                        </p>
+                        <div class="dtc" title="DTC SIGHTHOLDER">
+                            <a href="https://www.dtcsightholder.com/en/Sightholder-directory11/Shairu/#" target="_blank">
+                                <img src="~/Content/OldProject/dtc-new-wht.png" alt="DTC SIGHTHOLDER" border="0" />
+                            </a>
+                        </div>
+                        <div class="br">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </center>
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/Plugins/jqueryUI/jquery-ui.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/Plugins/toastr/toastr.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/OldProject/Magnifier/jquery-1.11.1.min.js" type="text/javascript"></script>
+    <script src="~/Content/OldProject/Magnifier/js/jquery.magnify.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        /* Initiate Magnify Function
+        with the id of the image, and the strength of the magnifier glass:*/
+        //$('#<%= imgLarge.ClientID %>').attr('data-magnify-src', $('#<%= imgLarge.ClientID %>').attr('src'));
+        //$('#<%= imgLarge.ClientID %>').magnify();
+        //function CallImage() {
+        //    setTimeout(function () {debugger
+        //        $('#<%= imgLarge.ClientID %>').attr('data-magnify-src', $('#<%= imgLarge.ClientID %>').attr('src'));
+        //        $('#<%= imgLarge.ClientID %>').magnify();
+        //    }, 1500);
+        //}
+        var _data = [];
+        var _len = 0;
+        $(document).ready(function () {
+            GetDetails();
+        });
+        function GetDetails()
+        {
+            if (getParameterByName("RefNo") != "") {
+                $("#form1").hide();
+                $.ajax({
+                    url: "@Url.Action("GetPacketDet_SelectOne","ViewImg")",
+                    type: "POST",
+                    data: { sRefNo: getParameterByName("RefNo")},
+                    success: function (data, textStatus, jqXHR) {
+                        $("#form1").show();
+                        if (data.Data != null && data.Data.length > 0) {
+                            var L = data.Data.length - 1;
+                            _data = data.Data;
+                            _len = L;
+
+                            $("#litHead1").html(data.Data[L].sRefNo + ", " + data.Data[L].sShape + ", " + formatNumber(data.Data[L].dCts)  + " Cts");
+                            $("#litHead2").html(data.Data[L].sColor + " / " + data.Data[L].sClarity);
+                            $("#litRefNo").html(data.Data[L].sRefNo);
+                            $("#litCertiNo").html(data.Data[L].sCertiNo);
+                            $("#litShape").html(data.Data[L].sShape);
+                            $("#litColor").html(data.Data[L].sColor);
+                            $("#litClarity").html(data.Data[L].sClarity);
+                            $("#litFls").html(data.Data[L].sFls);
+                            $("#litCut").html(data.Data[L].sCut);
+                            $("#litPolish").html(data.Data[L].sPolish);
+                            $("#litSymm").html(data.Data[L].sSymm);
+                            $("#litGirdle").html(data.Data[L].sGirdle);
+                            $("#litCts").html(formatNumber(data.Data[L].dCts));
+                            $("#litRapPrice").html(formatNumber(data.Data[L].dRepPrice));
+                            $("#litRapAmt").html(formatNumber(data.Data[L].dRapAmount));
+                            $("#litMeasure").html((data.Data[L].dLength != "" && data.Data[L].dLength != null ? formatNumber(data.Data[L].dLength) + " x " : "- x "));
+                            $("#litMeasure").append((data.Data[L].dWidth != "" && data.Data[L].dWidth != null ? formatNumber(data.Data[L].dWidth) + " x " : "- x "));
+                            $("#litMeasure").append((data.Data[L].dDepth != "" && data.Data[L].dDepth != null ? formatNumber(data.Data[L].dDepth) : "-"));
+                            $("#litDepth").html((data.Data[L].dDepthPer != "" && data.Data[L].dDepthPer != null ? formatNumber(data.Data[L].dDepthPer) : ""));
+                            $("#litTable").html((data.Data[L].dTablePer != "" && data.Data[L].dTablePer != null ? formatNumber(data.Data[L].dTablePer) : ""));
+                            $("#litCrAng").html((data.Data[L].dCrAng != "" && data.Data[L].dCrAng != null ? formatNumber(data.Data[L].dCrAng) : ""));
+                            $("#litPavAng").html((data.Data[L].dPavAng != "" && data.Data[L].dPavAng != null ? formatNumber(data.Data[L].dPavAng) : ""));
+                            $("#litCrHt").html((data.Data[L].dCrHt != "" && data.Data[L].dCrHt != null ? formatNumber(data.Data[L].dCrHt) : ""));
+                            $("#litPavHt").html((data.Data[L].dPavHt != "" && data.Data[L].dPavHt != null ? formatNumber(data.Data[L].dPavHt) : ""));
+                            $("#LitSymbol").html((data.Data[L].sSymbol != "" && data.Data[L].sSymbol != null ? data.Data[L].sSymbol : "-"));
+                            $("#LitComments").html((data.Data[L].sComments != "" && data.Data[L].sComments != null ? data.Data[L].sComments : "-"));
+                            
+                            if (data.Data[L].sLab == "GIA")
+                            {
+                                $("#hlLab").html("GIA Report");
+                                document.getElementById("hlLab").href = "http://www.gia.edu/cs/Satellite?pagename=GST%2FDispatcher&childpagename=GIA%2FPage%2FReportCheck&c=Page&cid=1355954554547&reportno=" + data.Data[L].sCertiNo;
+                            }
+                            else if (data.Data[L].sLab == "IGI")
+                            {
+                                $("#hlLab").html("IGI Report");
+                                document.getElementById("hlLab").href = "http://www.igiworldwide.com/verify.php?r=" + data.Data[L].sCertiNo;
+                            }
+                            else
+                            {
+                                $("#hlLab").hide();
+                            }
+
+                            if (data.Data[L].imgPr != null) {
+                                $("#liPr").show();
+                                $("#imgPr").attr("src", data.Data[L].imgPr);
+                            }
+                            else {
+                                $("#liPr").hide();
+                            }
+                            if (data.Data[L].imgPrb != null) {
+                                $("#liPrb").show();
+                                $("#imgPrb").attr("src", data.Data[L].imgPrb);
+                            }
+                            else {
+                                $("#liPrb").hide();
+                            }
+                            if (data.Data[L].imgAs != null) {
+                                $("#liAs").show();
+                                $("#imgAs").attr("src", data.Data[L].imgAs);
+                            }
+                            else {
+                                $("#liAs").hide();
+                            }
+                            if (data.Data[L].imgHt != null) {
+                                $("#liHt").show();
+                                $("#imgHt").attr("src", data.Data[L].imgHt);
+                            }
+                            else {
+                                $("#liHt").hide();
+                            }
+                            if (data.Data[L].imgHb != null) {
+                                $("#liHb").show();
+                                $("#imgHb").attr("src", data.Data[L].imgHb);
+                            }
+                            else {
+                                $("#liHb").hide();
+                            }
+                            if (data.Data[L].lsFirstImg != null) {
+                                $("#litImageName").html(data.Data[L].litImageName);
+                                $("#imgLarge").attr("src", data.Data[L].lsFirstImg);
+                                $('#imgLarge').attr('data-magnify-src', data.Data[L].lsFirstImg);
+                                $('#imgLarge').magnify();
+                            }
+                        }
+                        else {
+                            $("._invalid").hide();
+                            $("#litHead1").html("Invalid data.");
+                            contentHeight();
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+
+                    }
+                });
+            }
+        }
+        function contentHeight() {
+            if ($("#litHead1").html() == "Invalid data.") {
+                var winH = $(window).height(),
+                tabsmarkerHei = $("#footer-bg").height(),
+                resultHei = 0,
+                contentHei = winH - (tabsmarkerHei + resultHei + 130);
+                $("#footer-bg").css("margin-top", contentHei);
+            }
+        }
+        $(window).resize(function () {
+            contentHeight();
+        });
+        function imgPr_Click() {
+            $("#litImageName").html("Photo Real");
+            $("#imgLarge").attr("src", _data[_len].imgPr_L);
+            $('#imgLarge').attr('data-magnify-src', _data[_len].imgPr_L);
+            $('#imgLarge').magnify();
+        }
+        function imgPrb_Click() {
+            $("#litImageName").html("Photo Real Bottom");
+            $("#imgLarge").attr("src", _data[_len].imgPrb_L);
+            $('#imgLarge').attr('data-magnify-src', _data[_len].imgPrb_L);
+            $('#imgLarge').magnify();
+        }
+        function imgAs_Click() {
+            $("#litImageName").html("Aset Scope");
+            $("#imgLarge").attr("src", _data[_len].imgAs_L);
+            $('#imgLarge').attr('data-magnify-src', _data[_len].imgAs_L);
+            $('#imgLarge').magnify();
+        }
+        function imgHt_Click() {
+            $("#litImageName").html("H & A Top");
+            $("#imgLarge").attr("src", _data[_len].imgHt_L);
+            $('#imgLarge').attr('data-magnify-src', _data[_len].imgHt_L);
+            $('#imgLarge').magnify();
+        }
+        function imgHb_Click() {
+            $("#litImageName").html("H & A Bottom");
+            $("#imgLarge").attr("src", _data[_len].imgHb_L);
+            $('#imgLarge').attr('data-magnify-src', _data[_len].imgHb_L);
+            $('#imgLarge').magnify();
+        }
+        function getParameterByName(name) {
+            var url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        function formatNumber(number) {
+            return (parseFloat(number).toFixed(2)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+        }
+    </script>
+</body>
+</html>

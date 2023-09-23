@@ -1,0 +1,508 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = @LanguageProvider.get("SuppplierOrderLog");
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+    <meta http-equiv="refresh" content="60000" />
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="~/Content/Plugins/multiselect/bootstrap-multiselect.css" type="text/css">*@
+    <style type="text/css">
+        .offer-input1 {
+            width: 95px;
+        }
+
+        .dis_none {
+            display: none;
+        }
+
+        .dis_block {
+            display: block;
+        }
+
+        @@media screen and (min-width: 321px) and (max-width: 411px) {
+            .offer-input1 {
+                width: 83px;
+            }
+        }
+
+        @@media(max-width: 320px) {
+            .offer-input1 {
+                width: 90px;
+            }
+        }
+
+        @@media screen and (min-width: 412px) and (max-width: 414px) {
+            .offer-input1 {
+                width: 83px;
+            }
+        }
+
+        @@media screen and (min-width: 415px) and (max-width: 450px) {
+        }
+
+        @@media (width: 768px) {
+            .offer-input1 {
+                width: 110px;
+            }
+        }
+
+        .g-head-t {
+            font-size: 12px;
+            padding: 0 11px;
+            color: grey;
+        }
+
+        .g-amt-t {
+            font-size: 12px;
+            padding: 0 12px;
+            color: #003d66;
+        }
+
+        /*.aglabel_three {
+            color: #262d47;
+            font-weight: 600;
+            font-size: 10px;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif !important;
+            text-align: center;
+            width: 100%;
+        }
+
+        .aglabel_newlabel {
+            color: white;
+            font-weight: bold;
+            background: red;
+            padding: 3px 5px;
+            font-size: 10px;
+            letter-spacing: 1px;
+            margin-left: 3px;
+        }
+
+        .placeOrderDiv {
+            font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+            font-size: .875rem;
+            position: absolute;
+            border: 1px solid #003d66;
+            text-decoration: none;
+            border-radius: .25rem;
+            padding: 3px;
+            background-color: #003d66;
+            color: #fff;
+            top: -36px;
+            width: 81px !important;
+            left: -23px;
+            opacity: 0.9;
+        }
+
+            .placeOrderDiv::before {
+                content: '';
+                position: absolute;
+                display: block;
+                width: 0px;
+                left: 50%;
+                bottom: 0;
+                border: 7px solid transparent;
+                border-bottom: 0;
+                border-top: 7px solid #000;
+                transform: translate(-50%, calc(100%));
+            }
+            .custom-tooltip {
+              position: absolute;
+              width: 250px;
+              height: 70px;
+              border: 1px solid cornflowerblue;
+              overflow: hidden;
+              pointer-events: none;
+              transition: opacity 1s;
+              background-color: white;
+              color: black;
+              text-transform: uppercase;
+            }
+
+            .custom-tooltip.ag-tooltip-hiding {
+              opacity: 0;
+            }
+
+            .custom-tooltip p {
+              margin: 5px;
+              white-space: nowrap;
+            }
+
+            .custom-tooltip p:first-of-type {
+              color: #262d47;
+              font-weight: 600;
+              font-size: 12px;
+              font-family: 'Montserrat', sans-serif !important;
+            }*/
+        #overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        .btn-spn-opt:hover {
+            background-color: #80808017;
+            border: 1px solid #003d66;
+        }
+
+        .btn-spn-opt {
+            border: 1px solid #e5e5e5;
+            border-radius: 28px;
+            padding: 5px 15px;
+            float: left;
+            margin-bottom: 5px;
+            margin-right: 5px;
+            transition-duration: 0.3s;
+            -webkit-transition: 0.3s;
+            cursor: pointer;
+            font-size: 11px;
+            white-space: nowrap;
+            font-weight: 600;
+            background: #fff;
+            color: #003d66;
+            position: relative;
+            z-index: 0;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .btn-spn-opt-active {
+            color: #fff !important;
+            background-color: #003d66 !important;
+        }
+
+        .spn-Yes {
+            font-weight: 600;
+            color: #008000f2;
+            letter-spacing: 1px;
+        }
+
+        .spn-No {
+            font-weight: 600;
+            color: #8b0000cc;
+            letter-spacing: 1px;
+        }
+
+        .spn-bg-No {
+            background-color: #ffe1e1;
+        }
+
+        .spn-bg-Yes {
+            background-color: #cae4cb;
+        }
+
+        .spn-Yes1 {
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 0px 5px 0px 5px;
+            font-size: 10px;
+            font-weight: 600;
+            background: #28a745;
+            color: white;
+        }
+
+        .spn-No1 {
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            padding: 0px 5px 0px 5px;
+            font-size: 10px;
+            font-weight: 600;
+            background: #ef0808;
+            color: white;
+        }
+
+        .ConfirmOrder {
+            background-color: lightgreen !important; /*lightyellow !important;*/
+        }
+
+        .social-model .modal-footer button {
+            /* background: #023059; */
+            font-size: 14px;
+            text-transform: capitalize;
+            color: #fff;
+            background-color: #6c757d;
+            border-color: #6c757d;
+        }
+
+        .grid_prewrap {
+            white-space: pre-wrap !important;
+        }
+    </style>
+    @*<link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">*@
+}
+
+<input type="hidden" id="hdn_Order_Date" value="@LanguageProvider.get("order_date")" />
+<input type="hidden" id="hdn_Order_No" value="@LanguageProvider.get("Order_No")" />
+<input type="hidden" id="hdn_View_Image" value="@LanguageProvider.get("View_Image")" />
+<input type="hidden" id="hdn_Stock_Id" value="@LanguageProvider.get("Stock_Id")" />
+<input type="hidden" id="hdn_Stock_Id_DNA" value="@LanguageProvider.get("Stock_Id_DNA")" />
+<input type="hidden" id="hdn_Ref" value="@LanguageProvider.get("Ref")" />
+<input type="hidden" id="hdn_Status" value="@LanguageProvider.get("status")" />
+<input type="hidden" id="hdn_Shape" value="@LanguageProvider.get("shape")" />
+<input type="hidden" id="hdn_Pointer" value="@LanguageProvider.get("Pointer")" />
+<input type="hidden" id="hdn_Certi_No" value="@LanguageProvider.get("certino")" />
+<input type="hidden" id="hdn_BGM" value="@LanguageProvider.get("bgm")" />
+<input type="hidden" id="hdn_Rap_Price_Doller" value="@LanguageProvider.get("Rap_Price_Doller")" />
+<input type="hidden" id="hdn_Rap_Amt_Doller" value="@LanguageProvider.get("Rap_Amt_Doller")" />
+<input type="hidden" id="hdn_Culet" value="@LanguageProvider.get("Culet")" />
+<input type="hidden" id="hdn_girdle" value="@LanguageProvider.get("girdle")" />
+<input type="hidden" id="hdn_Girdle_Type" value="@LanguageProvider.get("Girdle_Type")" />
+<input type="hidden" id="hdn_Location" value="@LanguageProvider.get("location")" />
+<input type="hidden" id="hdn_Lab" value="@LanguageProvider.get("lab")" />
+<input type="hidden" id="hdn_Color" value="@LanguageProvider.get("color")" />
+<input type="hidden" id="hdn_Polish" value="@LanguageProvider.get("polish")" />
+<input type="hidden" id="hdn_Fls" value="@LanguageProvider.get("fls")" />
+<input type="hidden" id="hdn_Clarity" value="@LanguageProvider.get("clarity")" />
+<input type="hidden" id="hdn_CTS" value="@LanguageProvider.get("cts")" />
+<input type="hidden" id="hdn_Carat_Weight" value="@LanguageProvider.get("Carat_Weight")" />
+<input type="hidden" id="hdn_Disc_Per" value="@LanguageProvider.get("disc_per")" />
+<input type="hidden" id="hdn_Net_Amt" value="@LanguageProvider.get("netamt")" />
+<input type="hidden" id="hdn_Offer_Disc_Per" value="@LanguageProvider.get("Offer_Disc_Per")" />
+<input type="hidden" id="hdn_Offer_Value_Dollar" value="@LanguageProvider.get("Offer_Value_Dollar")" />
+<input type="hidden" id="hdn_Web_Disc_Dollar" value="@LanguageProvider.get("Web_Disc_Dollar")" />
+<input type="hidden" id="hdn_Final_Disc_Per" value="@LanguageProvider.get("Final_Disc_Per")" />
+<input type="hidden" id="hdn_Final_Value" value="@LanguageProvider.get("Final_Value")" />
+<input type="hidden" id="hdn_Price_Cts" value="@LanguageProvider.get("Price_Cts")" />
+<input type="hidden" id="hdn_Cut" value="@LanguageProvider.get("cut")" />
+<input type="hidden" id="hdn_Symm" value="@LanguageProvider.get("symm")" />
+<input type="hidden" id="hdn_Length" value="@LanguageProvider.get("length")" />
+<input type="hidden" id="hdn_Width" value="@LanguageProvider.get("width")" />
+<input type="hidden" id="hdn_Depth" value="@LanguageProvider.get("Depth")" />
+<input type="hidden" id="hdn_Depth_Per" value="@LanguageProvider.get("depth_per")" />
+<input type="hidden" id="hdn_Table_Per" value="@LanguageProvider.get("tableper")" />
+<input type="hidden" id="hdn_Key_to_symbol" value="@LanguageProvider.get("Key_to_symbol")" />
+<input type="hidden" id="hdn_Table_Black" value="@LanguageProvider.get("Table_Black")" />
+<input type="hidden" id="hdn_Crown_Natts" value="@LanguageProvider.get("Crown_Black")" />
+<input type="hidden" id="hdn_Table_White" value="@LanguageProvider.get("Table_White")" />
+<input type="hidden" id="hdn_Crown_White" value="@LanguageProvider.get("Crown_White")" />
+<input type="hidden" id="hdn_Crown_Angle" value="@LanguageProvider.get("Cr_Ang")" />
+<input type="hidden" id="hdn_CR_HT" value="@LanguageProvider.get("Cr_Ht")" />
+<input type="hidden" id="hdn_Pav_Ang" value="@LanguageProvider.get("Pav_Ang")" />
+<input type="hidden" id="hdn_Pav_HT" value="@LanguageProvider.get("Pav_Ht")" />
+<input type="hidden" id="hdn_Table_Open" value="@LanguageProvider.get("Table_Open")" />
+<input type="hidden" id="hdn_Crown_Open" value="@LanguageProvider.get("Crown_Open")" />
+<input type="hidden" id="hdn_Pav_Open" value="@LanguageProvider.get("Pav_Open")" />
+<input type="hidden" id="hdn_Girdle_Open" value="@LanguageProvider.get("Girdle_Open")" />
+<input type="hidden" id="hdn_Laser_in_SC" value="@LanguageProvider.get("Laser_in_SC")" />
+<input type="hidden" id="hdn_Discount" value="@LanguageProvider.get("discount")" />
+<input type="hidden" id="hdn_Username" value="@LanguageProvider.get("username")" />
+<input type="hidden" id="hdn_CompanyName" value="@LanguageProvider.get("CompanyName")" />
+<input type="hidden" id="hdn_CustomerName" value="@LanguageProvider.get("customername")" />
+<input type="hidden" id="hdn_Assist_1" value="@LanguageProvider.get("assist1")" />
+<input type="hidden" id="hdn_Select_all" value="@LanguageProvider.get("Select_all")" />
+<input type="hidden" id="hdn_None_selected" value="@LanguageProvider.get("None_selected")" />
+<input type="hidden" id="hdn_All_selected" value="@LanguageProvider.get("All_selected")" />
+<input type="hidden" id="hdn_Selected" value="@LanguageProvider.get("Selected")" />
+<input type="hidden" id="hdn_Arrival_in_HK" value="@LanguageProvider.get("Arrival_in_HK")" />
+<input type="hidden" id="hdn_Ready_to_Pick_up" value="@LanguageProvider.get("Ready_to_Pick_up")" />
+<input type="hidden" id="hdn_Collected_Date" value="@LanguageProvider.get("Collected_Date")" />
+
+<input type="hidden" id="hdn_Pcs" value="@LanguageProvider.get("pcs1")" />
+<input type="hidden" id="hdn_Cts" value="@LanguageProvider.get("cts1")" />
+<input type="hidden" id="hdn_Avg_Disc_Per" value="@LanguageProvider.get("Avg_Dis")" />
+<input type="hidden" id="hdn_Price_Per_Cts" value="@LanguageProvider.get("Price_Per_Cts")" />
+<input type="hidden" id="hdn_Total_Amount" value="@LanguageProvider.get("Total_Amt")" />
+
+<input type="hidden" id="hdn_Avg_Offer_Disc_Per" value="@LanguageProvider.get("Avg_Offer_Disc_Per")" />
+<input type="hidden" id="hdn_Offer_Disc_Per" value="@LanguageProvider.get("Offer_Disc_Per")" />
+<input type="hidden" id="hdn_Avg_Offer_Value_Dollar" value="@LanguageProvider.get("Avg_Offer_Value_Dollar")" />
+<input type="hidden" id="hdn_Offer_Value_Dollar" value="@LanguageProvider.get("Offer_Value_Dollar")" />
+<input type="hidden" id="hdn_Avg_Web_Disc_Dollar" value="@LanguageProvider.get("Avg_Web_Disc_Dollar")" />
+<input type="hidden" id="hdn_Web_Disc_Dollar" value="@LanguageProvider.get("Web_Disc_Dollar")" />
+<input type="hidden" id="hdn_Final_Disc_Per" value="@LanguageProvider.get("Final_Disc_Per")" />
+<input type="hidden" id="hdn_Final_Value" value="@LanguageProvider.get("Final_Value")" />
+<input type="hidden" id="hdn_FortunePartyCode" value="@LanguageProvider.get("PartyCode")" />
+
+<input type="hidden" id="hdn_Confirmed" value="@LanguageProvider.get("Confirmed")" />
+<input type="hidden" id="hdn_Not_Available" value="@LanguageProvider.get("Not_Available")" />
+<input type="hidden" id="hdn_Checking_Avaibility" value="@LanguageProvider.get("Checking_Avaibility")" />
+<input type="hidden" id="hdn_Hong_Kong" value="@LanguageProvider.get("Hong_Kong")" />
+<input type="hidden" id="hdn_India" value="@LanguageProvider.get("India")" />
+<input type="hidden" id="hdn_Upcoming" value="@LanguageProvider.get("Upcoming")" />
+<input type="hidden" id="hdn_Dubai" value="@LanguageProvider.get("Dubai")" />
+<input type="hidden" id="hdn_No_stone_selected_for_download_as_a" value="@LanguageProvider.get("No_stone_selected_for_download_as_a")" />
+<input type="hidden" id="hdn_No_stone_selected_for_place_order" value="@LanguageProvider.get("No_stone_selected_for_place_order")" />
+<input type="hidden" id="hdn_Profit" value="@LanguageProvider.get("ProfitPer")" />
+<input type="hidden" id="hdn_ConfirmOrder" value="@LanguageProvider.get("confirmorder")" />
+<input type="hidden" id="hdnUserID" value="@SunriseWeb.Helper.SessionFacade.UserSession.iUserid" />
+<input type="hidden" id="hdn_SupplierStatus" value="@LanguageProvider.get("SuppStatus")" />
+<input type="hidden" id="hdn_SuppOrderTime" value="@LanguageProvider.get("OrderTime")" />
+@*<input type="hidden" id="hdn_SuppLogInId" value="LogInId" />*@
+<input type="hidden" id="hdn_SuppIpAddress" value="@LanguageProvider.get("IpAddress")" />
+<input type="hidden" id="hdn_SuppDeviceType" value="@LanguageProvider.get("Device")" />
+<input type="hidden" id="hdn_Orderby" value="@LanguageProvider.get("OrderBy")" />
+<input type="hidden" id="hdn_PurchaseDate" value="@LanguageProvider.get("PurchaseDate")" />
+<input type="hidden" id="hdn_PurchaseTime" value="@LanguageProvider.get("PurchaseTime")" />
+<input type="hidden" id="hdn_LabStatus" value="@LanguageProvider.get("LabStatus")" />
+
+<div id="overlay" onclick="off()">
+    <center>
+        @*<img src="~/Content/images/imageonline-co-transparentimage (9).png" />*@
+        <video width="1000" height="710" autoplay controls id="ODVideo" muted>
+            <source src="~/Content/images/OrderHistory_1.mp4" type="video/mp4">
+        </video>
+    </center>
+</div>
+<!--- start of order-history part---->
+<div class="container-fluid order-history-section">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>@LanguageProvider.get("SuppplierOrderLog")</h2>
+            </div>
+        </div>
+    </div>
+    <div class="order-history-data admin">
+        <div class="row">
+            @if (SunriseWeb.Helper.SessionFacade.UserSession.isadmin == 1)
+            {
+                @*<style>
+                        .multiselect {
+                            width: 195px;
+                        }
+                    </style>*@
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 float-left mb-2">
+                        <div class="order-date common-order">
+                            <div class="offer-label">@LanguageProvider.get("order_date"):</div>
+                            <input type="text" name="From" id="txtFromDate" value="" class="offer-input offer-input1" />
+                            <input type="text" name="To" id="txtToDate" value="" class="offer-input offer-input1" />
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-4 col-md-6 col-sm-6 col-12 float-left mb-2">
+                        <div class="order-company-name common-order">
+                            <div class="offer-label">@LanguageProvider.get("Company"):</div>
+                            <input id="txtCompanyName"
+                                   placeholder="@LanguageProvider.get("CompanyName") / @LanguageProvider.get("username") / @LanguageProvider.get("customername")"
+                                   type="text" class="form-control common-control" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 float-left mb-2">
+                        <div class="order-stone-id common-order">
+                            <div class="offer-label">@LanguageProvider.get("Stock_Id"):</div>
+                            <input id="txtStoneId" class="form-control common-control" placeholder="@LanguageProvider.get("Stock_Id") / @LanguageProvider.get("Order_No") /  @LanguageProvider.get("certino")" type="text" autocomplete="off">
+                        </div>
+                    </div>
+                    @*<div class="col-xl-1 col-lg-6 col-md-6 col-sm-6 col-12 float-left mb-2">
+                            <div class="common-order">
+                                <select id="ddlStatus" class="form-control common-control" multiple="multiple" style="width:100%">
+                                    <option value="Confirmed">@LanguageProvider.get("Confirmed")</option>
+                                    <option value="Not Available">@LanguageProvider.get("Not_Available")</option>
+                                    <option value="Checking Avaibility">@LanguageProvider.get("Checking_Availability")</option>
+                                </select>
+                            </div>
+                        </div>*@
+                </div>
+            }
+            else
+            {
+                @*<style>
+                        .multiselect {
+                            width: 300px;
+                        }
+                    </style>*@
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                        <div class="order-date common-order">
+                            <div class="offer-label">@LanguageProvider.get("order_date"):</div>
+                            <input type="text" name="From" id="txtFromDate" value="" class="offer-input" />
+                            <input type="text" name="To" id="txtToDate" value="" class="offer-input" />
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                        <div class="order-stone-id common-order">
+                            <div class="offer-label">@LanguageProvider.get("Stock_Id"):</div>
+                            <input id="txtStoneId" class="form-control common-control" placeholder="@LanguageProvider.get("Stock_Id") / @LanguageProvider.get("certino") / @LanguageProvider.get("Order_No")" type="text" autocomplete="off">
+                        </div>
+                    </div>
+                    @*<div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                            <div class="order-status common-order">
+                                <div class="offer-label"> @LanguageProvider.get("status"):</div>
+                                <select id="ddlStatus" class="form-control common-control" multiple="multiple" style="width:100%">
+                                    <option value="Confirmed">@LanguageProvider.get("Confirmed")</option>
+                                    <option value="Not Available">@LanguageProvider.get("Not_Available")</option>
+                                    <option value="Checking Avaibility">@LanguageProvider.get("Checking_Availability")</option>
+                                </select>
+                            </div>
+                        </div>*@
+                </div>
+            }
+
+            <div id="DivTCount" class="col-xl-6 col-lg-8 col-md-7 col-sm-12">
+                <div id="tab1TCount" class="row" style="display:none;margin-top: -2px;margin-bottom: -10px;padding: 0px 10px;">
+                    <div><center><span class="g-head-t">@LanguageProvider.get("pcs1")</span></center><center><span id="tab1pcs" class="g-amt-t"></span></center></div>
+                    <div><center><span class="g-head-t">@LanguageProvider.get("cts")</span></center><center><span id="tab1cts" class="g-amt-t"></span></center></div>
+                    <div><center><span class="g-head-t">@LanguageProvider.get("Offer_Disc_Per")</span></center><center><span id="tab1disc" class="g-amt-t"></span></center></div>
+                    <div><center><span class="g-head-t">@LanguageProvider.get("Offer_Value_Dollar")</span></center><center><span id="tab1totAmt" class="g-amt-t"></span></center></div>
+                    <div id="tab1_WebDisc_t" style="display:none;"><center><span class="g-head-t">@LanguageProvider.get("Web_Disc_Dollar")</span></center><center><span id="tab1Web_Disc" class="g-amt-t" style="color: blue;"></span></center></div>
+                    <div id="tab1_FinalValue_t" style="display: none;"><center><span class="g-head-t">@LanguageProvider.get("Final_Disc_Per")</span></center><center><span id="tab1Final_Disc" class="g-amt-t" style="color: red;"></span></center></div>
+                    <div id="tab1_FinalDisc_t" style="display:none;"><center><span class="g-head-t">@LanguageProvider.get("Final_Value")</span></center><center><span id="tab1Net_Value" class="g-amt-t" style="color: red;"></span></center></div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-4 col-md-3 col-sm-12">
+                <ul class="offer-inbtn pull-right mrtop src-rest-topbtn mt-2 mb-2" style="margin: 20px 54px 0;">
+                    <li>
+                        <button class="offer-btn" onclick="GetOrderData()"><i class="fa fa-search" aria-hidden="true"></i>@LanguageProvider.get("search")  </button>
+                    </li>
+                    <li>
+                        <button class="offer-btn" onclick="DownloadExcel()"><i class="fa fa-file-excel-o" aria-hidden="true"></i>@LanguageProvider.get("excel") </button>
+                    </li>
+                    <li>
+                        <button class="offer-btn" onclick="reset()"><i class="fa fa-refresh" aria-hidden="true"></i>@LanguageProvider.get("reset") </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="aggrid-section">
+        <div class="row">
+            <div class="col-xl-12">
+                <!---- =============== start ag-grid =============== ---->
+                <div id="myGrid" style="width: 100%;height:320px;" class="ag-theme-balham">
+                </div>
+                <!---- =============== end ag-grid ================= ----->
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Are U Sure Message*@
+
+<!--------------Remove Country ------------->
+<div class="modal fade social-model" id="PurchaseMsgBox">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Purchase Order</h4>
+                <button type="button" class="close" onclick="ClearRemoveModel()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <li>Are you sure you want to process</li>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnyes" class="btn btn-secondary" onclick="PlaceConfirmOrder()" type="button">Purchase</button>
+                <button id="btnno" class="btn btn-primary" type="button" onclick="ClearRemoveModel()">@LanguageProvider.get("cancel")</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--- end of order-history part---->
+@section scripts{
+    @*<script type="text/javascript" src="~/Content/Plugins/multiselect/bootstrap-multiselect.js"></script>*@
+    <script src="~/Content/js/wow.min.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/SupplierOrderLog.js?version=5.5"></script>
+    <script src="~/Content/js/Pages/detailCellRenderer.js"></script>
+}

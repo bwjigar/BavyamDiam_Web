@@ -1,0 +1,97 @@
+﻿@{
+    ViewBag.Title = "User Status Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+}
+<style>
+    .spn-Yes1 {
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 0px 5px 0px 5px;
+        font-size: 10px;
+        font-weight: 600;
+        background: #28a745;
+        color: white;
+    }
+
+    .spn-No1 {
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        padding: 0px 5px 0px 5px;
+        font-size: 10px;
+        font-weight: 600;
+        background: #ef0808;
+        color: white;
+    }
+</style>
+<div class="container-fluid order-history-section">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>User Status Report</h2>
+            </div>
+        </div>
+    </div>
+    <div class="order-history-data admin">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 float-left mb-2">
+                    <div class="order-date common-order">
+                        <div class="offer-label">Date:</div>
+                        <input type="text" id="txtFromDate" name="From" value="" class="offer-input" autocomplete="off" />
+                        <input type="text" id="txtToDate" name="To" value="" class="offer-input" autocomplete="off" />
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                    <div class="order-date common-order">
+                        <div class="offer-label">Activity Status:</div>
+                        <select id="ddlActivityStatus" class="form-control ">
+                            <option value="">Select an Option</option>
+                            <option value="Registered">Registered</option>
+                            <option value="Active">Active</option>
+                            <option value="In Active">In Active</option>
+                            <option value="Suspended">Suspended</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left">
+                    <div class="offer-label">&nbsp;</div>
+                    <ul class="offer-inbtn">
+                        <li class="mr-2">
+                            <button type="button" id="btnSearch" onclick="GetSearch();" class="offer-btn">
+                                <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search
+                            </button>
+                        </li>
+                        <li class="mr-2">
+                            <button type="button" id="Export" onclick="ExcelData();" class="offer-btn">
+                                <i class="fa fa-file-excel-o" aria-hidden="true"></i>&nbsp;Excel
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" id="btnReset" onclick="Reset();" class="offer-btn">
+                                <i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Reset
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="aggrid-section">
+        <div class="row">
+            <div class="col-xl-12">
+                <div id="myGrid" style="width: 100%;" class="ag-theme-balham">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/detailCellRenderer.js"></script>
+    <script src="~/Content/js/Pages/UserStatusReport.js?version=1"></script>
+}

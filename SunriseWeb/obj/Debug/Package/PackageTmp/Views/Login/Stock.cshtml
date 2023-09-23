@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Stock History";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+}
+<style>
+    .g-head-t {
+        font-size: 12px;
+        padding: 0 12px;
+        color: grey;
+    }
+
+    .g-amt-t {
+        font-size: 15px;
+        padding: 0 12px;
+        color: #003d66;
+        font-weight: 700;
+    }
+</style>
+<div class="container-fluid order-history-section">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title" style="margin-bottom: -43px;">
+                <h2>Stock History</h2>
+                <a style="float:right;margin-top: -44px;font-size: 11.5px;color: #003d66;font-weight: 700;" target="_blank" href="http://203.187.204.211:82/Stock_Upload_From_API_Log.txt">Stock Upload From API Log File</a><br>
+                <a style="float:right;margin-top: -36px;font-size: 11.5px;color: #003d66;font-weight: 700;" target="_blank" href="http://203.187.204.211:82/Stock_Available_Email_Log.txt">No Stock Avail Email Send Log File</a><br>
+                <a style="float:right;margin-top: -76px;font-size: 11.5px;color: #003d66;font-weight: 700;" target="_blank" href="http://203.187.204.211:82/Auto_Suspend_User_Make.txt">Auto Suspend User Make Log File</a>
+            </div>
+        </div>
+    </div>
+    <div class="order-history-data admin">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12 float-left mb-2">
+                    <div class="order-date common-order">
+                        <div class="offer-label">Date:</div>
+                        <input type="text" id="txtFromDate" name="From" value="" class="offer-input" autocomplete="off" style="width: 82px;" />
+                        <input type="text" id="txtToDate" name="To" value="" class="offer-input" autocomplete="off" style="width: 82px;" />
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6 col-12 float-left mb-2">
+                    <div class="offer-label">&nbsp;</div>
+                    <ul class="offer-inbtn pull-right src-rest-topbtn" style="margin-top:0px;">
+                        <li style="margin-top: 0px;">
+                            <button id="btnSearch" class="offer-btn"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xl-8 col-lg-6 col-md-6 col-sm-6 col-12 float-left mb-2">
+                    <div id="tab1TCount" class="col-xl-12 col-lg-12 col-md-12 col-12 row" style="padding: 0px 26px;">
+                        <div>
+                            <center><span class="g-head-t">Last Excel Gen Date</span></center>
+                            <center>
+                                <a style="font-size: 11px;color: #003d66;font-weight: 700;" id="a_Last_Excel_Gen_Link" href=""></a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="aggrid-section">
+        <div class="row">
+            <div class="col-xl-12">
+                <!---- =============== start ag-grid =============== ---->
+                <div id="myGrid" style="width: 100%;" class="ag-theme-balham">
+                </div>
+
+                @*<div class="gridpage_info" id="SearchStone1_info" role="status" aria-live="polite">Showing 1 to 100 of 50 entries</div>*@
+                <!---- =============== end ag-grid ================= ----->
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/Pages/detailCellRenderer.js"></script>
+    <script src="~/Content/js/Pages/Stock.js"></script>
+}
+

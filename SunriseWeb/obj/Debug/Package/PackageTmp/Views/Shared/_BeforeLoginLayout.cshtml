@@ -1,0 +1,96 @@
+﻿@using SunriseWeb.Resources;
+<!DOCTYPE html>
+<html translate="no">
+<head>
+    <title>@ViewBag.Title</title>
+    <meta name="keyword" content="" />
+    <meta name="description" content="" />
+    <meta name="title" content="" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/images/bd-removebg-preview.png">
+    <!-- attach stylesheet -->
+    <link rel="stylesheet" href="~/Content/Login/css/bootstrap.min.css">
+    <link href="~/Content/Login/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/Login/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+    <link href="~/Content/Login/css/animate.css" rel="stylesheet">
+    <!-- main stylesheet -->
+    @*<link href="~/Content/Login/css/style-four.css" rel="stylesheet">*@
+    <link href="~/Content/Plugins/jqueryUI/jquery-ui.css?version=1" rel="stylesheet" />
+    <link href="~/Content/Plugins/toastr/toastr.css" rel="stylesheet" />
+    <style>
+        .loading-overlay {
+            display: none;
+            background: rgba( 26, 26, 26, 0.7 );
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            top: 0;
+        }
+
+        .loading-overlay-image-container {
+            display: none;
+            position: fixed;
+            z-index: 7;
+            top: 50%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+        }
+
+        .loading-overlay-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="loading-overlay"></div>
+    <div class="loading-overlay-image-container">
+        <img src="~/Content/images/loader.gif" class="loading-overlay-img" />
+    </div>
+    <!-- ======================== Start Navbar ============================ -->
+    <nav class="navbar navbar-expand-lg fixed-top custom-navbar ragistration-page" id="navigation">
+        <div class="container">
+            <div class="ragister-logo">
+                <button type="button" id="sidebarCollapse" class="custom-toggle">
+                    <i class="fa fa-align-left" aria-hidden="true"></i>
+                </button>
+                <img src="~/Content/Login/images/bd-removebg-preview.png" class="img-responsive" alt="logo">
+                <div class="home-icon">
+                    <a href="@Url.Action("Index","Login")"><i class="fa fa-home" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div id="myScrollspy">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="@Url.Action("Index","Login")">Home</a></li>
+                    <li><a href="@Url.Action("Aboutus","Login")">About Us</a></li>
+                    @*<li><a href="@Url.Action("Service","Login")">Service</a></li>*@
+                    <li><a href="@Url.Action("ContactUs","Login")">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ======================== End Navbar ============================ -->
+    <section class="section ragistration" id="ragistration">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </section>
+    <script src="~/Content/Login/js/jquery.min.js"></script>
+    <script src="~/Content/Plugins/jqueryUI/jquery-ui.js"></script>
+    <script src="~/Content/Login/js/bootstrap.min.js"></script>
+    <script src="~/Content/Login/js/popper.min.js"></script>
+    <script src="~/Content/Login/js/wow.min.js"></script>
+    <script src="~/Content/Login/js/custom.js"></script>
+    <script src="~/Content/Login/js/select2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Content/Plugins/toastr/toastr.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

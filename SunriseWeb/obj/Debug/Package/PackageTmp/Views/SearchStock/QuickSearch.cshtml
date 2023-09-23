@@ -1,0 +1,221 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = "QuickSearch";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.ClassName = "search-contnt";
+}
+<!------------- start quick search ---------------->
+<link rel="stylesheet" href="~/Content/Plugins/multiselect/bootstrap-multiselect.css" type="text/css">
+<style>
+    .multiselect {
+        width: 250px;
+    }
+</style>
+<input type="hidden" id="hdn_Select_all" value="@LanguageProvider.get("Select_all")" />
+<input type="hidden" id="hdn_None_selected" value="@LanguageProvider.get("None_selected")" />
+<input type="hidden" id="hdn_All_selected" value="@LanguageProvider.get("All_selected")" />
+<input type="hidden" id="hdn_Please_Select_Atleast_One_Criteria_For_Search" value="@LanguageProvider.get("Please_Select_Atleast_One_Criteria_For_Search")" />
+
+
+<div class="quick-search-section">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="quick-title pb-0">
+                    <h1>@LanguageProvider.get("Quick_Search")</h1>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="column-setting-form full-acform">
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+                            <div class="offer-label text-right">@LanguageProvider.get("cut"):</div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3">
+                            <div class=" dash-newarrival-select-main text-left w-100 ml-0 cust-main-select">
+
+                                <select id="ddlCut" class="form-control MinWith input-sm" multiple="multiple" style="width:100%">
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-1 col-lg-1 col-xl-1">
+                            <div class="offer-label text-right">@LanguageProvider.get("fls"):</div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-3">
+                            <select class="form-control MinWith input-sm" id="ddlFls" multiple="multiple" style="width:100%">
+                            </select>
+                        </div>
+
+
+                        <ul class="offer-inbtn">
+                            <li><a href="javascript:void(0);" class="offer-btn" onclick="BindData();"><i class="fa fa-floppy-o" aria-hidden="true"></i>&nbsp;&nbsp;@LanguageProvider.get("search")</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row tab-content table-main ">
+            <div class="col-12">
+                <div class="quick-data">
+                    <div class="col-5 col-sm-4 col-md-3 col-lg-3 col-xl-2 quick-width">
+                        <div class="quick-data-one">
+
+                            <div class="row">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="tab-light-bg"><span id="sp_color">@LanguageProvider.get("color")</span></td>
+                                            <td class="tab-light-bg"><span id="sp_clarity">@LanguageProvider.get("clarity")</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="4" class="tab-light-bg">DEF</td>
+                                            <td class="tab-dark-bg">VVS+</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">VS</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">SI</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">I</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td rowspan="4" class="tab-light-bg">GH</td>
+                                            <td class="tab-dark-bg">VVS+</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">VS</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">SI</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">I</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td rowspan="4" class="tab-light-bg">IJ</td>
+                                            <td class="tab-dark-bg">VVS+</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">VS</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">SI</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">I</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td rowspan="4" class="tab-light-bg">KLMN</td>
+                                            <td class="tab-dark-bg">VVS+</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">VS</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">SI</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">I</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td rowspan="4" class="tab-light-bg">OTHERS</td>
+                                            <td class="tab-dark-bg">VVS+</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">VS</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">SI</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tab-dark-bg">I</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-7 col-sm-8 col-md-9 col-md-9 col-xl-10 quick-width-one">
+                        <div class="quick-data-two">
+                            <div class="row">
+                                <div class="scroll-table ps-container ps-theme-default ps-active-x" data-ps-id="d6cd363f-bf59-61b7-f1d5-005835fced2d">
+                                    <div class="scroll-table-inner">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>0.18-0.22</th>
+                                                    <th>0.23-0.29</th>
+                                                    <th>0.30-0.39</th>
+                                                    <th>0.40-0.49</th>
+                                                    <th>0.50-0.59</th>
+                                                    <th>0.60-0.69</th>
+                                                    <th>0.70-0.79</th>
+                                                    <th>0.80-0.89</th>
+                                                    <th>0.90-0.99</th>
+                                                    <th>1.00-1.19</th>
+                                                    <th>1.20-1.49</th>
+                                                    <th>1.50-1.99</th>
+                                                    <th>2.00-2.99</th>
+                                                    <th>3.00-99.99</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tbodyquicksearch">
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="ps-scrollbar-x-rail" style="width: 984px; left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 837px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal fade quik-src" id="quick-search-main">
+        <div class="modal-dialog  modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modalheader">0.18-0.22</h4>
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="iner-tbl">
+                        <table>
+                            <thead>
+
+                                <tr>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyQuickSearchInner">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" onclick="Submit()">@LanguageProvider.get("search")</button>
+                    <button type="button" class="btn" data-dismiss="modal">@LanguageProvider.get("close")</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!------------- end quick search ---------------->
+@section scripts{
+    <script type="text/javascript" src="~/Content/Plugins/multiselect/bootstrap-multiselect.js"></script>
+    <script src="~/Content/js/Pages/QuickSearch.js"></script>
+}

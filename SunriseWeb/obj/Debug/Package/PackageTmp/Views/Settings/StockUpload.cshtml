@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Supplier Stock Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid order-history-section manage-user apifilter">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>Supplier Stock Upload</h2>
+            </div>
+        </div>
+    </div>
+    <div class="row col-md-12">
+        @using (Html.BeginForm("StockUpload", "Settings", FormMethod.Post, new { @class = "col-md-12", enctype = "multipart/form-data" }))
+        {
+            <div class="form-group">
+                <label class="offer-label" for="DdlSupplierName">Supplier Name <span style="color:red;">*</span></label>
+                <div class="col-md-4">
+                    <select required class="form-control select2" id="DdlSupplierName" name="DdlSupplierName">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="offer-label" for="FileUpload1">Stock File Upload <span style="color:red;">*</span></label>
+                <a style="font-size: 11.5px;color: #003d66;font-weight: 700;margin-left: 181px;" target="_blank" href="/Content/images/Stock Import Format.xlsx?version=1.2">Stock Import Format</a>
+                <div class="col-md-4">
+                    <input required type="file" id="FileUpload1" name="FileUpload1" accept=".xlsx" />
+                </div>
+            </div>
+            <div class="row mg0 pd5" style="text-align: center;">
+                <div class="col-md-4">
+                    <ul class="offer-inbtn pull-left">
+                        <li>
+                            <input class="save offer-btn" type="submit" id="Submit" name="Submit" value="Submit" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var msg = '', status = '';
+            if ('@TempData["Message"]' != '') {
+                msg = '@TempData["Message"]';
+                status = '@TempData["Status"]';
+                if (status == "1")
+                    toastr.success(msg);
+                else if (status == "0")
+                    toastr.error(msg);
+            }
+        });
+    </script>
+    <script src="~/Content/js/Pages/StockUpload.js"></script>
+}

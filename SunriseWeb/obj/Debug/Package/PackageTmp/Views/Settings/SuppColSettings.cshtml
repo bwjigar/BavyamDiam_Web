@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "Supplier Wise Column Settings";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles {
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+}
+<style>
+    .ag-paging-page-summary-panel {
+        left: 10px;
+        position: relative;
+    }
+
+    .ag-theme-balham .ag-cell {
+        white-space: normal !important;
+        line-height: inherit;
+        overflow-y: auto;
+    }
+
+    .Yes {
+        margin-bottom: 1px;
+        color: white;
+        background-color: #008000ab;
+        padding: 2px 5px;
+        border-radius: 16px;
+        font-weight: bold;
+    }
+
+    .No {
+        margin-bottom: 1px;
+        color: white;
+        background-color: #ff0000cf;
+        padding: 2px 5px;
+        border-radius: 16px;
+        font-weight: bold;
+    }
+</style>
+<div class="container-fluid order-history-section">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>Supplier Wise Column Settings</h2>
+            </div>
+        </div>
+    </div>
+    <div class="order-history-data admin">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 float-left mb-2">
+                    <div class="order-date common-order">
+                        <div class="offer-label">Date :</div>
+                        <input type="text" name="txtFromDate" id="txtFromDate" value="" class="offer-input offer-input1" autocomplete="off" />
+                        <input type="text" name="txtToDate" id="txtToDate" value="" class="offer-input offer-input1" autocomplete="off" />
+                    </div>
+                </div>
+                <div class="col-xl-5 col-lg-4 col-md-6 col-sm-6 col-12 float-left mb-2">
+                    <div class="order-company-name common-order">
+                        <div class="offer-label">Search :</div>
+                        <input id="txtSearch"
+                               placeholder="Supplier Name"
+                               type="text" class="form-control common-control" autocomplete="off">
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 float-left mb-2">
+                    <div class="order-stone-id common-order">
+                        <ul class="offer-inbtn pull-right mt-3">
+                            <li class="mr-2">
+                                <button type="button" id="btnSearch" onclick="btnSearch();" class="offer-btn">
+                                    <i class="fa fa-search" aria-hidden="true"></i>&nbsp;Search
+                                </button>
+                            </li>
+                            <li class="mr-2">
+                                <button type="button" id="btnReset" onclick="Clear();" class="offer-btn">
+                                    <i class="fa fa-refresh" aria-hidden="true"></i>&nbsp;Reset
+                                </button>
+                            </li>
+                            <li class="mr-2">
+                                <button type="button" id="Export" onclick="Back();" class="offer-btn">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="aggrid-section" style="margin-bottom: -43px;">
+        <div class="row">
+            <div class="col-xl-12">
+                <!---- =============== start ag-grid =============== ---->
+
+                <div id="myGrid" style="width: 100%;height:500px;" class="ag-theme-balham">
+
+                </div>
+
+                <!---- =============== end ag-grid ================= ----->
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Content/js/wow.min.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/common.js"></script>
+    <script src="~/Content/js/Pages/SuppColSettings.js"></script>
+}

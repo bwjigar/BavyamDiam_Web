@@ -1,0 +1,374 @@
+﻿
+
+
+
+/*========================== START Table ============================*/
+
+span ul.flat-icon-ul li a img {
+    width: 20px;
+}
+
+span ul.flat-icon-ul li {
+    list-style: none;
+    display: inline-block;
+    padding: 1px;
+}
+
+span ul.flat-icon-ul {
+    padding: 0;
+    margin: 0;
+}
+
+.activeStatus span {
+    background: #008000;
+    border-radius: 4px;
+    color: #fff;
+    padding: 4px 5px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 11px;
+    display: inline-block;
+}
+
+.offerStatus span {
+    background: #CCFFFF;
+    border-radius: 4px;
+    color: #000;
+    padding: 4px 5px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 11px;
+    display: inline-block;
+}
+
+.newStatus span {
+    background: #fcaec6;
+    border-radius: 4px;
+    color: #000;
+    padding: 4px 5px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 11px;
+    display: inline-block;
+}
+
+.busyStatus span {
+    background: #ff7f00;
+    border-radius: 4px;
+    color: #fff;
+    padding: 4px 5px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 11px;
+    display: inline-block;
+}
+
+.busyHoldStatus span {
+    background: #0014ffbd;
+    border-radius: 4px;
+    color: #fff;
+    padding: 4px 5px;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 11px;
+    display: inline-block;
+}
+
+.stock-font {
+    font-style: italic;
+    color: #003d66;
+}
+
+.view a i.fa.fa-plus-circle {
+    color: #003d66;
+    font-size: 22px;
+    line-height: 25px;
+}
+
+.view a i.fa.fa-minus-circle {
+    color: #003d66;
+    font-size: 22px;
+    line-height: 25px;
+}
+
+/*input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}*/
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border: 1px solid #d7d4d4;
+    border-radius: 4px;
+}
+
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+/*--- Developer CSS ----------*/
+
+.column-setting-table .table thead tr th{
+    font-weight:bold;
+}
+
+.order-confirm-wrappar {
+}
+
+.order-confirm-image img {
+    width: 200px !important;
+}
+
+.order-confirm-msg {
+    text-align: center;
+    padding: 15px 0 0 0;
+    color: #48a246;
+    font-size: 16px;
+}
+
+button.close-order-confirm {
+    background: transparent;
+    border: 0;
+    font-size: 32px;
+    position: absolute;
+    line-height: 15px;
+    z-index: 1;
+    right: 0;
+    top: 3px;
+}
+
+.order-confirm-wrappar .modal-content {
+    border: 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.order-confirm-wrappar .modal-body:before {
+    content: '';
+    background: #48a246;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+}
+
+.modal.fade .order-confirm-wrappar {
+    -webkit-transform: translate(0,0) scale(0.7);
+    transform: translate(0,0) scale(0.7);
+}
+
+.modal.show .order-confirm-wrappar {
+    -webkit-transform: translate(0,0) scale(1);
+    transform: translate(0,0) scale(1);
+}
+.Customer-active-cel a {
+    font-size: 16px;
+    color: green;
+}
+
+
+
+
+/*========== model popup css change =========*/
+
+.social-model.fade .modal-dialog {
+    transition: transform 0.6s ease-out;
+    transform: scale(0);
+}
+
+.social-model.show .modal-dialog {
+    transition: transform 0.6s ease-out;
+    transform: scale(1);
+}
+
+.social-model .modal-content .note {
+    font-size: 13px;
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 10px 0;
+}
+
+.social-model .modal-header {
+    background-color: #003D66;
+    border-radius: 0rem;
+    padding: 12px 10px;
+}
+
+    .social-model .modal-header h4 {
+        color: #fff;
+        text-align: center;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .social-model .modal-header .close {
+        color: #003d66;
+        opacity: 1 !important;
+        background: #fff;
+        position: absolute;
+        right: 8px;
+        margin: 0;
+        top: 8px;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0;
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+.social-model .modal-footer button {
+    background: #023059;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+    .social-model .modal-footer button:hover {
+        background: #023059;
+    }
+
+    .social-model .modal-footer button:focus {
+        outline: 0;
+        box-shadow: none;
+    }
+
+.social-model .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #023059;
+    outline: 0;
+    box-shadow: none;
+}
+
+.social-model .custom-control-label {
+    line-height: 24px;
+}
+
+
+.fdbk-snd-btn {
+    background: #003d66;
+    border: 0;
+    color: #fff;
+    padding: 7px 30px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 50px;
+    letter-spacing: 0.8px;
+    font-size: 16px;
+    text-transform: capitalize;
+}
+.social-model .custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: #023059;
+    background-color: #023059;
+}
+
+.modal-dialog {
+    width: auto !important;
+}
+
+.modal-content .modal-body img {
+    width: 100%;
+}
+
+.social-model .input-main {
+    background: #f0f0f0;
+}
+
+    .social-model .input-main:focus {
+        background: #fff;
+    }
+
+textarea.input-main {
+    border-radius: 10px;
+    resize: none;
+    padding: 5px 10px;
+}
+.social-model .modal-dialog .modal-body label {
+    color: #003d66;
+    margin-bottom: 0;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+}
+.mail-stone-radio-btn {
+    margin: 0 0 10px 0;
+    text-align: center;
+    border-bottom: 1px solid #eaeff3;
+    padding: 6px 0 10px 0;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.social-model .input-main:focus {
+    background: #fff;
+}
+
+
+.customHeaderLabel {
+    float: left;
+    margin: 0 0 0 3px;
+}
+
+.customSortDownLabel {
+    float: left;
+    margin: 0 0 0 3px;
+}
+
+.customSortUpLabel {
+    float: left;
+    margin: 0;
+}
+
+.sortactive {
+    color: cornflowerblue;
+}
+
+.btn-darkblue {
+    background-color: #023059 !important;
+    font-size: 0.8rem !important;
+    color: #fff !important;
+}
+
+    .btn-darkblue:hover {
+        color: #fff !important;
+        background-color: #023059 !important;
+        font-size: 0.8rem !important;
+    }
+
+.modalptag {
+    font-size: 0.9em !important;
+    color: #000 !important;
+}
+
+.error {
+    color: red !important;
+}

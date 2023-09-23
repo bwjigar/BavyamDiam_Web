@@ -1,0 +1,361 @@
+html, body{
+	letter-spacing: 1px;
+	margin:0;
+	font-size: 14px;
+	background: #fff;
+	font-family: 'Open Sans', sans-serif;
+	height: 100%;
+}
+body a {
+    text-decoration: none;
+    transition: all 0.5s ease 0s;
+}
+a:hover {
+    text-decoration: none;
+}
+input[type="button"], input[type="submit"] {
+    transition: all 0.5s ease 0s;
+}
+h1, h2, h3, h4, h5, h6, a, li, p, div{
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+p {
+    font-size: 0.9em;
+    margin: 0;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+label {
+    margin: 0;
+}
+
+/*google font*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600&display=swap');
+
+
+/*sidebar navigation*/
+
+.ragistration-page #myScrollspy {
+  background: #003d66 none repeat scroll 0 0;
+  left: 0px;
+  position: fixed;
+  top: 88px;
+  width: 0px;
+  z-index: 99;
+  height: 100% !important;
+  overflow: auto;
+  transition: 0.5s;
+}
+.ragistration-page #myScrollspy.active{
+	width: 236px;
+}
+.ragistration-page #myScrollspy .nav-pills li a {
+    font-size: 18px;
+    line-height: 17px;
+    text-transform: capitalize;
+    border-radius: 0;
+    padding: 15px;
+    letter-spacing: 1px;
+    color: #fff;
+    display: block;
+    text-align: center;
+}
+.ragistration-page #myScrollspy .nav-pills li a:hover,.ragistration-page #myScrollspy .nav-pills li a.active{
+	background: #104a71;
+}
+.ragistration-page #myScrollspy .nav-pills li{
+	width: 100%;
+}
+.ragistration-page .ragister-logo {
+    float: left;
+    width: 100%;
+    display: inline-block;
+	text-align: center;
+}
+.ragistration-page .ragister-logo img {
+    width: 150px;
+    float: none;
+    vertical-align: top;
+    display: inline-block;
+    background: #fff;
+    border-radius: 4px;
+}
+.ragistration-page .home-icon {
+    float: right;
+}
+.ragistration-page .home-icon a {
+    background: #4c4c4c;
+    padding: 7px;
+	display: block;
+    margin: 16px 0;
+	border-radius: 6px;
+}
+.ragistration-page .home-icon a i{
+	color: #fff;
+	font-size: 24px;
+}
+/*end of sidebar*/
+
+.section.ragistration {
+    padding: 100px 0;
+    position: relative;
+	float: left;
+	width: 100%;
+}
+.ragistration-page .custom-toggle {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+	line-height: 24px;
+	cursor: pointer;
+	float: left;
+    margin: 23px 0px;
+}
+.ragistration-page .custom-toggle:focus {
+    box-shadow: none;
+	outline: none;
+}
+.ragistration-page .custom-toggle:active,.ragistration-page .custom-toggle.active {
+    background: none;
+	border: none;
+	outline: none;
+}
+.custom-navbar.ragistration-page {
+    background-color: rgba(0,0,0,0.2);   
+    width: 100%;
+    z-index: 999;
+	padding: 10px 0px;
+}
+.ragistration {
+    background-image: url(../images/background.jpg);
+    position: relative;
+	background-position: center center;
+    background-size: cover;  
+}
+.ragistration::before {
+    background-color: rgba(10, 17, 40, 0.8);
+    position: absolute;
+    top: 0;
+    right: 0;
+	left:0;
+	bottom:0;
+    width: 100%;
+    height: 100%;
+	content:'';
+}
+
+/*form*/
+.ragistration .ragistration-form {
+    float: left;
+    width: 100%;
+    background: #eee;
+    padding: 15px;
+    border-radius: 6px;
+}
+.ragistration .personal-info{
+    float: left;
+    width: 100%;
+    background: #fff;
+    padding: 15px;
+    border-radius: 6px;
+}
+.ragistration .personal-info.one{
+	margin-bottom: 15px;
+}
+.ragistration .personal-info h2 {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px 0;
+	float: left;
+	width: 100%;
+}
+.ragistration .personal-info h2.margin-two{
+	margin-top: 0;
+}
+.ragistration form {
+    float: left;
+    width: 100%;
+}
+.ragistration .form-group{
+	position: relative;
+}
+.ragistration .form-group span.back {
+    background: #e9ecef;
+    color: #495057;
+    border: 1px solid #ced4da;
+    border-radius: 50%;
+    width: 29px;
+    height: 29px;
+    position: absolute;
+    z-index: 99;
+    top: 2px;
+    left: 2px;
+    padding: 2px;
+}
+.ragistration .form-group span i{
+	transition: 0.5s;
+	width: 30px;
+}
+.ragistration .form-group:hover span i{
+	transform: rotateY(180deg);
+}
+.ragistration input.form-control:focus,.ragistration .custom-select:focus {
+    border-color: rgb(0, 61, 102);
+    box-shadow: 0 0 0 0.2rem rgba(0, 61, 102,0.25);
+}
+.ragistration input.form-control {
+    border-radius: 15px !important;
+	padding: 5px 10px 5px 40px;
+}
+.ragistration .login-button {
+    text-align: center;
+	margin-top: 15px;
+}
+.ragistration .login-button button {
+    border: 1px solid #003d66;
+    color: #fff;
+    padding: 12px 15px;
+    font-size: 15px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s;
+    box-shadow: 0px 4px 2px rgba(0, 61, 102,0.30);
+    width: 14%;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+.ragistration .login-button button::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    margin: auto;
+    background: #003d66;
+    z-index: -1;
+    height: 100%;
+    border-radius: 50px 0 0 50px;
+	transition:0.5s;
+}
+.ragistration .login-button button::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    margin: auto;
+    background: #003d66;
+    z-index: -1;
+    height: 100%;
+    border-radius: 0 50px 50px 0;
+	transition:0.5s;
+}
+.ragistration .login-button button:focus{
+	outline: none;
+}
+.ragistration .login-button button:hover::before,
+.ragistration .login-button button:hover::after{
+	width: 0;
+}
+.ragistration .login-button button:hover{
+	color: #003d66;
+    font-weight: 700;
+}
+.ragistration .login-button b {
+    font-weight: 500;
+}
+.ragistration .select2-container .select2-selection--single{
+    height:34px !important;
+}
+.ragistration .select2-container--default .select2-selection--single{
+    border: 1px solid #ccc !important; 
+    border-radius: 15px !important; 
+	padding-left: 32px;
+}
+.ragistration .form-group.select-form span.back.select {
+    position: absolute;
+    z-index: 99;
+    padding: 10px;
+}
+.ragistration .form-group.select-form {
+    position: relative;
+}
+.ragistration select.custom-select {
+    border-radius: 15px !important;
+    padding-left: 40px;
+}
+.ragistration .select2-container .select2-selection--single:focus{
+	outline: none !important;
+}
+.ragistration .form-group.select-form span.back.select {
+    position: absolute;
+    z-index: 99;
+    padding: 10px;
+}
+.ragistration .form-group.select-form span.back.select.four {
+    padding: 4px !important;
+}
+.ragistration .form-group.select-form {
+    position: relative;
+}
+ .select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #003d66;
+    color: #fff;
+}
+.select2-container--default .select2-results>.select2-results__options::-webkit-scrollbar {
+    width: 7px;
+}
+ .select2-container--default .select2-results>.select2-results__options::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #999;
+}
+.select2-container--default .select2-results>.select2-results__options::-webkit-scrollbar-track {
+    background: #ddd;
+    border-radius: 5px;
+}
+.ragistration .r-label {
+    float: left;
+    position: relative;
+    background: #003d66;
+    padding: 10px;
+    margin-left: -23px;
+    margin-top: -15px;
+}
+.r-label::before {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 0;
+    border-top: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #003d66;
+    transform: rotate(90deg);
+}
+ .ragistration .r-label p{
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

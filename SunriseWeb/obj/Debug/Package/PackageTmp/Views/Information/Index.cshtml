@@ -1,0 +1,167 @@
+﻿@using SunriseWeb.Resources;
+@{
+    ViewBag.Title = "Information";
+    <link href="~/Content/css/daterangepicker.css" rel="stylesheet" />
+    <style type="text/css">
+        .contnt {
+            padding-bottom: 5px;
+        }
+
+        .offer-input2 {
+            width: 200px;
+        }
+
+        .avatar-upload .avatar-edit {
+            right: 10px;
+        }
+
+        @@media (max-width: 543px) {
+            .offer-input1 {
+                width: 105px;
+            }
+        }
+
+        @@media (width: 768px) {
+            .avatar-upload .avatar-edit {
+                right: 45px;
+                top: 36px;
+            }
+        }
+
+        @@media (max-width: 450px) {
+            .avatar-upload .avatar-edit {
+                right: 83px;
+                top: 36px;
+            }
+
+            .avatar-upload {
+                margin: 0px;
+            }
+        }
+        /*.Yes {
+        margin-bottom: 1px;
+        color: white;
+        background-color: #008000ab;
+        padding: 2px 5px;
+        border-radius: 16px;
+        font-weight: bold;
+    }
+    .No {
+        margin-bottom: 1px;
+        color: white;
+        background-color: #ff0000cf;
+        padding: 2px 5px;
+        border-radius: 16px;
+        font-weight: bold;
+    }*/
+    </style>
+}
+
+<div class="container-fluid order-history-section">
+    <div class="result-nav">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="order-title">
+                    <h2>Information</h2>
+                </div>
+            </div>
+        </div>
+        <div class="order-history-data admin">
+            @*<div class="row">*@
+            <form id="frm">
+                @*<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">*@
+                <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                    <div class="order-date common-order">
+                        <div class="offer-label">Information<span class="error">*</span></div>
+                        <input type="text" name="Information" id="txtInformation" class="offer-input offer-input2" autocomplete="off" />
+                        <input type="hidden" id="hdnInformationID" value="0" />
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                    <div class="order-date common-order">
+                        <div class="offer-label">Date<span class="error">*</span></div>
+                        <input type="text" name="From" id="txtFromDate" value="" class="offer-input offer-input1" />
+                        <input type="text" name="To" id="txtToDate" value="" class="offer-input offer-input1" />
+                    </div>
+                    <div class="order-date common-order" style="margin-top: 20px;">
+                        <input type="checkbox" id="chkBLogin" name="chkBLogin" value="1" style="cursor:pointer;">
+                        <label class="offer-label" for="chkBLogin" style="margin-top: -10px;margin-left: 8px;cursor:pointer;"> Is Before Login</label>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-3 col-md-3 col-sm-6 col-12 float-left pl-2 pr-2 mb-2">
+                    <div class="order-status common-order">
+                        <div class="offer-label">Image</div>
+                        <div class="profile-images">
+                            <div class="avatar-upload">
+                                <div class="avatar-edit">
+                                    <input type="file" id="imageUpload"
+                                           onchange="Image_Browse1(event)" accept=".png, .jpg, .jpeg">
+                                    <label for="imageUpload"></label>
+                                </div>
+                                <div class="avatar-preview" style="border-radius: 0px;width: 125px;height: 125px;">
+                                    <div id="imagePreview12">
+                                        <img class="img-fluid" id="imagePreview1" default="~/Content/images/NA.png" src="~/Content/images/NA.png" style="vertical-align:inherit">
+                                        <input type="hidden" id="hdnIsProfileChanged" value="0" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 float-left">
+                    <ul class="offer-inbtn mrtop mt-2 mb-2 float-left p-0">
+                        <li>
+                            <button id="btnSave" type="button" class="offer-btn"><i class="fa fa-save" aria-hidden="true"></i>Save</button>
+                        </li>
+                        <li>
+                            <button id="btnReset" type="button" class="offer-btn"><i class="fa fa-refresh" aria-hidden="true"></i>Reset</button>
+                        </li>
+                    </ul>
+                </div>
+                @*</div>*@
+            </form>
+
+            @*</div>*@
+        </div>
+    </div>
+    <div class="aggrid-section">
+        <div class="row">
+            <div class="col-xl-12">
+                <!---- =============== start ag-grid =============== ---->
+                <div id="myGrid" style="width: 100%;" class="ag-theme-balham">
+                </div>
+                <!---- =============== end ag-grid ================= ----->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade social-model" id="Remove">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Remove Information</h4>
+                <button type="button" class="close" onclick="ClearRemoveModel()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <li>@LanguageProvider.get("Are_you_sure_to_remove_this_record") </li>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnSendMail" class="btn btn-primary" type="button" onclick="DeleteInformation()">@LanguageProvider.get("Remove")</button>
+                <button id="btnremove" class="btn btn-primary" type="button" onclick="ClearRemoveModel()">@LanguageProvider.get("cancel")</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script src="~/Content/js/ag-grid-enterprise.min.js"></script>
+    <script src="~/Content/js/moment.min.js"></script>
+    <script src="~/Content/js/daterangepicker.min.js"></script>
+    <script src="~/Content/js/Pages/Information.js"></script>
+    <script type="text/javascript">
+        function getApiUrl() {
+            return '@System.Configuration.ConfigurationManager.AppSettings["APIURL"]';
+        }
+    </script>
+}

@@ -1,0 +1,1399 @@
+﻿@model SunriseWeb.Models.ApiFilterModel
+@{
+    ViewBag.Title = "API Filter";
+}
+
+@section styles{
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+            display: none !important;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #CaratModal .form-control{
+            border:1px solid black;
+        }
+        .api-filter-popup ul.color-whit-box li {
+            display: inline-block;
+            margin: 4px 4px;
+        }
+        ul.color-whit-box li.active {
+            background: rgba(0, 61, 102,1);
+            color: #fff;
+        }
+        ul.color-whit-box li {
+            padding: 5px 20px;
+            -webkit-box-shadow: 0 0 2px rgba(0, 61, 102,0.3);
+            -moz-box-shadow: 0 0 2px rgba(0, 61, 102,0.3);
+            box-shadow: 0 0 2px rgba(0, 61, 102,0.3);
+            margin: 2px 4px;
+            -webkit-border-radius: 50px;
+            -moz-border-radius: 50px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 13px;
+            color: #003d66;
+            font-weight: 500;
+            background: #fff;
+            white-space: nowrap;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+        .custom-box-list p {
+            word-break: break-all;
+            border: 1px solid #ced4da;
+            padding: 0px 4px;
+            font-weight: 400;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            font-size: 13px;
+            height: 35px;
+            line-height: normal;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            overflow: auto;
+            margin: 0;
+        }
+    </style>
+}
+<div class="container-fluid order-history-section manage-user apifilter">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="order-title">
+                <h2>API Filter</h2>
+            </div>
+        </div>
+    </div>
+    <div class="admin muser">
+        <div class="row m-0 api-full-box">
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Shape</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr ddlCheckedShapeValue">
+                            @Html.DropDownList("FromShape", new SelectList(Model.ShapeList, "iSr", "sName"), "From Shape", new { @class = "form-control select2", onchange = "ChangeDDL('Shape');" })
+
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr ddlCheckedShapeValue">
+                            @Html.DropDownList("ToShape", new SelectList(Model.ShapeList, "iSr", "sName"), "To Shape", new { @class = "form-control select2", onchange = "ChangeDDL('Shape');" })
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr ng-hide divCheckedShapeValue">
+                        </div>
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center; ">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('Shape')"></i>
+                                @*<a href="" data-toggle="modal" data-target="#myModal" onclick="ParameterLabel='Shape'"><i class="fa fa-plus"></i></a>*@
+                                <a href="javascript:void(0);" onclick="ModalShow('Shape')"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Carat</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr ddlCheckedCaratValue">
+                            @Html.TextBoxFor(x => x.FromCarat, "{0:n2}", new { @value = Model.FromCarat, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','CARAT');" })
+
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr ddlCheckedCaratValue">
+                            @Html.TextBoxFor(x => x.ToCarat, "{0:n2}", new { @value = Model.ToCarat, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','CARAT');" })
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr ng-hide divCheckedCaratValue">
+                        </div>
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="reicon list-icn">
+                                <i class="fa fa-refresh" onclick="ResetCheckCarat();"></i>
+                                <a href="" data-toggle="modal" data-target="#CaratModal"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Color</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr ddlCheckedColorValue">
+                            @Html.DropDownList("FromColor", new SelectList(Model.ColorList, "iSr", "sName"), "From Color", new { @class = "form-control select2", onchange = "ChangeDDL('Color');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr ddlCheckedColorValue">
+                            @Html.DropDownList("ToColor", new SelectList(Model.ColorList, "iSr", "sName"), "To Color", new { @class = "form-control select2", onchange = "ChangeDDL('Color');" })
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr ng-hide divCheckedColorValue">
+                        </div>
+
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('Color')"></i>
+                                @*<a href="" data-toggle="modal" data-target="#myModal" onclick="ParameterLabel='Color'"><i class="fa fa-plus"></i></a>*@
+                                <a href="javascript:void(0);" onclick="ModalShow('Color')"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Clarity</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr ddlCheckedClarityValue">
+                            @Html.DropDownList("FromClarity", new SelectList(Model.ClarityList, "iSr", "sName"), "From Clarity", new { @class = "form-control select2", onchange = "ChangeDDL('Clarity');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr ddlCheckedClarityValue">
+                            @Html.DropDownList("ToClarity", new SelectList(Model.ClarityList, "iSr", "sName"), "To clarity", new { @class = "form-control select2", onchange = "ChangeDDL('Clarity');" })
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr ng-hide divCheckedClarityValue">
+                        </div>
+
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('Clarity')"></i>
+                                @*<a href="" data-toggle="modal" data-target="#myModal" onclick="ParameterLabel='Clarity'"><i class="fa fa-plus"></i></a>*@
+                                <a href="javascript:void(0);" onclick="ModalShow('Clarity')"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Cut</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("FromCut", new SelectList(Model.CutList, "iSr", "sName"), "From Cut", new { @class = "form-control select2", onchange = "ChangeDDL('Cut');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("ToCut", new SelectList(Model.CutList, "iSr", "sName"), "To Cut", new { @class = "form-control select2", onchange = "ChangeDDL('Cut');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Polish</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("FromPolish", new SelectList(Model.PolishList, "iSr", "sName"), "From Polish", new { @class = "form-control select2", onchange = "ChangeDDL('Polish');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("ToPolish", new SelectList(Model.PolishList, "iSr", "sName"), "To Polish", new { @class = "form-control select2", onchange = "ChangeDDL('Polish');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Symm</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("FromSymm", new SelectList(Model.SymmList, "iSr", "sName"), "From Symm", new { @class = "form-control select2", onchange = "ChangeDDL('Symm');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("ToSymm", new SelectList(Model.SymmList, "iSr", "sName"), "To Symm", new { @class = "form-control select2", onchange = "ChangeDDL('Symm');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Fls</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("FromFls", new SelectList(Model.FlsList, "iSr", "sName"), "From Fls", new { @class = "form-control select2", onchange = "ChangeDDL('Fls');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("ToFls", new SelectList(Model.FlsList, "iSr", "sName"), "To Fls", new { @class = "form-control select2", onchange = "ChangeDDL('Fls');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Shade</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("FromShade", new SelectList(Model.ShadeList, "iSr", "sName"), "From Shade", new { @class = "form-control select2", onchange = "ChangeDDL('Shade');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("ToShade", new SelectList(Model.ShadeList, "iSr", "sName"), "To Shade", new { @class = "form-control select2", onchange = "ChangeDDL('Shade');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Natts</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("FromNatts", new SelectList(Model.NattsList, "iSr", "sName"), "From Natts", new { @class = "form-control select2", onchange = "ChangeDDL('Natts');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("ToNatts", new SelectList(Model.NattsList, "iSr", "sName"), "To Natts", new { @class = "form-control select2", onchange = "ChangeDDL('Natts');" })
+                        </div>
+
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Inclusion</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("FromInclusion", new SelectList(Model.InclusionList, "iSr", "sName"), "From Inclusion", new { @class = "form-control select2", onchange = "ChangeDDL('Inclusion');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.DropDownList("ToInclusion", new SelectList(Model.NattsList, "iSr", "sName"), "To Inclusion", new { @class = "form-control select2", onchange = "ChangeDDL('Inclusion');" })
+                        </div>
+
+                    </div>
+                    <div class="row m-0" style="border-bottom:none;">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Location</strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @Html.DropDownList("Location", new SelectList(Model.LocationList, "iSr", "sName"), "Select Location", new { @class = "form-control select2", onchange = "ChangeDDL('Location');" })
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Lab</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 cust-main-select api-plr ddlCheckedLabValue" onhide="CheckedLabValue">
+                            @Html.DropDownList("FromLab", new SelectList(Model.LabList, "iSr", "sName"), "From Lab", new { @class = "form-control select2", onchange = "ChangeDDL('Lab');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 cust-main-select api-plr ddlCheckedLabValue" onhide="CheckedLabValue">
+                            @Html.DropDownList("ToLab", new SelectList(Model.LabList, "iSr", "sName"), "To Lab", new { @class = "form-control select2", onchange = "ChangeDDL('Lab');" })
+                        </div>
+                        <div class="col-sm-8 col-sm-8 col-xs-10 custom-box-list api-plr ng-hide divCheckedLabValue">
+                        </div>
+
+                        <div class="col-sm-1 col-xs-2 api-plr p-0" style="text-align: center;">
+                            <div class="list-icn">
+                                <i style="cursor: pointer;" class="fa fa-refresh" aria-hidden="true" onclick="ResetSelectedAttr('Lab')"></i>
+                                @*<a href="" data-toggle="modal" data-target="#myModal" onclick="ParameterLabel='Lab'"><i class="fa fa-plus"></i></a>*@
+                                <a href="javascript:void(0);" onclick="ModalShow('Lab')"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Length</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @*<input onblur="LeaveTextBox('FROM','LENGTH');" type="text" class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" onmodel="APIView.FromLength" valid-number="" allow-decimal="true" allow-negative="false" decimal-upto="2" maxlength="6">*@
+                            @Html.TextBoxFor(x => x.FromLength, "{0:n2}", new { @value = Model.FromLength, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','LENGTH');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToLength, "{0:n2}", new { @value = Model.ToLength, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','LENGTH');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Width</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromWidth, "{0:n2}", new { @value = Model.FromWidth, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','WIDTH');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToWidth, "{0:n2}", new { @value = Model.ToWidth, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','WIDTH');" })
+                            @*<input onblur="LeaveTextBox('TO','WIDTH');" type="text" class="form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength" onmodel="APIView.ToWidth" valid-number="" allow-decimal="true" allow-negative="false" decimal-upto="2" maxlength="6">*@
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Depth</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromDepth, "{0:n2}", new { @value = Model.FromDepth, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','DEPTH');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToDepth, "{0:n2}", new { @value = Model.ToDepth, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','DEPTH');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Depth(%)</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromDepthPer, "{0:n2}", new { @value = Model.FromDepthPer, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','DEPTHPER');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToDepthPer, "{0:n2}", new { @value = Model.ToDepthPer, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','DEPTHPER');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Table(%)</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromTablePer, "{0:n2}", new { @value = Model.FromTablePer, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','TABLEPER');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToTablePer, "{0:n2}", new { @value = Model.ToTablePer, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','TABLEPER');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Cr Ang</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromCrAng, "{0:n2}", new { @value = Model.FromCrAng, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','CRANG');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToCrAng, "{0:n2}", new { @value = Model.ToCrAng, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','CRANG');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Cr Ht</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromCrHt, "{0:n2}", new { @value = Model.FromCrHt, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','CRHT');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToCrHt, "{0:n2}", new { @value = Model.ToCrHt, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','CRHT');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Pav Ang</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromPavAng, "{0:n2}", new { @value = Model.FromPavAng, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','PAVANG');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToPavAng, "{0:n2}", new { @value = Model.ToPavAng, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','PAVANG');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Pav Ht</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromPavHt, "{0:n2}", new { @value = Model.FromPavHt, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','PAVHT');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToPavHt, "{0:n2}", new { @value = Model.ToPavHt, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','PAVHT');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Disc(%)</strong>
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FromDisc, "{0:n2}", new { @value = Model.FromDisc, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('FROM','DISC');" })
+                        </div>
+                        <div class="col-sm-4 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.ToDisc, "{0:n2}", new { @value = Model.ToDisc, @class = "form-control form-control onuntouched onvalid onnot-empty ondirty onvalid-parse onvalid-maxlength", @maxLength = "6", @onblur = "LeaveTextBox('TO','DISC');" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 tabbox af">
+                <div class="tabboxdiv">
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>API Name:</strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @*<input onblur="LeaveTextBox('FROM','APINAME');" type="text" class="form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength" onmodel="APIView.APIName" maxlength="100">*@
+
+                            @Html.TextBoxFor(x => x.APIName, new { @value = Model.APIName, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @onblur = "LeaveTextBox('FROM','APINAME');" })
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>FTP Name:</strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @*<input onblur="LeaveTextBox('FROM','FTPNAME');" type="text" class="form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength" onmodel="APIView.FTPName" maxlength="100">*@
+                            @Html.TextBoxFor(x => x.FTPName, new { @value = Model.FTPName, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @onblur = "LeaveTextBox('FROM','FTPNAME');" })
+                        </div>
+
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>FTP User:</strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.FTPUser, new { @value = Model.FTPUser, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @onblur = "LeaveTextBox('FROM','FTPUSERNAME');" })
+                        </div>
+
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>FTPPassword:</strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @*<input onblur="LeaveTextBox('FROM','FTPPASSWORD');" type="text" class="form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength" onmodel="APIView.FTPPassword" maxlength="12">*@
+                            @Html.TextBoxFor(x => x.FTPPassword, new { @value = Model.FTPPassword, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "12", @onblur = "LeaveTextBox('FROM','FTPPASSWORD');" })
+                        </div>
+
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>UploadTIme:</strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @*<input onblur="LeaveTextBox('FROM','UPLOADTIME');" type="text" class="form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength" onmodel="APIView.UploadTime" maxlength="3" onkeypress="return isNumber(event)">*@
+
+                            @Html.TextBoxFor(x => x.UploadTime, new { @value = Model.UploadTime, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "3", @onblur = "LeaveTextBox('FROM','UPLOADTIME');", onkeypress = "return isNumber(event)" })
+                        </div>Min.
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>ExportType:</strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5  cust-main-select api-plr">
+                            @Html.DropDownListFor(x => x.ExportType, Model.ExportTypeList, "Select", new { @class = "form-control select2" })
+                        </div>
+                    </div>
+                    <div class="row m-0" style="display:none;">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Separetor:</strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 cust-main-select api-plr">
+                            @Html.DropDownListFor(x => x.Separator, Model.SeparatorList, "Select", new { @class = "form-control select2" })
+                        </div>
+                    </div>
+                    <div class="row m-0" style="display:none;">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Email:</strong>
+                        </div>
+                        <div class="col-sm-8 col-xs-5 api-plr">
+                            @Html.TextBoxFor(x => x.Email, new { @value = Model.Email, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "100", @onblur = "validmail(event)" })
+                            @*<input id="EmailId" onblur="validmail($event)" type="text" class="form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength" onmodel="APIView.Email" maxlength="100">*@
+                        </div>
+                    </div>
+                    <div class="row m-0">
+                        <div class="col-sm-3 col-xs-12 api-plr">
+                            <strong>Occurance:</strong>
+                        </div>
+                        <div class="col-sm-5  cust-main-select  api-plr">
+                            @Html.DropDownListFor(x => x.Repeat, Model.OccuranceList, "Select", new { @class = "form-control select2" })
+                        </div>
+                        <div class="col-sm-3 api-plr">
+                            @Html.TextBoxFor(x => x.sMailUploadTime, new { @value = Model.sMailUploadTime, @class = "form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength", @maxLength = "3", @onblur = "LeaveTextBox('FROM','OCCURANCE');", @onkeypress = "return isNumber(event)" })
+                            @*<input onblur="LeaveTextBox('FROM','OCCURANCE');" type="text" class="form-control form-control onpristine onuntouched onvalid onempty onvalid-maxlength" onmodel="APIView.sMailUploadTime" maxlength="3" onkeypress="return isNumber(event)">*@
+                        </div>Hrs.
+
+
+                    </div>
+                    <span style="color:red;font-size:12px; padding:5px 10px;">Enter Multiple Email Separate By (,) / Enter Hours Between 1 To 24</span>
+
+                    <div class="row m-0">
+                        <div class="col-3 api-plr">
+                            <strong>Api Url:</strong>
+                        </div>
+                        <div class="col-8 api-plr">
+                            <label class="cust-chk-bx text-left api-check">
+                                @*<input type="checkbox" id="checkbox" on  name="checkbox-1" onmodel="APIView.ApiUrl" class="onpristine onuntouched onvalid onempty">*@
+                                @Html.CheckBoxFor(x => x.ApiUrl, new { @class = "onpristine onuntouched onvalid onempty", @onchange = "LeaveTextBox('FROM','APIURL');" })
+                                <span class="cust-chkmark"></span>
+                            </label>
+                        </div>
+                        @if (Request.QueryString.Count > 0 && Request.QueryString["Type"].ToLower() == "modify")
+                        {
+                            <div class="col-sm-8 api-plr" ng-if="''=='modify'">
+                                <label id="APIURL1" name="APIURL1" style="font-size:12px;">@Model.APIURL1 </label>
+                            </div>
+                        }
+                        @Html.HiddenFor(x => x.IsModify)
+                        @Html.HiddenFor(x=>x.TransId)
+                        @Html.HiddenFor(x => x.dTransDate)
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 api-plr">
+                <div class="myoffer-form api-btn">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <ul class="offer-inbtn pull-right">
+                                @if (Request.QueryString.Count > 0 && Request.QueryString["Type"].ToLower() == "modify")
+                                {
+                                    <li>
+                                        <button onclick="SaveApiData();" class="save offer-btn" title="Update">Update</button>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <button onclick="SaveApiData();" class="save offer-btn" title="Save">SAVE</button>
+                                    </li>
+                                }
+                                <li>
+                                    <button onclick="Clear();" class="save offer-btn" title="reset">Reset</button>
+                                </li>
+                                <li>
+                                    <button onclick="API_View();" class="save offer-btn" title="APIView"> API View</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="myoffer-form">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="tab-content w-100">
+
+                                <div id="TB_ColSetting" class="tab-pane active">
+                                    <div class="row mg0 pd5" style="text-align: center;">
+                                        <div class="col-md-12 table-responsive">
+                                            <table id="mytable" class="table table-hover table-bordered" style="height: calc(100vh - 240px); display: inline-block;">
+                                                <colgroup>
+                                                    <col style="width: 5%;">
+                                                    <col style="width: 45%;">
+                                                    <col style="width: 45%;">
+                                                    <col style="width: 10%;">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th style="display: none;"></th>
+                                                        <th></th>
+                                                        <th>Caption</th>
+                                                        <th>Custom Caption</th>
+                                                        <th>Order</th>
+                                                        <th style="display: none;"></th>
+                                                        <th>Visibility</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="myTableBody" class="ui-sortable">
+                                                    @foreach (var item in Model.ColumnList)
+                                                    {
+                                                        <tr>
+                                                            <td id="lblCoolName" style="display: none;"></td>
+                                                            <td><i style="cursor: move;" class="fa fa-bars" aria-hidden="true"></i></td>
+                                                            <td id="lblFieldName" class="onbinding">@item.sUser_ColumnName</td>
+                                                            <td class="CustName">
+                                                                <input onblur="" type="text" class="form-control form-control onpristine onvalid onnot-empty onvalid-maxlength ontouched" value="@item.sCustMiseCaption" maxlength="100">
+                                                            </td>
+                                                            <td id="lblColId" style="display: none; " class="onbinding">@item.icolumnId</td>
+                                                            <td id="lblOrder" class="ColumnOrder onbinding">@item.iPriority</td>
+
+                                                            <td>
+                                                                <label class="cust-chk-bx text-left">
+                                                                    @if (item.IsActive)
+                                                                    {
+                                                                        <input type="checkbox" id="checkbox2" name="checkbox-1" checked class="onpristine onuntouched onvalid onempty">
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <input type="checkbox" id="checkbox2" name="checkbox-1" class="onpristine onuntouched onvalid onempty">
+                                                                    }
+                                                                    <span class="cust-chkmark"></span>
+                                                                </label>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!------------------- Modal -------------------->
+<div class="modal social-model fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog search-width api-filter-popup" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title ng-binding" id="exampleModalLabel"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="col-12">
+                    <div class="popup-field">
+                        <div id="divModal" class="ng-hide">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="modal-footer" class="modal-footer search-model-footer">
+                @*<button type="button" class="btn btn-primary" ng-click="ResetSelectedAttr(ParameterLabel);">Reset</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal social-model fade" id="CaratModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg cst-inpt-mn" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Carat</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="popup-field">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mrg1">
+
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size2" onchange="GetSelectedCarat()" >
+                                        0.18-0.22
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize2" placeholder="0.18" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize2" placeholder="0.22" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size3" onchange="GetSelectedCarat()" >
+                                        0.23-0.29
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize3" placeholder="0.23" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize3" placeholder="0.29" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size4" onchange="GetSelectedCarat()" >
+                                        0.30-0.39
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize4" placeholder="0.30" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize4" placeholder="0.39" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size5" onchange="GetSelectedCarat()"  >
+                                        0.40-0.49
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize5" placeholder="0.40" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize5" placeholder="0.49" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size6" onchange="GetSelectedCarat()" >
+                                        0.50-0.59
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize6" placeholder="0.50" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize6" placeholder="0.59" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size7" onchange="GetSelectedCarat()" >
+                                        0.60-0.69
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize7" placeholder="0.60" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize7" placeholder="0.69" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size8" onchange="GetSelectedCarat()" >
+                                        0.70-0.79
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize8" placeholder="0.70" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize8" placeholder="0.79" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mrg1">
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size9" onchange="GetSelectedCarat()" >
+                                        0.80-0.89
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize9" placeholder="0.80" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize9" placeholder="0.89" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size10" onchange="GetSelectedCarat()" >
+                                        0.90-0.99
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize10" placeholder="0.90" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize10" placeholder="0.99" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size11" onchange="GetSelectedCarat()" >
+                                        1.00-1.19
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize11" placeholder="1.00" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize11" placeholder="1.19" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size12" onchange="GetSelectedCarat()" >
+                                        1.20-1.49
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize12" placeholder="1.20" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize12" placeholder="1.49" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size13" onchange="GetSelectedCarat()" >
+                                        1.50-1.99
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize13" placeholder="1.50" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize13" placeholder="1.69" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size15" onchange="GetSelectedCarat()" >
+                                        2.00-2.99
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize15" placeholder="2.00" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize15" placeholder="2.49" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <label class="control-label search-label">
+                                        <input type="checkbox" id="CARAT_Size17" onchange="GetSelectedCarat()" >
+                                        3.00-99.99
+                                    </label>
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="FromSize17" placeholder="3.00" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 api-plr">
+                                    <input type="text" class="form-control" id="ToSize17" placeholder="99.99" decimal-number="" onblur="GetSelectedCarat()">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer search-model-footer">
+                <button type="button" class="btn btn-primary" onclick="ResetCheckCarat()">Reset</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Done</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+   
+    <script src="~/Content/js/Pages/select2.min.js"></script>
+    <script src="~/Content/js/Pages/ApiFIlter.js"></script>
+    <script>
+        $('.select2').select2();
+        //$('.locationselect2').select2();
+        
+        $("table tbody").sortable({
+
+            update: function () {
+                SetTableOrder();
+            }
+        });
+        function SetTableOrder() {
+
+            var OrderNo = 1;
+            $("table tbody tr").each(function () {
+                ($(this).find(".ColumnOrder").text(OrderNo));
+                OrderNo = OrderNo + 1;
+            });
+        };
+
+        var ExportTypeList = [
+            { id: 'EXCEL(.xlsx)', value: 'EXCEL(.xlsx)' },
+            { id: 'EXCEL(.xls)', value: 'EXCEL(.xls)' },
+            { id: 'CSV', value: 'CSV' },
+            { id: 'XML', value: 'XML' },
+            { id: 'JSON', value: 'JSON' }
+        ];
+
+        var OccuranceList = [
+            { id: 'D', value: 'Daily' },
+            { id: 'W', value: 'Weekly' },
+            { id: 'E', value: 'Weekdays' },
+            { id: 'M', value: 'Monthly' },
+            { id: 'Q', value: 'Quaterly' }
+        ];
+
+        var SeparatorList = [
+            { id: '-', value: '-' },
+            { id: '*', value: '*' },
+            { id: '@@', value: '@@' },
+            { id: '/', value: '/' }
+        ];
+
+        var ShapeList = [];
+        var ColorList = [];
+        var ClarityList = [];
+        var CutList = [];
+        var PolishList = [];
+        var SymmList = [];
+        var FlsList = [];
+        var ShadeList = [];
+        var NattsList = [];
+        var InclusionList = [];
+        var LabList = [];
+        var Detaillist = [];
+        var CaratList = [];
+        var ShapeObj ="";
+        var ColorObj = "";
+        var ClarityObj = "";
+        var CutObj = "";
+        var PolishObj = "";
+        var SymmObj = "";
+        var FlsObj = "";
+        var ShadeObj = "";
+        var NattsObj = "";
+        var InclusionObj = "";
+        var LocationObj = "";
+        var LabObj = "";
+        var CheckedShapeValue = "";
+        var CheckedShapeValue = "";
+        var CheckedColorValue = "";
+        var CheckedClarityValue = "";
+        var CheckedLabValue = "";
+        var CheckedCaratValue = "";
+
+        var ColumnList = [];
+
+        ShapeList = JSON.parse('@Html.Raw(Json.Encode(Model.ShapeList))');
+        ColorList =     JSON.parse('@Html.Raw(Json.Encode(Model.ColorList))');
+        ClarityList = JSON.parse('@Html.Raw(Json.Encode(Model.ClarityList))');
+        CutList = JSON.parse('@Html.Raw(Json.Encode(Model.CutList))');
+        PolishList = JSON.parse('@Html.Raw(Json.Encode(Model.PolishList))');
+        SymmList = JSON.parse('@Html.Raw(Json.Encode(Model.SymmList))');
+        FlsList = JSON.parse('@Html.Raw(Json.Encode(Model.FlsList))');
+        ShadeList = JSON.parse('@Html.Raw(Json.Encode(Model.ShadeList))');
+        NattsList = JSON.parse('@Html.Raw(Json.Encode(Model.NattsList))');
+        InclusionList = JSON.parse('@Html.Raw(Json.Encode(Model.InclusionList))');
+        LabList = JSON.parse('@Html.Raw(Json.Encode(Model.LabList))');
+        LocationList = JSON.parse('@Html.Raw(Json.Encode(Model.LocationList))');
+        ColumnList = JSON.parse('@Html.Raw(Json.Encode(Model.ColumnList))');
+
+        var ResetSelectedAttr = function (attr) {
+            if (attr == "Shape") {
+                _.each(ShapeList, function (itm) {
+                    itm.isActive = false;
+                });
+                $('#FromShape option:selected').attr('selected', false).attr('data-select2-id', false);
+                $('#ToShape option:selected').attr('selected', false).attr('data-select2-id', false);
+                $("#FromShape").val('').trigger('change.select2');
+                $("#ToShape").val('').trigger('change.select2');
+                $(".ddlCheckedShapeValue").removeClass("ng-hide");
+                $(".divCheckedShapeValue").addClass("ng-hide");
+                $(".divCheckedShapeValue").empty();
+            }
+            if (attr == "Color") {
+                _.each( ColorList, function (itm) {
+                    itm.isActive = false;
+                });
+                $("#FromColor").val('').trigger('change.select2');
+                $("#ToColor").val('').trigger('change.select2');
+                $(".ddlCheckedColorValue").removeClass("ng-hide");
+                $(".divCheckedColorValue").addClass("ng-hide");
+                $(".divCheckedColorValue").empty();
+            }
+            if (attr == "Clarity") {
+                _.each(ClarityList, function (itm) {
+                    itm.isActive = false;
+                });
+                $("#FromClarity").val('').trigger('change.select2');
+                $("#ToClarity").val('').trigger('change.select2');
+                $(".ddlCheckedClarityValue").removeClass("ng-hide");
+                $(".divCheckedClarityValue").addClass("ng-hide");
+                $(".divCheckedClarityValue").empty();
+            }
+            if (attr == "Lab") {
+                _.each(LabList, function (itm) {
+                    itm.isActive = false;
+                });
+                $("#FromLab").val('').trigger('change.select2');
+                $("#ToLab").val('').trigger('change.select2');
+                $(".ddlCheckedLabValue").removeClass("ng-hide");
+                $(".divCheckedLabValue").addClass("ng-hide");
+                $(".divCheckedLabValue").empty();
+            }
+        }
+
+        var ChangeDDL = function (Type) {
+
+            if (Type == "Shape") {
+                var SeqFrom = 0;
+                var SeqTo = 0;
+                _.each(ShapeList, function (itm) {
+                    if ($("#FromShape").select2('data')[0]['text'] == itm.sName)
+                    {
+                        SeqFrom = itm.iSr;
+                    }
+                    if ($("#ToShape").select2('data')[0]['text']  == itm.sName) {
+                        SeqTo = itm.iSr;
+                    }
+                });
+                if (SeqFrom > SeqTo) {
+                    $("#ToShape").val(SeqFrom).trigger('change.select2');
+                }
+                var ParamArr = [];
+                ShapeObj = "";
+
+                ParamArr = _.filter(ShapeList, function (e) { return e.iSr >= SeqFrom && e.iSr <= SeqTo });
+                _.each(ParamArr, function (itm) {
+                    ShapeObj += itm.sName + ",";
+                    itm.ACTIVE = true;
+                });
+                ShapeObj = ShapeObj.replace(/,\s*$/, "");
+            }
+            if (Type == "Color") {
+                var SeqFrom = 0;
+                var SeqTo = 0;
+                _.each(ColorList, function (itm) {
+                    if ($("#FromColor").select2('data')[0]['text'] == itm.sName) {
+                        SeqFrom = itm.iSr;
+                    }
+                    if ($("#ToColor").select2('data')[0]['text'] == itm.sName) {
+                        SeqTo = itm.iSr;
+                    }
+                });
+
+              if (SeqFrom > SeqTo) {
+                    $("#ToColor").val(SeqFrom).trigger('change.select2');
+                }
+
+                var ParamArr = [];
+                ColorObj = "";
+                ParamArr =_.filter(ColorList, function (e) { return e.iSr > SeqFrom && e.iSr <= SeqTo });
+                _.each(ParamArr, function (itm) {
+                    ColorObj += itm.sName + ",";
+                    itm.ACTIVE = true;
+                });
+                 ColorObj = ColorObj.replace(/,\s*$/, "");
+            }
+            if (Type == "Clarity") {
+                var SeqFrom = 0;
+                var SeqTo = 0;
+                _.each(ClarityList, function (itm) {
+                    if ($("#FromClarity").select2('data')[0]['text'] == itm.sName) {
+                        SeqFrom = itm.iSr;
+                    }
+                    if ($("#ToClarity").select2('data')[0]['text'] == itm.sName) {
+                        SeqTo = itm.iSr;
+                    }
+                });
+
+              if (SeqFrom > SeqTo) {
+                    $("#ToClarity").val(SeqFrom).trigger('change.select2');
+                }
+
+                var ParamArr = [];
+                ClarityObj = "";
+                ParamArr =_.filter(ClarityList, function (e) { return e.iSr  > SeqFrom && e.iSr <= SeqTo });
+                _.each(ParamArr, function (itm) {
+                    ClarityObj += itm.sName + ",";
+                    itm.ACTIVE = true;
+                });
+                ClarityObj = ClarityObj.replace(/,\s*$/, "");
+            }
+            if (Type == "Cut") {
+                var SeqFrom = 0;
+                var SeqTo = 0;
+                _.each(CutList, function (itm) {
+                    if ($("#FromCut").select2('data')[0]['text'] == itm.sName) {
+                        SeqFrom = itm.iSr;
+                    }
+                    if ($("#ToCut").select2('data')[0]['text'] == itm.sName) {
+                        SeqTo = itm.iSr;
+                    }
+                });
+
+              if (SeqFrom > SeqTo) {
+                    $("#ToCut").val(SeqFrom).trigger('change.select2');
+                }
+
+                var ParamArr = [];
+               CutObj = "";
+                ParamArr =_.filter(CutList, function (e) { return e.iSr  > SeqFrom && e.iSr <= SeqTo });
+                _.each(ParamArr, function (itm) {
+                    CutObj += itm.sName + ",";
+                    itm.ACTIVE = true;
+                });
+                CutObj =  CutObj.replace(/,\s*$/, "");
+            }
+            if (Type == "Polish") {
+                var SeqFrom = 0;
+                var SeqTo = 0;
+                _.each(PolishList, function (itm) {
+                    if ($("#FromPolish").select2('data')[0]['text'] == itm.sName) {
+                        SeqFrom = itm.iSr;
+                    }
+                    if ($("#ToPolish").select2('data')[0]['text'] == itm.sName) {
+                        SeqTo = itm.iSr;
+                    }
+                });
+
+              if (SeqFrom > SeqTo) {
+                    $("#ToPolish").val(SeqFrom).trigger('change.select2');
+                }
+
+                var ParamArr = [];
+                PolishObj = "";
+                ParamArr =_.filter(PolishList, function (e) { return e.iSr  > SeqFrom && e.iSr <= SeqTo });
+                _.each(ParamArr, function (itm) {
+                    PolishObj += itm.sName + ",";
+                    itm.ACTIVE = true;
+                });
+                PolishObj = PolishObj.replace(/,\s*$/, "");
+            }
+            if (Type == "Symm") {
+                var SeqFrom = 0;
+                var SeqTo = 0;
+                _.each(SymmList, function (itm) {
+                    if ($("#FromSymm").select2('data')[0]['text'] == itm.sName) {
+                        SeqFrom = itm.iSr;
+                    }
+                    if ($("#ToSymm").select2('data')[0]['text'] == itm.sName) {
+                        SeqTo = itm.iSr;
+                    }
+                });
+
+              if (SeqFrom > SeqTo) {
+                    $("#ToSymm").val(SeqFrom).trigger('change.select2');
+                }
+
+                var ParamArr = [];
+                SymmObj = "";
+                ParamArr =_.filter(SymmList, function (e) { return e.iSr  > SeqFrom && e.iSr <= SeqTo });
+                _.each(ParamArr, function (itm) {
+                    SymmObj += itm.sName + ",";
+                    itm.ACTIVE = true;
+                });
+                SymmObj = SymmObj.replace(/,\s*$/, "");
+            }
+            if (Type == "Fls") {
+                var SeqFrom = 0;
+                var SeqTo = 0;
+                _.each(FlsList, function (itm) {
+                    if ($("#FromFls").select2('data')[0]['text'] == itm.sName) {
+                        SeqFrom = itm.iSr;
+                    }
+                    if ($("#ToFls").select2('data')[0]['text'] == itm.sName) {
+                        SeqTo = itm.iSr;
+                    }
+                });
+               if (SeqFrom > SeqTo) {
+                    $("#ToFls").val(SeqFrom).trigger('change.select2');
+                }
+
+                var ParamArr = [];
+                FlsObj = "";
+                ParamArr =_.filter(FlsList, function (e) { return e.iSr  > SeqFrom && e.iSr <= SeqTo });
+                _.each(ParamArr, function (itm) {
+                    FlsObj += itm.sName + ",";
+                    itm.ACTIVE = true;
+                });
+                FlsObj = FlsObj.replace(/,\s*$/, "");
+            }
+            if (Type == "Shade") {
+                var SeqFrom = 0;
+                var SeqTo = 0;
+                _.each(ShadeList, function (itm) {
+                    if ($("#FromShade").select2('data')[0]['text'] == itm.sName) {
+                        SeqFrom = itm.iSr;
+                    }
+                    if ($("#ToShade").select2('data')[0]['text'] == itm.sName) {
+                        SeqTo = itm.iSr;
+                    }
+                });
+             if (SeqFrom > SeqTo) {
+                    $("#ToShade").val(SeqFrom).trigger('change.select2');
+                }
+
+
+                var ParamArr = [];
+                ShadeObj = "";
+                ParamArr =_.filter(ShadeList, function (e) { return e.iSr  > SeqFrom && e.iSr <= SeqTo });
+                _.each(ParamArr, function (itm) {
+                    ShadeObj += itm.sName + ",";
+                    itm.ACTIVE = true;
+                });
+                ShadeObj = ShadeObj.replace(/,\s*$/, "");
+            }
+            if (Type == "Natts") {
+                var SeqFrom = 0;
+                var SeqTo = 0;
+                _.each(NattsList, function (itm) {
+                    if ($("#FromNatts").select2('data')[0]['text'] == itm.sName) {
+                        SeqFrom = itm.iSr;
+                    }
+                    if ($("#ToNatts").select2('data')[0]['text'] == itm.sName) {
+                        SeqTo = itm.iSr;
+                    }
+                });
+                if (SeqFrom > SeqTo) {
+                    $("#ToNatts").val(SeqFrom).trigger('change.select2');
+                }
+
+                var ParamArr = [];
+                NattsObj = "";
+                ParamArr =_.filter(NattsList, function (e) { return e.iSr  > SeqFrom && e.iSr <= SeqTo });
+                _.each(ParamArr, function (itm) {
+                    NattsObj += itm.sName + ",";
+                    itm.ACTIVE = true;
+                });
+                NattsObj = NattsObj.replace(/,\s*$/, "");
+            }
+            if (Type == "Inclusion") {
+                var SeqFrom = 0;
+                var SeqTo = 0;
+                _.each(InclusionList, function (itm) {
+                    if ($("#FromInclusion").select2('data')[0]['text'] == itm.sName) {
+                        SeqFrom = itm.iSr;
+                    }
+                    if ($("#ToInclusion").select2('data')[0]['text'] == itm.sName) {
+                        SeqTo = itm.iSr;
+                    }
+                });
+               if (SeqFrom > SeqTo) {
+                    $("#ToInclusion").val(SeqFrom).trigger('change.select2');
+                }
+
+                var ParamArr = [];
+                InclusionObj = "";
+                ParamArr =_.filter(InclusionList, function (e) { return e.iSr  > SeqFrom && e.iSr <= SeqTo });
+                _.each(ParamArr, function (itm) {
+                    InclusionObj += itm.sName + ",";
+                    itm.ACTIVE = true;
+                });
+                InclusionObj = InclusionObj.replace(/,\s*$/, "");
+            }
+            
+            if (Type == "Location") {
+                //var ParamArr = [];
+                //LocationObj = "";
+                //var totLoc = $("#Location").select2('data').length, i = 0;
+                //if (totLoc > 0) {
+                //    for (; i < totLoc; i++) {
+                //        ParamArr = [];
+                //        ParamArr = _.filter(LocationList, function (e) { return e.sName == $("#Location").select2('data')[i].text });
+                //        _.each(ParamArr, function (itm) {
+                //            LocationObj += itm.iSr + ",";
+                //            itm.ACTIVE = true;
+                //        });
+                //        //LocationObj = LocationObj.replace(/,\s*$/, "");
+                //        LocationObj = LocationObj.substr(0, LocationObj.length - 1);
+                //    }
+                //}
+
+                var ParamArr = [];
+                LocationObj = "";
+                ParamArr =_.filter(LocationList, function (e) { return e.id == $("#Location").select2('data')[0].text });
+                _.each(ParamArr, function (itm) {
+                    LocationObj += itm.id + ",";
+                    itm.ACTIVE = true;
+                });
+                LocationObj = LocationObj.replace(/,\s*$/, "");
+            }
+            if (Type == "Lab") {
+                var SeqFrom = 0;
+                var SeqTo = 0;
+                _.each(LabList, function (itm) {
+                    if ($("#FromLab").select2('data')[0]['text'] == itm.sName) {
+                        SeqFrom = itm.iSr;
+                    }
+                    if ($("#ToLab").select2('data')[0]['text'] == itm.sName) {
+                        SeqTo = itm.iSr;
+                    }
+                });
+                if (SeqFrom > SeqTo) {
+                    $("#ToLab").val(SeqFrom).trigger('change.select2');
+                }
+
+                ParamArr = [];
+                LabObj = "";
+                ParamArr =_.filter(LabList, function (e) { return e.iSr  > SeqFrom && e.iSr <= SeqTo });
+                _.each(ParamArr, function (itm) {
+                    LabObj += itm.sName + ",";
+                    itm.ACTIVE = true;
+                });
+                LabObj = LabObj.replace(/,\s*$/, "");
+            }
+            SetSearchParameter();
+        }
+
+        var SetSearchParameter = function () {
+            $("#FromCarat").val($("#FromCarat").val() == "" ? "0.00" : $("#FromCarat").val() == undefined || $("#FromCarat").val() == "NAN" ? "0.00" : parseFloat($("#FromCarat").val()).toFixed(2));
+        $("#ToCarat").val($("#ToCarat").val() == "" ? "0.00" : $("#ToCarat").val() == undefined || $("#ToCarat").val() == "NAN" ? "0.00" : parseFloat($("#ToCarat").val()).toFixed(2));
+
+            var shapeLst = _.pluck(_.filter(ShapeList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var colorLst = _.pluck(_.filter(ColorList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var clarityLst = _.pluck(_.filter(ClarityList, function (e) { return e.isActive == true }), 'sName').join(",");
+            var labLst = _.pluck(_.filter(LabList, function (e) { return e.isActive == true }), 'sName').join(",");
+            //var cutLst = _.pluck(_.filter(CutList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+            //var polishLst = _.pluck(_.filter(PolishList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+            //var symLst = _.pluck(_.filter(SymmList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+            //var fluoLst = _.pluck(_.filter(FlsList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+            //var locationLst = _.pluck(_.filter(LocationList, function (e) { return e.ACTIVE == true }), 'id').join(",");
+            //var ShadeLst = _.pluck(_.filter(ShadeList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+            //var NattsLst = _.pluck(_.filter(NattsList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+            //var InclusionLst = _.pluck(_.filter(InclusionList, function (e) { return e.ACTIVE == true }), 'sName').join(",");
+
+                CheckedShapeValue = shapeLst;
+                CheckedColorValue = colorLst;
+                CheckedClarityValue = clarityLst;
+            CheckedLabValue = labLst;
+            if (CheckedShapeValue != "" && CheckedShapeValue.split(",").length >= 1) {
+                $(".ddlCheckedShapeValue").addClass("ng-hide");
+                $(".divCheckedShapeValue").removeClass("ng-hide");
+                $(".divCheckedShapeValue").empty();
+                $(".divCheckedShapeValue").append("<p title='" + CheckedShapeValue + "'>" + CheckedShapeValue + "</p>");
+            }
+            else {
+
+                $(".ddlCheckedShapeValue").removeClass("ng-hide");
+                $(".divCheckedShapeValue").addClass("ng-hide");
+                $(".divCheckedShapeValue").empty();
+            }
+
+            if (CheckedColorValue != "" && CheckedColorValue.split(",").length >= 1) {
+                $(".ddlCheckedColorValue").addClass("ng-hide");
+                $(".divCheckedColorValue").removeClass("ng-hide");
+                $(".divCheckedColorValue").empty();
+                $(".divCheckedColorValue").append("<p title='" + CheckedColorValue + "'>" + CheckedColorValue + "</p>");
+            }
+            else {
+                $(".ddlCheckedColorValue").removeClass("ng-hide");
+                $(".divCheckedColorValue").addClass("ng-hide");
+                $(".divCheckedColorValue").empty();
+            }
+
+            if (CheckedClarityValue != "" && CheckedClarityValue.split(",").length >= 1) {
+                $(".ddlCheckedClarityValue").addClass("ng-hide");
+                $(".divCheckedClarityValue").removeClass("ng-hide");
+                $(".divCheckedClarityValue").empty();
+                $(".divCheckedClarityValue").append("<p title='" + CheckedClarityValue + "'>" + CheckedClarityValue + "</p>");
+            }
+            else {
+                $(".ddlCheckedClarityValue").removeClass("ng-hide");
+                $(".divCheckedClarityValue").addClass("ng-hide");
+                $(".divCheckedClarityValue").empty();
+            }
+
+            if (CheckedLabValue != "" && CheckedLabValue.split(",").length >= 1) {
+                $(".ddlCheckedLabValue").addClass("ng-hide");
+                $(".divCheckedLabValue").removeClass("ng-hide");
+                $(".divCheckedLabValue").empty();
+                $(".divCheckedLabValue").append("<p title='" + CheckedLabValue + "'>" + CheckedLabValue + "</p>");
+            }
+            else {
+                $(".ddlCheckedLabValue").removeClass("ng-hide");
+                $(".divCheckedLabValue").addClass("ng-hide");
+                $(".divCheckedLabValue").empty();
+            }
+        }
+
+        
+$(function () {
+    
+        if ($("#IsModify").val() == "True") {
+            BindPara(@Request.QueryString["TransId"]);
+        }
+    
+});
+    </script>
+}
+
