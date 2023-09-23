@@ -2,3 +2,10 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+/.vs
+/Sunrise.Services/ExcelFile
+/Sunrise.Services/temp
+/Sunrise.Services/temp/Excel
+/Sunrise.Services/temp/FTPAPI_EXPORT
+/Sunrise.Services/temp/URLAPI_EXPORT
+/SunriseWeb/Upload/OfferExcel
