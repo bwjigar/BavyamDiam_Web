@@ -562,10 +562,23 @@ function formatNumberWithPoint(number) {
 }
 
 function ChartSearch_LoadSearchData(value) {debugger
-    var obj = {
-        "FromCts": value.split("-")[0],
-        "ToCts": value.split("-")[1],
-        "Pointer": value,
+    var obj = {};
+    if ($("#ddlChartFilterType").val() == "PO") {
+        obj.FromCts = value.split("-")[0];
+        obj.ToCts = value.split("-")[1];
+        obj.Pointer = value;
+    }
+    else if ($("#ddlChartFilterType").val() == "SH") {
+        obj.Shape = value;
+    }
+    else if ($("#ddlChartFilterType").val() == "CO") {
+        obj.Color = value;
+    }
+    else if ($("#ddlChartFilterType").val() == "CL") {
+        obj.Clarity = value;
+    }
+    else if ($("#ddlChartFilterType").val() == "CU") {
+        obj.Cut = value;
     }
 
     $('.loading-overlay-image-container').show();
@@ -871,8 +884,10 @@ function BindDynamicChart() {
             var label = chartData.labels[idx];
             var value = chartData.datasets[0].data[idx];
             console.log(label);
-            console.log(value);
-            ChartSearch_LoadSearchData(label);
+            console.log(value);debugger
+            if (label != "") {
+                ChartSearch_LoadSearchData(label);
+            }
         }
     };
     //$('#pieChart').css('width', '587px');
@@ -1048,8 +1063,10 @@ function BindOrderSummaryChart() {
             var label = chartData.labels[idx];
             var value = chartData.datasets[0].data[idx];
             console.log(label);
-            console.log(value);
-            ChartSearch_LoadSearchData(label);
+            console.log(value); debugger
+            if (label != "") {
+                ChartSearch_LoadSearchData(label);
+            }
         }
     };
 

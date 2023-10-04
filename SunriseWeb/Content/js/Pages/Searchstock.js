@@ -3067,7 +3067,8 @@ function BindColumnsSettings() {
                     }
                     else if (field == 'sComments') {
                         width = 350;
-                        headerName = "Gia Comment";
+                        //headerName = "Gia Comment";
+                        headerName = "Member Comments";
                     }
                     else if (field == 'Measurement') {
                         headerName = "Measurement";

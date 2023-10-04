@@ -1539,7 +1539,7 @@ namespace EpExcelExportLib
                     worksheet.Cells[4, 27].Value = "Depth(%)";
                     worksheet.Cells[4, 28].Value = "Table(%)";
                     worksheet.Cells[4, 29].Value = "Key To Symbol";
-                    worksheet.Cells[4, 30].Value = "GIA Comment";
+                    worksheet.Cells[4, 30].Value = "Member Comment";
                     worksheet.Cells[4, 31].Value = "Culet";
                     worksheet.Cells[4, 32].Value = "Table Black";
                     worksheet.Cells[4, 33].Value = "Crown Black";
@@ -2010,7 +2010,7 @@ namespace EpExcelExportLib
                     worksheet.Cells[4, 20].Value = "Depth(%)";
                     worksheet.Cells[4, 21].Value = "Certi No.";
                     worksheet.Cells[4, 22].Value = "Key To Symbol";
-                    worksheet.Cells[4, 23].Value = "GIA Comment";
+                    worksheet.Cells[4, 23].Value = "Member Comment";
 
                     ExcelStyle cellStyleHeader1 = worksheet.Cells[4, 1, 4, 23].Style;
                     cellStyleHeader1.Border.Left.Style = cellStyleHeader1.Border.Right.Style

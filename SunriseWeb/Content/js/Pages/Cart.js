@@ -362,7 +362,7 @@ var columnDefs = [
     },
     { headerName: $("#hdn_Certi_No").val(), field: "certi_no", tooltip: function (params) { return (params.value); }, rowGroup: false, width: 100, filter: false, sortable: true },
     { headerName: $("#hdn_Key_to_symbol").val(), field: "symbol", tooltip: function (params) { return (params.value); }, width: 350, filter: false, sortable: true },
-    { headerName: "GIA COMMENT", field: "sComments", tooltip: function (params) { return (params.value); }, width: 350, filter: false, sortable: true },
+    { headerName: "Member Comments", field: "sComments", tooltip: function (params) { return (params.value); }, width: 350, filter: false, sortable: true },
 
 
 

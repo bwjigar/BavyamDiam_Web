@@ -376,7 +376,7 @@ var columnDefs = [
     { headerName: "DEPTH(%)", field: "dDepthPer", tooltip: function (params) { return (params.value); }, width: 70, cellRenderer: function (params) { return parseFloat(params.value).toFixed(2); }, sortable: true },
     { headerName: "CERTI NO.", field: "sCertiNo", tooltip: function (params) { return (params.value); }, width: 100, sortable: true },
     { headerName: "KEY TO SYMBOL", field: "sSymbol", tooltip: function (params) { return (params.value); }, width: 350 },
-    { headerName: "GIA COMMENT", field: "sComments", tooltip: function (params) { return (params.value); }, width: 350 },
+    { headerName: "Member Comments", field: "sComments", tooltip: function (params) { return (params.value); }, width: 350 },
 
     //{ headerName: $("#hdn_Pointer").val(), field: "sPointer", tooltip: function (params) { return (params.value); }, width: 60, sortable: true },
     //{ headerName: $("#hdn_BGM").val(), field: "BGM", tooltip: function (params) { return (params.value); }, width: 90, sortable: true },

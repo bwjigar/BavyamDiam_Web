@@ -3067,7 +3067,8 @@ function BindColumnsSettings() {
                     }
                     else if (field == 'sComments') {
                         width = 350;
-                        headerName = "Gia Comment";
+                        //headerName = "Gia Comment";
+                        headerName = "Member Comments";
                     }
                     else if (field == 'Measurement') {
                         headerName = "Measurement";
@@ -3355,8 +3356,8 @@ function getValuesAsync(field) {
 function deltaIndicator(params) {
     //return '<div class="stock-font"><a target="_blank" href="http://cdn1.brainwaves.co.in/DNA/StoneDetail?StoneNo=' + params.value + '">' + params.value + '</a></div>';
     //return '<div class="stock-font"><a target="_blank" href="/DNA/StoneDetail?StoneNo=' + params.value + '">' + params.value + '</a></div>';
-    return '<div class="stock-font" style="text-decoration: underline;"><a target="_blank" href="/DNA?StoneNo=' + params.value + '">' + params.value + '</a></div>';
-    //return '<div class="stock-font"><a target="_blank" href="' + params.data.movie_url + '">' + params.value + '</a></div>';
+    //return '<div class="stock-font" style="text-decoration: underline;"><a target="_blank" href="/DNA?StoneNo=' + params.value + '">' + params.value + '</a></div>';
+    return '<div><a style="text-decoration: underline; color :blue;" target="_blank" href="/DNA?StoneNo=' + params.value + '">' + params.value + '</a></div>';
 }
 function viewIndicator(params) {
 
@@ -4281,15 +4282,14 @@ function SetChartSearchParameter() {debugger
             data: null,
             success: function (data, textStatus, jqXHR) {
                 debugger
+                
                 if (data.Pointer != null) {
-                    debugger
                     var pointer = data.Pointer.split(',');
                     _.each(pointer, function (item) {
                         _.each(_.filter(CaratList, function (e) { return e.value == item }), function (itm) {
                             itm.ACTIVE = true;
                         });
                     });
-                    debugger
                     var lst = _.filter(CaratList, function (e) { return e.ACTIVE == true })
                     if (lst.length == 0) {
                         $(pointer).each(function (i, res) {
@@ -4315,16 +4315,102 @@ function SetChartSearchParameter() {debugger
                         });
                         $('a[href="#carat2"]').click()
                     }
+
+                }
+
+                var shape = data.Shape;
+                if (shape != null) {
+                    shape = shape.split(',');
+                    $(shape).each(function (i, res) {
+
+                        if (_.find(ShapeList, function (num) { return num.Value == res; })) {
+                            _.findWhere(ShapeList, { Value: res }).ACTIVE = true;
+                            $('#searchshape li a[onclick="SetActive(\'Shape\',\'' + res + '\')"]').addClass('active');
+                        }
+                    });
                 }
 
                 Color_Hide_Show('1');
+                var color = data.Color;
+                if (color != null) {
+                    color = color.split(',');
+                    $(color).each(function (i, res) {
+
+                        if (_.find(ColorList, function (num) { return num.Value == res; })) {
+                            _.findWhere(ColorList, { Value: res }).ACTIVE = true;
+                            $('#searchcolor li[onclick="SetActive(\'COLOR\',\'' + res + '\')"]').addClass('active');
+                        }
+                    });
+                }
+               
+                var clarity = data.Clarity;
+                if (clarity != null) {
+                    clarity = clarity.split(',');
+                    $(clarity).each(function (i, res) {
+
+                        if (_.find(ClarityList, function (num) { return num.Value == res; })) {
+                            _.findWhere(ClarityList, { Value: res }).ACTIVE = true;
+                            $('#searchclarity li[onclick="SetActive(\'CLARITY\',\'' + res + '\')"]').addClass('active');
+                        }
+                    });
+                }
+
+                var cut = data.Cut;
+                var polish = data.Polish;
+                var symm = data.Symm;
+
+                if (cut == "EX" && polish == "EX" && symm == "EX") {
+                    $('#li3ex').addClass('active');
+                }
+                else {
+                    $('#li3ex').removeClass('active');
+                }
+                if (cut == "EX,VG" && polish == "EX,VG" && symm == "EX,VG") {
+                    $('#li3vg').addClass('active');
+                }
+                else {
+                    $('#li3vg').removeClass('active');
+                }
+
+                if (cut != null) {
+                    cut = cut.split(',');
+                    $(cut).each(function (i, res) {
+
+                        if (_.find(CutList, function (num) { return num.Value == res; })) {
+                            _.findWhere(CutList, { Value: res }).ACTIVE = true;
+                            $('#searchcut li[onclick="SetActive(\'CUT\',\'' + res + '\')"]').addClass('active');
+                        }
+                    });
+                }
+
+                if (polish != null) {
+                    polish = polish.split(',');
+                    $(polish).each(function (i, res) {
+
+                        if (_.find(PolishList, function (num) { return num.Value == res; })) {
+                            _.findWhere(PolishList, { Value: res }).ACTIVE = true;
+                            $('#searchpolish li[onclick="SetActive(\'POLISH\',\'' + res + '\')"]').addClass('active');
+                        }
+                    });
+                }
+
+                if (symm != null) {
+                    symm = symm.split(',');
+                    $(symm).each(function (i, res) {
+
+                        if (_.find(SymList, function (num) { return num.Value == res; })) {
+                            _.findWhere(SymList, { Value: res }).ACTIVE = true;
+                            $('#searchsymm li[onclick="SetActive(\'SYMM\',\'' + res + '\')"]').addClass('active');
+                        }
+                    });
+                }
+
+                
 
                 if ($('#hdnSet').val() == '') {
-                    debugger
                     SetSearchParameter();
                 }
                 else {
-                    debugger
                     if (_Firstload == false) {
                         $('.loading-overlay-image-container').hide();
                         $('.loading-overlay').hide();

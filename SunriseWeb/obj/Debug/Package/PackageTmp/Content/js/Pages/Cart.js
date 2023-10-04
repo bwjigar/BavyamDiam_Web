@@ -28,6 +28,7 @@ var SubUser = false;
 
 if (currMonthInd == 0) {
     FromDate = [day, m_names[11], (date.getFullYear() - 1)].join("-");
+    FromDate = "01-Nov-2022";
 }
 else {
     var d = new Date(moment().add(-30, 'days'))
@@ -35,6 +36,7 @@ else {
     var curr_month = d.getMonth();
     var curr_year = d.getFullYear();
     FromDate = (curr_date + "-" + m_names[curr_month] + "-" + curr_year);
+    FromDate = "01-Nov-2022";
 }
 
 if ($('#hdnisadminflg').val() == 1) {
@@ -165,11 +167,13 @@ var columnDefs = [
     { headerName: $("#hdn_CompanyName").val(), field: "CompName", hide: IsObj_company, tooltip: function (params) { return (params.value); }, width: 100, filter: false, sortable: true },
     { headerName: $("#hdn_CustomerName").val(), field: "cust_name", hide: IsObj_customername, tooltip: function (params) { return (params.value); }, width: 100, filter: false, sortable: true },
     {
-        headerName: $("#hdn_Stock_Id_DNA").val(), field: "stone_ref_no", width: 95, tooltip: function (params) { return (params.value); }, cellRenderer: function (params) {
+        headerName: $("#hdn_Stock_Id_DNA").val(), field: "stone_ref_no", width: 95, tooltip: function (params) { return (params.value); },
+        cellRenderer: function (params) {
             if (params.data == undefined) {
                 return '';
             }
-            return '<div class="stock-font"><a target="_blank" href="/DNA?StoneNo=' + params.data.stone_ref_no + '">' + params.data.stone_ref_no + '</a></div>';
+            //return '<div class="stock-font"><a target="_blank" href="/DNA?StoneNo=' + params.data.stone_ref_no + '">' + params.data.stone_ref_no + '</a></div>';
+            return '<div><a style="text-decoration: underline; color :blue;" target="_blank" href="/DNA?StoneNo=' + params.data.stone_ref_no + '">' + params.data.stone_ref_no + '</a></div>';
         },
         filter: false,
         sortable: false
@@ -358,7 +362,7 @@ var columnDefs = [
     },
     { headerName: $("#hdn_Certi_No").val(), field: "certi_no", tooltip: function (params) { return (params.value); }, rowGroup: false, width: 100, filter: false, sortable: true },
     { headerName: $("#hdn_Key_to_symbol").val(), field: "symbol", tooltip: function (params) { return (params.value); }, width: 350, filter: false, sortable: true },
-    { headerName: "GIA COMMENT", field: "sComments", tooltip: function (params) { return (params.value); }, width: 350, filter: false, sortable: true },
+    { headerName: "Member Comments", field: "sComments", tooltip: function (params) { return (params.value); }, width: 350, filter: false, sortable: true },
 
 
 
