@@ -17,6 +17,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Mail;
 using System.Security.Claims;
+using System.Text;
+using System.Web;
 using System.Web.Hosting;
 using System.Web.Http;
 using System.Web.UI.WebControls;
@@ -270,7 +272,55 @@ namespace Sunrise.Services.Controllers
                 });
             }
         }
+        [AllowAnonymous]
+        public IHttpActionResult hardik_log([FromBody] JObject data)
+        {
+            try
+            {
+                hardik_log_req userRequest = new hardik_log_req();
+                try
+                {
+                    userRequest = JsonConvert.DeserializeObject<hardik_log_req>(data.ToString());
+                }
+                catch (Exception ex)
+                {
+                    DAL.Common.InsertErrorLog(ex, null, Request);
+                    return Ok(new CommonResponse
+                    {
+                        Message = "Input Parameters are not in the proper format",
+                        Status = "0"
+                    });
+                }
 
+                CommonResponse resp = new CommonResponse();
+
+                Database db = new Database(Request);
+                List<IDbDataParameter> para;
+                para = new List<IDbDataParameter>();
+
+                if (string.IsNullOrEmpty(userRequest.Data))
+                    para.Add(db.CreateParam("Data", DbType.String, ParameterDirection.Input, "BLANK"));
+                else
+                    para.Add(db.CreateParam("Data", DbType.String, ParameterDirection.Input, userRequest.Data));
+
+                DataTable dt = db.ExecuteSP("hardik_log_Insert", para.ToArray(), false);
+
+                resp.Status = "1";
+                resp.Message = "SUCCESS";
+                resp.Error = "";
+                return Ok(resp);
+            }
+            catch (Exception ex)
+            {
+                DAL.Common.InsertErrorLog(ex, null, Request);
+                return Ok(new CommonResponse
+                {
+                    Error = "FAIL",
+                    Message = "Something Went wrong.\nPlease try again later",
+                    Status = "0"
+                });
+            }
+        }
         [AllowAnonymous]
         public IHttpActionResult ForgotPassword([FromBody]JObject data)
         {
@@ -2704,8 +2754,10 @@ namespace Sunrise.Services.Controllers
 
                 System.Data.DataTable dtData = db.ExecuteSP("IP_Wise_Login_Detail_Stored_CRUD", para.ToArray(), false);
                 List<IP_Wise_Login_Detail> ListResponses = new List<IP_Wise_Login_Detail>();
-                ListResponses = DataTableExtension.ToList<IP_Wise_Login_Detail>(dtData);
-
+                if (ip_wise_login_detailrequest.Type == "GET")
+                {
+                    ListResponses = DataTableExtension.ToList<IP_Wise_Login_Detail>(dtData);
+                }
                 return Ok(new ServiceResponse<IP_Wise_Login_Detail>
                 {
                     Data = ListResponses,

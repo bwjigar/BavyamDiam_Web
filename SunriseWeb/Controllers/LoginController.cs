@@ -104,7 +104,7 @@ namespace SunriseWeb.Controllers
                         OAuthErrorMsg _authErrorMsg = new OAuthErrorMsg();
                         _authErrorMsg = (new JavaScriptSerializer()).Deserialize<OAuthErrorMsg>(_response);
                         inputJson = (new JavaScriptSerializer()).Serialize(input);
-                        string _keyresponse = _api.CallAPIUrlEncoded(Constants.KeyAccountData, inputJson);
+                        string _keyresponse = _api.CallAPIUrlEncoded(Constants.GetKeyAccountData, inputJson);
                         ServiceResponse<KeyAccountDataResponse> _objresponse = (new JavaScriptSerializer()).Deserialize<ServiceResponse<KeyAccountDataResponse>>(_keyresponse);
                         
                         TempData["Message"] = _authErrorMsg.error_description;
@@ -138,12 +138,14 @@ namespace SunriseWeb.Controllers
                         {
                             SessionFacade.TokenNo = _data.access_token;
                             inputJson = (new JavaScriptSerializer()).Serialize(input);
-                            string _keyresponse = _api.CallAPI(Constants.KeyAccountData, inputJson);
+
+                            string _keyresponse = _api.CallAPI(Constants.GetKeyAccountData, inputJson);
+                            
                             ServiceResponse<KeyAccountDataResponse> _objresponse = (new JavaScriptSerializer()).Deserialize<ServiceResponse<KeyAccountDataResponse>>(_keyresponse);
 
                             string _imageResponse = _api.CallAPI(Constants.GetUserProfilePicture, string.Empty);
 
-                            if (_objresponse.Data != null && _objresponse.Data.Count > 0)
+                            if (_objresponse != null && _objresponse.Data != null && _objresponse.Data.Count > 0)
                             {
                                 SessionFacade.UserSession = _objresponse.Data.FirstOrDefault();
                                 SessionFacade.UserSession.ProfileImage = _imageResponse.Replace("\"", "");

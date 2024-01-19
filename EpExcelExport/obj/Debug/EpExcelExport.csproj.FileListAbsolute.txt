@@ -39,3 +39,17 @@ D:\Project\Rajeshri_Projects\GIT_BavyamDiam\BavyamDiam_Web\EpExcelExport\obj\Deb
 D:\Project\Rajeshri_Projects\GIT_BavyamDiam\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.csproj.CopyComplete
 D:\Project\Rajeshri_Projects\GIT_BavyamDiam\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.dll
 D:\Project\Rajeshri_Projects\GIT_BavyamDiam\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.pdb
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\bin\Debug\EpExcelExport.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\bin\Debug\EpExcelExport.pdb
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\bin\Debug\DAL.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\bin\Debug\EPPlus.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\bin\Debug\System.Web.Http.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\bin\Debug\Newtonsoft.Json.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\bin\Debug\DAL.pdb
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\bin\Debug\DAL.dll.config
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\bin\Debug\EPPlus.xml
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.csproj.AssemblyReference.cache
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.csproj.CoreCompileInputs.cache
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.csproj.CopyComplete
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.pdb

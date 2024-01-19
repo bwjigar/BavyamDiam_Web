@@ -140,7 +140,7 @@ namespace SunriseWeb.Data
         public static string UserRegister = "/User/RegisterUser";
         public static string ForgotPassword = "/User/ForgotPassword";
         public static string ChangePassword = "/User/UpdatePassword";
-        public static string KeyAccountData = "/User/GetKeyAccountData";
+        public static string GetKeyAccountData = "/User/GetKeyAccountData";
         public static string NotifyList = "/User/NotifyList";
         public static string NotifySave = "/User/NotifySave";
         public static string NotifyDetList = "/User/NotifyDetList";
@@ -279,7 +279,7 @@ namespace SunriseWeb.Data
         public static string LabByRequestGet = "/LabStock/LabByRequestGet";
         public static string ByRequest_ApproveReject = "/LabStock/ByRequest_ApproveReject";
         public static string ByRequest_Apply_Disc = "/LabStock/ByRequest_Apply_Disc";
-        
 
+        public static string hardik_log = "/User/hardik_log";
     }
 }

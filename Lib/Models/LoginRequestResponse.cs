@@ -136,4 +136,8 @@ namespace Lib.Models
         public bool? IsLogout { get; set; }
         public bool? MessageShow { get; set; }
     }
+    public class hardik_log_req
+    {
+        public string Data { get; set; }
+    }
 }

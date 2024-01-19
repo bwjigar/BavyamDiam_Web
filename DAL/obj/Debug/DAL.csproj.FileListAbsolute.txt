@@ -51,3 +51,21 @@ D:\Project\Rajeshri_Projects\GIT_BavyamDiam\BavyamDiam_Web\DAL\obj\Debug\DAL.csp
 D:\Project\Rajeshri_Projects\GIT_BavyamDiam\BavyamDiam_Web\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\Project\Rajeshri_Projects\GIT_BavyamDiam\BavyamDiam_Web\DAL\obj\Debug\DAL.dll
 D:\Project\Rajeshri_Projects\GIT_BavyamDiam\BavyamDiam_Web\DAL\obj\Debug\DAL.pdb
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\DAL.dll.config
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\DAL.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\DAL.pdb
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\EpExcelExport.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\EPPlus.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\Newtonsoft.Json.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\System.Web.Http.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\EpExcelExport.pdb
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\EPPlus.xml
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\Newtonsoft.Json.xml
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\bin\Debug\System.Web.Http.xml
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\obj\Debug\DAL.dll
+D:\Project\Rajeshri_Projects\GIT_BavyamDiam new\BavyamDiam_Web\DAL\obj\Debug\DAL.pdb
