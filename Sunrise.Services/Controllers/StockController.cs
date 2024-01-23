@@ -9145,7 +9145,8 @@ namespace Sunrise.Services.Controllers
 
                     string fromtime = string.Format("{0:dd-MMM-yyyy hh:mm:ss tt}", DateTime.Now);
 
-                    string _API = "http://203.187.204.211:801/?APIKEY=tejas";
+                    //string _API = "http://203.187.204.211:801/?APIKEY=tejas";
+                    string _API = "http://183.182.89.105:801/?APIKEY=tejas";
                     string[] words = _API.Split('?');
                     String InputPara = string.Empty;
                     if (words.Length == 2)
