@@ -7,7 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>D:\Project\Project_Publish\BhavyDiam_SunriseServices</_PublishTargetUrl>
-    <History>True|2024-01-23T05:34:25.0392780Z;True|2024-01-19T14:47:16.7887297+05:30;True|2024-01-18T15:34:04.4286808+05:30;True|2024-01-18T15:30:42.2945541+05:30;True|2024-01-18T15:23:04.6806742+05:30;True|2024-01-18T15:18:35.6277688+05:30;True|2024-01-18T15:08:08.6772470+05:30;True|2024-01-18T15:02:14.2639198+05:30;True|2024-01-17T18:36:52.0070917+05:30;True|2024-01-17T18:08:15.7241260+05:30;True|2024-01-17T17:51:04.3040163+05:30;True|2023-10-04T14:49:56.4835199+05:30;</History>
+    <History>True|2025-01-17T11:47:23.6673666Z||;True|2024-06-29T15:01:19.1932991+05:30||;True|2024-04-16T16:58:30.0943042+05:30||;True|2024-01-23T11:04:25.0392780+05:30||;True|2024-01-19T14:47:16.7887297+05:30||;True|2024-01-18T15:34:04.4286808+05:30||;True|2024-01-18T15:30:42.2945541+05:30||;True|2024-01-18T15:23:04.6806742+05:30||;True|2024-01-18T15:18:35.6277688+05:30||;True|2024-01-18T15:08:08.6772470+05:30||;True|2024-01-18T15:02:14.2639198+05:30||;True|2024-01-17T18:36:52.0070917+05:30||;True|2024-01-17T18:08:15.7241260+05:30||;True|2024-01-17T17:51:04.3040163+05:30||;True|2023-10-04T14:49:56.4835199+05:30||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -57,22 +57,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/29/2017 16:10:24</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>01/23/2024 11:04:19</publishTime>
+      <publishTime>01/17/2025 17:17:20</publishTime>
     </File>
     <File Include="bin/DAL.dll.config">
       <publishTime>01/19/2024 15:07:11</publishTime>
     </File>
     <File Include="bin/DAL.pdb">
-      <publishTime>01/23/2024 11:04:19</publishTime>
+      <publishTime>01/17/2025 17:17:20</publishTime>
     </File>
     <File Include="bin/DocumentFormat.OpenXml.dll">
       <publishTime>01/19/2024 15:07:15</publishTime>
     </File>
     <File Include="bin/EpExcelExport.dll">
-      <publishTime>01/23/2024 11:04:19</publishTime>
+      <publishTime>01/17/2025 17:17:19</publishTime>
     </File>
     <File Include="bin/EpExcelExport.pdb">
-      <publishTime>01/23/2024 11:04:19</publishTime>
+      <publishTime>01/17/2025 17:17:19</publishTime>
     </File>
     <File Include="bin/EPPlus.dll">
       <publishTime>01/19/2024 15:07:15</publishTime>
@@ -84,13 +84,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/19/2024 15:07:29</publishTime>
     </File>
     <File Include="bin/Lib.dll">
-      <publishTime>01/23/2024 11:04:20</publishTime>
+      <publishTime>01/17/2025 17:17:20</publishTime>
     </File>
     <File Include="bin/Lib.dll.config">
       <publishTime>01/19/2024 15:07:06</publishTime>
     </File>
     <File Include="bin/Lib.pdb">
-      <publishTime>01/23/2024 11:04:20</publishTime>
+      <publishTime>01/17/2025 17:17:20</publishTime>
     </File>
     <File Include="bin/Microsoft.AspNet.Identity.Core.dll">
       <publishTime>01/19/2024 15:07:15</publishTime>
@@ -282,10 +282,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/19/2024 15:07:29</publishTime>
     </File>
     <File Include="bin/Sunrise.Services.dll">
-      <publishTime>01/23/2024 11:04:21</publishTime>
+      <publishTime>01/17/2025 17:17:22</publishTime>
     </File>
     <File Include="bin/Sunrise.Services.pdb">
-      <publishTime>01/23/2024 11:04:21</publishTime>
+      <publishTime>01/17/2025 17:17:22</publishTime>
     </File>
     <File Include="bin/System.IO.Packaging.dll">
       <publishTime>01/19/2024 15:07:29</publishTime>
@@ -336,7 +336,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/19/2024 15:07:06</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/23/2024 11:04:21</publishTime>
+      <publishTime>06/29/2024 15:01:13</publishTime>
     </File>
   </ItemGroup>
 </Project>

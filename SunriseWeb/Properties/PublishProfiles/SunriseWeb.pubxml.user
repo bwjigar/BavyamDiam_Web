@@ -7,7 +7,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <_PublishTargetUrl>D:\Project\Project_Publish\BhavyDiam_SunriseWeb</_PublishTargetUrl>
-    <History>True|2024-01-23T05:34:55.6244146Z;True|2024-01-19T14:47:39.2226836+05:30;True|2024-01-18T18:09:08.9440836+05:30;True|2024-01-18T17:45:09.4445238+05:30;True|2024-01-18T15:34:12.9172885+05:30;True|2024-01-18T15:30:51.3189143+05:30;True|2024-01-18T15:23:16.4467976+05:30;True|2024-01-18T15:18:43.4388295+05:30;True|2024-01-18T15:08:17.6372606+05:30;True|2024-01-18T15:02:24.2514861+05:30;True|2023-10-04T14:50:15.9891708+05:30;</History>
+    <History>True|2025-01-17T11:47:58.1361522Z||;True|2025-01-17T17:17:40.7521209+05:30||;True|2024-06-29T15:03:40.3724141+05:30||;True|2024-04-16T17:00:02.8942693+05:30||;True|2024-01-23T11:04:55.6244146+05:30||;True|2024-01-19T14:47:39.2226836+05:30||;True|2024-01-18T18:09:08.9440836+05:30||;True|2024-01-18T17:45:09.4445238+05:30||;True|2024-01-18T15:34:12.9172885+05:30||;True|2024-01-18T15:30:51.3189143+05:30||;True|2024-01-18T15:23:16.4467976+05:30||;True|2024-01-18T15:18:43.4388295+05:30||;True|2024-01-18T15:08:17.6372606+05:30||;True|2024-01-18T15:02:24.2514861+05:30||;True|2023-10-04T14:50:15.9891708+05:30||;</History>
     <LastFailureDetails />
   </PropertyGroup>
   <ItemGroup>
@@ -21,19 +21,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/19/2024 15:07:15</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>01/23/2024 11:04:19</publishTime>
+      <publishTime>01/17/2025 17:17:20</publishTime>
     </File>
     <File Include="bin/DAL.dll.config">
       <publishTime>01/19/2024 15:07:11</publishTime>
     </File>
     <File Include="bin/DAL.pdb">
-      <publishTime>01/23/2024 11:04:19</publishTime>
+      <publishTime>01/17/2025 17:17:20</publishTime>
     </File>
     <File Include="bin/EpExcelExport.dll">
-      <publishTime>01/23/2024 11:04:19</publishTime>
+      <publishTime>01/17/2025 17:17:19</publishTime>
     </File>
     <File Include="bin/EpExcelExport.pdb">
-      <publishTime>01/23/2024 11:04:19</publishTime>
+      <publishTime>01/17/2025 17:17:19</publishTime>
     </File>
     <File Include="bin/EPPlus.dll">
       <publishTime>01/19/2024 15:07:11</publishTime>
@@ -51,13 +51,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/19/2024 15:07:15</publishTime>
     </File>
     <File Include="bin/Lib.dll">
-      <publishTime>01/23/2024 11:04:20</publishTime>
+      <publishTime>01/17/2025 17:17:20</publishTime>
     </File>
     <File Include="bin/Lib.dll.config">
       <publishTime>01/19/2024 15:07:06</publishTime>
     </File>
     <File Include="bin/Lib.pdb">
-      <publishTime>01/23/2024 11:04:20</publishTime>
+      <publishTime>01/17/2025 17:17:20</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>01/19/2024 15:07:24</publishTime>
@@ -231,10 +231,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/19/2024 15:07:25</publishTime>
     </File>
     <File Include="bin/SunriseWeb.dll">
-      <publishTime>01/23/2024 11:04:37</publishTime>
+      <publishTime>01/17/2025 17:17:36</publishTime>
     </File>
     <File Include="bin/SunriseWeb.pdb">
-      <publishTime>01/23/2024 11:04:37</publishTime>
+      <publishTime>01/17/2025 17:17:36</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Extensions.dll">
       <publishTime>01/19/2024 15:07:25</publishTime>
@@ -2502,7 +2502,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/19/2024 15:07:11</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>01/23/2024 11:04:39</publishTime>
+      <publishTime>06/29/2024 15:03:15</publishTime>
     </File>
   </ItemGroup>
 </Project>

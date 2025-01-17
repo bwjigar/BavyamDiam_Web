@@ -59,7 +59,6 @@ D:\Hardik Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\DAL.dll
 D:\Hardik Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\EPPlus.dll
 D:\Hardik Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\System.Web.Http.dll
 D:\Hardik Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\System.Net.Http.Formatting.dll
-D:\Hardik Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\Newtonsoft.Json.dll
 D:\Hardik Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\DAL.pdb
 D:\Hardik Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\DAL.dll.config
 D:\Hardik Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\EPPlus.xml
@@ -68,3 +67,17 @@ D:\Hardik Projects\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.csproj.C
 D:\Hardik Projects\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.csproj.CopyComplete
 D:\Hardik Projects\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.dll
 D:\Hardik Projects\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.pdb
+D:\Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\EpExcelExport.dll
+D:\Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\EpExcelExport.pdb
+D:\Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\DAL.dll
+D:\Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\EPPlus.dll
+D:\Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\System.Web.Http.dll
+D:\Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\System.Net.Http.Formatting.dll
+D:\Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\DAL.pdb
+D:\Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\DAL.dll.config
+D:\Projects\BavyamDiam_Web\EpExcelExport\bin\Debug\EPPlus.xml
+D:\Projects\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.csproj.AssemblyReference.cache
+D:\Projects\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.csproj.CoreCompileInputs.cache
+D:\Projects\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelE.58DC3092.Up2Date
+D:\Projects\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.dll
+D:\Projects\BavyamDiam_Web\EpExcelExport\obj\Debug\EpExcelExport.pdb

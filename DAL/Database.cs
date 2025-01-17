@@ -149,7 +149,7 @@ namespace DAL
                 adept.SelectCommand.CommandText = db.GetProcedureNamePrefix() + SpName;
                 adept.SelectCommand.CommandType = CommandType.StoredProcedure;
 
-                adept.SelectCommand.CommandTimeout = 150;
+                adept.SelectCommand.CommandTimeout = 1500;
 
                 if (withTrans == true)
                 {

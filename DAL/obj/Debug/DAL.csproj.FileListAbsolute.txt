@@ -87,3 +87,21 @@ D:\Hardik Projects\BavyamDiam_Web\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cac
 D:\Hardik Projects\BavyamDiam_Web\DAL\obj\Debug\DAL.csproj.CopyComplete
 D:\Hardik Projects\BavyamDiam_Web\DAL\obj\Debug\DAL.dll
 D:\Hardik Projects\BavyamDiam_Web\DAL\obj\Debug\DAL.pdb
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\DAL.dll.config
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\DAL.dll
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\DAL.pdb
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\EpExcelExport.dll
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\EPPlus.dll
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\Newtonsoft.Json.dll
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\System.Net.Http.Formatting.dll
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\System.Web.Http.dll
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\EpExcelExport.pdb
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\EPPlus.xml
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\Newtonsoft.Json.xml
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\System.Net.Http.Formatting.xml
+D:\Projects\BavyamDiam_Web\DAL\bin\Debug\System.Web.Http.xml
+D:\Projects\BavyamDiam_Web\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+D:\Projects\BavyamDiam_Web\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\Projects\BavyamDiam_Web\DAL\obj\Debug\DAL.csproj.Up2Date
+D:\Projects\BavyamDiam_Web\DAL\obj\Debug\DAL.dll
+D:\Projects\BavyamDiam_Web\DAL\obj\Debug\DAL.pdb
